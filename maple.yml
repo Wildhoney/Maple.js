@@ -1,0 +1,6 @@
+name: maple
+
+dependencies:
+  - director
+  - diff-dom
+  - radio/radio.js

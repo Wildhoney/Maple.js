@@ -1,0 +1,27 @@
+{
+  "name": "maple",
+  "version": "0.1.0",
+  "homepage": "https://github.com/maplejs/framework",
+  "authors": [
+    "Adam Timberlake <adam.timberlake@gmail.com>"
+  ],
+  "main": "dist/maple.js",
+  "keywords": [
+    "framework",
+    "js",
+    "webcomponents"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "radio": "~0.2.0",
+    "director": "~1.2.8"
+  }
+}
