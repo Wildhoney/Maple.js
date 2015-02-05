@@ -9,6 +9,7 @@
      * @type {Object}
      */
     var maple = $window.maple = {};
+    return maple;
 
     //var maple = { event: { REGISTER_USER: 'register-user' } };
     //
