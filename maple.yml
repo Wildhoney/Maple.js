@@ -1,6 +1,9 @@
 name: maple
 
 dependencies:
-  - director
-  - diff-dom
-  - radio/radio.js
+
+  bower:
+    - director
+    - diff-dom
+    - radio/radio.js
+    - traceur

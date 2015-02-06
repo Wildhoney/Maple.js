@@ -10,6 +10,7 @@
     "strict"        : true,
     "trailing"      : true,
     "undef"         : false,
+    "esnext"        : true,
     "unused"        : true,
     "maxparams"     : 10,
     "maxdepth"      : 5,
