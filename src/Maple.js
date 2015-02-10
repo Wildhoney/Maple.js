@@ -1,4 +1,6 @@
-import modular from './internals/Modular.js';
+import MapleModule    from './internals/Modular.js';
+import MapleTemplate  from './components/Template.js';
+import MapleException from './internals/Exception.js';
 
 (function main($window) {
 
@@ -26,27 +28,26 @@ import modular from './internals/Modular.js';
         _modules: {},
 
         /**
-         * @method throwException
-         * @param {String} message
-         */
-        throwException: function throwException(message) {
-            throw `Maple: ${message}.`;
-        },
-
-        /**
-         * @method module
+         * @method createModule
          * @param {String} name
          * @param {Array} dependencies
          * @return {Object}
          */
-        module: function module(name, dependencies) {
+        createModule: function createModule(name, dependencies) {
 
             if (Array.isArray(dependencies)) {
-                this._modules[name] = modular.setup(name, dependencies);
+
+                if (this._modules.hasOwnProperty(name)) {
+                    MapleException.throwException(`Module "${name}" has already been registered`);
+                }
+
+                // Register our module!
+                this._modules[name] = new MapleModule(name, dependencies);
+
             }
 
             if (!this._modules.hasOwnProperty(name)) {
-                this.throwException(`Module "${name}" does not exist`);
+                MapleException.throwException(`Module "${name}" does not exist`);
             }
 
             return this._modules[name];

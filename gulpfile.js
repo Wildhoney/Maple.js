@@ -54,14 +54,7 @@
 
     });
 
-    gulp.task('karma', function gulpKarma() {
-
-        browserify({ debug: true })
-            .add(es6ify.runtime)
-            .transform(es6ify)
-            .require(require.resolve(files[0]), { entry: true })
-            .bundle()
-            .pipe(fs.createWriteStream('tests/compile/' + [options.name, 'js'].join('.')));
+    gulp.task('karma', ['karma-build'], function gulpKarma() {
 
         var testFiles = [
             //'src/vendor/diff-dom/diffDOM.js',
@@ -87,6 +80,17 @@
 
         return gulp.src('tests/compile/*.js', { read: false })
                    .pipe(clean());
+
+    });
+
+    gulp.task('karma-build', function gulpKarmaBuild() {
+
+        return browserify({ debug: true })
+            .add(es6ify.runtime)
+            .transform(es6ify)
+            .require(require.resolve(files[0]), { entry: true })
+            .bundle()
+            .pipe(fs.createWriteStream('tests/compile/' + [options.name, 'js'].join('.')));
 
     });
 
@@ -117,7 +121,7 @@
 
     });
 
-    gulp.task('test', ['karma', 'consuela', 'hint']);
+    gulp.task('test', ['karma-build', 'karma', 'consuela', 'hint']);
     gulp.task('build', ['compile', 'copy-vendor', 'copy-maple', 'documentation']);
     gulp.task('default', ['test', 'build']);
 
