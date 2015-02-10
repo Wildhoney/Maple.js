@@ -1,34 +1,61 @@
-(function main() {
+import modular from './internals/Modular.js';
+
+(function main($window) {
 
     "use strict";
 
     /**
-     * It's time to throw everything to the devil and go to Kislovodsk.
-     *
-     * @module maple
+     * @module Maple
      * @author Adam Timberlake
      * @link https://github.com/maplejs/framework
+     * @constructor
+     */
+    function Maple() {}
+
+    /**
+     * @property prototype
      * @type {Object}
      */
-    export class Maple {
+    Maple.prototype = {
 
         /**
-         * @constructor
-         * @return {Maple}
+         * @property _modules
+         * @type {Object}
+         * @private
          */
-        constructor() {
-
-        }
+        _modules: {},
 
         /**
          * @method throwException
-         * @throws raises an error when an exception has been thrown.
-         * @return {void}
+         * @param {String} message
          */
-        throwException() {
+        throwException: function throwException(message) {
+            throw `Maple: ${message}.`;
+        },
+
+        /**
+         * @method module
+         * @param {String} name
+         * @param {Array} dependencies
+         * @return {Object}
+         */
+        module: function module(name, dependencies) {
+
+            if (Array.isArray(dependencies)) {
+                this._modules[name] = modular.setup(name, dependencies);
+            }
+
+            if (!this._modules.hasOwnProperty(name)) {
+                this.throwException(`Module "${name}" does not exist`);
+            }
+
+            return this._modules[name];
 
         }
 
-    }
+    };
 
-})();
+    // It's time to throw everything to the devil and go to Kislovodsk.
+    $window.maple = new Maple();
+
+})(window);

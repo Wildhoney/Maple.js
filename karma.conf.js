@@ -14,7 +14,8 @@
             colors: true,
             logLevel: config.LOG_INFO,
             autoWatch: false,
-            browsers: ['Chrome', 'ChromeCanary', 'Firefox', 'Safari', 'Opera', 'IE', 'PhantomJS'],
+            //browsers: ['Chrome', 'ChromeCanary', 'Firefox', 'Safari', 'Opera', 'IE', 'PhantomJS'],
+            browsers: ['Chrome'],
             singleRun: true
 
         });

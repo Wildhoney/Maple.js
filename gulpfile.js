@@ -1,20 +1,23 @@
 (function main() {
 
-    var gulp      = require('gulp'),
-        concat    = require('gulp-concat'),
-        karma     = require('gulp-karma'),
-        jshint    = require('gulp-jshint'),
-        rename    = require('gulp-rename'),
-        uglify    = require('gulp-uglify'),
-        hashsum   = require('gulp-hashsum'),
-        traceur   = require('gulp-traceur'),
-        vulcanize = require('gulp-vulcanize'),
-        jsdoc     = require('gulp-jsdoc'),
-        yaml      = require('js-yaml'),
-        fs        = require('fs');
+    var gulp       = require('gulp'),
+        concat     = require('gulp-concat'),
+        karma      = require('gulp-karma'),
+        jshint     = require('gulp-jshint'),
+        rename     = require('gulp-rename'),
+        uglify     = require('gulp-uglify'),
+        hashsum    = require('gulp-hashsum'),
+        clean      = require('gulp-clean'),
+        traceur    = require('gulp-traceur'),
+        vulcanize  = require('gulp-vulcanize'),
+        jsdoc      = require('gulp-jsdoc'),
+        yaml       = require('js-yaml'),
+        browserify = require('browserify'),
+        es6ify     = require('es6ify'),
+        fs         = require('fs');
 
     var options = yaml.load(fs.readFileSync('maple.yml')),
-        files   = ['src/*.js', 'src/components/*.js'];
+        files   = ['./src/Maple.js', 'src/internals/*.js'];
 
     gulp.task('hint', function gulpHint() {
 
@@ -51,10 +54,47 @@
 
     });
 
+    gulp.task('karma', function gulpKarma() {
+
+        browserify({ debug: true })
+            .add(es6ify.runtime)
+            .transform(es6ify)
+            .require(require.resolve(files[0]), { entry: true })
+            .bundle()
+            .pipe(fs.createWriteStream('tests/compile/' + [options.name, 'js'].join('.')));
+
+        var testFiles = [
+            //'src/vendor/diff-dom/diffDOM.js',
+            //'src/vendor/director/build/director.js',
+            //'src/vendor/radio/radio.js',
+            'tests/compile/maple.js',
+            'tests/*.test.js',
+            'tests/**/*.test.js'
+        ];
+
+        testFiles.concat(files);
+
+        return gulp.src(testFiles).pipe(karma({
+            configFile: 'karma.conf.js',
+            action: 'run'
+        })).on('error', function onError(error) {
+            throw error;
+        });
+
+    });
+
+    gulp.task('consuela', ['karma'], function gulpConsuela() {
+
+        return gulp.src('tests/compile/*.js', { read: false })
+                   .pipe(clean());
+
+    });
+
     gulp.task('compile', function gulpCompile() {
 
         return gulp.src(files)
-                   .pipe(traceur())
+                   .pipe(traceur({ modules: 'register' }))
+                   .pipe(concat('all.js'))
                    .pipe(rename([options.name, 'js'].join('.')))
                    .pipe(gulp.dest('dist'))
                    .pipe(rename([options.name, 'min', 'js'].join('.')))
@@ -63,9 +103,22 @@
 
     });
 
+    gulp.task('copy-vendor', function gulpCopyVendor() {
 
-    gulp.task('test', ['hint']);
-    gulp.task('build', ['compile', 'documentation']);
+        return gulp.src('src/vendor/**/*', { base: 'src/vendor' })
+                   .pipe(gulp.dest('example/vendor'));
+
+    });
+
+    gulp.task('copy-maple', ['compile'], function gulpCopyMaple() {
+
+        return gulp.src('dist/maple.js')
+                   .pipe(gulp.dest('example/vendor/maple'));
+
+    });
+
+    gulp.task('test', ['karma', 'consuela', 'hint']);
+    gulp.task('build', ['compile', 'copy-vendor', 'copy-maple', 'documentation']);
     gulp.task('default', ['test', 'build']);
 
 })();

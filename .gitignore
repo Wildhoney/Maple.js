@@ -8,3 +8,7 @@
 # Bower
 /src/vendor/*
 !/src/vendor/.gitkeep
+
+# Tests
+/tests/compile/*
+!/tests/compile/.gitkeep

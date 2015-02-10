@@ -1,9 +1,5 @@
-(function main() {
+(function main($maple) {
 
-    Maple.Router({
+    var app = $maple.module('exampleApp', []);
 
-
-
-    });
-
-})();
+})(window.maple);
