@@ -6,8 +6,8 @@
 /.idea
 
 # Bower
-/src/vendor/*
-!/src/vendor/.gitkeep
+/example/vendor/*
+!/example/vendor/.gitkeep
 
 # Tests
 /tests/compile/*
