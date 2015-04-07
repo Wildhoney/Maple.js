@@ -1,0 +1,26 @@
+language: node_js
+
+node_js:
+  - '0.10'
+  - '0.11'
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
+script:
+  - npm install
+  - bower install
+  - gulp test
+  - gulp build
+
+deploy:
+  provider: heroku
+  strategy: api
+  all_branches: true
+  skip_cleanup: true
+  api_key:
+    secure: SQRV8JSSh9ABcBylydl+Kx9e5yffUJWZHsq+9T1KLwFgq4ulqUUzACAIUX6DQzt35hKlLTH4TA766jiTkLTDvRnaqKvzhHRpOParXAdvEtPRRU/Ous21JLuIpp46DgVXUCpAEk8Fsv5cV0r05AfNUfqrqzACp3AcuZfoFhb1G6o=
+  app: maple-app
+  on:
+    repo: Wildhoney/Maple.js
