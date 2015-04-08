@@ -1,9 +1,23 @@
-name: maple
+gulp:
+  entry: ./src/Maple.js
 
-dependencies:
+  directories:
+    dist: dist
+    vendor: example/vendor/maple
 
-  bower:
-    - director
-    - diff-dom
-    - radio/radio.js
-    - traceur
+  tests:
+    temp: tests/build/maple.js
+
+  dependencies:
+#    - example/vendor/d3/d3.js
+#    - example/vendor/lodash/lodash.js
+#    - example/vendor/mousetrap/mousetrap.js
+
+  names:
+    dev: maple.js
+    prod: maple.min.js
+
+  all:
+    - ./src/*.js
+    - ./src/**/*.js
+    - ./src/**/**/*.js

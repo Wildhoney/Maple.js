@@ -1,47 +1,88 @@
 (function main() {
 
     var gulp       = require('gulp'),
-        traceur    = require('gulp-traceur'),
-        concat     = require('gulp-concat'),
-        karma      = require('gulp-karma'),
         jshint     = require('gulp-jshint'),
-        rename     = require('gulp-rename'),
         uglify     = require('gulp-uglify'),
+        rimraf     = require('gulp-rimraf'),
+        karma      = require('gulp-karma'),
+        rename     = require('gulp-rename'),
+        sass       = require('gulp-sass'),
+        fs         = require('fs'),
         yaml       = require('js-yaml'),
         browserify = require('browserify'),
-        es6ify     = require('es6ify'),
-        fs         = require('fs');
+        babelify   = require('babelify');
 
-    var options = yaml.load(fs.readFileSync('maple.yml')),
-        files   = ['src/Maple.js', 'src/modules/*.js'];
+    // Load the YAML configuration file.
+    var config = yaml.safeLoad(fs.readFileSync('maple.yml', 'utf8'));
 
-    gulp.task('hint', function gulpHint() {
+    // Common entry values.
+    var entryFile = config.gulp.entry,
+        allFiles  = config.gulp.all,
+        prodPath  = config.gulp.directories.dist + '/' + config.gulp.names.prod,
+        devPath   = config.gulp.directories.dist + '/' + config.gulp.names.dev;
 
-        return gulp.src(files)
-                   .pipe(jshint('.jshintrc'))
-                   .pipe(jshint.reporter('default'));
+    /**
+     * @method compile
+     * @param {String} destPath
+     * @return Object
+     */
+    var compile = function(destPath) {
+
+        return browserify({ debug: true })
+                .transform(babelify)
+                .require(entryFile, { entry: true })
+                .bundle()
+                .on('error', function (model) { console.error(['Error:', model.message].join(' ')); })
+                .pipe(fs.createWriteStream(destPath));
+
+    };
+
+    gulp.task('compile', function() {
+        return compile(devPath);
+    });
+
+    gulp.task('sass', function () {
+
+        return gulp.src('./public/scss/*.scss')
+            .pipe(sass())
+            .pipe(gulp.dest('./public/css'));
 
     });
 
-    gulp.task('compile', function gulpCompile() {
+    gulp.task('minify', ['compile'], function() {
 
-        return gulp.src(files)
-                   .pipe(traceur({ modules: 'register' }))
-                   .pipe(concat('all.js'))
-                   .pipe(rename([options.name, 'js'].join('.')))
-                   .pipe(gulp.dest('dist'))
-                   .pipe(gulp.dest('example/vendor/maple'))
-                   .pipe(rename([options.name, 'min', 'js'].join('.')))
-                   .pipe(uglify())
-                   .pipe(gulp.dest('dist'));
+        return gulp.src(devPath)
+            .pipe(uglify())
+            .pipe(rename(config.gulp.names.prod))
+            .pipe(gulp.dest(config.gulp.directories.dist));
 
     });
 
-    gulp.task('test', ['hint']);
-    gulp.task('build', ['compile']);
+    gulp.task('vendorify', ['compile'], function() {
+
+        var devName = config.gulp.names.dev;
+
+        return gulp.src(devPath)
+            .pipe(rename(devName))
+            .pipe(gulp.dest(config.gulp.directories.vendor));
+
+    });
+
+    gulp.task('lint', function() {
+
+        return gulp.src(allFiles)
+            .pipe(jshint())
+            .pipe(jshint.reporter('default', {
+                verbose: true
+            }));
+
+    });
+
+    gulp.task('test', ['lint']);
+    gulp.task('build', ['compile', 'vendorify']);
     gulp.task('default', ['test', 'build']);
-    gulp.task('watch', function() {
-        gulp.watch(files, ['build']);
-    })
+    gulp.task('watch', function watch() {
+        gulp.watch(config.gulp.all, ['build']);
+    });
 
 })();

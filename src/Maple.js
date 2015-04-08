@@ -35,7 +35,7 @@
          */
         render(element, name) {
 
-            if (this.elements[name] !== 'undefined') {
+            if (typeof this.elements[name] !== 'undefined') {
                 throw new Error(`Custom element ${name} already exists`);
             }
 
@@ -54,8 +54,16 @@
 
             let elementPrototype = Object.create(HTMLElement.prototype, {
 
+                /**
+                 * @property createdCallback
+                 * @type {Object}
+                 */
                 createdCallback: {
 
+                    /**
+                     * @method value
+                     * @return {void}
+                     */
                     value: function value() {
 
                         this.innerHTML = '';
