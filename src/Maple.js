@@ -46,12 +46,14 @@
 
                     value: function value() {
 
-                        let element    = React.createElement(componentClass),
-                            component  = React.render(element, this),
-                            domNode    = React.findDOMNode(component),
-                            shadowRoot = domNode.parentNode.createShadowRoot();
+                        this.innerHTML = '';
 
-                        shadowRoot.appendChild(domNode);
+                        let element        = React.createElement(componentClass),
+                            contentElement = document.createElement('content'),
+                            shadowRoot     = this.createShadowRoot();
+
+                        shadowRoot.appendChild(contentElement);
+                        React.render(element, contentElement);
 
                     }
 
