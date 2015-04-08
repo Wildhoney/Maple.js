@@ -9,38 +9,25 @@
      */
     class Maple {
 
-    }
-
-    /**
-     * @module Maple
-     * @submodule Component
-     * @author Adam Timberlake
-     * @link https://github.com/Wildhoney/Maple.js
-     */
-    class MapleComponent extends React.Component {
-
         /**
-         * @constructor
+         * @method render
+         * @param {Object} element
          * @param {String} name
-         * @param {Object} componentClass
-         * @return {MapleComponent}
+         * @return {Object}
          */
-        constructor(name, componentClass) {
-
-            //React.render(component, document.querySelector('body'));
-            this.registerElement(name, componentClass);
-
+        render(element, name) {
+            this.registerElement(element, name);
         }
 
         /**
          * @method registerElement
+         * @param {Object} element
          * @param {String} name
-         * @param {Object} componentClass
          * @return {void}
          */
-        registerElement(name, componentClass) {
+        registerElement(element, name) {
 
-            var prototype = Object.create(HTMLElement.prototype, {
+            let elementPrototype = Object.create(HTMLElement.prototype, {
 
                 createdCallback: {
 
@@ -48,8 +35,7 @@
 
                         this.innerHTML = '';
 
-                        let element        = React.createElement(componentClass),
-                            contentElement = document.createElement('content'),
+                        let contentElement = document.createElement('content'),
                             shadowRoot     = this.createShadowRoot();
 
                         shadowRoot.appendChild(contentElement);
@@ -66,14 +52,13 @@
              * @type {Object}
              */
             document.registerElement(name, {
-                prototype: prototype
+                prototype: elementPrototype
             });
 
         }
 
     }
 
-    $window.Maple           = Maple;
-    $window.Maple.Component = MapleComponent;
+    $window.Maple = new Maple();
 
 })(window);

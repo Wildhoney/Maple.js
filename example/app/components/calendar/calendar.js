@@ -6,16 +6,7 @@
      * @module Calendar
      * @extends React.Component
      */
-    new Maple.Component('user-calendar', class Calendar extends React.Component {
-
-        /**
-         * @constructor
-         * @return {Calendar}
-         */
-        constructor() {
-            super();
-            this.state = { count: 1 };
-        }
+    var Calendar = React.createClass({
 
         /**
          * @method componentDidMount
@@ -29,18 +20,26 @@
 
             }.bind(this), 1000);
 
-        }
+        },
+
+        /**
+         * @method getInitialState
+         * @return {Object}
+         */
+        getInitialState() {
+            return { count: 1 };
+        },
 
         /**
          * @method render
          * @return {Object}
          */
         render() {
-
             return React.DOM.div(null, 'Calendar! ' + this.state.count);
-
         }
 
     });
+
+    Maple.render(React.createElement(Calendar), 'user-calendar');
 
 })();
