@@ -27,6 +27,14 @@
         },
 
         /**
+         * @method resetCounter
+         * @return {void}
+         */
+        resetCounter() {
+            this.setState({ count: 0 });
+        },
+
+        /**
          * @method render
          * @return {Object}
          */

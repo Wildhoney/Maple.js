@@ -39,6 +39,15 @@
         }
 
         /**
+         * @method toArray
+         * @param {*} arrayLike
+         * @return {Array}
+         */
+        toArray(arrayLike) {
+            return Array.prototype.slice.apply(arrayLike);
+        }
+
+        /**
          * @method register
          * @param {String} name
          * @param {Object} blueprint
@@ -53,14 +62,34 @@
 
         /**
          * @method associateCSS
-         * @param {String} name
          * @param {Document} ownerDocument
          * @param {ShadowRoot} shadowRoot
          * @return {void}
          */
-        associateCSS(name, ownerDocument, shadowRoot) {
+        associateCSS(ownerDocument, shadowRoot) {
 
-            console.log(ownerDocument);
+            this.toArray(document.querySelectorAll('link')).forEach((link) => {
+
+                if (link.import === ownerDocument) {
+
+                    let path            = link.getAttribute('href').split('/').slice(0, -1).join('/'),
+                        templateElement = ownerDocument.querySelector('template').content,
+                        cssDocuments    = this.toArray(templateElement.querySelectorAll(options.linkSelector)).map((model) => {
+                            return `${path}/${model.getAttribute('href')}`;
+                        });
+
+                    cssDocuments.forEach((cssDocument) => {
+
+                        let styleElement = document.createElement('style');
+                        styleElement.setAttribute('type', 'text/css');
+                        styleElement.innerHTML = `@import url(${cssDocument})`;
+                        shadowRoot.appendChild(styleElement);
+
+                    });
+
+                }
+
+            });
 
         }
 
@@ -72,10 +101,9 @@
          */
         createElement(name, element) {
 
-            let ownerDocument = document.currentScript.ownerDocument,
-                associateCSS  = this.associateCSS.bind(this, name, ownerDocument);
-
-            let elementPrototype = Object.create(HTMLElement.prototype, {
+            let ownerDocument    = document.currentScript.ownerDocument,
+                associateCSS     = this.associateCSS.bind(this, ownerDocument),
+                elementPrototype = Object.create(HTMLElement.prototype, {
 
                 /**
                  * @property createdCallback
@@ -91,14 +119,12 @@
 
                         this.innerHTML = '';
 
-                        ownerDocument.querySelector(options.dataElement).setAttribute(options.dataAttribute, name);
-
                         let contentElement = document.createElement('content'),
                             shadowRoot     = this.createShadowRoot();
 
+                        associateCSS(shadowRoot);
                         shadowRoot.appendChild(contentElement);
                         React.render(element, contentElement);
-                        associateCSS(shadowRoot);
 
                     }
 
