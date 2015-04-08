@@ -59,6 +59,6 @@
 
     }
 
-    $window.Maple = new Maple();
+    $window.maple = new Maple();
 
 })(window);

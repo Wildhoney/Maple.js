@@ -40,6 +40,6 @@
 
     });
 
-    Maple.render(React.createElement(Calendar), 'user-calendar');
+    maple.render(React.createElement(Calendar), 'user-calendar');
 
 })();

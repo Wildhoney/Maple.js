@@ -1,38 +1,24 @@
 $traceurRuntime.ModuleStore.getAnonymousModule(function() {
   "use strict";
-  var modular = System.get("internals/Modular.js").default;
   (function main($window) {
     "use strict";
-    function Maple() {}
-    Maple.prototype = {
-      _modules: {},
-      throwException: function throwException(message) {
-        throw ("Maple: " + message + ".");
+    var Maple = function Maple() {};
+    ($traceurRuntime.createClass)(Maple, {
+      render: function(element, name) {
+        this.registerElement(element, name);
       },
-      module: function module(name, dependencies) {
-        if (Array.isArray(dependencies)) {
-          this._modules[name] = modular.setup(name, dependencies);
-        }
-        if (!this._modules.hasOwnProperty(name)) {
-          this.throwException(("Module \"" + name + "\" does not exist"));
-        }
-        return this._modules[name];
+      registerElement: function(element, name) {
+        var elementPrototype = Object.create(HTMLElement.prototype, {createdCallback: {value: function value() {
+              this.innerHTML = '';
+              var contentElement = document.createElement('content'),
+                  shadowRoot = this.createShadowRoot();
+              shadowRoot.appendChild(contentElement);
+              React.render(element, contentElement);
+            }}});
+        document.registerElement(name, {prototype: elementPrototype});
       }
-    };
+    }, {});
     $window.maple = new Maple();
   })(window);
   return {};
-});
-
-$traceurRuntime.ModuleStore.getAnonymousModule(function() {
-  "use strict";
-  var $__default = {setup: function setup(name, dependencies) {
-      return {
-        name: name,
-        dependencies: dependencies
-      };
-    }};
-  return {get default() {
-      return $__default;
-    }};
 });
