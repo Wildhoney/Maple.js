@@ -30,12 +30,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/maplejs/framework.git"
+    "url": "https://github.com/Wildhoney/Maple.js.git"
   },
   "author": "Adam Timberlake <adam.timberlake@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/maplejs/framework/issues"
+    "url": "https://github.com/Wildhoney/Maple.js/issues"
   },
-  "homepage": "https://github.com/maplejs/framework"
+  "homepage": "https://github.com/Wildhoney/Maple.js"
 }
