@@ -10,13 +10,38 @@
     class Maple {
 
         /**
+         * @constructor
+         * @return {Maple}
+         */
+        constructor() {
+            this.elements = [];
+        }
+
+        /**
+         * @method throwException
+         * @throws Error
+         * @param {String} message
+         * @return {void}
+         */
+        throwException(message) {
+            throw new Error(`Maple.js: ${message}.`);
+        }
+
+        /**
          * @method render
          * @param {Object} element
          * @param {String} name
          * @return {Object}
          */
         render(element, name) {
-            this.registerElement(element, name);
+
+            if (this.elements[name] !== 'undefined') {
+                throw new Error(`Custom element ${name} already exists`);
+            }
+
+            // Register the custom element.
+            this.elements[name] = this.registerElement(element, name);
+
         }
 
         /**
