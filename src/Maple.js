@@ -3,6 +3,17 @@
     "use strict";
 
     /**
+     * @constant options
+     * @type {Object}
+     */
+    const options = {
+        linkSelector: 'link[type="text/css"]',
+        importSelector: 'link[rel="import"]',
+        dataAttribute: 'data-component',
+        dataElement: 'html'
+    };
+
+    /**
      * @module Maple
      * @author Adam Timberlake
      * @link https://github.com/Wildhoney/Maple.js
@@ -28,29 +39,41 @@
         }
 
         /**
-         * @method render
-         * @param {Object} element
+         * @method register
          * @param {String} name
-         * @return {Object}
+         * @param {Object} blueprint
+         * @return {void}
          */
-        render(element, name) {
+        register(name, blueprint) {
 
-            if (typeof this.elements[name] !== 'undefined') {
-                throw new Error(`Custom element ${name} already exists`);
-            }
-
-            // Register the custom element.
-            this.elements[name] = this.registerElement(element, name);
+            let element         = React.createClass(blueprint);
+            this.elements[name] = this.createElement(name, React.createElement(element));
 
         }
 
         /**
-         * @method registerElement
-         * @param {Object} element
+         * @method associateCSS
          * @param {String} name
+         * @param {Document} ownerDocument
+         * @param {ShadowRoot} shadowRoot
          * @return {void}
          */
-        registerElement(element, name) {
+        associateCSS(name, ownerDocument, shadowRoot) {
+
+            console.log(ownerDocument);
+
+        }
+
+        /**
+         * @method createElement
+         * @param {String} name
+         * @param {Object} element
+         * @return {void}
+         */
+        createElement(name, element) {
+
+            let ownerDocument = document.currentScript.ownerDocument,
+                associateCSS  = this.associateCSS.bind(this, name, ownerDocument);
 
             let elementPrototype = Object.create(HTMLElement.prototype, {
 
@@ -68,11 +91,14 @@
 
                         this.innerHTML = '';
 
+                        ownerDocument.querySelector(options.dataElement).setAttribute(options.dataAttribute, name);
+
                         let contentElement = document.createElement('content'),
                             shadowRoot     = this.createShadowRoot();
 
                         shadowRoot.appendChild(contentElement);
                         React.render(element, contentElement);
+                        associateCSS(shadowRoot);
 
                     }
 

@@ -2,11 +2,7 @@
 
     "use strict";
 
-    /**
-     * @module Calendar
-     * @extends React.Component
-     */
-    var Calendar = React.createClass({
+    maple.register('user-calendar', {
 
         /**
          * @method componentDidMount
@@ -39,7 +35,5 @@
         }
 
     });
-
-    maple.render(React.createElement(Calendar), 'user-calendar');
 
 })();
