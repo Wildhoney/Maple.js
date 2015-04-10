@@ -2,7 +2,7 @@
 
     "use strict";
 
-    maple.register('user-calendar', {
+    maple.component('user-calendar', {
 
         /**
          * @method componentDidMount
@@ -10,11 +10,11 @@
          */
         componentDidMount() {
 
-            setInterval(function() {
-
-                this.setState({ count: this.state.count + 1 });
-
-            }.bind(this), 1000);
+            //setInterval(function setInterval() {
+            //
+            //    this.setState({ count: this.state.count + 1 });
+            //
+            //}.bind(this), 1000);
 
         },
 
@@ -23,7 +23,7 @@
          * @return {Object}
          */
         getInitialState() {
-            return { count: 1 };
+            return { elements: [{}, {}, {}] };
         },
 
         /**
@@ -31,7 +31,8 @@
          * @return {void}
          */
         resetCounter() {
-            this.setState({ count: 0 });
+            this.state.elements.push({});
+            this.setState(this.state);
         },
 
         /**
@@ -39,7 +40,9 @@
          * @return {Object}
          */
         render() {
-            return React.DOM.div(null, 'Calendar! ' + this.state.count);
+            return React.createElement('div', null, this.state.elements.map(function() {
+                return React.createElement('a', { onClick: this.resetCounter }, 'Element');
+            }.bind(this)));
         }
 
     });
