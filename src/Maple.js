@@ -160,7 +160,11 @@
 
             }
 
-            for (var eventName of events) {
+            /**
+             * @method createEvent
+             * @return {void}
+             */
+            function createEvent(eventName) {
 
                 contentElement.addEventListener(eventName, function onClick(event) {
 
@@ -170,7 +174,7 @@
 
                     let components = component._reactInternalInstance._renderedComponent._renderedComponent,
                         eventFn    = `on${event.type.charAt(0).toUpperCase() + event.type.slice(1)}`;
-                        events     = findEvents(components, event.target.getAttribute('data-reactid'), eventFn);
+                    events     = findEvents(components, event.target.getAttribute('data-reactid'), eventFn);
 
                     events.forEach((eventFn) => {
                         eventFn();
@@ -178,6 +182,10 @@
 
                 });
 
+            }
+
+            for (var eventName of events) {
+                createEvent(eventName);
             }
 
         }
