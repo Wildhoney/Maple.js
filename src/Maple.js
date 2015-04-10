@@ -1,20 +1,9 @@
-import events      from './components/Events.js';
-import stylesheets from './components/Stylesheets.js';
+import events from './components/Events.js';
+import css    from './components/Stylesheets.js';
 
 (function main($window, $document) {
 
     "use strict";
-
-    /**
-     * @constant options
-     * @type {Object}
-     */
-    const options = {
-        linkSelector: 'link[type="text/css"]',
-        importSelector: 'link[rel="import"]',
-        dataAttribute: 'data-component',
-        dataElement: 'html'
-    };
 
     /**
      * @module Maple
@@ -82,7 +71,7 @@ import stylesheets from './components/Stylesheets.js';
                         let contentElement = ownerDocument.createElement('content'),
                             shadowRoot     = this.createShadowRoot();
 
-                        stylesheets.associate(shadowRoot);
+                        css.associate(ownerDocument, shadowRoot);
                         shadowRoot.appendChild(contentElement);
                         events.delegate(contentElement, React.render(element, contentElement));
 

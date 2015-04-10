@@ -1,45 +1,57 @@
-export default {
+export default (function main($document) {
 
-    /**
-     * @method toArray
-     * @param {*} arrayLike
-     * @return {Array}
-     */
-    toArray(arrayLike) {
-        return Array.prototype.slice.apply(arrayLike);
-    },
+    "use strict";
 
-    /**
-     * @method associate
-     * @param {Document} ownerDocument
-     * @param {ShadowRoot} shadowRoot
-     * @return {void}
-     */
-    associate(ownerDocument, shadowRoot) {
+    return {
 
-        this.toArray(document.querySelectorAll('link')).forEach((link) => {
+        /**
+         * @property linkSelector
+         * @type {String}
+         */
+        linkSelector: 'link[type="text/css"]',
 
-            if (link.import === ownerDocument) {
+        /**
+         * @method toArray
+         * @param {*} arrayLike
+         * @return {Array}
+         */
+        toArray(arrayLike) {
+            return Array.prototype.slice.apply(arrayLike);
+        },
 
-                let path            = link.getAttribute('href').split('/').slice(0, -1).join('/'),
-                    templateElement = ownerDocument.querySelector('template').content,
-                    cssDocuments    = this.toArray(templateElement.querySelectorAll(options.linkSelector)).map((model) => {
-                        return `${path}/${model.getAttribute('href')}`;
+        /**
+         * @method associate
+         * @param {Document} ownerDocument
+         * @param {ShadowRoot} shadowRoot
+         * @return {void}
+         */
+        associate(ownerDocument, shadowRoot) {
+
+            this.toArray(document.querySelectorAll('link')).forEach((link) => {
+
+                if (link.import === ownerDocument) {
+
+                    let path            = link.getAttribute('href').split('/').slice(0, -1).join('/'),
+                        templateElement = ownerDocument.querySelector('template').content,
+                        cssDocuments    = this.toArray(templateElement.querySelectorAll(this.linkSelector)).map((model) => {
+                            return `${path}/${model.getAttribute('href')}`;
+                        });
+
+                    cssDocuments.forEach((cssDocument) => {
+
+                        let styleElement = $document.createElement('style');
+                        styleElement.setAttribute('type', 'text/css');
+                        styleElement.innerHTML = `@import url(${cssDocument})`;
+                        shadowRoot.appendChild(styleElement);
+
                     });
 
-                cssDocuments.forEach((cssDocument) => {
+                }
 
-                    let styleElement = $document.createElement('style');
-                    styleElement.setAttribute('type', 'text/css');
-                    styleElement.innerHTML = `@import url(${cssDocument})`;
-                    shadowRoot.appendChild(styleElement);
+            });
 
-                });
+        }
 
-            }
+    };
 
-        });
-
-    }
-
-};
+})(document);
