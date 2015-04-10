@@ -25,6 +25,31 @@ export default (function main() {
             });
 
             /**
+             * @method getEvent
+             * @param {String} eventName
+             * @param {Object} properties
+             * @return {Boolean}
+             */
+            function getEvent(eventName, properties) {
+
+                let matchName = new RegExp(eventName, 'i'),
+                    eventFn   = null;
+
+                Object.keys(properties).forEach((property) => {
+
+                    let propertyName = property.match(matchName);
+
+                    if (propertyName) {
+                        eventFn = properties[propertyName];
+                    }
+
+                });
+
+                return eventFn;
+
+            }
+
+            /**
              * @method findEvents
              * @param {Object} node
              * @param {String} reactId
@@ -33,11 +58,11 @@ export default (function main() {
              */
             function findEvents(node, reactId, eventName) {
 
-                var events = [];
+                var events      = [],
+                    rootEventFn = getEvent(eventName, node._currentElement._store.props);
 
-                if (node._currentElement._store.props.hasOwnProperty(eventName)) {
-                    events.push(node._currentElement._store.props[eventName]);
-                }
+                // Found event in root!
+                rootEventFn && events.push(rootEventFn);
 
                 if (node._rootNodeID === reactId) {
                     return events;
@@ -53,9 +78,10 @@ export default (function main() {
 
                         if (item._rootNodeID === reactId) {
 
-                            if (item._instance.props.hasOwnProperty(eventName)) {
-                                events.push(item._instance.props[eventName]);
-                            }
+                            let childEventFn = getEvent(eventName, item._instance.props);
+
+                            // Found event in children!
+                            childEventFn && events.push(childEventFn);
 
                             return events;
 
@@ -84,7 +110,7 @@ export default (function main() {
                     }
 
                     let components = component._reactInternalInstance._renderedComponent._renderedComponent,
-                        eventFn    = `on${event.type.charAt(0).toUpperCase() + event.type.slice(1)}`,
+                        eventFn    = `on${event.type}`,
                         events     = findEvents(components, event.target.getAttribute('data-reactid'), eventFn);
 
                     events.forEach((eventFn) => {

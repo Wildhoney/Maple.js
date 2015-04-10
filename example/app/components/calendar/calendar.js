@@ -35,13 +35,17 @@
             this.setState(this.state);
         },
 
+        count() {
+            console.log('Count');
+        },
+
         /**
          * @method render
          * @return {Object}
          */
         render() {
-            return React.createElement('div', null, this.state.elements.map(function() {
-                return React.createElement('a', { onClick: this.resetCounter }, 'Element');
+            return React.createElement('div', { onClick: this.resetCounter }, this.state.elements.map(function() {
+                return React.createElement('a', null, 'Element');
             }.bind(this)));
         }
 
