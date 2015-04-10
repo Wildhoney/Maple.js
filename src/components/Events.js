@@ -61,8 +61,12 @@ export default (function main() {
                 var events      = [],
                     rootEventFn = getEvent(eventName, node._currentElement._store.props);
 
-                // Found event in root!
-                rootEventFn && events.push(rootEventFn);
+                if (rootEventFn) {
+
+                    // Found event in root!
+                    events.push(rootEventFn);
+
+                }
 
                 if (node._rootNodeID === reactId) {
                     return events;
@@ -80,8 +84,12 @@ export default (function main() {
 
                             let childEventFn = getEvent(eventName, item._instance.props);
 
-                            // Found event in children!
-                            childEventFn && events.push(childEventFn);
+                            if (childEventFn) {
+
+                                // Found event in children!
+                                events.push(childEventFn);
+
+                            }
 
                             return events;
 
