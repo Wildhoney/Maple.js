@@ -7,7 +7,6 @@
         server      = require('http').createServer(app);
 
     app.use(express.static(__dirname + '/..'));
-    //server.listen($process.env.PORT || 5000);
-    server.listen(5001);
+    server.listen($process.env.PORT || 5000);
 
 })(process);
