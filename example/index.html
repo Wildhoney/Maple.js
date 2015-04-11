@@ -6,13 +6,21 @@
     <title>Maple.js</title>
 
     <!-- Dependencies! -->
+    <script type="text/javascript" src="vendor/browser.js"></script>
+    <script type="text/javascript" src="vendor/es6-module-loader/dist/es6-module-loader.js"></script>
+
+    <script>
+        System.transpiler = 'babel';
+    </script>
+
     <script type="text/javascript" src="vendor/react/react.js"></script>
+    <script type="text/javascript" src="vendor/radio/radio.js"></script>
     <script type="text/javascript" src="vendor/react/JSXTransformer.js"></script>
     <script type="text/javascript" src="vendor/maple/maple.js"></script>
     <script type="text/javascript" src="app/default.js"></script>
 
     <!-- Imports! -->
-    <link rel="import" type="text/html" href="app/components/calendar/index.html" />
+    <link rel="import" type="text/html" href="app/components/user-calendar/index.html" />
 
 </head>
 <body>

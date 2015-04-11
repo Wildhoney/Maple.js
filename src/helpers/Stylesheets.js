@@ -21,20 +21,22 @@ export default (function main($document) {
 
         /**
          * @method associate
-         * @param {Document} ownerDocument
+         * @param {String} componentPath
          * @param {ShadowRoot} shadowRoot
          * @return {void}
          */
-        associate(ownerDocument, shadowRoot) {
+        associate(componentPath, shadowRoot) {
 
             this.toArray(document.querySelectorAll('link')).forEach((link) => {
 
-                if (link.import === ownerDocument) {
+                let href = link.getAttribute('href');
 
-                    let path            = link.getAttribute('href').split('/').slice(0, -1).join('/'),
-                        templateElement = ownerDocument.querySelector('template').content,
-                        cssDocuments    = this.toArray(templateElement.querySelectorAll(this.linkSelector)).map((model) => {
-                            return `${path}/${model.getAttribute('href')}`;
+                if (href.match(componentPath)) {
+
+                    let templateElement = link.import.querySelector('template'),
+                        templateContent = templateElement.content,
+                        cssDocuments    = this.toArray(templateContent.querySelectorAll('link')).map((linkElement) => {
+                            return `${componentPath}/${linkElement.getAttribute('href')}`;
                         });
 
                     cssDocuments.forEach((cssDocument) => {

@@ -24,6 +24,7 @@
     "radio": "~0.2.0",
     "director": "~1.2.8",
     "traceur": "~0.0.84",
-    "react": "~0.13.1"
+    "react": "~0.13.1",
+    "es6-module-loader": "~0.16.5"
   }
 }

@@ -10,7 +10,7 @@ export default (function main() {
          * @param {ReactClass.createClass.Constructor} component
          * @return {void}
          */
-            delegate(contentElement, component) {
+        delegate(contentElement, component) {
 
             let aElement   = document.createElement('a'),
                 events     = [],
@@ -122,7 +122,7 @@ export default (function main() {
                         events     = findEvents(components, event.target.getAttribute('data-reactid'), eventFn);
 
                     events.forEach((eventFn) => {
-                        eventFn();
+                        eventFn.apply(component);
                     });
 
                 });
