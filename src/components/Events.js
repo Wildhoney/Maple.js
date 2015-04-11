@@ -54,11 +54,11 @@ export default (function main() {
              * @param {Object} node
              * @param {String} reactId
              * @param {String} eventName
-             * @return {Object|undefined}
+             * @return {Array}
              */
             function findEvents(node, reactId, eventName) {
 
-                var events      = [],
+                let events      = [],
                     rootEventFn = getEvent(eventName, node._currentElement._store.props);
 
                 if (rootEventFn) {
@@ -129,7 +129,7 @@ export default (function main() {
 
             }
 
-            for (var eventName of events) {
+            for (let eventName of events) {
                 createEvent(eventName);
             }
 
