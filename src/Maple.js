@@ -20,7 +20,7 @@ import Component from './components/Component.js';
 
             document.addEventListener('DOMContentLoaded', () => {
 
-                let _component = new Component();
+                let _component = new Component(true);
                 _component.register(...modules);
 
             });

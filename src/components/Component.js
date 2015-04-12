@@ -11,10 +11,12 @@ export default class Component {
 
     /**
      * @constructor
+     * @param {Boolean} debug
      * @return {Component}
      */
-    constructor() {
+    constructor(debug) {
         this.components = [];
+        this.debug      = debug || false;
     }
 
     /**
@@ -82,8 +84,9 @@ export default class Component {
      */
     registerCustomElement(className, component, modulePath) {
 
-        let elementName = className.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(),
-            prototype   = Object.create(HTMLElement.prototype, {
+        let elementName = className.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+        this.log(`Adding custom element "${elementName}"`);
+        let prototype   = Object.create(HTMLElement.prototype, {
 
             /**
              * @property createdCallback
@@ -120,6 +123,19 @@ export default class Component {
     }
 
     /**
+     * @method log
+     * @param {String} message
+     * @return {void}
+     */
+    log(message) {
+
+        if (this.debug) {
+            console.info(`Maple.js: ${message}.`);
+        }
+
+    }
+
+    /**
      * @method delegate
      * @param {Array} modules
      * @return {void}
@@ -140,6 +156,8 @@ export default class Component {
                 let importDocument = this.findImport(name.underscore),
                     scriptElements = this.findScripts(importDocument.import),
                     modulePath     = importDocument.getAttribute('href').split('/').slice(0, -1).join('/');
+
+                this.log(`Registering module "${name.camelcase}" with path "${modulePath}"`);
 
                 scriptElements.forEach((scriptElement) => {
 
