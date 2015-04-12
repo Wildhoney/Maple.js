@@ -1,5 +1,6 @@
 import events  from './../helpers/Events.js';
 import css     from './../helpers/Stylesheets.js';
+import utility from './../helpers/Utility.js';
 
 /**
  * @module Maple
@@ -27,7 +28,7 @@ export default class Component {
 
         let importDocuments = document.querySelectorAll('link[rel="import"]');
 
-        return this.toArray(importDocuments).map((importDocument) => {
+        return utility.toArray(importDocuments).map((importDocument) => {
 
             return new Promise((resolve) => {
                 importDocument.addEventListener('load', event => resolve(event.path[0]));
@@ -63,16 +64,7 @@ export default class Component {
      */
     findScripts(importDocument) {
         let templateElement = importDocument.querySelector('template');
-        return this.toArray(templateElement.content.querySelectorAll('script[type="text/javascript"]'));
-    }
-
-    /**
-     * @method toArray
-     * @param {*} arrayLike
-     * @return {Array}
-     */
-    toArray(arrayLike) {
-        return Array.prototype.slice.apply(arrayLike);
+        return utility.toArray(templateElement.content.querySelectorAll('script[type="text/javascript"]'));
     }
 
     /**
@@ -84,7 +76,7 @@ export default class Component {
      */
     registerCustomElement(className, component, modulePath) {
 
-        let elementName = className.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+        let elementName = utility.toSnakeCase(className);
         this.log(`Adding custom element "${elementName}"`);
         let prototype   = Object.create(HTMLElement.prototype, {
 
@@ -162,7 +154,7 @@ export default class Component {
 
                 name = {
                     camelcase:  name,
-                    underscore: name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+                    underscore: utility.toSnakeCase(name)
                 };
 
                 let importDocument = this.findImport(name.underscore),

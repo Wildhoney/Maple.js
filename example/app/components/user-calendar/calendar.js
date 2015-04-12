@@ -11,10 +11,7 @@ export default class UserCalendar extends React.Component {
      */
     constructor(properties) {
         super(properties);
-
-
         console.log(properties);
-
         this.state = { elements: [{}, {}, {}] };
     }
 

@@ -1,3 +1,5 @@
+import utility from './../helpers/Utility.js';
+
 export default (function main($document) {
 
     "use strict";
@@ -11,15 +13,6 @@ export default (function main($document) {
         linkSelector: 'link[type="text/css"]',
 
         /**
-         * @method toArray
-         * @param {*} arrayLike
-         * @return {Array}
-         */
-        toArray(arrayLike) {
-            return Array.prototype.slice.apply(arrayLike);
-        },
-
-        /**
          * @method associate
          * @param {String} componentPath
          * @param {ShadowRoot} shadowRoot
@@ -27,7 +20,7 @@ export default (function main($document) {
          */
         associate(componentPath, shadowRoot) {
 
-            this.toArray(document.querySelectorAll('link')).forEach((link) => {
+            utility.toArray(document.querySelectorAll('link')).forEach((link) => {
 
                 let href = link.getAttribute('href');
 
@@ -35,7 +28,7 @@ export default (function main($document) {
 
                     let templateElement = link.import.querySelector('template'),
                         templateContent = templateElement.content,
-                        cssDocuments    = this.toArray(templateContent.querySelectorAll('link')).map((linkElement) => {
+                        cssDocuments    = utility.toArray(templateContent.querySelectorAll('link')).map((linkElement) => {
                             return `${componentPath}/${linkElement.getAttribute('href')}`;
                         });
 
