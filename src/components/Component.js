@@ -102,6 +102,9 @@ export default class Component {
 
                     this.innerHTML = '';
 
+                    this.removeAttribute('unresolved');
+                    this.setAttribute('resolved', '');
+
                     let rendered       = React.createElement(component),
                         contentElement = document.createElement('content'),
                         shadowRoot     = this.createShadowRoot();

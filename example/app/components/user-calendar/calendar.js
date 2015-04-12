@@ -20,7 +20,6 @@ export default class UserCalendar extends React.Component {
      * @return {void}
      */
     resetCounter() {
-        console.log(this);
         this.state.elements.push({});
         this.setState(this.state);
     }
