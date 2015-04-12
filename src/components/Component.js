@@ -28,45 +28,40 @@ export default class Component {
         return this.toArray(importDocuments).map((importDocument) => {
 
             return new Promise((resolve, reject) => {
-                importDocument.addEventListener('load', resolve(event.path[0]));
+                importDocument.addEventListener('load', event => resolve(event.path[0]));
             });
 
         });
-
-        //return this.toArray(document.querySelectorAll('link[rel="import"]')).map((linkElement) => {
-        //
-        //    linkElement.addEventListener('load', (link) => {
-        //
-        //        console.log(link.path[0].import);
-        //
-        //    });
-        //
-        //    return {
-        //        href: linkElement.getAttribute('href'),
-        //        document: linkElement.ownerDocument
-        //    };
-        //
-        //});
 
     }
 
     /**
      * @method findImport
-     * @param {String} elementName
+     * @param {String} className
      * @return {Object}
      */
-    findImport(elementName) {
+    findImport(className) {
 
-        return this.imports.filter((link) => {
+        return this.linkElements.filter((linkElement) => {
 
-            let regExp = new RegExp(`${elementName}\/(?:.+?)\.html`, 'i');
+            let regExp = new RegExp(`${className}\/(?:.+?)\.html`, 'i');
 
-            if (link.href.match(regExp)) {
-                return link;
+            if (linkElement.href.match(regExp)) {
+                return true;
             }
 
         })[0];
 
+    }
+
+    /**
+     * @method findScripts
+     * @param {Object} importDocument
+     * @return {Array}
+     */
+    findScripts(importDocument) {
+        let templateElement = importDocument.querySelector('template');
+        return this.toArray(templateElement.content.querySelectorAll('script[type="text/javascript"]'));
     }
 
     /**
@@ -79,16 +74,48 @@ export default class Component {
     }
 
     /**
-     * @method moduleDocument
-     * @param {String} elementName
+     * @method registerCustomElement
+     * @param {String} className
+     * @param {Object} component
+     * @param {String} modulePath
      * @return {void}
      */
-    moduleDocument(elementName) {
+    registerCustomElement(className, component, modulePath) {
 
-        //let importDocument = this.findImport(elementName),
-        //    scriptElements = importDocument.document.querySelectorAll('script[type="text/javascript"]');
-        //
-        //console.log(importDocument);
+        let elementName = className.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(),
+            prototype   = Object.create(HTMLElement.prototype, {
+
+            /**
+             * @property createdCallback
+             * @type {Object}
+             */
+            createdCallback: {
+
+                /**
+                 * @method value
+                 * @return {void}
+                 */
+                value: function value() {
+
+                    this.innerHTML = '';
+
+                    let rendered       = React.createElement(component),
+                        contentElement = document.createElement('content'),
+                        shadowRoot     = this.createShadowRoot();
+
+                    css.associate(modulePath, shadowRoot);
+                    shadowRoot.appendChild(contentElement);
+                    events.delegate(contentElement, React.render(rendered, contentElement));
+
+                }
+
+            }
+
+        });
+
+        document.registerElement(elementName, {
+            prototype: prototype
+        });
 
     }
 
@@ -101,61 +128,37 @@ export default class Component {
 
         Promise.all(this.getImports()).then((linkElements) => {
 
-            
+            this.linkElements = linkElements;
+
+            modules.forEach((name) => {
+
+                name = {
+                    camelcase:  name,
+                    underscore: name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+                };
+
+                let importDocument = this.findImport(name.underscore),
+                    scriptElements = this.findScripts(importDocument.import),
+                    modulePath     = importDocument.getAttribute('href').split('/').slice(0, -1).join('/');
+
+                scriptElements.forEach((scriptElement) => {
+
+                    let scriptSrc  = scriptElement.getAttribute('src').split('.').slice(0, -1).join('/'),
+                        scriptPath = `${modulePath}/${scriptSrc}`;
+
+                    System.import(scriptPath).then((Component) => {
+
+                        let className = Component.default.toString().match(/(?:function|class)\s*([a-z]+)/i)[1];
+                        let component = this.components[className] = Component.default;
+                        this.registerCustomElement(className, component, modulePath);
+
+                    });
+
+                });
+
+            });
 
         });
-
-        //modules.forEach((name) => {
-        //
-        //    let elementName     = name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(),
-        //        documentElement = this.moduleDocument(elementName);
-        //
-        //    let prototype     = Object.create(HTMLElement.prototype, {
-        //
-        //        /**
-        //         * @property createdCallback
-        //         * @type {Object}
-        //         */
-        //        createdCallback: {
-        //
-        //            /**
-        //             * @method value
-        //             * @return {void}
-        //             */
-        //            value: function value() {
-        //
-        //                //this.innerHTML = '';
-        //                //
-        //                //// Todo: Make all of this dynamic!
-        //                //let path = 'app/components/user-calendar';
-        //                //
-        //                //System.import(`${path}/calendar`).then((Component) => {
-        //                //
-        //                //    let element        = React.createElement(Component.default),
-        //                //        contentElement = document.createElement('content'),
-        //                //        shadowRoot     = this.createShadowRoot();
-        //                //
-        //                //    //console.log(Component.default.toString());
-        //                //
-        //                //    css.associate(path, shadowRoot);
-        //                //    shadowRoot.appendChild(contentElement);
-        //                //
-        //                //    let component = React.render(element, contentElement);
-        //                //    events.delegate(contentElement, component);
-        //                //
-        //                //});
-        //
-        //            }
-        //
-        //        }
-        //
-        //    });
-        //
-        //    document.registerElement(elementName, {
-        //        prototype: prototype
-        //    });
-        //
-        //});
 
     }
 
