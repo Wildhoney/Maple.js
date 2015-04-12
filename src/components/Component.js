@@ -105,6 +105,15 @@ export default class Component {
                     this.removeAttribute('unresolved');
                     this.setAttribute('resolved', '');
 
+                    // Import attributes from the element and transfer to the React.js class.
+                    component.defaultProps = {};
+                    for (let index = 0, attributes = this.attributes; index < attributes.length; index++) {
+                        let attribute = attributes.item(index);
+                        if (attribute.value) {
+                            component.defaultProps[attribute.name] = attribute.value;
+                        }
+                    }
+
                     let rendered       = React.createElement(component),
                         contentElement = document.createElement('content'),
                         shadowRoot     = this.createShadowRoot();

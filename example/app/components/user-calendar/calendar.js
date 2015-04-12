@@ -11,6 +11,10 @@ export default class UserCalendar extends React.Component {
      */
     constructor(properties) {
         super(properties);
+
+
+        console.log(properties);
+
         this.state = { elements: [{}, {}, {}] };
     }
 
@@ -30,7 +34,7 @@ export default class UserCalendar extends React.Component {
      */
     render() {
         return React.createElement('div', {onClick: this.resetCounter}, this.state.elements.map(function () {
-            return React.createElement('a', null, 'Element');
+            return React.createElement('a', null, this.props.label || 'Element');
         }.bind(this)));
     }
 
