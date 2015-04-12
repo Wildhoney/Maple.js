@@ -1,10 +1,14 @@
 import Component from './components/Component.js';
-import modular   from './helpers/Modular.js';
 
 (function main($window) {
 
     "use strict";
 
+    /**
+     * @module Maple
+     * @link https://github.com/Wildhoney/Maple.js
+     * @author Adam Timberlake
+     */
     class Maple {
 
         /**
@@ -14,13 +18,17 @@ import modular   from './helpers/Modular.js';
          */
         constructor(...modules) {
 
-            modular.register(...modules);
+            document.addEventListener('DOMContentLoaded', () => {
+
+                let _component = new Component();
+                _component.register(...modules);
+
+            });
 
         }
 
     }
 
-    $window.Maple           = Maple;
-    $window.Maple.Component = Component;
+    $window.Maple = Maple;
 
 })(window);
