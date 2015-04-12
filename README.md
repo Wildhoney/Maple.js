@@ -2,7 +2,7 @@
 
 ## HTML Imports
 
-Maple HTML imports are intended to be simpler than Polymer by having zero inline JavaScript and CSS documents:
+HTML imports in Maple are intended to be **much** simpler than Polymer by having zero inline JavaScript and CSS documents:
 
 ```html
 <template>
@@ -24,6 +24,16 @@ Using introspection, Maple uses ES6's `System.import` to import the above module
 ```html
 <my-module></my-module>
 ```
+
+As a child of the `my-element` element a [shadow root](https://w3c.github.io/webcomponents/spec/shadow/) will be created, and the CSS documents from your `template` element imported:
+
+```css
+div {
+    border: 1px solid red;
+}
+```
+
+Therefore in the above example, the `border` property will **only** be applied to the `my-module` children, rather than all `div` elements.
 
 ## FOUC
 
