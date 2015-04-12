@@ -29,7 +29,7 @@ export default class Component {
 
         return this.toArray(importDocuments).map((importDocument) => {
 
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 importDocument.addEventListener('load', event => resolve(event.path[0]));
             });
 
