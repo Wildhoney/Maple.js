@@ -8,6 +8,7 @@
 # Bower
 /example/vendor/*
 !/example/vendor/.gitkeep
+!/example/vendor/browser.js
 
 # Tests
 /tests/compile/*
