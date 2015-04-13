@@ -19,8 +19,17 @@ export default (function main() {
          * @param {*} arrayLike
          * @return {Array}
          */
-            toArray(arrayLike) {
+        toArray(arrayLike) {
             return Array.prototype.slice.apply(arrayLike);
+        },
+
+        /**
+         * @method getImportPath
+         * @param {String} importPath
+         * @return {String}
+         */
+        getImportPath(importPath) {
+            return importPath.split('/').slice(0, -1).join('/');
         }
 
     };

@@ -159,7 +159,7 @@ export default class Component {
 
                 let importDocument = this.findImport(name.underscore),
                     scriptElements = this.findScripts(importDocument.import),
-                    modulePath     = importDocument.getAttribute('href').split('/').slice(0, -1).join('/');
+                    modulePath     = utility.getImportPath(importDocument.getAttribute('href'));
 
                 this.log(`Registering module "${name.camelcase}" with path "${modulePath}"`);
 

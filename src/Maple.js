@@ -1,6 +1,6 @@
 import Component from './components/Component.js';
 
-(function main($window) {
+(function main($window, $document) {
 
     "use strict";
 
@@ -18,7 +18,7 @@ import Component from './components/Component.js';
          */
         constructor(...modules) {
 
-            document.addEventListener('DOMContentLoaded', () => {
+            $document.addEventListener('DOMContentLoaded', () => {
 
                 let _component = new Component(true);
                 _component.register(...modules);
@@ -31,4 +31,4 @@ import Component from './components/Component.js';
 
     $window.Maple = Maple;
 
-})(window);
+})(window, document);
