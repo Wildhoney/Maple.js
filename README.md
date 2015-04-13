@@ -1,4 +1,4 @@
-# Maple
+![Maple.js](logo.png)
 
 ## HTML Imports
 
@@ -51,7 +51,7 @@ Once the `people` event has been dispatched, its payload will be used to update 
 
 #### Extending `React.Component`
 
-If you insist on extending the `React.Component` object directly &ndash; rather than `Maple.Component` &mdash; which is perfectly fine (we're not upset) &mdash; then you must handle the dispatcher yourself. For this we recommending [taking a look at `Maple.Component`](https://github.com/Wildhoney/Maple.js/blob/master/src/components/Dispatcher.js) and how that handles the `Dispatcher` &ndash; and in particular the `addEventListener` method.
+If you insist on extending the `React.Component` object directly &ndash; rather than `Maple.Component` &mdash; which is perfectly fine (we're not upset) &mdash; then you must handle the dispatcher yourself. For this we recommend [taking a look at `Maple.Component`](https://github.com/Wildhoney/Maple.js/blob/master/src/components/Dispatcher.js) and how that handles the `Dispatcher` &ndash; in particular the `addEventListener` method.
 
 ### FOUC
 
