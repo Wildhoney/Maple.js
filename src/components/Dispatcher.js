@@ -37,7 +37,7 @@ export default class Dispatcher {
      * @return {void}
      */
     removeEventListener(name, reference) {
-
+        return void { name, reference };
     }
 
 }

@@ -14,7 +14,7 @@ export default class Component {
     addEventListener(name) {
 
         this.props.dispatcher.addEventListener(name, { reference: this, callback: (event) => {
-
+            return event;
         }});
 
     }

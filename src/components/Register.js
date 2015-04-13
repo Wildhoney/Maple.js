@@ -83,6 +83,7 @@ export default class Register {
         return utility.toArray(document.querySelectorAll('link[rel="import"]')).map((importDocument) => {
 
             let importPath = utility.getImportPath(importDocument.getAttribute('href'));
+            return void importPath;
 
         });
 

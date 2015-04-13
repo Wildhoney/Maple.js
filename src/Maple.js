@@ -20,9 +20,7 @@ import Register  from './components/Register.js';
         constructor(...modules) {
 
             $document.addEventListener('DOMContentLoaded', () => {
-
-                let register = new Register(...modules);
-
+                new Register(...modules);
             });
 
         }
