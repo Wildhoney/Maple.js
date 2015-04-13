@@ -49,28 +49,6 @@ export default class Register {
     }
 
     /**
-     * Responsible for finding the import link that pertains to the class that we're currently dealing
-     * with.
-     *
-     * @method findImport
-     * @param {String} className
-     * @return {Object}
-     */
-    findImport(className) {
-
-        return this.linkElements.filter((linkElement) => {
-
-            let regExp = new RegExp(`${className}\/(?:.+?)\.html`, 'i');
-
-            if (linkElement.href.match(regExp)) {
-                return true;
-            }
-
-        })[0];
-
-    }
-
-    /**
      * Responsible for finding all of the HTML imports in the current document. It will be invoked if
      * the developer doesn't explicitly pass in an array of modules to load via the Maple constructor when
      * instantiating a new application.
@@ -215,8 +193,9 @@ export default class Register {
 
                     System.import(scriptPath).then((Register) => {
 
-                        let className = Register.default.toString().match(/(?:function|class)\s*([a-z]+)/i)[1];
-                        let component = this.components[className] = Register.default;
+                        let className = Register.default.toString().match(/(?:function|class)\s*([a-z]+)/i)[1],
+                            component = this.components[className] = Register.default;
+
                         this.registerCustomElement(className, component, modulePath);
 
                     });
