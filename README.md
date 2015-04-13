@@ -11,21 +11,23 @@ HTML imports in Maple are intended to be **much** simpler than Polymer by having
 </template>
 ```
 
-In the above case your `module.js` document is a simple ES6 [React.js class](https://facebook.github.io/react/docs/tutorial.html):
+In the above case your `module.js` document is a simple ES6 [React.js class](https://facebook.github.io/react/docs/tutorial.html) that *optionally* extends `Maple.Component`:
 
 ```javascript
-export default class MyModule extends React.Component {
+export default class MyModule extends Maple.Component {
 
 }
 ```
 
-Using introspection, Maple uses ES6's `System.import` to import the above module, and subsequently registering an element using `document.registerElement` and then transforming the `class` name to its underscore equivalent &ndash; in the code above `MyModule` will create a custom element `my-module` using your React.js class blueprint:
+**Note:** By extending `Maple.Component` you gain access to many utility methods, such as `addEventListener` for easily binding to the dispatcher.
+
+Using introspection Maple uses ES6's `System.import` to import the above module, subsequently registering an element using `document.registerElement`, and then transforming the `class` name to its underscore equivalent &ndash; in the code above `MyModule` will create a custom element `my-module` using your React.js class blueprint:
 
 ```html
 <my-module></my-module>
 ```
 
-As a child of the `my-element` element a [shadow root](https://w3c.github.io/webcomponents/spec/shadow/) will be created, and the CSS documents from your `template` element imported:
+As an immediate child of the `my-element` element a [shadow root](https://w3c.github.io/webcomponents/spec/shadow/) will be created, and the CSS documents from your `template` element imported:
 
 ```css
 div {
