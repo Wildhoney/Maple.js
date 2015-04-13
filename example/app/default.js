@@ -2,7 +2,7 @@
 
     "use strict";
 
-    let app = new Maple('UserCalendar');
+    let app = new Maple('PeopleList');
 
 
 })();

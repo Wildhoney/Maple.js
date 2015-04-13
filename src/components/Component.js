@@ -21,6 +21,10 @@ export default class Component {
     }
 
     /**
+     * Responsible for finding all of the HTML imports and returning a promise when each of the
+     * HTML imports have been successfully imported. This allows us to access the `ownerDocument`
+     * on each of the link elements knowing that it isn't null.
+     *
      * @method getImports
      * @return {Array}
      */
@@ -39,6 +43,9 @@ export default class Component {
     }
 
     /**
+     * Responsible for finding the import link that pertains to the class that we're currently dealing
+     * with.
+     *
      * @method findImport
      * @param {String} className
      * @return {Object}
@@ -58,6 +65,24 @@ export default class Component {
     }
 
     /**
+     * Responsible for finding all of the HTML imports in the current document. It will be invoked if
+     * the developer doesn't explicitly pass in an array of modules to load via the Maple constructor when
+     * instantiating a new application.
+     *
+     * @method findModules
+     * @return {Array}
+     */
+    findModules() {
+
+        return utility.toArray(document.querySelectorAll('link[rel="import"]')).map((importDocument) => {
+
+            let importPath = utility.getImportPath(importDocument.getAttribute('href'));
+
+        });
+
+    }
+
+    /**
      * @method findScripts
      * @param {Object} importDocument
      * @return {Array}
@@ -68,6 +93,9 @@ export default class Component {
     }
 
     /**
+     * Responsible for creating the custom element using document.registerElement, and then appending
+     * the associated React.js component.
+     *
      * @method registerCustomElement
      * @param {String} className
      * @param {Object} component
@@ -99,11 +127,16 @@ export default class Component {
 
                     // Import attributes from the element and transfer to the React.js class.
                     component.defaultProps = {};
+
                     for (let index = 0, attributes = this.attributes; index < attributes.length; index++) {
+
                         let attribute = attributes.item(index);
+
                         if (attribute.value) {
-                            component.defaultProps[attribute.name] = attribute.value;
+                            let name = attribute.name.replace(/^data-/i, '');
+                            component.defaultProps[name] = attribute.value;
                         }
+
                     }
 
                     let rendered       = React.createElement(component),
@@ -140,11 +173,17 @@ export default class Component {
     }
 
     /**
+     * Entry point for the component initialisation. It accepts an optional parameter to initialise
+     * modules explicitly, otherwise this.findModules will be invoked, and modules will be found
+     * automatically from the current HTML imports of the document.
+     *
      * @method delegate
      * @param {Array} modules
      * @return {void}
      */
     register(...modules) {
+
+        modules = modules || this.findModules();
 
         Promise.all(this.getImports()).then((linkElements) => {
 

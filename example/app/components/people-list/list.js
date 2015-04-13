@@ -1,8 +1,8 @@
 /**
- * @module UserCalendar
+ * @module PeopleList
  * @extends Maple.Component
  */
-export default class UserCalendar extends React.Component {
+export default class PeopleList extends React.Component {
 
     /**
      * @constructor
@@ -11,9 +11,15 @@ export default class UserCalendar extends React.Component {
      */
     constructor(properties) {
         super(properties);
-        this.state = { elements: [{}, {}, {}] };
     }
 
+    /**
+     * @method getNames
+     * @return {Array}
+     */
+    getNames() {
+        return this.props.names.split(',');
+    }
 
     /**
      * @method resetCounter
@@ -29,8 +35,8 @@ export default class UserCalendar extends React.Component {
      * @return {Object}
      */
     render() {
-        return React.createElement('ul', {onClick: this.resetCounter}, this.state.elements.map(function () {
-            return React.createElement('li', null, this.props.label || 'Element');
+        return React.createElement('ul', { onClick: this.resetCounter }, this.getNames().map(function (name) {
+            return React.createElement('li', null, name || 'Unknown Person');
         }.bind(this)));
     }
 
