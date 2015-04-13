@@ -37,7 +37,19 @@ div {
 
 Therefore in the above example, the `border` property will **only** be applied to the `my-module` children, rather than all `div` elements.
 
-## FOUC
+### Dispatcher
+
+By extending the `Maple.Component` object you gain access to the `addEventListener` and `removeEventListener` methods. With this you can listen for events dispatched by the `Dispatcher`:
+
+```javascript
+componentDidMount() {
+    this.addEventListener('people');
+}
+```
+
+Once the `people` event has been dispatched, its payload will be used to update the `state` of your React view-controller.
+
+### FOUC
 
 Maple uses the same mechanism as [Polymer](https://www.polymer-project.org/0.5/docs/polymer/styling.html) for the FOUC with the `unresolved` and `resolved` attributes. With this implementation you can hide elements that you define with the `unresolved` attribute:
 
@@ -46,3 +58,27 @@ Maple uses the same mechanism as [Polymer](https://www.polymer-project.org/0.5/d
 ```
 
 Once the element has been upgraded the `unresolved` attribute will be removed by Maple &ndash; and will instead be replaced with the `resolved` attribute.
+
+### Loading
+
+In Maple when you generate the custom element in your HTML, you can define children which will be replaced &ndash; this allows you to add *loading* content for your component:
+
+```html
+<people-list>
+    Loading People...
+</people-list>
+```
+
+Once the element has been *upgraded* and the view-controller's `render` method has updated the `people-list`'s content, you still have access to a cloned version of of what was there previously:
+
+```javascript
+console.log(this.props.element);
+```
+
+### Path
+
+Maple also helpfully registers the `this.props.path` property for you, which is a `string` that points to your component's root &ndash; if you're working on a file in `app/components/people-list/people.js` then `this.props.path` will helpfully point to `app/components/people-list` which should be used for referencing other files &ndash; for example a `WebWorker` that resides in your component directory.
+
+```javascript
+let webWorker = new WebWorker(`${this.props.path}/An-Intensive-Process.js`);
+```
