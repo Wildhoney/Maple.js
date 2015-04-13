@@ -12,6 +12,66 @@
 
 ---
 
+## Getting Started
+
+We'll begin by creating our very first Maple component. In the Maple framework, all components are associated with a custom element, therefore we first need to decide what that's going to be &ndash; in this example we're going to create a `<local-time>` element which is often cited as a [typical example of a web component](http://webcomponents.org/articles/interview-with-joshua-peek/) used by GitHub.com.
+
+In the main `index.html` we'll add the custom element, and import our component's `index.html`:
+
+```html
+<link rel="import" type="text/html" href="app/components/first-module/index.html" />
+<!-- ... -->
+<local-time></local-time>
+```
+
+We'll then create our `local-time.js` file inside of `app/components/first-module` and create a standard React.js component using ES6 syntax that extends `Maple.Component`:
+
+```javascript
+export default class LocalTime extends Maple.Component {
+
+    /**
+     * @method render
+     * @return {Object}
+     */
+    render() {
+        return React.createElement('div', null, Date.now());
+    }
+
+}
+```
+
+**Note:** It's important to remember that in all we've created, the file names are **irrelevant**, however the above class name (`LocalTime`) determines what our custom element is going to be (`local-time`).
+
+Finally we merely need to include the `local-time.js` to our `app/components/first-module/index.html` document:
+
+```html
+<template>
+    <script type="text/javascript" src="local-time.js"></script>
+</template>
+```
+
+**Voila!**
+
+**By the way:** Adding a CSS document to our component is also very easy:
+
+```html
+<template>
+    <script type="text/javascript" src="local-time.js"></script>
+    <link rel="stylesheet" type="text/css" href="local-time.css" />
+</template>
+```
+
+And since Maple uses the shadow root we can be as loose as we like in that CSS document, because the only HTML we're going to affect is our `local-time` element. Clever, right?
+
+```css
+div {
+    box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+    padding: 5px 8px;
+    font-size: 11px;
+    color: rebeccapurple;
+}
+```
+
 ## HTML Imports
 
 HTML imports in Maple are intended to be **much** simpler than Polymer by having zero inline JavaScript and CSS documents:
