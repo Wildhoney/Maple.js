@@ -135,7 +135,7 @@ Maple uses the same mechanism as [Polymer](https://www.polymer-project.org/0.5/d
 
 Once the element has been upgraded the `unresolved` attribute will be removed by Maple &ndash; and will instead be replaced with the `resolved` attribute.
 
-### Loading
+### Loading Messages
 
 In Maple when you generate the custom element in your HTML, you can define children which will be replaced &ndash; this allows you to add *loading* content for your component:
 
@@ -151,7 +151,7 @@ Once the element has been *upgraded* and the view-controller's `render` method h
 console.log(this.props.element);
 ```
 
-### Path
+### Component Path
 
 Maple also helpfully registers the `this.props.path` property for you, which is a `string` that points to your component's root &ndash; if you're working on a file in `app/components/people-list/people.js` then `this.props.path` will helpfully point to `app/components/people-list` which should be used for referencing other files &ndash; for example a `WebWorker` that resides in your component directory.
 
@@ -159,7 +159,7 @@ Maple also helpfully registers the `this.props.path` property for you, which is 
 let webWorker = new WebWorker(`${this.props.path}/An-Intensive-Process.js`);
 ```
 
-### Passing Properties
+### Properties as HTML Attributes
 
 When you define your custom HTML element, you can pass in properties as normal HTML attributes that will be registered as `this.props.x` &ndash; where `x` is your attribute's name:
 
