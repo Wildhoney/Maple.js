@@ -2,7 +2,7 @@
 
     "use strict";
 
-    let app = new Maple('people-list');
+    let app = new Maple();
 
 
 })();

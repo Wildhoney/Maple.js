@@ -114,8 +114,6 @@ export default class Register {
                     };
 
                     this.innerHTML = '';
-                    this.removeAttribute('unresolved');
-                    this.setAttribute('resolved', '');
 
                     // Import attributes from the element and transfer to the React.js class.
                     for (let index = 0, attributes = this.attributes; index < attributes.length; index++) {
@@ -133,9 +131,13 @@ export default class Register {
                         contentElement  = document.createElement('content'),
                         shadowRoot      = this.createShadowRoot();
 
-                    css.associate(modulePath, shadowRoot);
                     shadowRoot.appendChild(contentElement);
                     events.delegate(contentElement, React.render(renderedElement, contentElement));
+
+                    Promise.all(css.associate(modulePath, shadowRoot)).then(() => {
+                        this.removeAttribute('unresolved');
+                        this.setAttribute('resolved', '');
+                    });
 
                 }
 

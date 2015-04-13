@@ -14,7 +14,7 @@ export default class Dispatcher {
 
         this.events = [];
 
-        setTimeout(() => this.fireEvent('people'), 2500);
+        setTimeout(() => this.fireEvent('people'), 5500);
 
     }
 

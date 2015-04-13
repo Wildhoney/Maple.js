@@ -16,11 +16,11 @@ export default (function main($document) {
          * @method associate
          * @param {String} componentPath
          * @param {ShadowRoot} shadowRoot
-         * @return {void}
+         * @return {Array}
          */
         associate(componentPath, shadowRoot) {
 
-            let useImport = false;
+            let promises = [];
 
             utility.toArray(document.querySelectorAll('link')).forEach((link) => {
 
@@ -39,21 +39,23 @@ export default (function main($document) {
                         let styleElement = $document.createElement('style');
                         styleElement.setAttribute('type', 'text/css');
 
-                        if (useImport) {
-                            styleElement.innerHTML = `@import url(${cssDocument})`;
-                            return void shadowRoot.appendChild(styleElement);
-                        }
+                        promises.push(new Promise((resolve) => {
 
-                        fetch(cssDocument).then((response) => response.text()).then((body) => {
-                            styleElement.innerHTML = body;
-                            shadowRoot.appendChild(styleElement);
-                        });
+                            fetch(cssDocument).then((response) => response.text()).then((body) => {
+                                styleElement.innerHTML = body;
+                                shadowRoot.appendChild(styleElement);
+                                resolve(styleElement.innerHTML);
+                            });
+
+                        }));
 
                     });
 
                 }
 
             });
+
+            return promises;
 
         }
 
