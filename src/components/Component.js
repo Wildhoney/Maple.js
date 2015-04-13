@@ -109,10 +109,10 @@ export default class Component {
         let prototype   = Object.create(HTMLElement.prototype, {
 
             /**
-             * @property createdCallback
+             * @property attachedCallback
              * @type {Object}
              */
-            createdCallback: {
+            attachedCallback: {
 
                 /**
                  * @method value
@@ -120,14 +120,17 @@ export default class Component {
                  */
                 value: function value() {
 
+                    let clonedElement = this.cloneNode(true);
                     this.innerHTML = '';
+
+                    component.defaultProps = {
+                        element: () => clonedElement
+                    };
 
                     this.removeAttribute('unresolved');
                     this.setAttribute('resolved', '');
 
                     // Import attributes from the element and transfer to the React.js class.
-                    component.defaultProps = {};
-
                     for (let index = 0, attributes = this.attributes; index < attributes.length; index++) {
 
                         let attribute = attributes.item(index);
