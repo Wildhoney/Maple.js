@@ -83,6 +83,8 @@ HTML imports in Maple are intended to be **much** simpler than Polymer by having
 </template>
 ```
 
+**Note:** Components can define one or **more** custom HTML elements (one-to-many relationship), and therefore may rely upon one or more JavaScript/CSS documents.
+
 In the above case your `module.js` document is a simple ES6 [React.js class](https://facebook.github.io/react/docs/tutorial.html) that *optionally* extends `Maple.Component`:
 
 ```javascript
