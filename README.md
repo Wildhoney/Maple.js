@@ -24,10 +24,10 @@ In the main `index.html` we'll add the custom element, and import our component'
 <local-time></local-time>
 ```
 
-We'll then create our `local-time.js` file inside of `app/components/first-module` and create a standard React.js component using ES6 syntax that extends `Maple.Component`:
+We'll then create our `local-time.js` file inside of `app/components/first-module` and create a standard React.js component using ES6 syntax that extends `React.Component` &mdash; we don't yet need the added benefits of extending `Maple.Component`:
 
 ```javascript
-export default class LocalTime extends Maple.Component {
+export default class LocalTime extends React.Component {
 
     /**
      * @method render
@@ -52,7 +52,7 @@ Finally we merely need to include the `local-time.js` to our `app/components/fir
 
 **Voila!**
 
-**By the way:** Adding a CSS document to our component is also very easy:
+By the way, adding a CSS document to our component is also very easy:
 
 ```html
 <template>
