@@ -20,7 +20,7 @@ export default (function main() {
          * @return {Array}
          */
         toArray(arrayLike) {
-            return Array.prototype.slice.apply(arrayLike);
+            return Array.from ? Array.from(arrayLike) : Array.prototype.slice.apply(arrayLike);
         },
 
         /**
