@@ -108,6 +108,7 @@ export default class Register {
                 value: function value() {
 
                     component.defaultProps = {
+                        path:       modulePath,
                         element:    this.cloneNode(true),
                         dispatcher: dispatcher
                     };
