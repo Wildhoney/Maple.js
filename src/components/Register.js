@@ -194,24 +194,19 @@ export default class Register {
      */
     register(...modules) {
 
-        modules = modules || this.findModules();
+        this.getImports().forEach((promise) => {
 
-        Promise.all(this.getImports()).then((linkElements) => {
+            promise.then((linkElement) => {
 
-            this.linkElements = linkElements;
+                let scriptElements = this.findScripts(linkElement.import),
+                    modulePath     = utility.getModulePath(linkElement.getAttribute('href')),
+                    moduleName     = utility.getModuleName(linkElement.getAttribute('href'));
 
-            modules.forEach((name) => {
+                if (modules.length && !~modules.indexOf(moduleName)) {
+                    return;
+                }
 
-                name = {
-                    camelcase:  name,
-                    underscore: utility.toSnakeCase(name)
-                };
-
-                let importDocument = this.findImport(name.underscore),
-                    scriptElements = this.findScripts(importDocument.import),
-                    modulePath     = utility.getImportPath(importDocument.getAttribute('href'));
-
-                this.log(`Registering module "${name.camelcase}" with path "${modulePath}"`);
+                this.log(`Registering "${moduleName}" module at "${modulePath}"`);
 
                 scriptElements.forEach((scriptElement) => {
 

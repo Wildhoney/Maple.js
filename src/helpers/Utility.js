@@ -24,12 +24,21 @@ export default (function main() {
         },
 
         /**
-         * @method getImportPath
+         * @method getModulePath
          * @param {String} importPath
          * @return {String}
          */
-        getImportPath(importPath) {
+        getModulePath(importPath) {
             return importPath.split('/').slice(0, -1).join('/');
+        },
+
+        /**
+         * @method getModuleName
+         * @param {String} importPath
+         * @return {String}
+         */
+        getModuleName(importPath) {
+            return importPath.split('/').slice(0, -1).pop();
         }
 
     };

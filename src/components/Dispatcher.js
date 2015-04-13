@@ -22,7 +22,7 @@ export default class Dispatcher {
      */
     addEventListener(name, options = { reference: null, callback: () => {} }) {
 
-        if (this.events[name]) {
+        if (!Array.isArray(this.events[name])) {
             this.events[name] = [];
         }
 
