@@ -4,7 +4,7 @@
  * @link https://github.com/Wildhoney/Maple.js
  * @author Adam Timberlake
  */
-export default class Component {
+export default class Component extends React.Component {
 
     /**
      * @constructor

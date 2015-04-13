@@ -11,7 +11,27 @@ export default class Dispatcher {
      * @return {Dispatcher}
      */
     constructor() {
-        this.events = {};
+
+        this.events = [];
+
+        setTimeout(() => this.fireEvent('people'), 2500);
+
+    }
+
+    /**
+     * @method fireEvent
+     * @param {String} name
+     * @return {void}
+     */
+    fireEvent(name) {
+
+        let eventFns = this.events.filter((event) => event.name === name),
+            people   = ['Buster', 'Miss Kittens', 'Kipper', 'Splodge', 'Mango'];
+
+        eventFns.forEach((event) => {
+            event.reference.setState({ names: people.join(',') });
+        });
+
     }
 
     /**
@@ -22,11 +42,11 @@ export default class Dispatcher {
      */
     addEventListener(name, options = { reference: null, callback: () => {} }) {
 
-        if (!Array.isArray(this.events[name])) {
-            this.events[name] = [];
-        }
-
-        this.events[name].push(options);
+        this.events.push({
+            name: name,
+            reference: options.reference,
+            callback: options.callback
+        });
 
     }
 

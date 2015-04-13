@@ -11,6 +11,7 @@ export default class PeopleList extends Maple.Component {
      */
     constructor(properties) {
         super(properties);
+        this.state = { names: null };
     }
 
     /**
@@ -26,7 +27,7 @@ export default class PeopleList extends Maple.Component {
      * @return {Array}
      */
     getNames() {
-        return this.props.names.split(',');
+        return (this.state.names || this.props.names).split(',');
     }
 
     /**
