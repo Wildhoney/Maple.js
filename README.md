@@ -1,4 +1,4 @@
-![Maple.js](logo.png)
+<img alt="Maple.js" src="logo.png" width="400" />
 
 ## HTML Imports
 
