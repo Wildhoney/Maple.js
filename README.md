@@ -10,6 +10,8 @@
 * **npm:** `npm install maple.js`
 * **Bower:** `bower install maple.js`
 
+---
+
 ## HTML Imports
 
 HTML imports in Maple are intended to be **much** simpler than Polymer by having zero inline JavaScript and CSS documents:
