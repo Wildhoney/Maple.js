@@ -158,3 +158,13 @@ Maple also helpfully registers the `this.props.path` property for you, which is 
 ```javascript
 let webWorker = new WebWorker(`${this.props.path}/An-Intensive-Process.js`);
 ```
+
+### Passing Properties
+
+When you define your custom HTML element, you can pass in properties as normal HTML attributes that will be registered as `this.props.x` &ndash; where `x` is your attribute's name:
+
+```html
+<animal-enumeration data-animals="Cat,Dog,Sheep,Horse,Elephant"></animal-enumeration>
+```
+
+**Note:** `data` prefix will be removed from any attributes that have it, yielding `this.props.animals` in the above case as a `string`.
