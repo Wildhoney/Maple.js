@@ -1,4 +1,5 @@
 import Component from './components/Component.js';
+import Register  from './components/Register.js';
 
 (function main($window, $document) {
 
@@ -20,8 +21,7 @@ import Component from './components/Component.js';
 
             $document.addEventListener('DOMContentLoaded', () => {
 
-                let _component = new Component(true);
-                _component.register(...modules);
+                let register = new Register(...modules);
 
             });
 
@@ -29,6 +29,7 @@ import Component from './components/Component.js';
 
     }
 
-    $window.Maple = Maple;
+    $window.Maple           = Maple;
+    $window.Maple.Component = Component;
 
 })(window, document);
