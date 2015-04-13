@@ -49,6 +49,10 @@ componentDidMount() {
 
 Once the `people` event has been dispatched, its payload will be used to update the `state` of your React view-controller.
 
+#### Extending `React.Component`
+
+If you insist on extending the `React.Component` object directly &ndash; rather than `Maple.Component` &mdash; which is perfectly fine (we're not upset) &mdash; then you must handle the dispatcher yourself. For this we recommending [taking a look at `Maple.Component`](https://github.com/Wildhoney/Maple.js/blob/master/src/components/Dispatcher.js) and how that handles the `Dispatcher` &ndash; and in particular the `addEventListener` method.
+
 ### FOUC
 
 Maple uses the same mechanism as [Polymer](https://www.polymer-project.org/0.5/docs/polymer/styling.html) for the FOUC with the `unresolved` and `resolved` attributes. With this implementation you can hide elements that you define with the `unresolved` attribute:
@@ -69,7 +73,7 @@ In Maple when you generate the custom element in your HTML, you can define child
 </people-list>
 ```
 
-Once the element has been *upgraded* and the view-controller's `render` method has updated the `people-list`'s content, you still have access to a cloned version of of what was there previously:
+Once the element has been *upgraded* and the view-controller's `render` method has updated the `people-list`'s content, you still have access to a cloned version of what was there previously:
 
 ```javascript
 console.log(this.props.element);
