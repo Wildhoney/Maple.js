@@ -1,3 +1,13 @@
-div {
-    border: 1px solid red;
+ul {
+    list-style-type: none;
+    float: left;
+    overflow: hidden;
+    width: 200px;
+}
+
+ul > li {
+    border-bottom: 1px solid rgba(0, 0, 0, .15);
+    padding: 6px;
+    font-family: Arial, Tahoma, Helvetica, sans-serif;
+    font-size: 11px;
 }

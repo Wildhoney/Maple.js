@@ -20,6 +20,8 @@ export default (function main($document) {
          */
         associate(componentPath, shadowRoot) {
 
+            let useImport = false;
+
             utility.toArray(document.querySelectorAll('link')).forEach((link) => {
 
                 let href = link.getAttribute('href');
@@ -36,8 +38,16 @@ export default (function main($document) {
 
                         let styleElement = $document.createElement('style');
                         styleElement.setAttribute('type', 'text/css');
-                        styleElement.innerHTML = `@import url(${cssDocument})`;
-                        shadowRoot.appendChild(styleElement);
+
+                        if (useImport) {
+                            styleElement.innerHTML = `@import url(${cssDocument})`;
+                            return void shadowRoot.appendChild(styleElement);
+                        }
+
+                        fetch(cssDocument).then((response) => response.text()).then((body) => {
+                            styleElement.innerHTML = body;
+                            shadowRoot.appendChild(styleElement);
+                        });
 
                     });
 
