@@ -1,1 +1,1 @@
-web: node example/server/default.js
+web: node public/server/default.js

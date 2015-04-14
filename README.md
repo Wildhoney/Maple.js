@@ -85,8 +85,7 @@ HTML imports in Maple are intended to be **much** simpler than Polymer by having
 </template>
 ```
 
-**Note:**
-* Components can define one or **more** custom HTML elements (one-to-many relationship);
+* Components can define one or **more** custom HTML elements;
 * Components can have one or **more** `template` elements;
 
 In the above case your `module.js` document is a simple ES6 [React.js class](https://facebook.github.io/react/docs/tutorial.html) that *optionally* extends `Maple.Component`:
@@ -97,9 +96,9 @@ export default class MyModule extends Maple.Component {
 }
 ```
 
-**Note:** By extending `Maple.Component` you gain access to many utility methods, such as `addEventListener` for easily binding to the dispatcher.
+**Note:** By extending `Maple.Component` you gain access to many utility methods, such as `addEventListener` for easily binding to the dispatcher, but you could also extend `React.Component`.
 
-Using introspection Maple uses ES6's `System.import` to import the above module, subsequently registering an element using `document.registerElement`, and then transforming the `class` name to its underscore equivalent &ndash; in the code above `MyModule` will create a custom element `my-module` using your React.js class blueprint:
+Using introspection, Maple uses ES6's `System.import` to import the above module, subsequently registering an element using `document.registerElement`, and then transforming the `class` name to its underscore equivalent &ndash; in the code above `MyModule` will create a custom element `my-module` using your React.js class blueprint:
 
 ```html
 <my-module></my-module>
