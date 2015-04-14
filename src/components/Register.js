@@ -1,6 +1,7 @@
 import events     from './../helpers/Events.js';
 import css        from './../helpers/Stylesheets.js';
 import utility    from './../helpers/Utility.js';
+import logger     from './../helpers/Logger.js';
 import Dispatcher from './Dispatcher.js';
 
 /**
@@ -92,7 +93,7 @@ export default class Register {
         let elementName = utility.toSnakeCase(className),
             dispatcher  = this.dispatcher;
 
-        this.log(`Adding custom element "${elementName}"`);
+        logger.send(`Registered Component: ${elementName}`, logger.type.component);
         let prototype   = Object.create(HTMLElement.prototype, {
 
             /**
@@ -152,19 +153,6 @@ export default class Register {
     }
 
     /**
-     * @method log
-     * @param {String} message
-     * @return {void}
-     */
-    log(message) {
-
-        if (this.debug) {
-            console.info(`Maple.js: ${message}.`);
-        }
-
-    }
-
-    /**
      * Entry point for the component initialisation. It accepts an optional parameter to initialise
      * modules explicitly, otherwise this.findModules will be invoked, and modules will be found
      * automatically from the current HTML imports of the document.
@@ -187,7 +175,7 @@ export default class Register {
                     return;
                 }
 
-                this.log(`Registering "${moduleName}" module at "${modulePath}"`);
+                logger.send(moduleName, logger.type.module);
 
                 scriptElements.forEach((scriptElement) => {
 
