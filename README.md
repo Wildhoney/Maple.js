@@ -19,10 +19,12 @@ We'll begin by creating our very first Maple component. In the Maple framework, 
 In the main `index.html` we'll add the custom element, and import our component's `index.html`:
 
 ```html
-<link rel="import" type="text/html" href="app/components/first-module/index.html" />
+<link rel="import" resource="component" type="text/html" href="app/components/first-module/index.html" />
 <!-- ... -->
 <local-time></local-time>
 ```
+
+**Note:** In the above example, the `resource` attribute is essential, as this distinguishes it from other non-Maple HTML imports. Currently Maple supports two constants for the `resource` attribute: `component` for a custom element, and `view` for a collection of custom elements and other HTML used by Maple's router &ndash; [Director](https://github.com/flatiron/director).
 
 We'll then create our `local-time.js` file inside of `app/components/first-module` and create a standard React.js component using ES6 syntax that extends `React.Component` &mdash; we don't yet need the added benefits of extending `Maple.Component`:
 

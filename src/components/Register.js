@@ -37,7 +37,7 @@ export default class Register {
      */
     getImports() {
 
-        let importDocuments = document.querySelectorAll('link[rel="import"]');
+        let importDocuments = document.querySelectorAll('link[rel="import"][resource="component"]');
 
         return utility.toArray(importDocuments).map((importDocument) => {
 
