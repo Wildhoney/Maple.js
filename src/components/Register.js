@@ -74,8 +74,19 @@ export default class Register {
      * @return {Array}
      */
     findScripts(importDocument) {
-        let templateElement = importDocument.querySelector('template');
-        return utility.toArray(templateElement.content.querySelectorAll('script[type="text/javascript"]'));
+
+        let templateElements  = utility.toArray(importDocument.querySelectorAll('template')),
+            allScriptElements = [];
+
+        templateElements.forEach((templateElement) => {
+
+            let scriptElements = utility.toArray(templateElement.content.querySelectorAll('script[type="text/javascript"]'));
+            allScriptElements = [].concat(allScriptElements, scriptElements);
+
+        });
+
+        return allScriptElements;
+
     }
 
     /**

@@ -28,26 +28,31 @@ export default (function main($document) {
 
                 if (href.match(componentPath)) {
 
-                    let templateElement = link.import.querySelector('template'),
-                        templateContent = templateElement.content,
-                        cssDocuments    = utility.toArray(templateContent.querySelectorAll('link')).map((linkElement) => {
-                            return `${componentPath}/${linkElement.getAttribute('href')}`;
-                        });
+                    let templateElements = utility.toArray(link.import.querySelectorAll('template'));
 
-                    cssDocuments.forEach((cssDocument) => {
+                    templateElements.forEach((templateElement) => {
 
-                        let styleElement = $document.createElement('style');
-                        styleElement.setAttribute('type', 'text/css');
-
-                        promises.push(new Promise((resolve) => {
-
-                            fetch(cssDocument).then((response) => response.text()).then((body) => {
-                                styleElement.innerHTML = body;
-                                shadowRoot.appendChild(styleElement);
-                                resolve(styleElement.innerHTML);
+                        let templateContent = templateElement.content,
+                            cssDocuments    = utility.toArray(templateContent.querySelectorAll('link')).map((linkElement) => {
+                                return `${componentPath}/${linkElement.getAttribute('href')}`;
                             });
 
-                        }));
+                        cssDocuments.forEach((cssDocument) => {
+
+                            let styleElement = $document.createElement('style');
+                            styleElement.setAttribute('type', 'text/css');
+
+                            promises.push(new Promise((resolve) => {
+
+                                fetch(cssDocument).then((response) => response.text()).then((body) => {
+                                    styleElement.innerHTML = body;
+                                    shadowRoot.appendChild(styleElement);
+                                    resolve(styleElement.innerHTML);
+                                });
+
+                            }));
+
+                        });
 
                     });
 
