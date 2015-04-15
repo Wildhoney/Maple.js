@@ -104,7 +104,7 @@ export default class Register {
         let elementName = utility.toSnakeCase(className),
             dispatcher  = this.dispatcher;
 
-        logger.send(`Registered Component: ${elementName}`, logger.type.component);
+        logger.send(`${elementName}`, logger.type.component);
         let prototype   = Object.create(HTMLElement.prototype, {
 
             /**

@@ -28,7 +28,7 @@ export default (function main() {
                     break;
 
                 case (this.type.component):
-                    console.log(`%c ${message}`, 'font-size: 9px; color: rgba(0, 0, 0, .75)');
+                    console.log(`%c Component: <${message}>`, 'font-size: 9px; color: rgba(0, 0, 0, .75)');
                     break;
 
                 default:
