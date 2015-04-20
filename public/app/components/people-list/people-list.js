@@ -2,7 +2,7 @@
  * @module PeopleList
  * @extends Maple.Component
  */
-export default class PeopleList extends Maple.Component {
+export default class PeopleList extends React.Component {
 
     /**
      * @constructor
@@ -12,14 +12,6 @@ export default class PeopleList extends Maple.Component {
     constructor(properties) {
         super(properties);
         this.state = { names: null };
-    }
-
-    /**
-     * @method componentDidMount
-     * @return {void}
-     */
-    componentDidMount() {
-        this.addEventListener('people');
     }
 
     /**

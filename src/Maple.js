@@ -1,9 +1,12 @@
-import Component from './components/Component.js';
 import Register  from './components/Register.js';
 
 (function main($window, $document) {
 
     "use strict";
+
+    if (typeof System !== 'undefined') {
+        System.transpiler = 'babel';
+    }
 
     /**
      * @module Maple
@@ -27,7 +30,6 @@ import Register  from './components/Register.js';
 
     }
 
-    $window.Maple           = Maple;
-    $window.Maple.Component = Component;
+    $window.Maple = Maple;
 
 })(window, document);

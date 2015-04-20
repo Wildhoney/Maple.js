@@ -2,7 +2,16 @@ import events     from './../helpers/Events.js';
 import css        from './../helpers/Stylesheets.js';
 import utility    from './../helpers/Utility.js';
 import logger     from './../helpers/Logger.js';
-import Dispatcher from './Dispatcher.js';
+
+/**
+ * @constant SELECTOR
+ * @type {Object}
+ */
+const SELECTOR = {
+    IMPORTS:   'link[rel="import"]',
+    TEMPLATES: 'template',
+    SCRIPTS:   'script[type="text/javascript"]'
+};
 
 /**
  * @module Maple
@@ -20,10 +29,56 @@ export default class Register {
     constructor(...modules) {
 
         this.components = [];
-        this.dispatcher = new Dispatcher();
         this.debug      = true;
 
         this.register(...modules);
+
+    }
+
+    /**
+     * Entry point for the component initialisation. It accepts an optional parameter to initialise
+     * modules explicitly, otherwise this.findModules will be invoked, and modules will be found
+     * automatically from the current HTML imports of the document.
+     *
+     * @method delegate
+     * @param {Array} modules
+     * @return {void}
+     */
+    register(...modules) {
+
+        this.loadImports().forEach((promise) => {
+
+            promise.then((linkElement) => {
+
+                let scriptElements = this.findScripts(linkElement.import),
+                    modulePath     = utility.getModulePath(linkElement.getAttribute('href')),
+                    moduleName     = utility.getModuleName(linkElement.getAttribute('href'));
+
+                if (modules.length && !~modules.indexOf(moduleName)) {
+                    return;
+                }
+
+                logger.send(moduleName, logger.type.module);
+
+                scriptElements.forEach((scriptElement) => {
+
+                    let scriptSrc  = scriptElement.getAttribute('src').split('.').slice(0, -1).join('/'),
+                        scriptPath = `${modulePath}/${scriptSrc}`;
+
+                    System.import(scriptPath).then((Register) => {
+
+                        let className = Register.default.toString().match(/(?:function|class)\s*([a-z]+)/i)[1],
+                            component = this.components[className] = Register.default;
+
+                        this.registerElement(className, component, modulePath);
+
+                    });
+
+                });
+
+            });
+
+        });
 
     }
 
@@ -32,12 +87,12 @@ export default class Register {
      * HTML imports have been successfully imported. This allows us to access the `ownerDocument`
      * on each of the link elements knowing that it isn't null.
      *
-     * @method getImports
+     * @method loadImports
      * @return {Array}
      */
-    getImports() {
+    loadImports() {
 
-        let importDocuments = document.querySelectorAll('link[rel="import"][resource="component"]');
+        let importDocuments = document.querySelectorAll(SELECTOR.IMPORTS);
 
         return utility.toArray(importDocuments).map((importDocument) => {
 
@@ -59,7 +114,7 @@ export default class Register {
      */
     findModules() {
 
-        return utility.toArray(document.querySelectorAll('link[rel="import"]')).map((importDocument) => {
+        return utility.toArray(document.querySelectorAll(SELECTOR.IMPORTS)).map((importDocument) => {
 
             let importPath = utility.getImportPath(importDocument.getAttribute('href'));
             return void importPath;
@@ -75,12 +130,12 @@ export default class Register {
      */
     findScripts(importDocument) {
 
-        let templateElements  = utility.toArray(importDocument.querySelectorAll('template')),
+        let templateElements  = utility.toArray(importDocument.querySelectorAll(SELECTOR.TEMPLATES)),
             allScriptElements = [];
 
         templateElements.forEach((templateElement) => {
 
-            let scriptElements = utility.toArray(templateElement.content.querySelectorAll('script[type="text/javascript"]'));
+            let scriptElements = utility.toArray(templateElement.content.querySelectorAll(SELECTOR.SCRIPTS));
             allScriptElements = [].concat(allScriptElements, scriptElements);
 
         });
@@ -93,16 +148,15 @@ export default class Register {
      * Responsible for creating the custom element using document.registerElement, and then appending
      * the associated React.js component.
      *
-     * @method registerCustomElement
+     * @method registerElement
      * @param {String} className
      * @param {Object} component
      * @param {String} modulePath
      * @return {void}
      */
-    registerCustomElement(className, component, modulePath) {
+    registerElement(className, component, modulePath) {
 
-        let elementName = utility.toSnakeCase(className),
-            dispatcher  = this.dispatcher;
+        let elementName = utility.toSnakeCase(className);
 
         logger.send(`${elementName}`, logger.type.component);
         let prototype   = Object.create(HTMLElement.prototype, {
@@ -121,8 +175,7 @@ export default class Register {
 
                     component.defaultProps = {
                         path:       modulePath,
-                        element:    this.cloneNode(true),
-                        dispatcher: dispatcher
+                        element:    this.cloneNode(true)
                     };
 
                     this.innerHTML = '';
@@ -159,53 +212,6 @@ export default class Register {
 
         document.registerElement(elementName, {
             prototype: prototype
-        });
-
-    }
-
-    /**
-     * Entry point for the component initialisation. It accepts an optional parameter to initialise
-     * modules explicitly, otherwise this.findModules will be invoked, and modules will be found
-     * automatically from the current HTML imports of the document.
-     *
-     * @method delegate
-     * @param {Array} modules
-     * @return {void}
-     */
-    register(...modules) {
-
-        this.getImports().forEach((promise) => {
-
-            promise.then((linkElement) => {
-
-                let scriptElements = this.findScripts(linkElement.import),
-                    modulePath     = utility.getModulePath(linkElement.getAttribute('href')),
-                    moduleName     = utility.getModuleName(linkElement.getAttribute('href'));
-
-                if (modules.length && !~modules.indexOf(moduleName)) {
-                    return;
-                }
-
-                logger.send(moduleName, logger.type.module);
-
-                scriptElements.forEach((scriptElement) => {
-
-                    let scriptSrc  = scriptElement.getAttribute('src').split('.').slice(0, -1).join('/'),
-                        scriptPath = `${modulePath}/${scriptSrc}`;
-
-                    System.import(scriptPath).then((Register) => {
-
-                        let className = Register.default.toString().match(/(?:function|class)\s*([a-z]+)/i)[1],
-                            component = this.components[className] = Register.default;
-
-                        this.registerCustomElement(className, component, modulePath);
-
-                    });
-
-                });
-
-            });
-
         });
 
     }
