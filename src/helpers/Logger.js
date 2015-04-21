@@ -23,12 +23,12 @@ export default (function main() {
 
             switch (type) {
 
-                case (this.type.module):
-                    console.log(`%c Module: ${message} `, 'color: white; border-radius: 3px; padding: 2px 0; font-size: 9px; background: linear-gradient(to bottom,  #ef3232 0%,#d63a2c 100%)');
-                    break;
+                //case (this.type.module):
+                //    console.log(`%c Module: ${message} `, 'color: white; border-radius: 3px; padding: 2px 0; font-size: 9px; background: linear-gradient(to bottom,  #ef3232 0%,#d63a2c 100%)');
+                //    break;
 
                 case (this.type.component):
-                    console.log(`%c Component: <${message}>`, 'font-size: 9px; color: rgba(0, 0, 0, .75)');
+                    console.log(`%cComponent:%c ${message}`, 'color: #d63a2c', 'color: black');
                     break;
 
                 default:
