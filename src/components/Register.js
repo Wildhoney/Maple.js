@@ -10,6 +10,7 @@ import logger     from './../helpers/Logger.js';
 const SELECTOR = {
     LINKS:     'link[rel="import"]',
     TEMPLATES: 'template',
+    STYLES:    'link[type="text/css"]',
     SCRIPTS:   'script[type="text/javascript"]'
 };
 
@@ -45,12 +46,16 @@ export default class Register {
                     return;
                 }
 
-                (details.scripts || []).forEach((script) => {
+                (details.components || []).forEach((component) => {
 
-                    System.import(script).then((moduleImport) => {
+                    (component.scripts || []).forEach((script) => {
 
-                        let componentName = moduleImport.default.toString().match(/(?:function|class)\s*([a-z]+)/i)[1];
-                        this.registerElement(componentName, moduleImport.default, details.modulePath);
+                        System.import(script).then((moduleImport) => {
+
+                            let componentName = moduleImport.default.toString().match(/(?:function|class)\s*([a-z]+)/i)[1];
+                            this.registerElement(componentName, moduleImport.default, details.modulePath, component.styles);
+
+                        });
 
                     });
 
@@ -79,8 +84,15 @@ export default class Register {
                     resolve({
                         modulePath: modulePath,
                         moduleName: utility.getModuleName(linkElement.getAttribute('href')),
-                        scripts:    this.findScripts(linkElement.import).map((scriptElement) => {
-                            return `${modulePath}/${scriptElement.getAttribute('src').split('.').slice(0, -1).join('/')}`;
+                        components: utility.toArray(linkElement.import.querySelectorAll(SELECTOR.TEMPLATES)).map((templateElement) => {
+                            return {
+                                scripts: utility.toArray(templateElement.content.querySelectorAll(SELECTOR.SCRIPTS)).map((scriptElement) => {
+                                    return `${modulePath}/${scriptElement.getAttribute('src').split('.').slice(0, -1).join('/')}`;
+                                }),
+                                styles:  utility.toArray(templateElement.content.querySelectorAll(SELECTOR.STYLES)).map((linkElement) => {
+                                    return `${modulePath}/${linkElement.getAttribute('href').split('.').slice(0, -1).join('/')}`;
+                                })
+                            };
                         })
                     });
 
@@ -107,8 +119,11 @@ export default class Register {
                 resolve({
                     modulePath: utility.getModulePath(scriptElements[0].getAttribute('src')),
                     moduleName: utility.getModuleName(scriptElements[0].getAttribute('src')),
-                    scripts:    scriptElements.map((scriptElement) => {
-                        return `${scriptElement.getAttribute('src').split('.').slice(0, -1).join('/')}`
+                    components: scriptElements.map((scriptElement) => {
+                        return {
+                            scripts: [`${scriptElement.getAttribute('src').split('.').slice(0, -1).join('/')}`],
+                            styles:  [`${scriptElement.getAttribute('src').split('.').slice(0, -1).join('/')}`]
+                        }
                     })
                 });
 
@@ -147,9 +162,10 @@ export default class Register {
      * @param {String} className
      * @param {Object} component
      * @param {String} modulePath
+     * @param {Array} styles
      * @return {void}
      */
-    registerElement(className, component, modulePath) {
+    registerElement(className, component, modulePath, styles) {
 
         let elementName = utility.toSnakeCase(className),
             prototype   = Object.create(HTMLElement.prototype, {
@@ -189,10 +205,10 @@ export default class Register {
                     shadowRoot.appendChild(contentElement);
                     events.delegate(contentElement, React.render(renderedElement, contentElement));
 
-                    Promise.all(css.associate(modulePath, shadowRoot)).then(() => {
-                        this.removeAttribute('unresolved');
-                        this.setAttribute('resolved', '');
-                    });
+                    //Promise.all(css.associate(modulePath, shadowRoot)).then(() => {
+                    //    this.removeAttribute('unresolved');
+                    //    this.setAttribute('resolved', '');
+                    //});
 
                 }
 
