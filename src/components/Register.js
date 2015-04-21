@@ -48,11 +48,11 @@ export default class Register {
 
         this.loadImports().forEach((promise) => {
 
-            promise.then((linkElement) => {
+            promise.then((options) => {
 
-                let scriptElements = this.findScripts(linkElement.import),
-                    modulePath     = utility.getModulePath(linkElement.getAttribute('href')),
-                    moduleName     = utility.getModuleName(linkElement.getAttribute('href'));
+                let scriptElements = options.scripts,
+                    modulePath     = options.path,
+                    moduleName     = options.name;
 
                 if (modules.length && !~modules.indexOf(moduleName)) {
                     return;
@@ -62,8 +62,13 @@ export default class Register {
 
                 scriptElements.forEach((scriptElement) => {
 
-                    let scriptSrc  = scriptElement.getAttribute('src').split('.').slice(0, -1).join('/'),
+                    var scriptSrc  = scriptElement.getAttribute('src').split('.').slice(0, -1).join('/'),
+                        scriptPath = `${scriptSrc}`;
+
+                    if (options.type === 'link') {
+                        scriptSrc  = scriptElement.getAttribute('src').split('.').slice(0, -1).join('/');
                         scriptPath = `${modulePath}/${scriptSrc}`;
+                    }
 
                     System.import(scriptPath).then((Register) => {
 
@@ -92,13 +97,57 @@ export default class Register {
      */
     loadImports() {
 
-        let importDocuments = document.querySelectorAll(SELECTOR.IMPORTS);
+        let importDocuments  = utility.toArray(document.querySelectorAll(SELECTOR.IMPORTS)),
+            templateElements = utility.toArray(document.querySelectorAll(SELECTOR.TEMPLATES));
 
-        return utility.toArray(importDocuments).map((importDocument) => {
+        return [].concat(importDocuments, templateElements).map((model) => {
+
+            let type = model.nodeName.toLowerCase();
 
             return new Promise((resolve) => {
-                importDocument.addEventListener('load', event => resolve(event.path[0]));
+
+                switch (type) {
+                    case ('link'):     this.resolveLink(resolve, model); break;
+                    case ('template'): this.resolveTemplate(resolve, model); break;
+                }
+
             });
+
+        });
+
+    }
+
+    /**
+     * @method resolveTemplate
+     * @param {Function} resolve
+     * @param {HTMLTemplateElement} templateElement
+     * @return {void}
+     */
+    resolveTemplate(resolve, templateElement) {
+
+        let scriptElements = utility.toArray(templateElement.content.querySelectorAll(SELECTOR.SCRIPTS)),
+            modulePath     = utility.getModulePath(scriptElements[0].getAttribute('src')),
+            moduleName     = utility.getModuleName(scriptElements[0].getAttribute('src'));
+
+        resolve({ scripts: scriptElements, path: modulePath, name: moduleName, type: 'template' });
+
+    }
+
+    /**
+     * @method resolveLink
+     * @param {Function} resolve
+     * @param {HTMLLinkElement} linkElement
+     * @return {void}
+     */
+    resolveLink(resolve, linkElement) {
+
+        linkElement.addEventListener('load', () => {
+
+            let scriptElements = this.findScripts(linkElement.import),
+                modulePath     = utility.getModulePath(linkElement.getAttribute('href')),
+                moduleName     = utility.getModuleName(linkElement.getAttribute('href'));
+
+            resolve({ scripts: scriptElements, path: modulePath, name: moduleName, type: 'link' });
 
         });
 
