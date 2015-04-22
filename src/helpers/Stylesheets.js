@@ -14,53 +14,28 @@ export default (function main($document) {
 
         /**
          * @method associate
-         * @param {String} componentPath
+         * @param {Array} cssDocuments
          * @param {ShadowRoot} shadowRoot
          * @return {Array}
          */
-        associate(componentPath, shadowRoot) {
+        associate(cssDocuments, shadowRoot) {
 
-            let promises = [];
+            return cssDocuments.map((cssDocument) => {
 
-            utility.toArray(document.querySelectorAll('link')).forEach((link) => {
+                return new Promise((resolve) => {
 
-                let href = link.getAttribute('href');
+                    fetch(cssDocument).then((response) => response.text()).then((body) => {
 
-                if (href.match(componentPath)) {
-
-                    let templateElements = utility.toArray(link.import.querySelectorAll('template'));
-
-                    templateElements.forEach((templateElement) => {
-
-                        let templateContent = templateElement.content,
-                            cssDocuments    = utility.toArray(templateContent.querySelectorAll('link')).map((linkElement) => {
-                                return `${componentPath}/${linkElement.getAttribute('href')}`;
-                            });
-
-                        cssDocuments.forEach((cssDocument) => {
-
-                            let styleElement = $document.createElement('style');
-                            styleElement.setAttribute('type', 'text/css');
-
-                            promises.push(new Promise((resolve) => {
-
-                                fetch(cssDocument).then((response) => response.text()).then((body) => {
-                                    styleElement.innerHTML = body;
-                                    shadowRoot.appendChild(styleElement);
-                                    resolve(styleElement.innerHTML);
-                                });
-
-                            }));
-
-                        });
+                        var styleElement = shadowRoot.ownerDocument.createElement('style');
+                        styleElement.innerHTML = body;
+                        shadowRoot.appendChild(styleElement);
+                        resolve(styleElement.innerHTML);
 
                     });
 
-                }
+                });
 
             });
-
-            return promises;
 
         }
 

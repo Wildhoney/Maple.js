@@ -38,7 +38,7 @@ export default class Register {
      */
     register(...modules) {
 
-        [].concat(this.loadLinks(), this.loadTemplates()).forEach((promise) => {
+        [].concat(this.loadLinks()).forEach((promise) => {
 
             promise.then((details) => {
 
@@ -90,7 +90,7 @@ export default class Register {
                                     return `${modulePath}/${scriptElement.getAttribute('src').split('.').slice(0, -1).join('/')}`;
                                 }),
                                 styles:  utility.toArray(templateElement.content.querySelectorAll(SELECTOR.STYLES)).map((linkElement) => {
-                                    return `${modulePath}/${linkElement.getAttribute('href').split('.').slice(0, -1).join('/')}`;
+                                    return `${modulePath}/${linkElement.getAttribute('href').split('.').slice(0, -1).join('/')}.css`;
                                 })
                             };
                         })
@@ -108,30 +108,30 @@ export default class Register {
      * @method loadTemplates
      * @return {Promise[]}
      */
-    loadTemplates() {
-
-        return utility.toArray(document.querySelectorAll(SELECTOR.TEMPLATES)).map((templateElement) => {
-
-            return new Promise((resolve) => {
-
-                let scriptElements = utility.toArray(templateElement.content.querySelectorAll(SELECTOR.SCRIPTS));
-
-                resolve({
-                    modulePath: utility.getModulePath(scriptElements[0].getAttribute('src')),
-                    moduleName: utility.getModuleName(scriptElements[0].getAttribute('src')),
-                    components: scriptElements.map((scriptElement) => {
-                        return {
-                            scripts: [`${scriptElement.getAttribute('src').split('.').slice(0, -1).join('/')}`],
-                            styles:  [`${scriptElement.getAttribute('src').split('.').slice(0, -1).join('/')}`]
-                        }
-                    })
-                });
-
-            });
-
-        });
-
-    }
+    //loadTemplates() {
+    //
+    //    return utility.toArray(document.querySelectorAll(SELECTOR.TEMPLATES)).map((templateElement) => {
+    //
+    //        return new Promise((resolve) => {
+    //
+    //            let scriptElements = utility.toArray(templateElement.content.querySelectorAll(SELECTOR.SCRIPTS));
+    //
+    //            resolve({
+    //                modulePath: utility.getModulePath(scriptElements[0].getAttribute('src')),
+    //                moduleName: utility.getModuleName(scriptElements[0].getAttribute('src')),
+    //                components: scriptElements.map((scriptElement) => {
+    //                    return {
+    //                        scripts: [`${scriptElement.getAttribute('src').split('.').slice(0, -1).join('/')}`],
+    //                        styles:  [`${scriptElement.getAttribute('src').split('.').slice(0, -1).join('/')}`]
+    //                    }
+    //                })
+    //            });
+    //
+    //        });
+    //
+    //    });
+    //
+    //}
 
     /**
      * @method findScripts
@@ -146,7 +146,7 @@ export default class Register {
         templateElements.forEach((templateElement) => {
 
             let scriptElements = utility.toArray(templateElement.content.querySelectorAll(SELECTOR.SCRIPTS));
-            allScriptElements = [].concat(allScriptElements, scriptElements);
+            allScriptElements  = [].concat(allScriptElements, scriptElements);
 
         });
 
@@ -183,8 +183,7 @@ export default class Register {
                 value: function value() {
 
                     component.defaultProps = { path: modulePath, element: this.cloneNode(true) };
-
-                    this.innerHTML = '';
+                    this.innerHTML         = '';
 
                     // Import attributes from the element and transfer to the React.js class.
                     for (let index = 0, attributes = this.attributes; index < attributes.length; index++) {
@@ -205,10 +204,10 @@ export default class Register {
                     shadowRoot.appendChild(contentElement);
                     events.delegate(contentElement, React.render(renderedElement, contentElement));
 
-                    //Promise.all(css.associate(modulePath, shadowRoot)).then(() => {
-                    //    this.removeAttribute('unresolved');
-                    //    this.setAttribute('resolved', '');
-                    //});
+                    Promise.all(css.associate(styles, shadowRoot)).then(() => {
+                        this.removeAttribute('unresolved');
+                        this.setAttribute('resolved', '');
+                    });
 
                 }
 
