@@ -1,24 +1,24 @@
 import utility from './../helpers/Utility.js';
 
-export default (function main($document) {
+export default (function main() {
 
     "use strict";
+
+    /**
+     * @property cssDocumentCache
+     * @type {Object}
+     */
+    //var cssDocumentCache = {};
 
     return {
 
         /**
-         * @property linkSelector
-         * @type {String}
-         */
-        linkSelector: 'link[type="text/css"]',
-
-        /**
          * @method associate
          * @param {Array} cssDocuments
-         * @param {ShadowRoot} shadowRoot
+         * @param {Object} shadowBoundary
          * @return {Array}
          */
-        associate(cssDocuments, shadowRoot) {
+        associate(cssDocuments, shadowBoundary) {
 
             return cssDocuments.map((cssDocument) => {
 
@@ -26,9 +26,9 @@ export default (function main($document) {
 
                     fetch(cssDocument).then((response) => response.text()).then((body) => {
 
-                        var styleElement = shadowRoot.ownerDocument.createElement('style');
+                        var styleElement = shadowBoundary.ownerDocument.createElement('style');
                         styleElement.innerHTML = body;
-                        shadowRoot.appendChild(styleElement);
+                        shadowBoundary.appendChild(styleElement);
                         resolve(styleElement.innerHTML);
 
                     });
@@ -41,4 +41,4 @@ export default (function main($document) {
 
     };
 
-})(document);
+})();

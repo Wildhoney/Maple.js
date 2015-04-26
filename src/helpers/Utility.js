@@ -5,6 +5,15 @@ export default (function main() {
     return {
 
         /**
+         * @method toArray
+         * @param {*} arrayLike
+         * @return {Array}
+         */
+        toArray(arrayLike) {
+            return Array.from ? Array.from(arrayLike) : Array.prototype.slice.apply(arrayLike);
+        },
+
+        /**
          * @method toSnakeCase
          * @param {String} camelCase
          * @param {String} [joiner='-']
@@ -15,30 +24,39 @@ export default (function main() {
         },
 
         /**
-         * @method toArray
-         * @param {*} arrayLike
-         * @return {Array}
+         * @method getBase
+         * @param {String} name
+         * @return {String}
          */
-        toArray(arrayLike) {
-            return Array.from ? Array.from(arrayLike) : Array.prototype.slice.apply(arrayLike);
+        getBase(name) {
+            return name.split('.').slice(0, -1).join('/');
         },
 
         /**
-         * @method getModulePath
+         * @method modulePath
          * @param {String} importPath
          * @return {String}
          */
-        getModulePath(importPath) {
+        modulePath(importPath) {
             return importPath.split('/').slice(0, -1).join('/');
         },
 
         /**
-         * @method getModuleName
+         * @method moduleName
          * @param {String} importPath
          * @return {String}
          */
-        getModuleName(importPath) {
+        moduleName(importPath) {
             return importPath.split('/').slice(0, -1).pop();
+        },
+
+        /**
+         * @method removeExtension
+         * @param {String} filePath
+         * @return {String}
+         */
+        removeExtension(filePath) {
+            return filePath.split('.').slice(0, -1).join('.');
         }
 
     };
