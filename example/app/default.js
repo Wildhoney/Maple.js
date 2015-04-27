@@ -2,6 +2,6 @@
 
     "use strict";
 
-    new Maple();
+    new Maple('people-list');
 
 })();

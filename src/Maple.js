@@ -1,6 +1,7 @@
 import Component from './models/Component.js';
 import Template  from './models/Template.js';
 import utility   from './helpers/Utility.js';
+import log       from './helpers/Log.js';
 
 (function main($window, $document) {
 
@@ -45,7 +46,7 @@ import utility   from './helpers/Utility.js';
 
             void blacklist;
 
-            [].concat(this.loadLinks()).forEach((promise) => promise.then((templates) => {
+            [].concat(this.loadLinks(...blacklist)).forEach((promise) => promise.then((templates) => {
 
                 templates.forEach((template) => {
 
@@ -68,17 +69,20 @@ import utility   from './helpers/Utility.js';
 
         /**
          * @method loadLinks
+         * @param {Array} blacklist
          * @return {Promise[]}
          */
-        loadLinks() {
+        loadLinks(...blacklist) {
 
-            let linkElements = utility.toArray($document.querySelectorAll(utility.selector.links));
+            let linkElements = this.findLinks();
 
             return linkElements.map((linkElement) => {
 
                 let href = linkElement.getAttribute('href'),
                     name = utility.extractName(href),
                     path = utility.extractPath(href);
+
+                log('Parsing Component:', name, '#8B7E66');
 
                 return new Promise((resolve) => linkElement.addEventListener('load', () => {
 
@@ -136,6 +140,15 @@ import utility   from './helpers/Utility.js';
                 prototype: component.customElement()
             });
 
+        }
+
+        /**
+         * @method findLinks
+         * @param {Array} blacklist
+         * @return {Array}
+         */
+        findLinks(...blacklist) {
+            return utility.toArray($document.querySelectorAll(utility.selector.links));
         }
 
         /**

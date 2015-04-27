@@ -1,4 +1,5 @@
 import utility from './../helpers/Utility.js';
+import log     from './../helpers/Log.js';
 
 export default class Component {
 
@@ -26,7 +27,8 @@ export default class Component {
      */
     customElement() {
 
-        let script   = this.script,
+        let name     = this.elementName(),
+            script   = this.script,
             template = this.template;
 
         return Object.create(HTMLElement.prototype, {
@@ -43,6 +45,7 @@ export default class Component {
                  */
                 value: function value() {
 
+                    log('Registering Element:', name, '#708090');
                     script.defaultProps = { path: template.path, element: this.cloneNode(true) };
                     this.innerHTML      = '';
 

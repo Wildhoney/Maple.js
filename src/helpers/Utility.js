@@ -35,21 +35,21 @@ export default (function main() {
         },
 
         /**
+         * @method extractName
+         * @param {String} importPath
+         * @return {String}
+         */
+            extractName(importPath) {
+            return importPath.split('/').slice(0, -1).pop();
+        },
+
+        /**
          * @method extractPath
          * @param {String} importPath
          * @return {String}
          */
         extractPath(importPath) {
             return importPath.split('/').slice(0, -1).join('/');
-        },
-
-        /**
-         * @method extractName
-         * @param {String} importPath
-         * @return {String}
-         */
-        extractName(importPath) {
-            return importPath.split('/').slice(0, -1).pop();
         },
 
         /**
