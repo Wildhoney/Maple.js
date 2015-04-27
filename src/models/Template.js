@@ -24,6 +24,24 @@ export default class Template {
     }
 
     /**
+     * @method content
+     * @return {DocumentFragment}
+     */
+    content() {
+
+        let cloned  = this.element.cloneNode(true).content,
+            styles  = utility.toArray(cloned.querySelectorAll('link[type="text/css"]')),
+            scripts = utility.toArray(cloned.querySelectorAll('script[type="text/maple"]'));
+
+        [].concat(styles, scripts).forEach((node) => {
+            node.remove();
+        });
+
+        return cloned;
+
+    }
+
+    /**
      * @method resolveScriptPath
      * @param {String} scriptName
      * @return {String}

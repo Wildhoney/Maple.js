@@ -67,6 +67,10 @@ import utility   from './helpers/Utility.js';
 
                     }));
 
+                    // Import the template element minus the Maple scripts and styles.
+                    let imported = $document.importNode(template.content(), true);
+                    $document.body.appendChild(imported);
+
                 });
 
             }));
@@ -79,7 +83,7 @@ import utility   from './helpers/Utility.js';
          */
         loadLinks() {
 
-            let linkElements = utility.toArray(document.querySelectorAll(SELECTOR.LINKS));
+            let linkElements = utility.toArray($document.querySelectorAll(SELECTOR.LINKS));
 
             return linkElements.map((linkElement) => {
 
@@ -130,7 +134,7 @@ import utility   from './helpers/Utility.js';
         }
 
         /**
-         * Responsible for creating the custom element using document.registerElement, and then appending
+         * Responsible for creating the custom element using $document.registerElement, and then appending
          * the associated React.js component.
          *
          * @method registerElement
