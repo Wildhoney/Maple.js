@@ -9,10 +9,8 @@ export default class LocalDate extends React.Component {
      * @return {Object}
      */
     render() {
-
-        return React.createElement('date', null, 'Current Date: ' + new Date().getDate() + '/'
-                                                                  + new Date().getMonth() + '/'
-                                                                  + new Date().getFullYear());
+        let dateTime = moment().format(this.props.format || 'YYYY-MM-DD');
+        return React.createElement('datetime', null, dateTime);
     }
 
 }

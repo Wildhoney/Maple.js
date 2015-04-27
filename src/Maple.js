@@ -36,16 +36,17 @@ import log       from './helpers/Log.js';
 
                 templates.forEach((template) => {
 
-                    this.resolveScripts(template).forEach((promise) => promise.then((component) => {
+                    // Load all of the prerequisites for the component.
+                    Promise.all(this.loadThirdPartyScripts(template)).then(() => {
 
-                        // Register the custom element using the resolved script.
-                        this.registerElement(component);
+                        this.resolveScripts(template).forEach((promise) => promise.then((component) => {
 
-                    }));
+                            // Register the custom element using the resolved script.
+                            this.registerElement(component);
 
-                    // Import the template element minus the Maple scripts and styles.
-                    let imported = $document.importNode(template.content(), true);
-                    $document.body.appendChild(imported);
+                        }));
+
+                    });
 
                 });
 
@@ -90,13 +91,36 @@ import log       from './helpers/Log.js';
         }
 
         /**
+         * @method loadThirdPartyScripts
+         * @param {Template} template
+         * @return {Promise[]}
+         */
+        loadThirdPartyScripts(template) {
+
+            return template.thirdPartyScripts().map((script) => new Promise((resolve, reject) => {
+
+                var scriptElement = $document.createElement('script');
+                scriptElement.setAttribute('type', 'text/javascript');
+                scriptElement.setAttribute('src', script.getAttribute('src'));
+
+                scriptElement.addEventListener('load', () => {
+                    resolve(scriptElement);
+                });
+
+                $document.head.appendChild(scriptElement);
+
+            }));
+
+        }
+
+        /**
          * @method resolveScripts
          * @param {Template} template
          * @return {Promise[]}
          */
         resolveScripts(template) {
 
-            return template.scripts().map((scriptElement) => new Promise((resolve) => {
+            return template.componentScripts().map((scriptElement) => new Promise((resolve) => {
 
                 let scriptPath = template.resolveScriptPath(scriptElement.getAttribute('src'));
 

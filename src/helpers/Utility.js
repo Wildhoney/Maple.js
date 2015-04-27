@@ -9,10 +9,11 @@ export default (function main() {
          * @type {Object}
          */
         selector: {
-            links:     'link[rel="import"]',
-            styles:    'link[type="text/css"]',
-            scripts:   'script[type="text/maple"]',
-            templates: 'template'
+            links:      'link[rel="import"]:not([data-ignore])',
+            styles:     'link[type="text/css"]',
+            scripts:    'script[type="text/javascript"]',
+            components: 'script[type="text/maple"]',
+            templates:  'template'
         },
 
         /**
@@ -39,7 +40,7 @@ export default (function main() {
          * @param {String} importPath
          * @return {String}
          */
-            extractName(importPath) {
+        extractName(importPath) {
             return importPath.split('/').slice(0, -1).pop();
         },
 

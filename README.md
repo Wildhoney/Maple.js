@@ -38,7 +38,7 @@ We next need to add [some standard ES6 React code](https://facebook.github.io/re
 export default class MyDateTime extends React.Component {
 
     render() {
-        let dateTime = moment().format(this.props.format) || 'YYYY-MM-DD';
+        let dateTime = moment().format(this.props.format || 'YYYY-MM-DD');
         return React.createElement('datetime', null, dateTime);
     }
 
@@ -71,3 +71,11 @@ Once the HTML document has been imported, Maple will register our custom element
 ```
 
 **Note:** In the above example we use `data-format`, whereas our React component expects `format` &mdash; you'll be glad to know that in these cases, Maple strips the `data-` segment from the attribute, which allows you to write perfectly valid HTML5 syntax.
+
+### Ignore Import
+
+Importing a HTML file may not require Maple at all, and therefore if the imports were left to be processed by Maple this would be a waste of resources &ndash; as no components would be contained within the import. For these cases you can add the `data-ignore` attribute to the HTML import, and Maple will leave them unprocessed:
+
+```html
+<link rel="import" type="text/html" href="example.html" data-ignore />
+```

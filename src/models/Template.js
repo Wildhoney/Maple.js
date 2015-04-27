@@ -16,29 +16,19 @@ export default class Template {
     }
 
     /**
-     * @method getScripts
+     * @method thirdPartyScripts
      * @return {Array}
      */
-    scripts() {
+    thirdPartyScripts() {
         return utility.toArray(this.element.content.querySelectorAll(utility.selector.scripts));
     }
 
     /**
-     * @method content
-     * @return {DocumentFragment}
+     * @method componentScripts
+     * @return {Array}
      */
-    content() {
-
-        let cloned  = this.element.cloneNode(true).content,
-            styles  = utility.toArray(cloned.querySelectorAll(utility.selector.styles)),
-            scripts = utility.toArray(cloned.querySelectorAll(utility.selector.scripts));
-
-        [].concat(styles, scripts).forEach((node) => {
-            node.remove();
-        });
-
-        return cloned;
-
+    componentScripts() {
+        return utility.toArray(this.element.content.querySelectorAll(utility.selector.components));
     }
 
     /**
