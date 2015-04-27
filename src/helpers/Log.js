@@ -9,11 +9,13 @@ export default function lof(label, message, colour) {
 
     "use strict";
 
+    let commonStyles = 'text-transform: uppercase; line-height: 20px; padding: 3px 5px; font-size: 9px;';
+
     console.log(
-        `%c Maple.js: %c${label} %c${message}`,
-        'font-size: 11px; color: rgba(0, 0, 0, .25)',
-        `font-size: 11px; color: ${colour}`,
-        'font-size: 11px; color: black'
+        `%c Maple %c ${label} %c ${message}`,
+        `${commonStyles} color: rgba(0, 0, 0, .25); background-color: rgba(0, 0, 0, .1)`,
+        `${commonStyles} color: white; background-color: ${colour}`,
+        `${commonStyles} color: rgba(0, 0, 0, .55)`
     );
 
 }

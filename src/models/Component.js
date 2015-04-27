@@ -74,7 +74,7 @@ export default class Component {
                  */
                 value: function value() {
 
-                    log('Registering Element:', name, '#708090');
+                    log('Element', name, '#009ACD');
                     script.defaultProps = { path: template.path, element: this.cloneNode(true) };
                     this.innerHTML      = '';
 

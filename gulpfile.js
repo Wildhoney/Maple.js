@@ -103,7 +103,7 @@
     gulp.task('build', ['compile', 'vendorify', 'minify', 'polyfill-bundler']);
     gulp.task('default', ['test', 'build']);
     gulp.task('watch', function watch() {
-        gulp.watch(config.gulp.all, ['build']);
+        gulp.watch(config.gulp.all, ['compile', 'vendorify']);
     });
 
 })();

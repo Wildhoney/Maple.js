@@ -68,7 +68,7 @@ import log       from './helpers/Log.js';
                     name = utility.extractName(href),
                     path = utility.extractPath(href);
 
-                log('Parsing Component:', name, '#8B7E66');
+                log('Component', name, '#8B864E');
 
                 return new Promise((resolve) => linkElement.addEventListener('load', () => {
 
@@ -148,7 +148,7 @@ import log       from './helpers/Log.js';
             let name = component.elementName();
 
             if (name.split('-').length <= 1) {
-                log('Invalid Element Tag:', `${name}`, '#DB7093');
+                log('Invalid Tag', `${name}`, '#DB7093');
                 return;
             }
 
