@@ -18,7 +18,7 @@ import utility   from './helpers/Utility.js';
         LINKS:     'link[rel="import"]',
         TEMPLATES: 'template',
         STYLES:    'link[type="text/css"]',
-        SCRIPTS:   'script[type="text/javascript"]'
+        SCRIPTS:   'script[type="text/maple"]'
     };
 
     /**

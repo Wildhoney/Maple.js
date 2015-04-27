@@ -1,4 +1,4 @@
 {
-  "directory" : "example/vendor",
+  "directory" : "public/vendor",
   "interactive": false
 }
