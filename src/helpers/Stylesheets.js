@@ -1,5 +1,3 @@
-import utility from './../helpers/Utility.js';
-
 export default (function main() {
 
     "use strict";

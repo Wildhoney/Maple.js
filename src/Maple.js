@@ -54,6 +54,8 @@ import utility   from './helpers/Utility.js';
          */
         findComponents(...blacklist) {
 
+            void blacklist;
+
             [].concat(this.loadLinks()).forEach((promise) => promise.then((templates) => {
 
                 templates.forEach((template) => {
@@ -85,7 +87,7 @@ import utility   from './helpers/Utility.js';
                     path = utility.modulePath(href),
                     name = utility.moduleName(href);
 
-                return new Promise((resolve, reject) => linkElement.addEventListener('load', () => {
+                return new Promise((resolve) => linkElement.addEventListener('load', () => {
 
                     let templates = [];
 
@@ -112,7 +114,7 @@ import utility   from './helpers/Utility.js';
          */
         resolveScripts(template) {
 
-            return template.scripts().map((scriptElement) => new Promise((resolve, reject) => {
+            return template.scripts().map((scriptElement) => new Promise((resolve) => {
 
                 let scriptPath = template.resolveScriptPath(scriptElement.getAttribute('src'));
 
