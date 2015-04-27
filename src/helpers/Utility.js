@@ -5,6 +5,17 @@ export default (function main() {
     return {
 
         /**
+         * @property selector
+         * @type {Object}
+         */
+        selector: {
+            links:     'link[rel="import"]',
+            styles:    'link[type="text/css"]',
+            scripts:   'script[type="text/maple"]',
+            templates: 'template'
+        },
+
+        /**
          * @method toArray
          * @param {*} arrayLike
          * @return {Array}
@@ -24,29 +35,20 @@ export default (function main() {
         },
 
         /**
-         * @method getBase
-         * @param {String} name
-         * @return {String}
-         */
-        getBase(name) {
-            return name.split('.').slice(0, -1).join('/');
-        },
-
-        /**
-         * @method modulePath
+         * @method extractPath
          * @param {String} importPath
          * @return {String}
          */
-        modulePath(importPath) {
+        extractPath(importPath) {
             return importPath.split('/').slice(0, -1).join('/');
         },
 
         /**
-         * @method moduleName
+         * @method extractName
          * @param {String} importPath
          * @return {String}
          */
-        moduleName(importPath) {
+        extractName(importPath) {
             return importPath.split('/').slice(0, -1).pop();
         },
 

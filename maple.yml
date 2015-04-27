@@ -3,15 +3,15 @@ gulp:
 
   directories:
     dist: dist
-    vendor: public/vendor/maple
+    vendor: example/vendor/maple
 
   tests:
     temp: tests/build/maple.js
 
   dependencies:
-#    - public/vendor/d3/d3.js
-#    - public/vendor/lodash/lodash.js
-#    - public/vendor/mousetrap/mousetrap.js
+#    - example/vendor/d3/d3.js
+#    - example/vendor/lodash/lodash.js
+#    - example/vendor/mousetrap/mousetrap.js
 
   names:
     dev: maple.js

@@ -11,17 +11,6 @@ import utility   from './helpers/Utility.js';
     }
 
     /**
-     * @constant SELECTOR
-     * @type {Object}
-     */
-    const SELECTOR = {
-        LINKS:     'link[rel="import"]',
-        TEMPLATES: 'template',
-        STYLES:    'link[type="text/css"]',
-        SCRIPTS:   'script[type="text/maple"]'
-    };
-
-    /**
      * @module Maple
      * @link https://github.com/Wildhoney/Maple.js
      * @author Adam Timberlake
@@ -83,13 +72,13 @@ import utility   from './helpers/Utility.js';
          */
         loadLinks() {
 
-            let linkElements = utility.toArray($document.querySelectorAll(SELECTOR.LINKS));
+            let linkElements = utility.toArray($document.querySelectorAll(utility.selector.links));
 
             return linkElements.map((linkElement) => {
 
                 let href = linkElement.getAttribute('href'),
-                    path = utility.modulePath(href),
-                    name = utility.moduleName(href);
+                    name = utility.extractName(href),
+                    path = utility.extractPath(href);
 
                 return new Promise((resolve) => linkElement.addEventListener('load', () => {
 
@@ -155,7 +144,7 @@ import utility   from './helpers/Utility.js';
          * @return {Array}
          */
         findTemplates(documentRoot = $document) {
-            return utility.toArray(documentRoot.querySelectorAll(SELECTOR.TEMPLATES));
+            return utility.toArray(documentRoot.querySelectorAll(utility.selector.templates));
         }
 
     }
