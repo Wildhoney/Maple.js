@@ -67,6 +67,8 @@ export default class Component {
 
                     shadowRoot.appendChild(contentElement);
                     React.render(renderedElement, contentElement);
+                    this.removeAttribute('unresolved');
+                    this.setAttribute('resolved', null);
 
                 }
 
