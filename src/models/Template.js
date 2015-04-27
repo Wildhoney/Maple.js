@@ -20,7 +20,7 @@ export default class Template {
      * @return {Array}
      */
     scripts() {
-        return utility.toArray(this.element.content.querySelectorAll('script'));
+        return utility.toArray(this.element.content.querySelectorAll('script[type="text/maple"]'));
     }
 
     /**
