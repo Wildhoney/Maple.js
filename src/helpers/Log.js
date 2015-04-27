@@ -5,7 +5,7 @@
  * @param {String} colour
  * @return {log}
  */
-export default function lof(label, message, colour) {
+export default function log(label, message, colour) {
 
     "use strict";
 

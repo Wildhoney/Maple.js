@@ -4,6 +4,7 @@ gulp:
   directories:
     dist: dist
     vendor: example/vendor/maple
+    docs: docs
 
   tests:
     temp: tests/build/maple.js

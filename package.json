@@ -1,6 +1,6 @@
 {
   "name": "maple.js",
-  "version": "0.1.15",
+  "version": "0.2.0",
   "description": "",
   "main": "dist/maple.js",
   "directories": {
@@ -39,5 +39,6 @@
   "bugs": {
     "url": "https://github.com/Wildhoney/Maple.js/issues"
   },
-  "homepage": "https://github.com/Wildhoney/Maple.js"
+  "homepage": "https://github.com/Wildhoney/Maple.js",
+  "dependencies": {}
 }
