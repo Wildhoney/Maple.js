@@ -24,12 +24,6 @@ import log       from './helpers/Log.js';
          */
         constructor() {
 
-            /**
-             * @property components
-             * @type {Array}
-             */
-            this.components = [];
-
             $document.addEventListener('DOMContentLoaded', () => {
                 this.findComponents();
             });
@@ -156,6 +150,7 @@ import log       from './helpers/Log.js';
 
     }
 
-    $window.Maple = Maple;
+    // No documents, no person.
+    $document.addEventListener('DOMContentLoaded', () => new Maple());
 
 })(window, document);
