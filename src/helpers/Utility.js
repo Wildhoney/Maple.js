@@ -12,7 +12,7 @@ export default (function main() {
             links:      'link[rel="import"]:not([data-ignore])',
             styles:     'link[type="text/css"]',
             scripts:    'script[type="text/javascript"]',
-            components: 'script[type="text/maple"]',
+            components: 'script[type="text/maple-component"]',
             templates:  'template'
         },
 

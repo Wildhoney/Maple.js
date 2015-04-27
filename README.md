@@ -22,13 +22,13 @@ Within the directory `my-app/components` we create our component's index that wi
 
 ```html
 <template>
-    <script type="text/maple" src="date-time.js"></script>
+    <script type="text/maple-component" src="date-time.js"></script>
     <script type="text/javascript" src="../../../vendor/moment/moment.js"></script>
     <link rel="stylesheet" type="text/css" href="date-time.css" />
 </template>
 ```
 
-**Note:** When we import the `date-time.js` file we use the type `text/maple`, whereas for the third-party library our component depends on &mdash; `moment.js` &mdash; we specify this as a regular JavaScript file with the `text/javascript` type. It's important to remember that components added with the type `text/maple` will be entirely handled by Maple, and those imported as `text/javascript` will be imported into the global scope of the document.
+**Note:** When we import the `date-time.js` file we use the type `text/maple-component`, whereas for the third-party library our component depends on &mdash; `moment.js` &mdash; we specify this as a regular JavaScript file with the `text/javascript` type. It's important to remember that components added with the type `text/maple-component` will be entirely handled by Maple, and those imported as `text/javascript` will be imported into the global scope of the document.
 
 Within our CSS file, we can be as loose as we like, because the `date-time.js` component will be imported under its own shadow boundary, preventing the styles from bleeding over into other components &mdash; even components that are children of our component.
 
@@ -52,7 +52,7 @@ Next all we need to do is add a little CSS to our `date-time.css` document:
 ```css
 datetime {
     color: rebeccapurple;
-    font-family: Arial, Tahoma, Helvetica, san-serif;
+    font-family: Arial, Tahoma, Helvetica, sans-serif;
 }
 ```
 
@@ -89,12 +89,12 @@ As mentioned earlier, each component can register **multiple** custom elements, 
  
 ```html
 <template>
-    <script type="text/maple" src="datetime-gmt.js"></script>
+    <script type="text/maple-component" src="datetime-gmt.js"></script>
     <link rel="stylesheet" type="text/css" href="shared.css" />
     <link rel="stylesheet" type="text/css" href="datetime-gmt.css" />
 </template>
 <template>
-    <script type="text/maple" src="datetime-bst.js"></script>
+    <script type="text/maple-component" src="datetime-bst.js"></script>
     <link rel="stylesheet" type="text/css" href="shared.css" />
     <link rel="stylesheet" type="text/css" href="datetime-bst.css" />
 </template>
