@@ -1,6 +1,6 @@
 {
   "name": "maple.js",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "homepage": "https://github.com/maplejs/framework",
   "authors": [
     "Adam Timberlake <adam.timberlake@gmail.com>"
@@ -26,6 +26,7 @@
     "webcomponentsjs": "~0.6.1"
   },
   "devDependencies": {
-    "underscore": "~1.8.3"
+    "underscore": "~1.8.3",
+    "fetch": "~0.7.0"
   }
 }

@@ -22,14 +22,43 @@ export default class Component {
     }
 
     /**
+     * @method importLinks
+     * @param {ShadowRoot} shadowBoundary
+     * @return {Promise[]}
+     */
+    importLinks(shadowBoundary) {
+
+        let styleElements = utility.toArray(this.template.element.content.querySelectorAll(utility.selector.styles));
+
+        return [].concat(styleElements).map((styleElement) => new Promise((resolve) => {
+
+            let url = `${this.template.path}/${styleElement.getAttribute('href')}`;
+
+            // Create the associated style element and resolve the promise with it.
+            fetch(url).then((response) => response.text()).then((body) => {
+
+                let styleElement = document.createElement('style');
+                styleElement.setAttribute('type', 'text/css');
+                styleElement.innerHTML = body;
+                shadowBoundary.appendChild(styleElement);
+                resolve();
+
+            });
+
+        }));
+
+    }
+
+    /**
      * @method customElement
      * @return {HTMLElement}
      */
     customElement() {
 
-        let name     = this.elementName(),
-            script   = this.script,
-            template = this.template;
+        let name        = this.elementName(),
+            script      = this.script,
+            template    = this.template,
+            importLinks = this.importLinks.bind(this);
 
         return Object.create(HTMLElement.prototype, {
 
@@ -67,8 +96,12 @@ export default class Component {
 
                     shadowRoot.appendChild(contentElement);
                     React.render(renderedElement, contentElement);
-                    this.removeAttribute('unresolved');
-                    this.setAttribute('resolved', null);
+
+                    // Import external CSS documents.
+                    Promise.all(importLinks(shadowRoot)).then(() => {
+                        this.removeAttribute('unresolved');
+                        this.setAttribute('resolved', '');
+                    });
 
                 }
 

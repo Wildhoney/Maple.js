@@ -5,6 +5,14 @@
 export default class LocalDate extends React.Component {
 
     /**
+     * @method componentDidMount
+     * @return {void}
+     */
+    componentDidMount() {
+        setInterval(() => this.forceUpdate(), 1000);
+    }
+
+    /**
      * @method render
      * @return {Object}
      */
