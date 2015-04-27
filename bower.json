@@ -25,7 +25,6 @@
     "es6-module-loader": "~0.16.5"
   },
   "devDependencies": {
-    "underscore": "~1.8.3",
-    "fetch": "~0.7.0"
+    "underscore": "~1.8.3"
   }
 }
