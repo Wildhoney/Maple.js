@@ -22,7 +22,8 @@
   ],
   "dependencies": {
     "react": "~0.13.1",
-    "es6-module-loader": "~0.16.5"
+    "es6-module-loader": "~0.16.5",
+    "webcomponentsjs": "~0.6.1"
   },
   "devDependencies": {
     "underscore": "~1.8.3"

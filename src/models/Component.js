@@ -67,6 +67,7 @@ export default class Component {
 
                     shadowRoot.appendChild(contentElement);
                     React.render(renderedElement, contentElement);
+                    console.log(contentElement);
 
                 }
 
