@@ -23,11 +23,7 @@ import log       from './helpers/Log.js';
          * @return {void}
          */
         constructor() {
-
-            $document.addEventListener('DOMContentLoaded', () => {
-                this.findComponents();
-            });
-
+            this.findComponents();
         }
 
         /**

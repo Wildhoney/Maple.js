@@ -21,14 +21,11 @@
     "tests"
   ],
   "dependencies": {
-    "radio": "~0.2.0",
-    "director": "~1.2.8",
-    "traceur": "~0.0.84",
     "react": "~0.13.1",
-    "es6-module-loader": "~0.16.5",
-    "fetch": "~0.7.0"
+    "es6-module-loader": "~0.16.5"
   },
   "devDependencies": {
-    "underscore": "~1.8.3"
+    "underscore": "~1.8.3",
+    "fetch": "~0.7.0"
   }
 }
