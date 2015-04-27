@@ -97,7 +97,7 @@ import log       from './helpers/Log.js';
          */
         loadThirdPartyScripts(template) {
 
-            return template.thirdPartyScripts().map((script) => new Promise((resolve, reject) => {
+            return template.thirdPartyScripts().map((script) => new Promise((resolve) => {
 
                 var scriptElement = $document.createElement('script');
                 scriptElement.setAttribute('type', 'text/javascript');
