@@ -17,6 +17,7 @@
     "es6ify": "^1.6.0",
     "express": "^4.12.3",
     "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
     "gulp-jshint": "^1.10.0",
     "gulp-karma": "0.0.4",
     "gulp-rename": "^1.2.2",

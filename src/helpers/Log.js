@@ -16,6 +16,4 @@ export default function lof(label, message, colour) {
         'font-size: 11px; color: black'
     );
 
-    //console.log('Maple', label, message);
-
 }

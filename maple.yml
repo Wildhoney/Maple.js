@@ -8,14 +8,19 @@ gulp:
   tests:
     temp: tests/build/maple.js
 
-  dependencies:
-#    - example/vendor/d3/d3.js
-#    - example/vendor/lodash/lodash.js
-#    - example/vendor/mousetrap/mousetrap.js
+  polyfills:
+    - example/vendor/browser.js
+    - example/vendor/webcomponentsjs/webcomponents.js
+    - example/vendor/fetch/fetch.js
+    - example/vendor/es6-module-loader/dist/es6-module-loader.js
 
   names:
-    dev: maple.js
-    prod: maple.min.js
+
+    defaultDev: maple.js
+    defaultProd: maple.min.js
+
+    bundleDev: maple-with-polyfills.js
+    bundleProd: maple-with-polyfills.min.js
 
   all:
     - ./src/*.js

@@ -1,8 +1,8 @@
 /**
- * @module LocalDate
+ * @module TimeDate
  * @extends React.Component
  */
-export default class LocalDate extends React.Component {
+export default class TimeDate extends React.Component {
 
     /**
      * @method componentDidMount

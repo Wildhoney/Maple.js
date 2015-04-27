@@ -145,7 +145,14 @@ import log       from './helpers/Log.js';
          */
         registerElement(component) {
 
-            $document.registerElement(component.elementName(), {
+            let name = component.elementName();
+
+            if (name.split('-').length <= 1) {
+                log('Invalid Element Tag:', `${name}`, '#DB7093');
+                return;
+            }
+
+            $document.registerElement(name, {
                 prototype: component.customElement()
             });
 
