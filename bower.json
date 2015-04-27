@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "underscore": "~1.8.3",
-    "fetch": "~0.7.0"
+    "fetch": "~0.7.0",
+    "alt": "~0.15.5"
   }
 }
