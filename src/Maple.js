@@ -20,10 +20,9 @@ import log       from './helpers/Log.js';
 
         /**
          * @constructor
-         * @param {Array} blacklist
          * @return {void}
          */
-        constructor(...blacklist) {
+        constructor() {
 
             /**
              * @property components
@@ -32,21 +31,18 @@ import log       from './helpers/Log.js';
             this.components = [];
 
             $document.addEventListener('DOMContentLoaded', () => {
-                this.findComponents(...blacklist);
+                this.findComponents();
             });
 
         }
 
         /**
          * @method findComponents
-         * @param {Array} blacklist
          * @return {void}
          */
-        findComponents(...blacklist) {
+        findComponents() {
 
-            void blacklist;
-
-            [].concat(this.loadLinks(...blacklist)).forEach((promise) => promise.then((templates) => {
+            [].concat(this.loadLinks()).forEach((promise) => promise.then((templates) => {
 
                 templates.forEach((template) => {
 
@@ -69,10 +65,9 @@ import log       from './helpers/Log.js';
 
         /**
          * @method loadLinks
-         * @param {Array} blacklist
          * @return {Promise[]}
          */
-        loadLinks(...blacklist) {
+        loadLinks() {
 
             let linkElements = this.findLinks();
 
@@ -144,10 +139,9 @@ import log       from './helpers/Log.js';
 
         /**
          * @method findLinks
-         * @param {Array} blacklist
          * @return {Array}
          */
-        findLinks(...blacklist) {
+        findLinks() {
             return utility.toArray($document.querySelectorAll(utility.selector.links));
         }
 
