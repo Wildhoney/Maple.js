@@ -30,19 +30,15 @@ Within the directory `my-app/components` we create our component's index that wi
 
 **Note:** When we import the `date-time.js` file we use the type `text/maple`, whereas for the third-party library our component depends on &mdash; `moment.js` &mdash; we specify this as a regular JavaScript file with the `text/javascript` type. It's important to remember that components added with the type `text/maple` will be entirely handled by Maple, and those imported as `text/javascript` will be imported into the global scope of the document.
 
-Within our CSS file, we can be as loose as we like, because the `date-time.js` component will be imported under its own shadow boundary, preventing the styles from bleeding over into other components &mdash; even components that our children of our component.
+Within our CSS file, we can be as loose as we like, because the `date-time.js` component will be imported under its own shadow boundary, preventing the styles from bleeding over into other components &mdash; even components that are children of our component.
 
 We next need to add [some standard ES6 React code](https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html) to our `date-time.js` to make it return a date and time when rendered:
 
 ```javascript
 export default class MyDateTime extends React.Component {
 
-    /**
-     * @method render
-     * @return {Object}
-     */
     render() {
-        let dateTime = moment().format(this.props.format);
+        let dateTime = moment().format(this.props.format) || 'YYYY-MM-DD';
         return React.createElement('datetime', null, dateTime);
     }
 
