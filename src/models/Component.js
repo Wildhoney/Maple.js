@@ -28,21 +28,36 @@ export default class Component {
      */
     importLinks(shadowBoundary) {
 
-        let styleElements = utility.toArray(this.template.element.content.querySelectorAll(utility.selector.styles));
+        /**
+         * @method appendStyle
+         * @param {String} body
+         * @return {void}
+         */
+        function appendStyle(body) {
+            let styleElement = document.createElement('style');
+            styleElement.setAttribute('type', 'text/css');
+            styleElement.innerHTML = body;
+            shadowBoundary.appendChild(styleElement);
+        }
 
-        return [].concat(styleElements).map((styleElement) => new Promise((resolve) => {
+        let content       = this.template.element.content,
+            linkElements  = utility.toArray(content.querySelectorAll(utility.selector.styles)),
+            styleElements = utility.toArray(content.querySelectorAll(utility.selector.inlines));
 
-            let url = `${this.template.path}/${styleElement.getAttribute('href')}`;
+        return [].concat(linkElements, styleElements).map((element) => new Promise((resolve) => {
+
+            if (element.nodeName.toLowerCase() === 'style') {
+                appendStyle(element.innerHTML);
+                resolve();
+                return;
+            }
+
+            let url = `${this.template.path}/${element.getAttribute('href')}`;
 
             // Create the associated style element and resolve the promise with it.
             fetch(url).then((response) => response.text()).then((body) => {
-
-                let styleElement = document.createElement('style');
-                styleElement.setAttribute('type', 'text/css');
-                styleElement.innerHTML = body;
-                shadowBoundary.appendChild(styleElement);
+                appendStyle(body);
                 resolve();
-
             });
 
         }));

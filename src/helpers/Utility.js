@@ -12,6 +12,7 @@ export default (function main() {
             links:      'link[rel="import"]:not([data-ignore])',
             styles:     'link[type="text/css"]',
             scripts:    'script[type="text/javascript"]',
+            inlines:    'style[type="text/css"]',
             components: 'script[type="text/maple-component"]',
             templates:  'template'
         },
