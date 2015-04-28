@@ -12,6 +12,21 @@ import log       from './helpers/Log.js';
     }
 
     /**
+     * @constant HAS_INITIATED
+     * @type {Boolean}
+     */
+    let HAS_INITIATED = false;
+
+    /**
+     * @method isReady
+     * @param {String} state
+     * @return {Boolean}
+     */
+    function isReady(state) {
+        return (!HAS_INITIATED && (state === 'interactive' || state === 'complete'));
+    }
+
+    /**
      * @module Maple
      * @link https://github.com/Wildhoney/Maple.js
      * @author Adam Timberlake
@@ -23,6 +38,7 @@ import log       from './helpers/Log.js';
          * @return {void}
          */
         constructor() {
+            HAS_INITIATED = true;
             this.findComponents();
         }
 
@@ -70,21 +86,35 @@ import log       from './helpers/Log.js';
 
                 log('Component', name, '#8B864E');
 
-                return new Promise((resolve) => linkElement.addEventListener('load', () => {
+                return new Promise((resolve) => {
 
-                    let templates = [];
+                    /**
+                     * @method findTemplates
+                     * @return {void}
+                     */
+                    var findTemplates = () => {
 
-                    this.findTemplates(linkElement.import).forEach((templateElement) => {
+                        let templates = [];
 
-                        // Instantiate our component with the name, path, and the associated element.
-                        let template = new Template({ name: name, path: path, element: templateElement });
-                        templates.push(template);
+                        this.findTemplates(linkElement.import).forEach((templateElement) => {
 
-                    });
+                            // Instantiate our component with the name, path, and the associated element.
+                            let template = new Template({ name: name, path: path, element: templateElement });
+                            templates.push(template);
 
-                    resolve(templates);
+                        });
 
-                }));
+                        resolve(templates);
+
+                    };
+
+                    if (linkElement.import) {
+                        return void findTemplates();
+                    }
+
+                    linkElement.addEventListener('load', findTemplates);
+
+                });
 
             });
 
@@ -99,7 +129,7 @@ import log       from './helpers/Log.js';
 
             return template.thirdPartyScripts().map((script) => new Promise((resolve) => {
 
-                var scriptElement = $document.createElement('script');
+                let scriptElement = $document.createElement('script');
                 scriptElement.setAttribute('type', 'text/javascript');
                 scriptElement.setAttribute('src', script.getAttribute('src'));
 
@@ -175,6 +205,11 @@ import log       from './helpers/Log.js';
             return utility.toArray(documentRoot.querySelectorAll(utility.selector.templates));
         }
 
+    }
+
+    // Support for the "async" attribute on the Maple script element.
+    if (isReady($document.readyState)) {
+        new Maple();
     }
 
     // No documents, no person.
