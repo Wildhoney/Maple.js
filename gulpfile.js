@@ -8,6 +8,7 @@
         rename     = require('gulp-rename'),
         concat     = require('gulp-concat'),
         sass       = require('gulp-sass'),
+        babel      = require('gulp-babel'),
         fs         = require('fs'),
         yaml       = require('js-yaml'),
         browserify = require('browserify'),
@@ -22,13 +23,14 @@
     /**
      * @method compile
      * @param {String} destPath
+     * @param {String} [entryPath=entryFile]
      * @return Object
      */
-    var compile = function(destPath) {
+    var compile = function(destPath, entryPath) {
 
         return browserify({ debug: true })
                 .transform(babelify)
-                .require(entryFile, { entry: true })
+                .require(entryPath || entryFile, { entry: true })
                 .bundle()
                 .on('error', function (model) { console.error(['Error:', model.message].join(' ')); })
                 .pipe(fs.createWriteStream(destPath));
@@ -58,6 +60,14 @@
 
     gulp.task('compile', function() {
         return compile(devPath);
+    });
+
+    gulp.task('appify', function() {
+
+        return gulp.src(config.app)
+                   .pipe(babel({ modules: 'system' }))
+                   .pipe(gulp.dest(config.directories.app));
+
     });
 
     gulp.task('sass', function () {
@@ -97,7 +107,7 @@
     });
 
     gulp.task('test', ['lint']);
-    gulp.task('build', ['compile', 'vendorify', 'minify', 'bundler']);
+    gulp.task('build', ['compile', 'vendorify', 'minify', 'bundler', 'appify']);
     gulp.task('default', ['test', 'build']);
     gulp.task('watch', function watch() {
         gulp.watch(config.all, ['compile', 'vendorify']);

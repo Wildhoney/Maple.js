@@ -13,3 +13,7 @@
 # Tests
 /tests/compile/*
 !/tests/compile/.gitkeep
+
+# Application
+/example/compiled/*
+!/example/compiled/.gitkeep

@@ -5,6 +5,7 @@ gulp:
   directories:
     css: example/css
     dist: dist
+    app: example/compiled
     vendor: example/vendor/maple
 
   polyfills:
@@ -25,3 +26,8 @@ gulp:
     - ./src/*.js
     - ./src/**/*.js
     - ./src/**/**/*.js
+
+  app:
+    - ./example/app/*.js
+    - ./example/app/actions/*.js
+    - ./example/app/stores/*.js
