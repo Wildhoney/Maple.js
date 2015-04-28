@@ -50,6 +50,331 @@ expression:false,params:[{start:null,loc:null,range:null,name:"Constructor",type
 loc:null,range:null,name:"length",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"BinaryExpression",end:null,_paths:null},update:{loc:null,start:null,range:null,operator:"++",prefix:false,argument:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},type:"UpdateExpression",end:null,_paths:null},body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"source",type:"Identifier",end:null},init:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"arguments",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,left:{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"key",type:"Identifier",end:null},init:null,type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},right:{start:null,loc:null,range:null,name:"source",type:"Identifier",end:null},body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{loc:null,start:null,range:null,object:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"prototype",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},property:{start:null,loc:null,range:null,name:"hasOwnProperty",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},property:{start:null,loc:null,range:null,name:"call",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"source",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"key",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"target",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"key",type:"Identifier",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"source",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"key",type:"Identifier",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:null,type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"ForInStatement",end:null,_scopeInfo:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"ForStatement",end:null,_scopeInfo:null,_paths:null},{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"target",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,_scopeInfo:null,_paths:null},type:"LogicalExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-get":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"get",type:"Identifier",end:null},generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"object",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"property",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"receiver",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"desc",type:"Identifier",end:null},init:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"getOwnPropertyDescriptor",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"object",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"property",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"desc",type:"Identifier",end:null},operator:"===",right:{start:null,loc:null,range:null,name:"undefined",type:"Identifier",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"parent",type:"Identifier",end:null},init:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"getPrototypeOf",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"object",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"parent",type:"Identifier",end:null},operator:"===",right:{start:null,loc:null,range:null,value:null,raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"undefined",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"get",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"parent",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"property",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"receiver",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,value:"value",raw:null,type:"Literal",end:null},operator:"in",right:{start:null,loc:null,range:null,name:"desc",type:"Identifier",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"desc",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"value",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"getter",type:"Identifier",end:null},init:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"desc",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"get",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"getter",type:"Identifier",end:null},operator:"===",right:{start:null,loc:null,range:null,name:"undefined",type:"Identifier",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"undefined",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:null,type:"IfStatement",end:null,_paths:null},{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"getter",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"call",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"receiver",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"IfStatement",end:null,_paths:null},type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-has-own":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,object:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"prototype",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},property:{start:null,loc:null,range:null,name:"hasOwnProperty",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-inherits":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"subClass",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"superClass",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,operator:"typeof",prefix:true,argument:{start:null,loc:null,range:null,name:"superClass",type:"Identifier",end:null},type:"UnaryExpression",end:null,_paths:null},operator:"!==",right:{start:null,loc:null,range:null,value:"function",raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},operator:"&&",right:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"superClass",type:"Identifier",end:null},operator:"!==",right:{start:null,loc:null,range:null,value:null,raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},type:"LogicalExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,callee:{start:null,loc:null,range:null,name:"TypeError",type:"Identifier",end:null},arguments:[{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,value:"Super expression must either be null or a function, not ",raw:null,type:"Literal",end:null},operator:"+",right:{start:null,loc:null,range:null,operator:"typeof",prefix:true,argument:{start:null,loc:null,range:null,name:"superClass",type:"Identifier",end:null},type:"UnaryExpression",end:null,_paths:null},type:"BinaryExpression",end:null,_paths:null}],type:"NewExpression",end:null,_paths:null},type:"ThrowStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:null,type:"IfStatement",end:null,_paths:null},{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"subClass",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"prototype",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},right:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"create",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"superClass",type:"Identifier",end:null},operator:"&&",right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"superClass",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"prototype",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"LogicalExpression",end:null,_paths:null},{start:null,loc:null,range:null,properties:[{start:null,loc:null,range:null,method:false,shorthand:false,computed:false,key:{start:null,loc:null,range:null,name:"constructor",type:"Identifier",end:null},value:{start:null,loc:null,range:null,properties:[{start:null,loc:null,range:null,method:false,shorthand:false,computed:false,key:{start:null,loc:null,range:null,name:"value",type:"Identifier",end:null},value:{start:null,loc:null,range:null,name:"subClass",type:"Identifier",end:null},kind:"init",type:"Property",end:null,_paths:null},{start:null,loc:null,range:null,method:false,shorthand:false,computed:false,key:{start:null,loc:null,range:null,name:"enumerable",type:"Identifier",end:null},value:{start:null,loc:null,range:null,value:false,raw:null,type:"Literal",end:null},kind:"init",type:"Property",end:null,_paths:null},{start:null,loc:null,range:null,method:false,shorthand:false,computed:false,key:{start:null,loc:null,range:null,name:"writable",type:"Identifier",end:null},value:{start:null,loc:null,range:null,value:true,raw:null,type:"Literal",end:null},kind:"init",type:"Property",end:null,_paths:null},{start:null,loc:null,range:null,method:false,shorthand:false,computed:false,key:{start:null,loc:null,range:null,name:"configurable",type:"Identifier",end:null},value:{start:null,loc:null,range:null,value:true,raw:null,type:"Literal",end:null},kind:"init",type:"Property",end:null,_paths:null}],type:"ObjectExpression",end:null},kind:"init",type:"Property",end:null,_paths:null}],type:"ObjectExpression",end:null}],type:"CallExpression",end:null,_paths:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null},{start:null,loc:null,range:null,test:{start:null,loc:null,range:null,name:"superClass",type:"Identifier",end:null},consequent:{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"subClass",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"__proto__",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},right:{start:null,loc:null,range:null,name:"superClass",type:"Identifier",end:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null},alternate:null,type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-interop-require-wildcard":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},operator:"&&",right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"__esModule",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"LogicalExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},alternate:{start:null,loc:null,range:null,properties:[{start:null,loc:null,range:null,method:false,shorthand:false,computed:false,key:{start:null,loc:null,range:null,value:"default",raw:null,type:"Literal",end:null},value:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},kind:"init",type:"Property",end:null,_paths:null}],type:"ObjectExpression",end:null},type:"ConditionalExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-interop-require":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},operator:"&&",right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"__esModule",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"LogicalExpression",end:null,_paths:null},consequent:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},property:{start:null,loc:null,range:null,value:"default",raw:null,type:"Literal",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},alternate:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},type:"ConditionalExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-object-destructuring-empty":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},operator:"==",right:{start:null,loc:null,range:null,value:null,raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,callee:{start:null,loc:null,range:null,name:"TypeError",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,value:"Cannot destructure undefined",raw:null,type:"Literal",end:null}],type:"NewExpression",end:null,_paths:null},type:"ThrowStatement",end:null,_paths:null},alternate:null,type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-object-without-properties":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"keys",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"target",type:"Identifier",end:null},init:{start:null,loc:null,range:null,properties:[],type:"ObjectExpression",end:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,left:{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},init:null,type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},right:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"keys",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"indexOf",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},operator:">=",right:{start:null,loc:null,range:null,value:0,raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,label:null,type:"ContinueStatement",end:null},alternate:null,type:"IfStatement",end:null,_paths:null},{start:null,loc:null,range:null,test:{start:null,loc:null,range:null,operator:"!",prefix:true,argument:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{loc:null,start:null,range:null,object:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"prototype",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},property:{start:null,loc:null,range:null,name:"hasOwnProperty",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},property:{start:null,loc:null,range:null,name:"call",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"UnaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,label:null,type:"ContinueStatement",end:null},alternate:null,type:"IfStatement",end:null,_paths:null},{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"target",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"ForInStatement",end:null,_scopeInfo:null,_paths:null},{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"target",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-self-global":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,operator:"typeof",prefix:true,argument:{start:null,loc:null,range:null,name:"global",type:"Identifier",end:null},type:"UnaryExpression",end:null,_paths:null},operator:"===",right:{start:null,loc:null,range:null,value:"undefined",raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,name:"self",type:"Identifier",end:null},alternate:{start:null,loc:null,range:null,name:"global",type:"Identifier",end:null},type:"ConditionalExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-set":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"set",type:"Identifier",end:null},generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"object",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"property",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"value",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"receiver",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"desc",type:"Identifier",end:null},init:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"getOwnPropertyDescriptor",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"object",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"property",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"desc",type:"Identifier",end:null},operator:"===",right:{start:null,loc:null,range:null,name:"undefined",type:"Identifier",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"parent",type:"Identifier",end:null},init:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"getPrototypeOf",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"object",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"parent",type:"Identifier",end:null},operator:"!==",right:{start:null,loc:null,range:null,value:null,raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"set",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"parent",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"property",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"value",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"receiver",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:null,type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,value:"value",raw:null,type:"Literal",end:null},operator:"in",right:{start:null,loc:null,range:null,name:"desc",type:"Identifier",end:null},type:"BinaryExpression",end:null,_paths:null},operator:"&&",right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"desc",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"writable",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"LogicalExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"desc",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"value",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},right:{start:null,loc:null,range:null,name:"value",type:"Identifier",end:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"setter",type:"Identifier",end:null},init:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"desc",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"set",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"setter",type:"Identifier",end:null},operator:"!==",right:{start:null,loc:null,range:null,name:"undefined",type:"Identifier",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"setter",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"call",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"receiver",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"value",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:null,type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"IfStatement",
 end:null,_paths:null},type:"IfStatement",end:null,_paths:null},{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"value",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-slice":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,object:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Array",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"prototype",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},property:{start:null,loc:null,range:null,name:"slice",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-sliced-to-array-loose":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Array",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"isArray",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Symbol",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"iterator",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},operator:"in",right:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"_arr",type:"Identifier",end:null},init:{start:null,loc:null,range:null,elements:[],type:"ArrayExpression",end:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,init:{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"_iterator",type:"Identifier",end:null},init:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null},property:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Symbol",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"iterator",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},computed:true,type:"MemberExpression",end:null,_paths:null},arguments:[],type:"CallExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null},{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"_step",type:"Identifier",end:null},init:null,type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},test:{start:null,loc:null,range:null,operator:"!",prefix:true,argument:{loc:null,start:null,range:null,object:{loc:null,start:null,range:null,operator:"=",left:{start:null,loc:null,range:null,name:"_step",type:"Identifier",end:null},right:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"_iterator",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"next",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[],type:"CallExpression",end:null,_paths:null},type:"AssignmentExpression",end:null,parenthesizedExpression:true,_paths:null},property:{start:null,loc:null,range:null,name:"done",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"UnaryExpression",end:null,_paths:null},update:null,body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"_arr",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"push",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"_step",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"value",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null},{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},operator:"&&",right:{loc:null,start:null,range:null,left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"_arr",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"length",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},operator:"===",right:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},type:"BinaryExpression",end:null,_paths:null},type:"LogicalExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,label:null,type:"BreakStatement",end:null},alternate:null,type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"ForStatement",end:null,_scopeInfo:null,_paths:null},{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"_arr",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,callee:{start:null,loc:null,range:null,name:"TypeError",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,value:"Invalid attempt to destructure non-iterable instance",raw:null,type:"Literal",end:null}],type:"NewExpression",end:null,_paths:null},type:"ThrowStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"IfStatement",end:null,_paths:null},type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-sliced-to-array":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Array",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"isArray",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Symbol",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"iterator",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},operator:"in",right:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"_arr",type:"Identifier",end:null},init:{start:null,loc:null,range:null,elements:[],type:"ArrayExpression",end:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null,leadingComments:null},{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"_n",type:"Identifier",end:null},init:{start:null,loc:null,range:null,value:true,raw:null,type:"Literal",end:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"_d",type:"Identifier",end:null},init:{start:null,loc:null,range:null,value:false,raw:null,type:"Literal",end:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"_e",type:"Identifier",end:null},init:{start:null,loc:null,range:null,name:"undefined",type:"Identifier",end:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,block:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,init:{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"_i",type:"Identifier",end:null},init:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null},property:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Symbol",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"iterator",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},computed:true,type:"MemberExpression",end:null,_paths:null},arguments:[],type:"CallExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null},{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"_s",type:"Identifier",end:null},init:null,type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},test:{start:null,loc:null,range:null,operator:"!",prefix:true,argument:{loc:null,start:null,range:null,operator:"=",left:{start:null,loc:null,range:null,name:"_n",type:"Identifier",end:null},right:{loc:null,start:null,range:null,object:{loc:null,start:null,range:null,operator:"=",left:{start:null,loc:null,range:null,name:"_s",type:"Identifier",end:null},right:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"_i",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"next",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[],type:"CallExpression",end:null,_paths:null},type:"AssignmentExpression",end:null,parenthesizedExpression:true,_paths:null},property:{start:null,loc:null,range:null,name:"done",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"AssignmentExpression",end:null,parenthesizedExpression:true,_paths:null},type:"UnaryExpression",end:null,_paths:null},update:{loc:null,start:null,range:null,operator:"=",left:{start:null,loc:null,range:null,name:"_n",type:"Identifier",end:null},right:{start:null,loc:null,range:null,value:true,raw:null,type:"Literal",end:null},type:"AssignmentExpression",end:null,_paths:null},body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"_arr",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"push",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"_s",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"value",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null},{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},operator:"&&",right:{loc:null,start:null,range:null,left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"_arr",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"length",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},operator:"===",right:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},type:"BinaryExpression",end:null,_paths:null},type:"LogicalExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,label:null,type:"BreakStatement",end:null},alternate:null,type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"ForStatement",end:null,_scopeInfo:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},handler:{start:null,loc:null,range:null,param:{start:null,loc:null,range:null,name:"err",type:"Identifier",end:null},guard:null,body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{start:null,loc:null,range:null,name:"_d",type:"Identifier",end:null},right:{start:null,loc:null,range:null,value:true,raw:null,type:"Literal",end:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null},{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{start:null,loc:null,range:null,name:"_e",type:"Identifier",end:null},right:{start:null,loc:null,range:null,name:"err",type:"Identifier",end:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"CatchClause",end:null,_scopeInfo:null,_paths:null},guardedHandlers:[],finalizer:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,block:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,operator:"!",prefix:true,argument:{start:null,loc:null,range:null,name:"_n",type:"Identifier",end:null},type:"UnaryExpression",end:null,_paths:null},operator:"&&",right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"_i",type:"Identifier",end:null},property:{start:null,loc:null,range:null,value:"return",raw:null,type:"Literal",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},type:"LogicalExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"_i",type:"Identifier",end:null},property:{start:null,loc:null,range:null,value:"return",raw:null,type:"Literal",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},arguments:[],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null},alternate:null,type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},handler:null,guardedHandlers:[],finalizer:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,test:{start:null,loc:null,range:null,name:"_d",type:"Identifier",end:null},consequent:{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"_e",type:"Identifier",end:null},type:"ThrowStatement",end:null,_paths:null},alternate:null,type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"TryStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"TryStatement",end:null,_paths:null},{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"_arr",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,callee:{start:null,loc:null,range:null,name:"TypeError",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,value:"Invalid attempt to destructure non-iterable instance",raw:null,type:"Literal",end:null}],type:"NewExpression",end:null,_paths:null},type:"ThrowStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"IfStatement",end:null,_paths:null},type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-tagged-template-literal-loose":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"strings",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"raw",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"strings",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"raw",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},right:{start:null,loc:null,range:null,name:"raw",type:"Identifier",end:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null},{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"strings",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-tagged-template-literal":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"strings",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"raw",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"freeze",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"defineProperties",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"strings",type:"Identifier",end:null},{start:null,loc:null,range:null,properties:[{start:null,loc:null,range:null,method:false,shorthand:false,computed:false,key:{start:null,loc:null,range:null,name:"raw",type:"Identifier",end:null},value:{start:null,loc:null,range:null,properties:[{start:null,loc:null,range:null,method:false,shorthand:false,computed:false,key:{start:null,loc:null,range:null,name:"value",type:"Identifier",end:null},value:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"freeze",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"raw",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},kind:"init",type:"Property",end:null,_paths:null}],type:"ObjectExpression",end:null},kind:"init",type:"Property",end:null,_paths:null}],type:"ObjectExpression",end:null}],type:"CallExpression",end:null,_paths:null}],type:"CallExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-temporal-assert-defined":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"val",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"name",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"undef",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"val",type:"Identifier",end:null},operator:"===",right:{start:null,loc:null,range:null,name:"undef",type:"Identifier",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,callee:{start:null,loc:null,range:null,name:"ReferenceError",type:"Identifier",end:null},arguments:[{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"name",type:"Identifier",end:null},operator:"+",right:{start:null,loc:null,range:null,value:" is not defined - temporal dead zone",raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null}],type:"NewExpression",end:null,_paths:null},type:"ThrowStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:null,type:"IfStatement",end:null,_paths:null},{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,value:true,raw:null,type:"Literal",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-temporal-undefined":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,properties:[],type:"ObjectExpression",end:null,parenthesizedExpression:true},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-to-array":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,test:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Array",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"isArray",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null},alternate:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Array",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"from",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ConditionalExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-to-consumable-array":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Array",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"isArray",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,init:{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},init:{start:null,loc:null,range:null,value:0,raw:null,type:"Literal",end:null},type:"VariableDeclarator",end:null,_paths:null},{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"arr2",type:"Identifier",end:null},init:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"Array",type:"Identifier",end:null},arguments:[{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"length",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null}],type:"CallExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},operator:"<",right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"length",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"BinaryExpression",end:null,_paths:null},update:{loc:null,start:null,range:null,operator:"++",prefix:false,argument:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},type:"UpdateExpression",end:null,_paths:null},body:{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"arr2",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"i",type:"Identifier",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null},type:"ForStatement",end:null,_scopeInfo:null,_paths:null},{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"arr2",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"Array",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"from",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"arr",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"helper-typeof":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},operator:"&&",right:{loc:null,start:null,range:null,left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"constructor",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},operator:"===",right:{start:null,loc:null,range:null,name:"Symbol",type:"Identifier",end:null},type:"BinaryExpression",end:null,_paths:null},type:"LogicalExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,value:"symbol",raw:null,type:"Literal",end:null},alternate:{start:null,loc:null,range:null,operator:"typeof",prefix:true,argument:{start:null,loc:null,range:null,name:"obj",type:"Identifier",end:null},type:"UnaryExpression",end:null,_paths:null},type:"ConditionalExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"let-scoping-return":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,operator:"typeof",prefix:true,argument:{
 start:null,loc:null,range:null,name:"RETURN",type:"Identifier",end:null},type:"UnaryExpression",end:null,_paths:null},operator:"===",right:{start:null,loc:null,range:null,value:"object",raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"RETURN",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"v",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null},alternate:null,type:"IfStatement",end:null,_paths:null}],type:"Program",end:null},"ludicrous-in":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,left:{loc:null,start:null,range:null,object:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"Object",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"RIGHT",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},property:{start:null,loc:null,range:null,name:"LEFT",type:"Identifier",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},operator:"!==",right:{start:null,loc:null,range:null,name:"undefined",type:"Identifier",end:null},type:"BinaryExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"named-function":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"GET_OUTER_ID",type:"Identifier",end:null},generator:false,expression:false,params:[],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"FUNCTION_ID",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionDeclaration",end:null,_scopeInfo:null,_paths:null},{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"FUNCTION",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},arguments:[],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"property-method-assignment-wrapper-generator":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"FUNCTION_KEY",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"FUNCTION_ID",type:"Identifier",end:null},generator:true,expression:false,params:[],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,delegate:true,argument:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"FUNCTION_ID",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"apply",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,type:"ThisExpression",end:null},{start:null,loc:null,range:null,name:"arguments",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"YieldExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionDeclaration",end:null,_scopeInfo:null,_paths:null},{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"FUNCTION_ID",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"toString",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},right:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"FUNCTION_KEY",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"toString",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[],type:"CallExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,_scopeInfo:null,_paths:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null},{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"FUNCTION_ID",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"FUNCTION",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"property-method-assignment-wrapper":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"FUNCTION_KEY",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"FUNCTION_ID",type:"Identifier",end:null},generator:false,expression:false,params:[],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"FUNCTION_KEY",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"apply",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,type:"ThisExpression",end:null},{start:null,loc:null,range:null,name:"arguments",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionDeclaration",end:null,_scopeInfo:null,_paths:null},{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"FUNCTION_ID",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"toString",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},right:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"FUNCTION_KEY",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"toString",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[],type:"CallExpression",end:null,_paths:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,_scopeInfo:null,_paths:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null},{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,name:"FUNCTION_ID",type:"Identifier",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"FUNCTION",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"prototype-identifier":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"CLASS_NAME",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"prototype",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"require-assign-key":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"VARIABLE_NAME",type:"Identifier",end:null},init:{loc:null,start:null,range:null,object:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"require",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"MODULE_NAME",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},property:{start:null,loc:null,range:null,name:"KEY",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null}],type:"Program",end:null},require:{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"require",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"MODULE_NAME",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},rest:{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,init:{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"LEN",type:"Identifier",end:null},init:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"ARGUMENTS",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"length",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null},{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"ARRAY",type:"Identifier",end:null},init:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"Array",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"ARRAY_LEN",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"VariableDeclarator",end:null,_paths:null},{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"KEY",type:"Identifier",end:null},init:{start:null,loc:null,range:null,name:"START",type:"Identifier",end:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,name:"KEY",type:"Identifier",end:null},operator:"<",right:{start:null,loc:null,range:null,name:"LEN",type:"Identifier",end:null},type:"BinaryExpression",end:null,_paths:null},update:{loc:null,start:null,range:null,operator:"++",prefix:false,argument:{start:null,loc:null,range:null,name:"KEY",type:"Identifier",end:null},type:"UpdateExpression",end:null,_paths:null},body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"ARRAY",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"ARRAY_KEY",type:"Identifier",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"ARGUMENTS",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"KEY",type:"Identifier",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"ForStatement",end:null,_scopeInfo:null,_paths:null}],type:"Program",end:null},"self-contained-helpers-head":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"exports",type:"Identifier",end:null},property:{start:null,loc:null,range:null,value:"default",raw:null,type:"Literal",end:null},computed:true,type:"MemberExpression",end:null,_paths:null},right:{start:null,loc:null,range:null,name:"HELPER",type:"Identifier",end:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null},{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"exports",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"__esModule",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},right:{start:null,loc:null,range:null,value:true,raw:null,type:"Literal",end:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},system:{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"System",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"register",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"MODULE_NAME",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"MODULE_DEPENDENCIES",type:"Identifier",end:null},{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"EXPORT_IDENTIFIER",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,argument:{start:null,loc:null,range:null,properties:[{start:null,loc:null,range:null,method:false,shorthand:false,computed:false,key:{start:null,loc:null,range:null,name:"setters",type:"Identifier",end:null},value:{start:null,loc:null,range:null,name:"SETTERS",type:"Identifier",end:null},kind:"init",type:"Property",end:null,_paths:null},{start:null,loc:null,range:null,method:false,shorthand:false,computed:false,key:{start:null,loc:null,range:null,name:"execute",type:"Identifier",end:null},value:{start:null,loc:null,range:null,name:"EXECUTE",type:"Identifier",end:null},kind:"init",type:"Property",end:null,_paths:null}],type:"ObjectExpression",end:null},type:"ReturnStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,_scopeInfo:null,_paths:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"tail-call-body":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"AGAIN_ID",type:"Identifier",end:null},init:{start:null,loc:null,range:null,value:true,raw:null,type:"Literal",end:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,body:{start:null,loc:null,range:null,test:{start:null,loc:null,range:null,name:"AGAIN_ID",type:"Identifier",end:null},body:{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,name:"BLOCK",type:"Identifier",end:null},type:"ExpressionStatement",end:null,_paths:null},type:"WhileStatement",end:null,_scopeInfo:null,_paths:null},label:{start:null,loc:null,range:null,name:"FUNCTION_ID",type:"Identifier",end:null},type:"LabeledStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null}],type:"Program",end:null},"test-exports":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,operator:"typeof",prefix:true,argument:{start:null,loc:null,range:null,name:"exports",type:"Identifier",end:null},type:"UnaryExpression",end:null,_paths:null},operator:"!==",right:{start:null,loc:null,range:null,value:"undefined",raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"test-module":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,operator:"typeof",prefix:true,argument:{start:null,loc:null,range:null,name:"module",type:"Identifier",end:null},type:"UnaryExpression",end:null,_paths:null},operator:"!==",right:{start:null,loc:null,range:null,value:"undefined",raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"umd-commonjs-strict":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"root",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"factory",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,operator:"typeof",prefix:true,argument:{start:null,loc:null,range:null,name:"define",type:"Identifier",end:null},type:"UnaryExpression",end:null,_paths:null},operator:"===",right:{start:null,loc:null,range:null,value:"function",raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},operator:"&&",right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"define",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"amd",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"LogicalExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"define",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"AMD_ARGUMENTS",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"factory",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,operator:"typeof",prefix:true,argument:{start:null,loc:null,range:null,name:"exports",type:"Identifier",end:null},type:"UnaryExpression",end:null,_paths:null},operator:"===",right:{start:null,loc:null,range:null,value:"object",raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"factory",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"COMMON_ARGUMENTS",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"factory",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"BROWSER_ARGUMENTS",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"IfStatement",end:null,_paths:null},type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},arguments:[{start:null,loc:null,range:null,name:"UMD_ROOT",type:"Identifier",end:null},{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"FACTORY_PARAMETERS",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,name:"FACTORY_BODY",type:"Identifier",end:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,_scopeInfo:null,_paths:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null},"umd-runner-body":{loc:null,start:null,range:null,body:[{start:null,loc:null,range:null,expression:{start:null,loc:null,range:null,id:null,generator:false,expression:false,params:[{start:null,loc:null,range:null,name:"global",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"factory",type:"Identifier",end:null}],body:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,test:{loc:null,start:null,range:null,left:{loc:null,start:null,range:null,left:{start:null,loc:null,range:null,operator:"typeof",prefix:true,argument:{start:null,loc:null,range:null,name:"define",type:"Identifier",end:null},type:"UnaryExpression",end:null,_paths:null},operator:"===",right:{start:null,loc:null,range:null,value:"function",raw:null,type:"Literal",end:null},type:"BinaryExpression",end:null,_paths:null},operator:"&&",right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"define",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"amd",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"LogicalExpression",end:null,_paths:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"define",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"AMD_ARGUMENTS",type:"Identifier",end:null},{start:null,loc:null,range:null,name:"factory",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,test:{start:null,loc:null,range:null,name:"COMMON_TEST",type:"Identifier",end:null},consequent:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"factory",type:"Identifier",end:null},arguments:[{start:null,loc:null,range:null,name:"COMMON_ARGUMENTS",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},alternate:{start:null,loc:null,range:null,body:[{start:null,loc:null,range:null,declarations:[{start:null,loc:null,range:null,id:{start:null,loc:null,range:null,name:"mod",type:"Identifier",end:null},init:{start:null,loc:null,range:null,properties:[{start:null,loc:null,range:null,method:false,shorthand:false,computed:false,key:{start:null,loc:null,range:null,name:"exports",type:"Identifier",end:null},value:{start:null,loc:null,range:null,properties:[],type:"ObjectExpression",end:null},kind:"init",type:"Property",end:null,_paths:null}],type:"ObjectExpression",end:null},type:"VariableDeclarator",end:null,_paths:null}],kind:"var",type:"VariableDeclaration",end:null},{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,callee:{start:null,loc:null,range:null,name:"factory",type:"Identifier",end:null},arguments:[{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"mod",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"exports",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},{start:null,loc:null,range:null,name:"BROWSER_ARGUMENTS",type:"Identifier",end:null}],type:"CallExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null},{start:null,loc:null,range:null,expression:{loc:null,start:null,range:null,operator:"=",left:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"global",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"GLOBAL_ARG",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},right:{loc:null,start:null,range:null,object:{start:null,loc:null,range:null,name:"mod",type:"Identifier",end:null},property:{start:null,loc:null,range:null,name:"exports",type:"Identifier",end:null},computed:false,type:"MemberExpression",end:null,_paths:null},type:"AssignmentExpression",end:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"BlockStatement",end:null,_scopeInfo:null},type:"IfStatement",end:null,_paths:null},type:"IfStatement",end:null,_paths:null}],type:"BlockStatement",end:null},type:"FunctionExpression",end:null,parenthesizedExpression:true,_scopeInfo:null,_paths:null},type:"ExpressionStatement",end:null,_paths:null}],type:"Program",end:null}}},{}]},{},[19])(19)});
+(function() {
+  'use strict';
+
+  if (self.fetch) {
+    return
+  }
+
+  function Headers(headers) {
+    this.map = {}
+
+    var self = this
+    if (headers instanceof Headers) {
+      headers.forEach(function(name, values) {
+        values.forEach(function(value) {
+          self.append(name, value)
+        })
+      })
+
+    } else if (headers) {
+      Object.getOwnPropertyNames(headers).forEach(function(name) {
+        self.append(name, headers[name])
+      })
+    }
+  }
+
+  Headers.prototype.append = function(name, value) {
+    name = name.toLowerCase()
+    var list = this.map[name]
+    if (!list) {
+      list = []
+      this.map[name] = list
+    }
+    list.push(value)
+  }
+
+  Headers.prototype['delete'] = function(name) {
+    delete this.map[name.toLowerCase()]
+  }
+
+  Headers.prototype.get = function(name) {
+    var values = this.map[name.toLowerCase()]
+    return values ? values[0] : null
+  }
+
+  Headers.prototype.getAll = function(name) {
+    return this.map[name.toLowerCase()] || []
+  }
+
+  Headers.prototype.has = function(name) {
+    return this.map.hasOwnProperty(name.toLowerCase())
+  }
+
+  Headers.prototype.set = function(name, value) {
+    this.map[name.toLowerCase()] = [value]
+  }
+
+  // Instead of iterable for now.
+  Headers.prototype.forEach = function(callback) {
+    var self = this
+    Object.getOwnPropertyNames(this.map).forEach(function(name) {
+      callback(name, self.map[name])
+    })
+  }
+
+  function consumed(body) {
+    if (body.bodyUsed) {
+      return Promise.reject(new TypeError('Already read'))
+    }
+    body.bodyUsed = true
+  }
+
+  function fileReaderReady(reader) {
+    return new Promise(function(resolve, reject) {
+      reader.onload = function() {
+        resolve(reader.result)
+      }
+      reader.onerror = function() {
+        reject(reader.error)
+      }
+    })
+  }
+
+  function readBlobAsArrayBuffer(blob) {
+    var reader = new FileReader()
+    reader.readAsArrayBuffer(blob)
+    return fileReaderReady(reader)
+  }
+
+  function readBlobAsText(blob) {
+    var reader = new FileReader()
+    reader.readAsText(blob)
+    return fileReaderReady(reader)
+  }
+
+  var support = {
+    blob: 'FileReader' in self && 'Blob' in self && (function() {
+      try {
+        new Blob();
+        return true
+      } catch(e) {
+        return false
+      }
+    })(),
+    formData: 'FormData' in self
+  }
+
+  function Body() {
+    this.bodyUsed = false
+
+    if (support.blob) {
+      this._initBody = function(body) {
+        this._bodyInit = body
+        if (typeof body === 'string') {
+          this._bodyText = body
+        } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
+          this._bodyBlob = body
+        } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+          this._bodyFormData = body
+        } else if (!body) {
+          this._bodyText = ''
+        } else {
+          throw new Error('unsupported BodyInit type')
+        }
+      }
+
+      this.blob = function() {
+        var rejected = consumed(this)
+        if (rejected) {
+          return rejected
+        }
+
+        if (this._bodyBlob) {
+          return Promise.resolve(this._bodyBlob)
+        } else if (this._bodyFormData) {
+          throw new Error('could not read FormData body as blob')
+        } else {
+          return Promise.resolve(new Blob([this._bodyText]))
+        }
+      }
+
+      this.arrayBuffer = function() {
+        return this.blob().then(readBlobAsArrayBuffer)
+      }
+
+      this.text = function() {
+        var rejected = consumed(this)
+        if (rejected) {
+          return rejected
+        }
+
+        if (this._bodyBlob) {
+          return readBlobAsText(this._bodyBlob)
+        } else if (this._bodyFormData) {
+          throw new Error('could not read FormData body as text')
+        } else {
+          return Promise.resolve(this._bodyText)
+        }
+      }
+    } else {
+      this._initBody = function(body) {
+        this._bodyInit = body
+        if (typeof body === 'string') {
+          this._bodyText = body
+        } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+          this._bodyFormData = body
+        } else if (!body) {
+          this._bodyText = ''
+        } else {
+          throw new Error('unsupported BodyInit type')
+        }
+      }
+
+      this.text = function() {
+        var rejected = consumed(this)
+        return rejected ? rejected : Promise.resolve(this._bodyText)
+      }
+    }
+
+    if (support.formData) {
+      this.formData = function() {
+        return this.text().then(decode)
+      }
+    }
+
+    this.json = function() {
+      return this.text().then(JSON.parse)
+    }
+
+    return this
+  }
+
+  // HTTP methods whose capitalization should be normalized
+  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT']
+
+  function normalizeMethod(method) {
+    var upcased = method.toUpperCase()
+    return (methods.indexOf(upcased) > -1) ? upcased : method
+  }
+
+  function Request(url, options) {
+    options = options || {}
+    this.url = url
+
+    this.credentials = options.credentials || 'omit'
+    this.headers = new Headers(options.headers)
+    this.method = normalizeMethod(options.method || 'GET')
+    this.mode = options.mode || null
+    this.referrer = null
+
+    if ((this.method === 'GET' || this.method === 'HEAD') && options.body) {
+      throw new TypeError('Body not allowed for GET or HEAD requests')
+    }
+    this._initBody(options.body)
+  }
+
+  function decode(body) {
+    var form = new FormData()
+    body.trim().split('&').forEach(function(bytes) {
+      if (bytes) {
+        var split = bytes.split('=')
+        var name = split.shift().replace(/\+/g, ' ')
+        var value = split.join('=').replace(/\+/g, ' ')
+        form.append(decodeURIComponent(name), decodeURIComponent(value))
+      }
+    })
+    return form
+  }
+
+  function headers(xhr) {
+    var head = new Headers()
+    var pairs = xhr.getAllResponseHeaders().trim().split('\n')
+    pairs.forEach(function(header) {
+      var split = header.trim().split(':')
+      var key = split.shift().trim()
+      var value = split.join(':').trim()
+      head.append(key, value)
+    })
+    return head
+  }
+
+  Request.prototype.fetch = function() {
+    var self = this
+
+    return new Promise(function(resolve, reject) {
+      var xhr = new XMLHttpRequest()
+      if (self.credentials === 'cors') {
+        xhr.withCredentials = true;
+      }
+
+      function responseURL() {
+        if ('responseURL' in xhr) {
+          return xhr.responseURL
+        }
+
+        // Avoid security warnings on getResponseHeader when not allowed by CORS
+        if (/^X-Request-URL:/m.test(xhr.getAllResponseHeaders())) {
+          return xhr.getResponseHeader('X-Request-URL')
+        }
+
+        return;
+      }
+
+      xhr.onload = function() {
+        var status = (xhr.status === 1223) ? 204 : xhr.status
+        if (status < 100 || status > 599) {
+          reject(new TypeError('Network request failed'))
+          return
+        }
+        var options = {
+          status: status,
+          statusText: xhr.statusText,
+          headers: headers(xhr),
+          url: responseURL()
+        }
+        var body = 'response' in xhr ? xhr.response : xhr.responseText;
+        resolve(new Response(body, options))
+      }
+
+      xhr.onerror = function() {
+        reject(new TypeError('Network request failed'))
+      }
+
+      xhr.open(self.method, self.url, true)
+      if ('responseType' in xhr && support.blob) {
+        xhr.responseType = 'blob'
+      }
+
+      self.headers.forEach(function(name, values) {
+        values.forEach(function(value) {
+          xhr.setRequestHeader(name, value)
+        })
+      })
+
+      xhr.send(typeof self._bodyInit === 'undefined' ? null : self._bodyInit)
+    })
+  }
+
+  Body.call(Request.prototype)
+
+  function Response(bodyInit, options) {
+    if (!options) {
+      options = {}
+    }
+
+    this._initBody(bodyInit)
+    this.type = 'default'
+    this.url = null
+    this.status = options.status
+    this.statusText = options.statusText
+    this.headers = options.headers
+    this.url = options.url || ''
+  }
+
+  Body.call(Response.prototype)
+
+  self.Headers = Headers;
+  self.Request = Request;
+  self.Response = Response;
+
+  self.fetch = function (url, options) {
+    return new Request(url, options).fetch()
+  }
+  self.fetch.polyfill = true
+})();
+
 /**
  * @license
  * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
@@ -7114,331 +7439,6 @@ CustomElements.addModule(function(scope) {
 (function(scope) {
   window.Platform = scope;
 })(window.WebComponents);
-(function() {
-  'use strict';
-
-  if (self.fetch) {
-    return
-  }
-
-  function Headers(headers) {
-    this.map = {}
-
-    var self = this
-    if (headers instanceof Headers) {
-      headers.forEach(function(name, values) {
-        values.forEach(function(value) {
-          self.append(name, value)
-        })
-      })
-
-    } else if (headers) {
-      Object.getOwnPropertyNames(headers).forEach(function(name) {
-        self.append(name, headers[name])
-      })
-    }
-  }
-
-  Headers.prototype.append = function(name, value) {
-    name = name.toLowerCase()
-    var list = this.map[name]
-    if (!list) {
-      list = []
-      this.map[name] = list
-    }
-    list.push(value)
-  }
-
-  Headers.prototype['delete'] = function(name) {
-    delete this.map[name.toLowerCase()]
-  }
-
-  Headers.prototype.get = function(name) {
-    var values = this.map[name.toLowerCase()]
-    return values ? values[0] : null
-  }
-
-  Headers.prototype.getAll = function(name) {
-    return this.map[name.toLowerCase()] || []
-  }
-
-  Headers.prototype.has = function(name) {
-    return this.map.hasOwnProperty(name.toLowerCase())
-  }
-
-  Headers.prototype.set = function(name, value) {
-    this.map[name.toLowerCase()] = [value]
-  }
-
-  // Instead of iterable for now.
-  Headers.prototype.forEach = function(callback) {
-    var self = this
-    Object.getOwnPropertyNames(this.map).forEach(function(name) {
-      callback(name, self.map[name])
-    })
-  }
-
-  function consumed(body) {
-    if (body.bodyUsed) {
-      return Promise.reject(new TypeError('Already read'))
-    }
-    body.bodyUsed = true
-  }
-
-  function fileReaderReady(reader) {
-    return new Promise(function(resolve, reject) {
-      reader.onload = function() {
-        resolve(reader.result)
-      }
-      reader.onerror = function() {
-        reject(reader.error)
-      }
-    })
-  }
-
-  function readBlobAsArrayBuffer(blob) {
-    var reader = new FileReader()
-    reader.readAsArrayBuffer(blob)
-    return fileReaderReady(reader)
-  }
-
-  function readBlobAsText(blob) {
-    var reader = new FileReader()
-    reader.readAsText(blob)
-    return fileReaderReady(reader)
-  }
-
-  var support = {
-    blob: 'FileReader' in self && 'Blob' in self && (function() {
-      try {
-        new Blob();
-        return true
-      } catch(e) {
-        return false
-      }
-    })(),
-    formData: 'FormData' in self
-  }
-
-  function Body() {
-    this.bodyUsed = false
-
-    if (support.blob) {
-      this._initBody = function(body) {
-        this._bodyInit = body
-        if (typeof body === 'string') {
-          this._bodyText = body
-        } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
-          this._bodyBlob = body
-        } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
-          this._bodyFormData = body
-        } else if (!body) {
-          this._bodyText = ''
-        } else {
-          throw new Error('unsupported BodyInit type')
-        }
-      }
-
-      this.blob = function() {
-        var rejected = consumed(this)
-        if (rejected) {
-          return rejected
-        }
-
-        if (this._bodyBlob) {
-          return Promise.resolve(this._bodyBlob)
-        } else if (this._bodyFormData) {
-          throw new Error('could not read FormData body as blob')
-        } else {
-          return Promise.resolve(new Blob([this._bodyText]))
-        }
-      }
-
-      this.arrayBuffer = function() {
-        return this.blob().then(readBlobAsArrayBuffer)
-      }
-
-      this.text = function() {
-        var rejected = consumed(this)
-        if (rejected) {
-          return rejected
-        }
-
-        if (this._bodyBlob) {
-          return readBlobAsText(this._bodyBlob)
-        } else if (this._bodyFormData) {
-          throw new Error('could not read FormData body as text')
-        } else {
-          return Promise.resolve(this._bodyText)
-        }
-      }
-    } else {
-      this._initBody = function(body) {
-        this._bodyInit = body
-        if (typeof body === 'string') {
-          this._bodyText = body
-        } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
-          this._bodyFormData = body
-        } else if (!body) {
-          this._bodyText = ''
-        } else {
-          throw new Error('unsupported BodyInit type')
-        }
-      }
-
-      this.text = function() {
-        var rejected = consumed(this)
-        return rejected ? rejected : Promise.resolve(this._bodyText)
-      }
-    }
-
-    if (support.formData) {
-      this.formData = function() {
-        return this.text().then(decode)
-      }
-    }
-
-    this.json = function() {
-      return this.text().then(JSON.parse)
-    }
-
-    return this
-  }
-
-  // HTTP methods whose capitalization should be normalized
-  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT']
-
-  function normalizeMethod(method) {
-    var upcased = method.toUpperCase()
-    return (methods.indexOf(upcased) > -1) ? upcased : method
-  }
-
-  function Request(url, options) {
-    options = options || {}
-    this.url = url
-
-    this.credentials = options.credentials || 'omit'
-    this.headers = new Headers(options.headers)
-    this.method = normalizeMethod(options.method || 'GET')
-    this.mode = options.mode || null
-    this.referrer = null
-
-    if ((this.method === 'GET' || this.method === 'HEAD') && options.body) {
-      throw new TypeError('Body not allowed for GET or HEAD requests')
-    }
-    this._initBody(options.body)
-  }
-
-  function decode(body) {
-    var form = new FormData()
-    body.trim().split('&').forEach(function(bytes) {
-      if (bytes) {
-        var split = bytes.split('=')
-        var name = split.shift().replace(/\+/g, ' ')
-        var value = split.join('=').replace(/\+/g, ' ')
-        form.append(decodeURIComponent(name), decodeURIComponent(value))
-      }
-    })
-    return form
-  }
-
-  function headers(xhr) {
-    var head = new Headers()
-    var pairs = xhr.getAllResponseHeaders().trim().split('\n')
-    pairs.forEach(function(header) {
-      var split = header.trim().split(':')
-      var key = split.shift().trim()
-      var value = split.join(':').trim()
-      head.append(key, value)
-    })
-    return head
-  }
-
-  Request.prototype.fetch = function() {
-    var self = this
-
-    return new Promise(function(resolve, reject) {
-      var xhr = new XMLHttpRequest()
-      if (self.credentials === 'cors') {
-        xhr.withCredentials = true;
-      }
-
-      function responseURL() {
-        if ('responseURL' in xhr) {
-          return xhr.responseURL
-        }
-
-        // Avoid security warnings on getResponseHeader when not allowed by CORS
-        if (/^X-Request-URL:/m.test(xhr.getAllResponseHeaders())) {
-          return xhr.getResponseHeader('X-Request-URL')
-        }
-
-        return;
-      }
-
-      xhr.onload = function() {
-        var status = (xhr.status === 1223) ? 204 : xhr.status
-        if (status < 100 || status > 599) {
-          reject(new TypeError('Network request failed'))
-          return
-        }
-        var options = {
-          status: status,
-          statusText: xhr.statusText,
-          headers: headers(xhr),
-          url: responseURL()
-        }
-        var body = 'response' in xhr ? xhr.response : xhr.responseText;
-        resolve(new Response(body, options))
-      }
-
-      xhr.onerror = function() {
-        reject(new TypeError('Network request failed'))
-      }
-
-      xhr.open(self.method, self.url, true)
-      if ('responseType' in xhr && support.blob) {
-        xhr.responseType = 'blob'
-      }
-
-      self.headers.forEach(function(name, values) {
-        values.forEach(function(value) {
-          xhr.setRequestHeader(name, value)
-        })
-      })
-
-      xhr.send(typeof self._bodyInit === 'undefined' ? null : self._bodyInit)
-    })
-  }
-
-  Body.call(Request.prototype)
-
-  function Response(bodyInit, options) {
-    if (!options) {
-      options = {}
-    }
-
-    this._initBody(bodyInit)
-    this.type = 'default'
-    this.url = null
-    this.status = options.status
-    this.statusText = options.statusText
-    this.headers = options.headers
-    this.url = options.url || ''
-  }
-
-  Body.call(Response.prototype)
-
-  self.Headers = Headers;
-  self.Request = Request;
-  self.Response = Response;
-
-  self.fetch = function (url, options) {
-    return new Request(url, options).fetch()
-  }
-  self.fetch.polyfill = true
-})();
-
 /*
  *  es6-module-loader v0.16.5
  *  https://github.com/ModuleLoader/es6-module-loader

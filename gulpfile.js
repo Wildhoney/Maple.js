@@ -13,14 +13,11 @@
         browserify = require('browserify'),
         babelify   = require('babelify');
 
-    // Load the YAML configuration file.
-    var config = yaml.safeLoad(fs.readFileSync('maple.yml', 'utf8'));
-
-    // Common entry values.
-    var entryFile = config.gulp.entry,
-        allFiles  = config.gulp.all,
-        prodPath  = config.gulp.directories.dist + '/' + config.gulp.names.defaultProd,
-        devPath   = config.gulp.directories.dist + '/' + config.gulp.names.defaultDev;
+    var config    = yaml.safeLoad(fs.readFileSync('maple.yml', 'utf8')).gulp,
+        entryFile = config.entry,
+        allFiles  = config.all,
+        prodPath  = config.directories.dist + '/' + config.names.default.prod,
+        devPath   = config.directories.dist + '/' + config.names.default.dev;
 
     /**
      * @method compile
@@ -38,15 +35,15 @@
 
     };
 
-    gulp.task('polyfill-bundler', ['compile'], function() {
+    gulp.task('bundler', ['compile'], function() {
 
-        return gulp.src([].concat(config.gulp.polyfills, [devPath]))
+        return gulp.src([].concat(config.polyfills, [devPath]))
                    .pipe(concat('all.js'))
-                   .pipe(rename(config.gulp.names.bundleDev))
-                   .pipe(gulp.dest(config.gulp.directories.dist))
+                   .pipe(rename(config.names.bundle.dev))
+                   .pipe(gulp.dest(config.directories.dist))
                    .pipe(uglify())
-                   .pipe(rename(config.gulp.names.bundleProd))
-                   .pipe(gulp.dest(config.gulp.directories.dist));
+                   .pipe(rename(config.names.bundle.prod))
+                   .pipe(gulp.dest(config.directories.dist));
 
     });
 
@@ -55,7 +52,7 @@
         return gulp.src(devPath)
                    .pipe(rename(prodPath))
                    .pipe(uglify())
-                   .pipe(gulp.dest(config.gulp.directories.dist));
+                   .pipe(gulp.dest(config.directories.dist));
 
     });
 
@@ -65,45 +62,45 @@
 
     gulp.task('sass', function () {
 
-        return gulp.src('./example/scss/*.scss')
-            .pipe(sass())
-            .pipe(gulp.dest('./example/css'));
+        return gulp.src(config.sass)
+                   .pipe(sass())
+                   .pipe(gulp.dest(config.directories.css));
 
     });
 
     gulp.task('minify', ['compile'], function() {
 
         return gulp.src(devPath)
-            .pipe(uglify())
-            .pipe(rename(config.gulp.names.defaultProd))
-            .pipe(rename(config.gulp.names.defaultProd))
-            .pipe(gulp.dest(config.gulp.directories.dist));
+                   .pipe(uglify())
+                   .pipe(rename(config.names.default.prod))
+                   .pipe(rename(config.names.default.prod))
+                   .pipe(gulp.dest(config.directories.dist));
 
     });
 
     gulp.task('vendorify', ['compile'], function() {
 
         return gulp.src(devPath)
-            .pipe(rename(config.gulp.names.defaultDev))
-            .pipe(gulp.dest(config.gulp.directories.vendor));
+                   .pipe(rename(config.names.default.dev))
+                   .pipe(gulp.dest(config.directories.vendor));
 
     });
 
     gulp.task('lint', function() {
 
         return gulp.src(allFiles)
-            .pipe(jshint())
-            .pipe(jshint.reporter('default', {
-                verbose: true
-            }));
+                   .pipe(jshint())
+                   .pipe(jshint.reporter('default', {
+                       verbose: true
+                   }));
 
     });
 
     gulp.task('test', ['lint']);
-    gulp.task('build', ['compile', 'vendorify', 'minify', 'polyfill-bundler']);
+    gulp.task('build', ['compile', 'vendorify', 'minify', 'bundler']);
     gulp.task('default', ['test', 'build']);
     gulp.task('watch', function watch() {
-        gulp.watch(config.gulp.all, ['compile', 'vendorify']);
+        gulp.watch(config.all, ['compile', 'vendorify']);
     });
 
 })();

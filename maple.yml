@@ -1,27 +1,25 @@
 gulp:
   entry: ./src/Maple.js
+  sass: example/scss/*.scss
 
   directories:
+    css: example/css
     dist: dist
     vendor: example/vendor/maple
-    docs: docs
-
-  tests:
-    temp: tests/build/maple.js
 
   polyfills:
     - example/vendor/browser.js
-    - example/vendor/webcomponentsjs/webcomponents.js
     - example/vendor/fetch/fetch.js
+    - example/vendor/webcomponentsjs/webcomponents.js
     - example/vendor/es6-module-loader/dist/es6-module-loader.js
 
   names:
-
-    defaultDev: maple.js
-    defaultProd: maple.min.js
-
-    bundleDev: maple-with-polyfills.js
-    bundleProd: maple-with-polyfills.min.js
+    default:
+      dev: maple.js
+      prod: maple.min.js
+    bundle:
+      dev: maple-with-polyfills.js
+      prod: maple-with-polyfills.min.js
 
   all:
     - ./src/*.js
