@@ -60,13 +60,13 @@ import log       from './helpers/Log.js';
                             // Register the custom element using the resolved script.
                             this.registerElement(component);
 
-                        }));
+                        }).catch((error) => log('Timeout', error.message, '#DC143C')));
 
-                    });
+                    }).catch((error) => log('Timeout', error.message, '#DC143C'));
 
                 });
 
-            }));
+            }).catch((error) => log('Timeout', error.message, '#DC143C')));
 
         }
 
@@ -86,7 +86,7 @@ import log       from './helpers/Log.js';
 
                 log('Component', name, '#8B864E');
 
-                return new Promise((resolve) => {
+                return new Promise((resolve, reject) => {
 
                     /**
                      * @method findTemplates
@@ -105,6 +105,7 @@ import log       from './helpers/Log.js';
                         });
 
                         resolve(templates);
+                        utility.timeoutPromise(reject, `Link: ${href}`);
 
                     };
 
@@ -127,19 +128,24 @@ import log       from './helpers/Log.js';
          */
         loadThirdPartyScripts(template) {
 
-            return template.thirdPartyScripts().map((script) => new Promise((resolve) => {
+            return template.thirdPartyScripts().map((script) => {
 
-                let scriptElement = $document.createElement('script');
-                scriptElement.setAttribute('type', 'text/javascript');
-                scriptElement.setAttribute('src', script.getAttribute('src'));
+                return new Promise((resolve, reject) => {
 
-                scriptElement.addEventListener('load', () => {
-                    resolve(scriptElement);
+                    let scriptElement = $document.createElement('script');
+                    scriptElement.setAttribute('type', 'text/javascript');
+                    scriptElement.setAttribute('src', script.getAttribute('src'));
+
+                    scriptElement.addEventListener('load', () => {
+                        resolve(scriptElement);
+                    });
+
+                    utility.timeoutPromise(reject, `Third Party: ${scriptElement.getAttribute('src')}`);
+                    $document.head.appendChild(scriptElement);
+
                 });
 
-                $document.head.appendChild(scriptElement);
-
-            }));
+            });
 
         }
 
@@ -150,7 +156,7 @@ import log       from './helpers/Log.js';
          */
         resolveScripts(template) {
 
-            return template.componentScripts().map((scriptElement) => new Promise((resolve) => {
+            return template.componentScripts().map((scriptElement) => new Promise((resolve, reject) => {
 
                 let scriptPath = template.resolveScriptPath(scriptElement.getAttribute('src'));
 
@@ -160,6 +166,8 @@ import log       from './helpers/Log.js';
                     resolve(new Component({ script: moduleImport.default, template: template }));
 
                 });
+
+                utility.timeoutPromise(reject, `Component: ${scriptElement.getAttribute('src')}`);
 
             }));
 

@@ -2,6 +2,12 @@ export default (function main() {
 
     "use strict";
 
+    /**
+     * @constant WAIT_TIMEOUT
+     * @type {Number}
+     */
+    const WAIT_TIMEOUT = 10000;
+
     return {
 
         /**
@@ -24,6 +30,17 @@ export default (function main() {
          */
         toArray(arrayLike) {
             return Array.from ? Array.from(arrayLike) : Array.prototype.slice.apply(arrayLike);
+        },
+
+        /**
+         * @method timeoutPromise
+         * @param {Function} reject
+         * @param {String} errorMessage
+         * @param {Number} [timeout=WAIT_TIMEOUT]
+         * @return {void}
+         */
+        timeoutPromise(reject, errorMessage = 'Timeout', timeout = WAIT_TIMEOUT) {
+            setTimeout(() => reject(new Error(errorMessage)), timeout);
         },
 
         /**
