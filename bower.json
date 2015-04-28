@@ -23,11 +23,10 @@
   "dependencies": {
     "react": "~0.13.1",
     "es6-module-loader": "~0.16.5",
+    "fetch": "~0.7.0",
     "webcomponentsjs": "~0.6.1"
   },
   "devDependencies": {
-    "underscore": "~1.8.3",
-    "fetch": "~0.7.0",
     "alt": "~0.15.5"
   }
 }
