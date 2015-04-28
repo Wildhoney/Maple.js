@@ -11,9 +11,9 @@ export default (function main() {
         selector: {
             links:      'link[rel="import"]:not([data-ignore])',
             styles:     'link[type="text/css"]',
-            scripts:    'script[type="text/javascript"]',
+            scripts:    'script[type="text/javascript"][src*="../"]',
             inlines:    'style[type="text/css"]',
-            components: 'script[type="text/maple-component"]',
+            components: 'script[type="text/javascript"]:not([src*="../"])',
             templates:  'template'
         },
 

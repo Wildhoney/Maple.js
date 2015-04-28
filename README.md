@@ -22,13 +22,13 @@ Within the directory `my-app/components` we create our component's index that wi
 
 ```html
 <template>
-    <script type="text/maple-component" src="date-time.js"></script>
+    <script type="text/javascript" src="date-time.js"></script>
     <script type="text/javascript" src="../../../vendor/moment/moment.js"></script>
     <link rel="stylesheet" type="text/css" href="date-time.css" />
 </template>
 ```
 
-**Note:** When we import the `date-time.js` file we use the type `text/maple-component`, whereas for the third-party library our component depends on &mdash; `moment.js` &mdash; we specify this as a regular JavaScript file with the `text/javascript` type. It's important to remember that components added with the type `text/maple-component` will be entirely handled by Maple, and those imported as `text/javascript` will be imported into the global scope of the document.
+**Note:** When we import the `date-time.js` file we use the local path, which Maple.js understands as being a part of the module &ndash; whereas our third-party module &mdash; `moment.js` &mdash; resides outside of the component's directory and is therefore imported into the `window` scope.
 
 Within our CSS file, we can be as loose as we like, because the `date-time.js` component will be imported under its own shadow boundary, preventing the styles from bleeding over into other components &mdash; even components that are children of our component.
 
