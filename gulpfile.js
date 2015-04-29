@@ -65,7 +65,7 @@
     gulp.task('appify', function() {
 
         return gulp.src(config.app)
-                   .pipe(babel({ modules: 'system' }))
+                   .pipe(babel({ modules: 'amd', moduleIds: true }))
                    .pipe(gulp.dest(config.directories.app));
 
     });

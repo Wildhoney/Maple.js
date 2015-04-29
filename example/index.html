@@ -13,25 +13,24 @@
     <script type="text/javascript" src="vendor/react/react.js"></script>
     <script type="text/javascript" src="vendor/react/JSXTransformer.js"></script>
     <script type="text/javascript" src="vendor/maple/maple.js"></script>
-    <script type="text/javascript" src="vendor/alt/dist/alt-browser.js"></script>
-    <!--<script type="text/javascript" src="vendor/requirejs/require.js"></script>-->
+    <script type="text/javascript" src="vendor/requirejs/require.js"></script>
 
     <!-- Components! -->
-    <link rel="import" type="text/html" href="app/components/time-date/index.html" />
-    <link rel="import" type="text/html" href="app/components/people-list/index.html" />
+    <link rel="import" type="text/html" href="app/components/todo-collection/index.html" />
 
     <!-- Application! -->
-    <script type="text/javascript" src="app/alt.js"></script>
-    <script type="text/javascript" src="app/actions/TodoActions.js"></script>
+    <!--<script type="text/javascript" src="app/app.js"></script>-->
 
 </head>
 <body>
 
-    <time-date data-format="YYYY-MM-DD HH:mm:ss">Loading Date...</time-date>
+    <todo-collection></todo-collection>
 
-    <people-list data-names="Adam,Maria,Gabry,Nuria" unresolved>
-        <b>Loading People...</b>
-    </people-list>
+    <!--<time-date data-format="YYYY-MM-DD HH:mm:ss">Loading Date...</time-date>-->
+
+    <!--<people-list data-names="Adam,Maria,Gabry,Nuria" unresolved>-->
+        <!--<b>Loading People...</b>-->
+    <!--</people-list>-->
 
 </body>
 </html>

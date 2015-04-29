@@ -56,9 +56,11 @@ export default class Component {
 
             // Create the associated style element and resolve the promise with it.
             fetch(url).then((response) => response.text()).then((body) => {
+
                 appendStyle(body);
                 resolve();
-            });
+
+            }).catch((error) => log('Error', error.message, '#DC143C'));
 
         }));
 
@@ -114,9 +116,11 @@ export default class Component {
 
                     // Import external CSS documents.
                     Promise.all(importLinks(shadowRoot)).then(() => {
+
                         this.removeAttribute('unresolved');
                         this.setAttribute('resolved', '');
-                    });
+
+                    }).catch((error) => log('Timeout', error.message, '#DC143C'));
 
                 }
 
