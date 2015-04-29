@@ -20,7 +20,10 @@ export default class TodoCollection extends React.Component {
     render() {
 
         return React.createElement('section', null, [
-            React.createElement('h1', null, `Todo Items (${this.state.items.length})`),
+            React.createElement('h1', null, [
+                React.createElement('i', { className: 'fa fa-leanpub' }, null),
+                React.createElement('span', null, `Todo Items (${this.state.items.length})`)
+            ]),
             React.createElement('ul', null, this.state.items.map((model, index) => {
                 return React.createElement('li', null, 'Item');
             }))

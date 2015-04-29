@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "alt": "~0.15.5",
-    "requirejs": "~2.1.17"
+    "requirejs": "~2.1.17",
+    "font-awesome": "~4.3.0"
   }
 }

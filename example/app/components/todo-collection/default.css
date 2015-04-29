@@ -1,5 +1,27 @@
-:host {
-    color: rebeccapurple;
-    font-family: Arial, Tahoma, Helvetica, sans-serif;
-    font-weight: bold;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+}
+
+ul {
+    margin: 10px 0;
+    list-style-type: none;
+    width: 300px;
+}
+
+ul li {
+    padding: 5px 10px;
+    font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+    color: rgba(0, 0, 0, .75);
+    font-size: 12px;
+}
+
+ul li:nth-child(odd) {
+    background-color: rgba(0, 0, 0, .05);
 }

@@ -52,7 +52,8 @@ export default class Component {
                 return;
             }
 
-            let url = `${this.template.path}/${element.getAttribute('href')}`;
+            let href = element.getAttribute('href'),
+                url  = href.match(/\.\./i) ? href : `${this.template.path}/${href}`;
 
             // Create the associated style element and resolve the promise with it.
             fetch(url).then((response) => response.text()).then((body) => {
