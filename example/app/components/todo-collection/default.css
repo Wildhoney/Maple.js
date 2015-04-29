@@ -9,6 +9,15 @@ h1 {
     text-transform: uppercase;
 }
 
+h1 i {
+    margin-right: 10px;
+}
+
+h1 span:nth-of-type(2) {
+    margin-left: 5px;
+    color: rgba(0, 0, 0, .25);
+}
+
 ul {
     margin: 10px 0;
     list-style-type: none;
@@ -16,10 +25,42 @@ ul {
 }
 
 ul li {
-    padding: 5px 10px;
+    padding: 0 10px;
+    height: 28px;
+    line-height: 28px;
     font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;
     color: rgba(0, 0, 0, .75);
     font-size: 12px;
+    position: relative;
+    margin-bottom: 1px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .25s;
+}
+
+ul li:hover {
+    background-color: rgba(68, 170, 85, .5) !important;
+    color: white;
+}
+
+ul li:after {
+    content: "✓";
+    visibility: hidden;
+    position: absolute;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    top: 0;
+    right: -28px;
+    height: 28px;
+    width: 28px;
+    background-color: #44AA55;
+    transition: all .25s;
+}
+
+ul li:hover:after {
+    visibility: visible;
+    right: 0;
 }
 
 ul li:nth-child(odd) {

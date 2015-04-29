@@ -10,7 +10,13 @@ export default class TodoCollection extends React.Component {
      */
     constructor() {
         super();
-        this.state = { items: [1,2,3] };
+        this.state = {
+            items: [
+                { text: 'Take out the dirty dishes.' },
+                { text: 'Bring in the clothes from the line.' },
+                { text: 'Get curry powder from Waitrose.' }
+            ]
+        };
     }
 
     /**
@@ -21,11 +27,13 @@ export default class TodoCollection extends React.Component {
 
         return React.createElement('section', null, [
             React.createElement('h1', null, [
-                React.createElement('i', { className: 'fa fa-leanpub' }, null),
-                React.createElement('span', null, `Todo Items (${this.state.items.length})`)
+                React.createElement('i', { className: 'fa fa-calendar' }, null), [
+                    React.createElement('span', null, 'Todo Items'),
+                    React.createElement('span', null, `(${this.state.items.length})`)
+                ]
             ]),
-            React.createElement('ul', null, this.state.items.map((model, index) => {
-                return React.createElement('li', null, 'Item');
+            React.createElement('ul', null, this.state.items.map((model) => {
+                return React.createElement('li', null, model.text);
             }))
         ]);
 
