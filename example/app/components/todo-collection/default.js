@@ -12,9 +12,9 @@ export default class TodoCollection extends React.Component {
         super();
         this.state = {
             items: [
-                { text: 'Take out the dirty dishes.' },
-                { text: 'Bring in the clothes from the line.' },
-                { text: 'Get curry powder from Waitrose.' }
+                { text: 'Take out the dirty dishes.', date: Date.now() },
+                { text: 'Bring in the clothes from the line.', date: Date.now() },
+                { text: 'Get curry powder from Waitrose.', date: Date.now() }
             ]
         };
     }
@@ -33,7 +33,10 @@ export default class TodoCollection extends React.Component {
                 ]
             ]),
             React.createElement('ul', null, this.state.items.map((model) => {
-                return React.createElement('li', null, model.text);
+                return React.createElement('li', null, [
+                    React.createElement('p', null, model.text),
+                    React.createElement('date-time', { 'data-unix': model.date })
+                ]);
             }))
         ]);
 
