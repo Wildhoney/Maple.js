@@ -6,7 +6,13 @@ export default (function main() {
      * @constant WAIT_TIMEOUT
      * @type {Number}
      */
-    const WAIT_TIMEOUT = 10000;
+    const WAIT_TIMEOUT = 30000;
+
+    /**
+     * @constant LOCAL_MATCHER
+     * @type {String}
+     */
+    const LOCAL_MATCHER = '../';
 
     return {
 
@@ -17,10 +23,18 @@ export default (function main() {
         selector: {
             links:      'link[rel="import"]:not([data-ignore])',
             styles:     'link[type="text/css"]',
-            scripts:    'script[type="text/javascript"][src*="../"]',
+            scripts:    `script[type="text/javascript"][src*="${LOCAL_MATCHER}"]`,
             inlines:    'style[type="text/css"]',
-            components: 'script[type="text/javascript"]:not([src*="../"])',
+            components: `script[type="text/javascript"]:not([src*="${LOCAL_MATCHER}"])`,
             templates:  'template'
+        },
+
+        /**
+         * @method isLocalPath
+         * @return {Boolean}
+         */
+        isLocalPath(path) {
+            return path.match(LOCAL_MATCHER);
         },
 
         /**

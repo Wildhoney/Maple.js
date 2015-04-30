@@ -53,7 +53,7 @@ export default class Component {
             }
 
             let href = element.getAttribute('href'),
-                url  = href.match(/\.\./i) ? href : `${this.template.path}/${href}`;
+                url  = utility.isLocalPath(href) ? href : `${this.template.path}/${href}`;
 
             // Create the associated style element and resolve the promise with it.
             fetch(url).then((response) => response.text()).then((body) => {
