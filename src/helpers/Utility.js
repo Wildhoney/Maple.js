@@ -30,11 +30,37 @@ export default (function main() {
         },
 
         /**
-         * @method isLocalPath
-         * @return {Boolean}
+         * @method pathResolver
+         * @param {HTMLDocument} ownerDocument
+         * @param {String} url
+         * @param {String} componentPath
+         * @return {String}
          */
-        isLocalPath(path) {
-            return path.match(LOCAL_MATCHER);
+        pathResolver(ownerDocument, url, componentPath) {
+
+            return {
+
+                /**
+                 * @method getPath
+                 * @return {String}
+                 */
+                getPath() {
+
+                    var a  = ownerDocument.createElement('a');
+                    a.href = url;
+
+                    if (~a.href.indexOf(componentPath)) {
+                        return a.href;
+                    }
+
+                    a      = document.createElement('a');
+                    a.href = url;
+                    return a.href;
+
+                }
+
+            }
+
         },
 
         /**

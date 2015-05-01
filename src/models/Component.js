@@ -1,5 +1,5 @@
-import utility from './../helpers/Utility.js';
-import log     from './../helpers/Log.js';
+import utility   from './../helpers/Utility.js';
+import log       from './../helpers/Log.js';
 
 export default class Component {
 
@@ -29,11 +29,11 @@ export default class Component {
     importLinks(shadowBoundary) {
 
         /**
-         * @method appendStyle
+         * @method addCSS
          * @param {String} body
          * @return {void}
          */
-        function appendStyle(body) {
+        function addCSS(body) {
             let styleElement = document.createElement('style');
             styleElement.setAttribute('type', 'text/css');
             styleElement.innerHTML = body;
@@ -47,87 +47,24 @@ export default class Component {
         return [].concat(linkElements, styleElements).map((element) => new Promise((resolve) => {
 
             if (element.nodeName.toLowerCase() === 'style') {
-                appendStyle(element.innerHTML);
+                addCSS(element.innerHTML);
                 resolve();
                 return;
             }
 
-            let href = element.getAttribute('href'),
-                url  = utility.isLocalPath(href) ? href : `${this.template.path}/${href}`;
+            let href     = element.getAttribute('href'),
+                document = this.template.element.ownerDocument,
+                resolver = utility.pathResolver(document, href, this.template.path);
 
             // Create the associated style element and resolve the promise with it.
-            fetch(url).then((response) => response.text()).then((body) => {
+            fetch(resolver.getPath()).then((response) => response.text()).then((body) => {
 
-                appendStyle(body);
+                addCSS(body);
                 resolve();
 
             }).catch((error) => log('Error', error.message, '#DC143C'));
 
         }));
-
-    }
-
-    /**
-     * @method customElement
-     * @return {HTMLElement}
-     */
-    customElement() {
-
-        let name        = this.elementName(),
-            script      = this.script,
-            template    = this.template,
-            importLinks = this.importLinks.bind(this);
-
-        return Object.create(HTMLElement.prototype, {
-
-            /**
-             * @property attachedCallback
-             * @type {Object}
-             */
-            attachedCallback: {
-
-                /**
-                 * @method value
-                 * @return {void}
-                 */
-                value: function value() {
-
-                    log('Element', name, '#009ACD');
-                    script.defaultProps = { path: template.path, element: this.cloneNode(true) };
-                    this.innerHTML      = '';
-
-                    // Import attributes from the element and transfer to the React.js class.
-                    for (let index = 0, attributes = this.attributes; index < attributes.length; index++) {
-
-                        let attribute = attributes.item(index);
-
-                        if (attribute.value) {
-                            let name = attribute.name.replace(/^data-/i, '');
-                            script.defaultProps[name] = attribute.value;
-                        }
-
-                    }
-
-                    let renderedElement = React.createElement(script),
-                        contentElement  = document.createElement('content'),
-                        shadowRoot      = this.createShadowRoot();
-
-                    shadowRoot.appendChild(contentElement);
-                    React.render(renderedElement, contentElement);
-
-                    // Import external CSS documents.
-                    Promise.all(importLinks(shadowRoot)).then(() => {
-
-                        this.removeAttribute('unresolved');
-                        this.setAttribute('resolved', '');
-
-                    }).catch((error) => log('Timeout', error.message, '#DC143C'));
-
-                }
-
-            }
-
-        });
 
     }
 

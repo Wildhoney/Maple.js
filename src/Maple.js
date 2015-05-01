@@ -1,7 +1,8 @@
-import Component from './models/Component.js';
-import Template  from './models/Template.js';
-import utility   from './helpers/Utility.js';
-import log       from './helpers/Log.js';
+import ES5Component from './models/ES5Component.js';
+import ES6Component from './models/ES6Component.js';
+import Template     from './models/Template.js';
+import utility      from './helpers/Utility.js';
+import log          from './helpers/Log.js';
 
 (function main($window, $document) {
 
@@ -162,8 +163,27 @@ import log       from './helpers/Log.js';
 
                 System.import(scriptPath).then((moduleImport) => {
 
+                    if (!moduleImport.default) {
+
+                        let path = `${scriptPath}.js`;
+
+                        return void fetch(path).then((response) => response.text()).then((body) => {
+
+                            var scriptElement = document.createElement('script');
+                            scriptElement.setAttribute('type', 'text/javascript');
+                            scriptElement.setAttribute('src', path);
+                            scriptElement.addEventListener('load', () => {
+                                resolve(new ES5Component({ path: `${scriptPath}`, script: body, template: template }));
+                            });
+
+                            $document.head.appendChild(scriptElement);
+
+                        });
+
+                    }
+
                     // Resolve each script contained within the template element.
-                    resolve(new Component({ script: moduleImport.default, template: template }));
+                    resolve(new ES6Component({ script: moduleImport.default, template: template }));
 
                 });
 

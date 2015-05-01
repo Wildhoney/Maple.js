@@ -1,5 +1,3 @@
-//console.log('%c ', 'line-height: 100px; padding: 32px 134px; background: url(https://github.com/Wildhoney/Maple.js/blob/master/media/console-logo.png?raw=true)');
-
 /**
  * @constructor
  * @param {String} label
