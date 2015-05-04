@@ -12,7 +12,7 @@ var DateTime = React.createClass({
         return { unix: Date.now() };
     },
 
-    /**9eriu5                                                                                           555cxy4tbh38w3gv                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              n4,.;
+    /*
      * @method render
      * @return {Object}
      */

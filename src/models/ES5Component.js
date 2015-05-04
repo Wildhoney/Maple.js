@@ -26,7 +26,7 @@ export default class ES5Component extends Component {
      */
     customElement() {
 
-        let elementName  = this.elementName.bind(this),
+        let elementName  = this.elementName(),
             variableName = this.variableName(),
             script       = this.script,
             template     = this.template,
