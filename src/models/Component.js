@@ -1,70 +1,58 @@
-import utility   from './../helpers/Utility.js';
-import log       from './../helpers/Log.js';
+const STATE = { UNRESOLVED: 0, RESOLVING: 1, RESOLVED: 2 };
 
 export default class Component {
 
     /**
      * @constructor
-     * @param {HTMLScriptElement} script
-     * @param {Template} template
+     * @param {String} path
+     * @param {HTMLScriptElement} scriptElement
+     * @param {HTMLTemplateElement} templateElement
+     * @return {Module}
      */
-    constructor({ script, template }) {
-        this.script   = script;
-        this.template = template;
+    constructor(path, scriptElement, templateElement) {
+        this.path     = path;
+        this.state    = STATE.UNRESOLVED;
+        this.elements = { script: scriptElement, template: templateElement };
     }
 
     /**
-     * @method elementName
-     * @return {String}
+     * @method setState
+     * @param {Number} state
+     * @return {void}
      */
-    elementName() {
-        return utility.toSnakeCase(this.script.toString().match(/(?:function|class)\s*([a-z]+)/i)[1]);
+    setState(state) {
+        this.state = state;
     }
 
     /**
-     * @method importLinks
-     * @param {ShadowRoot} shadowBoundary
+     * @method loadAll
      * @return {Promise[]}
      */
-    importLinks(shadowBoundary) {
+    loadAll() {
+        return [].concat(this.loadStyles(), this.loadScripts());
+    }
 
-        /**
-         * @method addCSS
-         * @param {String} body
-         * @return {void}
-         */
-        function addCSS(body) {
-            let styleElement = document.createElement('style');
-            styleElement.setAttribute('type', 'text/css');
-            styleElement.innerHTML = body;
-            shadowBoundary.appendChild(styleElement);
-        }
+    /**
+     * @method loadStyles
+     * @return {Promise[]}
+     */
+    loadStyles() {
 
-        let content       = this.template.element.content,
-            linkElements  = utility.toArray(content.querySelectorAll(utility.selector.styles)),
-            styleElements = utility.toArray(content.querySelectorAll(utility.selector.inlines));
+        return new Promise((resolve, reject) => {
+            resolve();
+        });
 
-        return [].concat(linkElements, styleElements).map((element) => new Promise((resolve) => {
+    }
 
-            if (element.nodeName.toLowerCase() === 'style') {
-                addCSS(element.innerHTML);
-                resolve();
-                return;
-            }
+    /**
+     * @method loadScripts
+     * @return {Promise[]}
+     */
+    loadScripts() {
 
-            let href     = element.getAttribute('href'),
-                document = this.template.element.ownerDocument,
-                resolver = utility.pathResolver(document, href, this.template.path);
-
-            // Create the associated style element and resolve the promise with it.
-            fetch(resolver.getPath()).then((response) => response.text()).then((body) => {
-
-                addCSS(body);
-                resolve();
-
-            }).catch((error) => log('Error', error.message, '#DC143C'));
-
-        }));
+        return new Promise((resolve, reject) => {
+            resolve();
+        });
 
     }
 

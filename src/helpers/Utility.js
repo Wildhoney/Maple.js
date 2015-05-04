@@ -17,19 +17,6 @@ export default (function main() {
     return {
 
         /**
-         * @property selector
-         * @type {Object}
-         */
-        selector: {
-            links:      'link[rel="import"]:not([data-ignore])',
-            styles:     'link[type="text/css"]',
-            scripts:    `script[type="text/javascript"][src*="${LOCAL_MATCHER}"]`,
-            inlines:    'style[type="text/css"]',
-            components: `script[type="text/javascript"]:not([src*="${LOCAL_MATCHER}"])`,
-            templates:  'template'
-        },
-
-        /**
          * @method pathResolver
          * @param {HTMLDocument} ownerDocument
          * @param {String} url
@@ -72,6 +59,17 @@ export default (function main() {
             return Array.from ? Array.from(arrayLike) : Array.prototype.slice.apply(arrayLike);
         },
 
+        flattenArray(arr, givenArr = []) {
+
+            arr.forEach((item) => {
+                (Array.isArray(item)) && (this.flattenArray(item, givenArr));
+                (!Array.isArray(item)) && (givenArr.push(item));
+            });
+
+            return givenArr;
+
+        },
+
         /**
          * @method timeoutPromise
          * @param {Function} reject
@@ -94,20 +92,20 @@ export default (function main() {
         },
 
         /**
-         * @method extractName
+         * @method getName
          * @param {String} importPath
          * @return {String}
          */
-        extractName(importPath) {
+        getName(importPath) {
             return importPath.split('/').slice(0, -1).pop();
         },
 
         /**
-         * @method extractPath
+         * @method getPath
          * @param {String} importPath
          * @return {String}
          */
-        extractPath(importPath) {
+        getPath(importPath) {
             return importPath.split('/').slice(0, -1).join('/');
         },
 
