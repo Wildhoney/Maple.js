@@ -12,4 +12,5 @@ time {
     right: 40px;
     font-size: 8px;
     top: 0;
+    transition: color .25s;
 }

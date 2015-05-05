@@ -8,42 +8,72 @@ export default (function main() {
      */
     const WAIT_TIMEOUT = 30000;
 
-    /**
-     * @constant LOCAL_MATCHER
-     * @type {String}
-     */
-    const LOCAL_MATCHER = '../';
-
     return {
 
         /**
          * @method pathResolver
          * @param {HTMLDocument} ownerDocument
          * @param {String} url
-         * @param {String} componentPath
-         * @return {String}
+         * @return {Object}
          */
-        pathResolver(ownerDocument, url, componentPath) {
+        pathResolver(ownerDocument, url) {
+
+            let componentPath = this.getPath(url),
+                getPath       = this.getPath.bind(this);
+
+            /**
+             * @method resolvePath
+             * @param {String} path
+             * @param {HTMLDocument} overrideDocument
+             * @return {String}
+             */
+            function resolvePath(path, overrideDocument = document) {
+                var a  = overrideDocument.createElement('a');
+                a.href = path;
+                return a.href;
+            }
 
             return {
 
                 /**
                  * @method getPath
+                 * @param {String} path
                  * @return {String}
                  */
-                getPath() {
+                getPath(path) {
 
-                    var a  = ownerDocument.createElement('a');
-                    a.href = url;
-
-                    if (~a.href.indexOf(componentPath)) {
-                        return a.href;
+                    if (this.isLocalPath(path)) {
+                        return `${this.getAbsolutePath()}/${path}`;
                     }
 
-                    a      = document.createElement('a');
-                    a.href = url;
-                    return a.href;
+                    return resolvePath(path, document);
 
+                },
+
+                /**
+                 * @method getAbsolutePath
+                 * @return {String}
+                 */
+                getAbsolutePath() {
+                    return resolvePath(componentPath);
+                },
+
+                /**
+                 * @method getRelativePath
+                 * @return {String}
+                 */
+                getRelativePath() {
+                    return componentPath;
+                },
+
+                /**
+                 * @method isLocalPath
+                 * @param path {String}
+                 * @return {Boolean}
+                 */
+                isLocalPath(path) {
+                    path = getPath(resolvePath(path, ownerDocument));
+                    return !!~resolvePath(componentPath).indexOf(path);
                 }
 
             }
@@ -59,6 +89,11 @@ export default (function main() {
             return Array.from ? Array.from(arrayLike) : Array.prototype.slice.apply(arrayLike);
         },
 
+        /**
+         * @method flattenArray
+         * @param {Array} arr
+         * @param {Array} [givenArr=[]]
+         */
         flattenArray(arr, givenArr = []) {
 
             arr.forEach((item) => {

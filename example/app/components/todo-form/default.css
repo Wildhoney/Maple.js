@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:host {
+    position: relative;
+    width: 300px;
+    display: inline-block;
+}
+
+h1 {
+    color: rgba(0, 0, 0, .75);
+    font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+input[type="text"] {
+    outline: none;
+    margin-top: 10px;
+    width: 100%;
+    height: 32px;
+    font-size: 13px;
+    line-height: 32px;
+    padding: 0 12px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+input[type="button"] {
+    position: absolute;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .025);
+    border: 0;
+    border-left: 1px solid #dedede;
+    cursor: pointer;
+    width: 60px;
+    top: 28px;
+    right: 0;
+    height: 32px;
+    line-height: 32px;
+    font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+    color: rgba(0, 0, 0, .15);
+    text-transform: uppercase;
+    font-weight: bold;
+    outline: none;
+}
+
+input[type="button"]:active {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, .075);
+}

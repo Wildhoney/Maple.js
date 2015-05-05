@@ -19,21 +19,23 @@
 
     <!-- Components! -->
     <link rel="import" type="text/html" href="app/components/date-time/index.html" />
+    <link rel="import" type="text/html" href="app/components/todo-form/index.html" />
     <link rel="import" type="text/html" href="app/components/todo-collection/index.html" />
 
     <!-- Application! -->
     <script type="text/javascript" src="app/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
 
 </head>
 <body>
 
-    <todo-collection></todo-collection>
+    <todo-collection>
+        <div class="loading">Loading Collection...</div>
+    </todo-collection>
 
-    <!--<time-date data-format="YYYY-MM-DD HH:mm:ss">Loading Date...</time-date>-->
-
-    <!--<people-list data-names="Adam,Maria,Gabry,Nuria" unresolved>-->
-        <!--<b>Loading People...</b>-->
-    <!--</people-list>-->
+    <todo-form>
+        <div class="loading">Loading Form...</div>
+    </todo-form>
 
 </body>
 </html>

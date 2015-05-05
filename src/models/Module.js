@@ -1,9 +1,9 @@
-import utility   from './../helpers/Utility.js';
-import Component from './Component.js';
+import Component         from './Component.js';
+import {Abstract, State} from './Abstract.js';
+import utility           from './../helpers/Utility.js';
+import selectors         from './../helpers/Selectors.js';
 
-const STATE = { UNRESOLVED: 0, RESOLVING: 1, RESOLVED: 2 };
-
-export default class Module {
+export default class Module extends Abstract {
 
     /**
      * @constructor
@@ -12,31 +12,34 @@ export default class Module {
      */
     constructor(templateElement) {
 
-        this.path       = utility.getPath(templateElement.getAttribute('href'));
-        this.state      = STATE.UNRESOLVED;
+        super();
+        this.path       = utility.pathResolver(templateElement.import, templateElement.getAttribute('href'));
+        this.state      = State.UNRESOLVED;
         this.elements   = { template: templateElement };
         this.components = [];
 
         this.loadModule(templateElement).then(() => {
 
-            let promises = this.getTemplates().map((templateElement) => {
+            this.getTemplates().forEach((templateElement) => {
 
-                let scriptElements = utility.toArray(templateElement.content.querySelectorAll('script[type="text/javascript"]'));
+                let scriptElements = selectors.getScripts(templateElement.content);
 
-                return scriptElements.map((scriptElement) => {
+                scriptElements.map((scriptElement) => {
 
-                    let component = new Component(this.path, scriptElement, templateElement);
+                    let src = scriptElement.getAttribute('src');
+
+                    if (!this.path.isLocalPath(src)) {
+                        return;
+                    }
+
+                    let component = new Component(this.path, templateElement, scriptElement);
                     this.components.push(component);
-                    return component.loadAll();
 
                 });
 
             });
 
-            Promise.all(utility.flattenArray(promises)).then(() => {
-                this.setState(STATE.RESOLVED);
-                console.log(this.state);
-            });
+            this.setState(State.RESOLVED);
 
         });
 
@@ -58,7 +61,7 @@ export default class Module {
      */
     loadModule(templateElement) {
 
-        this.setState(STATE.RESOLVING);
+        this.setState(State.RESOLVING);
 
         return new Promise((resolve, reject) => {
 

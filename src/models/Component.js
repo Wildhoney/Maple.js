@@ -1,57 +1,90 @@
-const STATE = { UNRESOLVED: 0, RESOLVING: 1, RESOLVED: 2 };
+import Element           from './Element.js';
+import {Abstract, State} from './Abstract.js';
+import utility           from './../helpers/Utility.js';
+import logger            from './../helpers/Logger.js';
 
-export default class Component {
+export default class Component extends Abstract {
 
     /**
      * @constructor
      * @param {String} path
-     * @param {HTMLScriptElement} scriptElement
      * @param {HTMLTemplateElement} templateElement
+     * @param {HTMLScriptElement} scriptElement
      * @return {Module}
      */
-    constructor(path, scriptElement, templateElement) {
+    constructor(path, templateElement, scriptElement) {
+
+        super();
         this.path     = path;
-        this.state    = STATE.UNRESOLVED;
         this.elements = { script: scriptElement, template: templateElement };
-    }
 
-    /**
-     * @method setState
-     * @param {Number} state
-     * @return {void}
-     */
-    setState(state) {
-        this.state = state;
-    }
+        let src = scriptElement.getAttribute('src');
+        this.setState(State.RESOLVING);
 
-    /**
-     * @method loadAll
-     * @return {Promise[]}
-     */
-    loadAll() {
-        return [].concat(this.loadStyles(), this.loadScripts());
-    }
+        if (scriptElement.getAttribute('type') === 'text/jsx') {
+            logger.warn('Using JSXTransformer which is highly experimental and should not be used for production');
+            return void this.loadJSX(src);
+        }
 
-    /**
-     * @method loadStyles
-     * @return {Promise[]}
-     */
-    loadStyles() {
+        let url = `${this.path.getRelativePath()}/${utility.removeExtension(src)}`;
 
-        return new Promise((resolve, reject) => {
-            resolve();
+        System.import(url).then((imports) => {
+
+            if (!imports.default) {
+                return;
+            }
+
+            // Load all third-party scripts that are a prerequisite of resolving the custom element.
+            this.loadThirdPartyScripts().then(() => {
+                new Element(path, templateElement, scriptElement, imports.default);
+                this.setState(State.RESOLVED);
+            });
+
         });
 
     }
 
     /**
-     * @method loadScripts
+     * @method loadThirdPartyScripts
      * @return {Promise[]}
      */
-    loadScripts() {
+    loadThirdPartyScripts() {
+
+        let scriptElements    = utility.toArray(this.elements.template.content.querySelectorAll('script[type="text/javascript"]')),
+            thirdPartyScripts = scriptElements.filter((scriptElement) => {
+                return !this.path.isLocalPath(scriptElement.getAttribute('src'));
+            });
 
         return new Promise((resolve, reject) => {
-            resolve();
+
+            if (!thirdPartyScripts.length) {
+                return void resolve();
+            }
+
+            console.log('Load Third Party Scripts...');
+
+        });
+
+    }
+
+    /**
+     * @method loadJSX
+     * @param {String} src
+     * @return {void}
+     */
+    loadJSX(src) {
+
+        fetch(`${this.path.getRelativePath()}/${src}`).then((response) => {
+            return response.text();
+        }).then((body) => {
+
+            var transformed = eval(`"use strict"; ${JSXTransformer.transform(body).code}`);
+
+            this.loadThirdPartyScripts().then(() => {
+                new Element(this.path, this.elements.template, this.elements.script, transformed);
+                this.setState(State.RESOLVED);
+            });
+
         });
 
     }

@@ -1,0 +1,6 @@
+div.loading {
+    font-family: Arial, Tahoma, Helvetica, sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, .25);
+}

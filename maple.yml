@@ -5,7 +5,6 @@ gulp:
   directories:
     css: example/css
     dist: dist
-    app: example/compiled
     vendor: example/vendor/maple
 
   polyfills:

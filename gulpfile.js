@@ -62,14 +62,6 @@
         return compile(devPath);
     });
 
-    gulp.task('appify', function() {
-
-        return gulp.src(config.app)
-                   .pipe(babel({ modules: 'amd', moduleIds: true }))
-                   .pipe(gulp.dest(config.directories.app));
-
-    });
-
     gulp.task('sass', function () {
 
         return gulp.src(config.sass)
@@ -107,7 +99,7 @@
     });
 
     gulp.task('test', ['lint']);
-    gulp.task('build', ['compile', 'vendorify', 'minify', 'bundler', 'appify']);
+    gulp.task('build', ['compile', 'vendorify', 'minify', 'bundler']);
     gulp.task('default', ['test', 'build']);
     gulp.task('watch', function watch() {
         gulp.watch(config.all, ['compile', 'vendorify']);
