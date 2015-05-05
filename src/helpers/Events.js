@@ -121,9 +121,13 @@ export default (function main() {
                         eventFn    = `on${event.type}`,
                         events     = findEvents(components, event.target.getAttribute('data-reactid'), eventFn);
 
-                    events.forEach((eventFn) => {
-                        eventFn.apply(component);
-                    });
+                    if (events) {
+
+                        events.forEach((eventFn) => {
+                            eventFn.apply(component);
+                        });
+
+                    }
 
                 });
 

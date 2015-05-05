@@ -1,4 +1,5 @@
 import {Abstract, State} from './Abstract.js';
+import events            from './../helpers/Events.js';
 import utility           from './../helpers/Utility.js';
 import selectors         from './../helpers/Selectors.js';
 
@@ -132,7 +133,10 @@ export default class Element extends Abstract {
                         shadowRoot      = this.createShadowRoot();
 
                     shadowRoot.appendChild(contentElement);
-                    React.render(renderedElement, contentElement);
+                    let component = React.render(renderedElement, contentElement);
+
+                    // Configure the event delegation for the component.
+                    events.delegate(contentElement, component);
 
                     // Import external CSS documents.
                     Promise.all(loadStyles(shadowRoot)).then(() => {

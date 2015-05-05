@@ -3,25 +3,13 @@
     "use strict";
 
     /**
-     * @constructor
-     * @return {TodoActions}
-     */
-    function TodoActions() {}
-
-    /**
      * @property prototype
-     * @type {Object}
+     * @type {Function}
      */
-    TodoActions.prototype = {
+    let TodoActions = function() {
 
-        /**
-         * @method addTodo
-         * @param {String} text
-         * @return {void}
-         */
-        addTodo: function addTodo(text) {
-            this.dispatch(text);
-        }
+        // Generate all of our actions!
+        this.generateActions('add', 'remove');
 
     };
 

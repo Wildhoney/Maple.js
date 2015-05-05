@@ -18,7 +18,8 @@ class TodoCollection extends React.Component {
      * @return {void}
      */
     componentDidMount() {
-        app.stores.todoStore.listen(this.onChange);
+        this.props = { onChange: this.onChange.bind(this) };
+        app.stores.todoStore.listen(this.props.onChange);
     }
 
     /**
@@ -26,7 +27,7 @@ class TodoCollection extends React.Component {
      * @return {void}
      */
     componentWillUnmount() {
-        app.stores.todoStore.unlisten(this.onChange);
+        app.stores.todoStore.unlisten(this.props.onChange);
     }
 
     /**

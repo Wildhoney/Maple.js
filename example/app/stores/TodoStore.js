@@ -6,26 +6,29 @@
      * @property TodoStore
      * @type {Object}
      */
-    let TodoStore = {
+    let TodoStore = function() {
 
         /**
          * @method items
          * @type {Array}
          */
-        items: [
+        this.items = [
             { text: 'Take out the dirty dishes.', date: Date.now(), complete: false },
             { text: 'Bring in the clothes from the line.', date: Date.now(), complete: false },
             { text: 'Get curry powder from Waitrose.', date: Date.now(), complete: false }
-        ],
+        ];
 
         /**
-         * @method handleAddTodo
-         * @param {Array} items
+         * @method onAdd
+         * @param {Object} model
          * @return {void}
          */
-        handleAddTodo: function handleAddTodo(items) {
-            this.items = items;
-        }
+        this.onAdd = function onAdd(model) {
+            this.items.push(model);
+        };
+
+        // Bind all of the actions!
+        this.bindActions($app.actions.todoActions);
 
     };
 
