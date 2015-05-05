@@ -38,7 +38,7 @@ ul li {
     transition: all .25s;
 }
 
-ul li:hover {
+ul li.done {
     background-color: rgba(68, 170, 85, .5) !important;
     color: white;
 }
@@ -58,12 +58,12 @@ ul li:after {
     transition: all .25s;
 }
 
-ul li:hover:after {
+ul li.done:after {
     visibility: visible;
     right: 0;
 }
 
-ul li:hover /deep/ time {
+ul li.done /deep/ time {
     color: white;
 }
 
