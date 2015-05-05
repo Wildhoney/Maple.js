@@ -9,8 +9,9 @@ class DateTime extends React.Component {
      * @return {Object}
      */
     render() {
-        var unixTimestamp = Number(this.props.unix);
-        return <time>{new Date(unixTimestamp).toLocaleDateString()}</time>
+        let unixTimestamp = Number(this.props.unix);
+        let dateFormat    = this.props.format || 'MM-DD-YYYY';
+        return <time>{moment(unixTimestamp).format(dateFormat)}</time>
     }
 
 }

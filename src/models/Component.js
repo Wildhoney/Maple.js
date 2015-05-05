@@ -22,7 +22,6 @@ export default class Component extends Abstract {
         this.setState(State.RESOLVING);
 
         if (scriptElement.getAttribute('type') === 'text/jsx') {
-            logger.warn('Using JSXTransformer which is highly experimental and should not be used for production');
             return void this.loadJSX(src);
         }
 
@@ -35,7 +34,7 @@ export default class Component extends Abstract {
             }
 
             // Load all third-party scripts that are a prerequisite of resolving the custom element.
-            this.loadThirdPartyScripts().then(() => {
+            Promise.all(this.loadThirdPartyScripts()).then(() => {
                 new Element(path, templateElement, scriptElement, imports.default);
                 this.setState(State.RESOLVED);
             });
@@ -55,13 +54,12 @@ export default class Component extends Abstract {
                 return !this.path.isLocalPath(scriptElement.getAttribute('src'));
             });
 
-        return new Promise((resolve, reject) => {
+        return thirdPartyScripts.map((scriptElement) => {
 
-            if (!thirdPartyScripts.length) {
-                return void resolve();
-            }
-
-            console.log('Load Third Party Scripts...');
+            return new Promise((resolve, reject) => {
+                scriptElement.addEventListener('load', () => resolve());
+                document.head.appendChild(scriptElement);
+            });
 
         });
 
@@ -74,13 +72,15 @@ export default class Component extends Abstract {
      */
     loadJSX(src) {
 
+        logger.warn('Using JSXTransformer which is highly experimental and should not be used for production');
+
         fetch(`${this.path.getRelativePath()}/${src}`).then((response) => {
             return response.text();
         }).then((body) => {
 
             var transformed = eval(`"use strict"; ${JSXTransformer.transform(body).code}`);
 
-            this.loadThirdPartyScripts().then(() => {
+            Promise.all(this.loadThirdPartyScripts()).then(() => {
                 new Element(this.path, this.elements.template, this.elements.script, transformed);
                 this.setState(State.RESOLVED);
             });
