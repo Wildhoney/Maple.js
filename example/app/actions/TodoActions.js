@@ -1,20 +1,15 @@
-(function main($module) {
+(function main($app) {
 
     "use strict";
 
-    //class TodoActions {
-    //    updateTodo(id, text) {
-    //        this.dispatch({ id: id, text: text });
-    //    }
-    //}
-
     function TodoActions() {}
+
     TodoActions.prototype = {
-        updateTodo(id, text) {
-            this.dispatch({ id: id, text: text });
+        addTodo: function addTodo(text) {
+            this.dispatch(text);
         }
     };
 
-    $module.actions.TodoActions = $module.alt.createActions(TodoActions);
+    $app.actions.todoActions = $app.alt.createActions(TodoActions);
 
-})(window.alt);
+})(window.app);

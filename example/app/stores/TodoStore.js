@@ -1,23 +1,29 @@
-import alt from './../alt.js';
-import TodoActions from './../actions/TodoActions.js';
+(function main($app) {
 
-class TodoStore {
-    constructor() {
+    "use strict";
+
+    function TodoStore() {
+
+        this.todoItems = [
+            { text: 'Take out the dirty dishes.', date: Date.now(), complete: false },
+            { text: 'Bring in the clothes from the line.', date: Date.now(), complete: false },
+            { text: 'Get curry powder from Waitrose.', date: Date.now(), complete: false }
+        ];
+
         this.bindListeners({
-            updateTodo: TodoActions.updateTodo
+            handleAddTodo: $app.actions.todoActions.ADD_TODO
         });
 
-        this.todos = {};
     }
 
-    updateTodo({ id, text }) {
-        const todos = this.todos;
+    TodoStore.prototype = {
 
-        todos[id] = todos[id] || {};
-        todos[id].text = text;
+        handleAddTodo: function handleAddTodo(items) {
+            this.items = items;
+        }
 
-        this.setState({ todos });
-    }
-}
+    };
 
-export default alt.createStore(TodoStore, 'TodoStore');
+    $app.stores.todoStore = $app.alt.createStore(TodoStore, 'TodoStore');
+
+})(window.app);

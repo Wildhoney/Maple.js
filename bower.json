@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "font-awesome": "~4.3.0",
-    "moment": "~2.10.2"
+    "moment": "~2.10.2",
+    "alt": "~0.16.2"
   }
 }

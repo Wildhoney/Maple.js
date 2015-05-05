@@ -10,20 +10,30 @@ class TodoCollection extends React.Component {
      */
     constructor() {
         super();
-        this.state = {
-            items: [
-                { text: 'Take out the dirty dishes.', date: Date.now(), complete: false },
-                { text: 'Bring in the clothes from the line.', date: Date.now(), complete: false },
-                { text: 'Get curry powder from Waitrose.', date: Date.now(), complete: false }
-            ]
-        };
+        //this.state = app.stores.todoStore.getState();
+        //console.log(this.state);
     }
+
+    //componentDidMount() {
+    //    app.stores.todoStore.listen(this.onChange);
+    //}
+    //
+    //componentWillUnmount() {
+    //    app.stores.todoStore.unlisten(this.onChange);
+    //}
+    //
+    //onChange(state) {
+    //    console.log(state);
+    //    this.setState(state);
+    //}
 
     /**
      * @method render
      * @return {Object}
      */
     render() {
+
+        return <a></a>;
 
         let todoItems = this.state.items.map(function(model) {
 

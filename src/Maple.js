@@ -47,7 +47,16 @@ import utility from './helpers/Utility.js';
         findComponents() {
 
             var linkElements = utility.toArray($document.querySelectorAll('link[rel="import"]'));
-            linkElements.forEach((linkElement) => new Module(linkElement));
+
+            linkElements.forEach((linkElement) => {
+
+                if (linkElement.import) {
+                    return void new Module(linkElement);
+                }
+
+                linkElement.addEventListener('load', () => new Module(linkElement));
+
+            });
 
         }
 
