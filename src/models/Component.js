@@ -56,7 +56,7 @@ export default class Component extends Abstract {
 
         return thirdPartyScripts.map((scriptElement) => {
 
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 scriptElement.addEventListener('load', () => resolve());
                 document.head.appendChild(scriptElement);
             });
@@ -74,6 +74,8 @@ export default class Component extends Abstract {
 
         logger.warn('Using JSXTransformer which is highly experimental and should not be used for production');
 
+        /* jshint ignore:start */
+
         fetch(`${this.path.getRelativePath()}/${src}`).then((response) => {
             return response.text();
         }).then((body) => {
@@ -86,6 +88,8 @@ export default class Component extends Abstract {
             });
 
         });
+
+        /* jshint ignore:end */
 
     }
 

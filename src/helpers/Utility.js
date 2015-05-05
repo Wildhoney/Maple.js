@@ -96,10 +96,14 @@ export default (function main() {
          */
         flattenArray(arr, givenArr = []) {
 
+            /* jshint ignore:start */
+
             arr.forEach((item) => {
                 (Array.isArray(item)) && (this.flattenArray(item, givenArr));
                 (!Array.isArray(item)) && (givenArr.push(item));
             });
+
+            /* jshint ignore:end */
 
             return givenArr;
 

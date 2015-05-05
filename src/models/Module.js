@@ -63,7 +63,7 @@ export default class Module extends Abstract {
 
         this.setState(State.RESOLVING);
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
 
             if (templateElement.import) {
                 return void resolve(templateElement);

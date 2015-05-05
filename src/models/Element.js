@@ -45,11 +45,12 @@ export default class Element extends Abstract {
             element.appendChild(styleElement);
         }
 
+        this.setState(State.RESOLVING);
+
         let content       = this.elements.template.content;
         let linkElements  = selectors.getExternalStyles(content);
         let styleElements = selectors.getInlineStyles(content);
-
-        return [].concat(linkElements, styleElements).map((element) => new Promise((resolve) => {
+        let promises      = [].concat(linkElements, styleElements).map((element) => new Promise((resolve) => {
 
             if (element.nodeName.toLowerCase() === 'style') {
                 createStyle(element.innerHTML, shadowBoundary);
@@ -57,15 +58,15 @@ export default class Element extends Abstract {
                 return;
             }
 
-            let href = element.getAttribute('href');
-            let path = `${this.path.getAbsolutePath(href)}/${href}`;
-
-            fetch(this.path.getPath(href)).then((response) => response.text()).then((body) => {
+            fetch(this.path.getPath(element.getAttribute('href'))).then((response) => response.text()).then((body) => {
                 createStyle(body, shadowBoundary);
                 resolve();
             });
 
         }));
+
+        Promise.all(promises).then(() => this.setState(State.RESOLVED));
+        return promises;
 
     }
 

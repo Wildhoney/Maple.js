@@ -10,8 +10,8 @@ class TodoCollection extends React.Component {
      */
     constructor() {
         super();
-        //this.state = app.stores.todoStore.getState();
-        //console.log(this.state);
+        //this.state = app.stores.todoStore.getState() || { items: [] };
+        this.state = { items: [] };
     }
 
     //componentDidMount() {
@@ -33,8 +33,6 @@ class TodoCollection extends React.Component {
      */
     render() {
 
-        return <a></a>;
-
         let todoItems = this.state.items.map(function(model) {
 
             return (
@@ -53,7 +51,7 @@ class TodoCollection extends React.Component {
                     <span>Todo List</span>
                     <span>{this.state.items.length}</span>
                 </h1>
-                <ul>{todoItems}</ul>
+                <ul>{todoItems.length ? todoItems : <li className="none">Currently no todo items.</li>}</ul>
             </section>
         );
 

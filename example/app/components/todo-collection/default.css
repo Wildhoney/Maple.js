@@ -38,6 +38,10 @@ ul li {
     transition: all .25s;
 }
 
+ul li.none {
+    font-style: italic;
+}
+
 ul li.done {
     background-color: rgba(68, 170, 85, .5) !important;
     color: white;

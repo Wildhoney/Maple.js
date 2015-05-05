@@ -21,8 +21,7 @@ export default (function main() {
          * @return {Array}
          */
         getInlineStyles(element) {
-            return [];
-            //return utility.toArray(element.querySelectorAll('link[type="text/css"]'));
+            return utility.toArray(element.querySelectorAll('link[type="text/css"]'));
         },
 
         /**
