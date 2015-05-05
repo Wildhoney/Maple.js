@@ -10,22 +10,33 @@ class TodoCollection extends React.Component {
      */
     constructor() {
         super();
-        //this.state = app.stores.todoStore.getState() || { items: [] };
-        this.state = { items: [] };
+        this.state = app.stores.todoStore.getState();
     }
 
-    //componentDidMount() {
-    //    app.stores.todoStore.listen(this.onChange);
-    //}
-    //
-    //componentWillUnmount() {
-    //    app.stores.todoStore.unlisten(this.onChange);
-    //}
-    //
-    //onChange(state) {
-    //    console.log(state);
-    //    this.setState(state);
-    //}
+    /**
+     * @method componentDidMount
+     * @return {void}
+     */
+    componentDidMount() {
+        app.stores.todoStore.listen(this.onChange);
+    }
+
+    /**
+     * @method componentWillUnmount
+     * @return {void}
+     */
+    componentWillUnmount() {
+        app.stores.todoStore.unlisten(this.onChange);
+    }
+
+    /**
+     * @method onChange
+     * @param {Object} state
+     * @return {void}
+     */
+    onChange(state) {
+        this.setState(state);
+    }
 
     /**
      * @method render

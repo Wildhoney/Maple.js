@@ -2,22 +2,27 @@
 
     "use strict";
 
-    function TodoStore() {
+    /**
+     * @property TodoStore
+     * @type {Object}
+     */
+    let TodoStore = {
 
-        this.todoItems = [
+        /**
+         * @method items
+         * @type {Array}
+         */
+        items: [
             { text: 'Take out the dirty dishes.', date: Date.now(), complete: false },
             { text: 'Bring in the clothes from the line.', date: Date.now(), complete: false },
             { text: 'Get curry powder from Waitrose.', date: Date.now(), complete: false }
-        ];
+        ],
 
-        this.bindListeners({
-            handleAddTodo: $app.actions.todoActions.ADD_TODO
-        });
-
-    }
-
-    TodoStore.prototype = {
-
+        /**
+         * @method handleAddTodo
+         * @param {Array} items
+         * @return {void}
+         */
         handleAddTodo: function handleAddTodo(items) {
             this.items = items;
         }
