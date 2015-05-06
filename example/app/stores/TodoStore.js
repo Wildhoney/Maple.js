@@ -27,6 +27,14 @@
             this.items.push(model);
         };
 
+        /**
+         * @method onToggleState
+         * @param {Object} model
+         */
+        this.onToggleState = function onToggleState(model) {
+            model.complete = !model.complete;
+        };
+
         // Bind all of the actions!
         this.bindActions($app.actions.todoActions);
 

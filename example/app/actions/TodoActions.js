@@ -9,7 +9,7 @@
     let TodoActions = function() {
 
         // Generate all of our actions!
-        this.generateActions('add', 'remove');
+        this.generateActions('add', 'toggleState');
 
     };
 

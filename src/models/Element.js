@@ -105,11 +105,12 @@ export default class Element extends Abstract {
 
                     /**
                      * @method applyDefaultProps
+                     * @param {Object} attributes
                      * @return {void}
                      */
-                    function applyDefaultProps() {
+                    function applyDefaultProps(attributes) {
 
-                        for (let index = 0, attributes = this.attributes; index < attributes.length; index++) {
+                        for (let index = 0; index < attributes.length; index++) {
 
                             let attribute = attributes.item(index);
 
@@ -124,7 +125,7 @@ export default class Element extends Abstract {
 
                     // Apply properties to the custom element.
                     script.defaultProps = { path: path, element: this.cloneNode(true) };
-                    applyDefaultProps.apply(this);
+                    applyDefaultProps.call(this, this.attributes);
                     this.innerHTML      = '';
 
                     // Configure the React.js component, importing it under the shadow boundary.

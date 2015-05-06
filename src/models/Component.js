@@ -74,12 +74,11 @@ export default class Component extends Abstract {
 
         logger.warn('Using JSXTransformer which is highly experimental and should not be used for production');
 
-        /* jshint ignore:start */
-
         fetch(`${this.path.getRelativePath()}/${src}`).then((response) => {
             return response.text();
         }).then((body) => {
 
+            /* jslint evil: true */
             var transformed = eval(`"use strict"; ${JSXTransformer.transform(body).code}`);
 
             Promise.all(this.loadThirdPartyScripts()).then(() => {
@@ -88,8 +87,6 @@ export default class Component extends Abstract {
             });
 
         });
-
-        /* jshint ignore:end */
 
     }
 

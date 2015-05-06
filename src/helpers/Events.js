@@ -2,7 +2,62 @@ export default (function main() {
 
     "use strict";
 
+    /**
+     * @constant REACTID_ATTRIBUTE
+     * @type {String}
+     */
+    const REACTID_ATTRIBUTE = 'data-reactid';
+
+    /**
+     * @property components
+     * @type {Array}
+     */
+    let components = [];
+
     return {
+
+        /**
+         * @method findById
+         * @param id {Number}
+         * @return {Object}
+         */
+        findById(id) {
+
+            let properties;
+
+            /**
+             * @method findRecursively
+             * @param {Object} renderedComponent
+             * @return {void}
+             */
+            function findRecursively(renderedComponent) {
+
+                if (renderedComponent._rootNodeID === id) {
+
+                    properties = renderedComponent._currentElement.props;
+                    return;
+
+                }
+
+                let children = renderedComponent._renderedComponent._renderedChildren;
+
+                if (!children) {
+                    return;
+                }
+
+                Object.keys(children).forEach((index) => {
+                    findRecursively(children[index]);
+                });
+
+            }
+
+            components.forEach((component) => {
+                findRecursively(component._reactInternalInstance._renderedComponent);
+            });
+
+            return properties;
+
+        },
 
         /**
          * @method delegate
@@ -12,133 +67,32 @@ export default (function main() {
          */
         delegate(contentElement, component) {
 
-            let aElement   = document.createElement('a'),
-                events     = [],
-                eventEsque = /on[a-z]+/i;
+            components.push(component);
 
-            Object.keys(aElement).forEach((key) => {
+            contentElement.addEventListener('click', (event) => {
 
-                if (key.match(eventEsque)) {
-                    events.push(key.replace(/^on/, ''));
-                }
+                event.path.forEach((item) => {
 
-            });
-
-            /**
-             * @method getEvent
-             * @param {String} eventName
-             * @param {Object} properties
-             * @return {Boolean}
-             */
-            function getEvent(eventName, properties) {
-
-                let matchName = new RegExp(eventName, 'i'),
-                    eventFn   = null;
-
-                Object.keys(properties).forEach((property) => {
-
-                    let propertyName = property.match(matchName);
-
-                    if (propertyName) {
-                        eventFn = properties[propertyName];
-                    }
-
-                });
-
-                return eventFn;
-
-            }
-
-            /**
-             * @method findEvents
-             * @param {Object} node
-             * @param {String} reactId
-             * @param {String} eventName
-             * @return {Array}
-             */
-            function findEvents(node, reactId, eventName) {
-
-                let events      = [],
-                    rootEventFn = getEvent(eventName, node._currentElement._store.props);
-
-                if (rootEventFn) {
-
-                    // Found event in root!
-                    events.push(rootEventFn);
-
-                }
-
-                if (node._rootNodeID === reactId) {
-                    return events;
-                }
-
-                let children = node._renderedChildren;
-
-                for (let id in children) {
-
-                    if (children.hasOwnProperty(id)) {
-
-                        let item = children[id];
-
-                        if (item._rootNodeID === reactId) {
-
-                            let childEventFn = getEvent(eventName, item._instance.props);
-
-                            if (childEventFn) {
-
-                                // Found event in children!
-                                events.push(childEventFn);
-
-                            }
-
-                            return events;
-
-                        }
-
-                        if (item._renderedChildren) {
-                            return findEvents(item, reactId, eventName);
-                        }
-
-                    }
-
-                }
-
-            }
-
-            /**
-             * @method createEvent
-             * @return {void}
-             */
-            function createEvent(eventName) {
-
-                contentElement.addEventListener(eventName, function onClick(event) {
-
-                    if (!(event.target instanceof HTMLElement)) {
+                    if (!item.getAttribute || !item.hasAttribute(REACTID_ATTRIBUTE)) {
                         return;
                     }
 
-                    let components = component._reactInternalInstance._renderedComponent._renderedComponent,
-                        eventFn    = `on${event.type}`,
-                        events     = findEvents(components, event.target.getAttribute('data-reactid'), eventFn);
+                    let x = this.findById(item.getAttribute(REACTID_ATTRIBUTE));
 
-                    if (events) {
-
-                        events.forEach((eventFn) => {
-                            eventFn.apply(component);
-                        });
-
+                    if ('onClick' in x) {
+                        x.onClick.apply(component);
                     }
 
                 });
 
-            }
-
-            for (let eventName of events) {
-                createEvent(eventName);
-            }
+            });
 
         }
 
     };
 
 })();
+
+// Remove reactid from default prop
+// Setup events
+// Replace "export default" when eval'ing

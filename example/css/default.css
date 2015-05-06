@@ -1,3 +1,25 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html, body {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+section.container {
+    margin-top: -50px;
+}
+
 div.loading {
     font-family: Arial, Tahoma, Helvetica, sans-serif;
     font-size: 18px;

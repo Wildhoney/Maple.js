@@ -40,6 +40,14 @@ class TodoCollection extends React.Component {
     }
 
     /**
+     * @method toggleState
+     * @return {void}
+     */
+    toggleState(model) {
+        app.actions.todoActions.toggleState(model);
+    }
+
+    /**
      * @method render
      * @return {Object}
      */
@@ -48,13 +56,13 @@ class TodoCollection extends React.Component {
         let todoItems = this.state.items.map(function(model) {
 
             return (
-                <li className={ model.complete ? 'done' : '' }>
+                <li className={ model.complete ? 'done' : '' } onClick={this.toggleState.bind(null, model)}>
                     <p>{model.text}</p>
                     <date-time data-unix={model.date}></date-time>
                 </li>
             );
 
-        });
+        }.bind(this));
 
         return (
             <section>
