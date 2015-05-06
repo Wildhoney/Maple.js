@@ -139,11 +139,22 @@ export default class Element extends Abstract {
                     // Configure the event delegation for the component.
                     events.registerComponent(component);
 
-                    // Import external CSS documents.
-                    Promise.all(loadStyles(shadowRoot)).then(() => {
-                        this.removeAttribute('unresolved');
-                        this.setAttribute('resolved', '');
-                    });
+                    /**
+                     * Import external CSS documents and resolve element.
+                     *
+                     * @method resolveElement
+                     * @return {void}
+                     */
+                    function resolveElement() {
+
+                        Promise.all(loadStyles(shadowRoot)).then(() => {
+                            this.removeAttribute('unresolved');
+                            this.setAttribute('resolved', '');
+                        });
+
+                    }
+
+                    resolveElement.apply(this);
 
                 }
 

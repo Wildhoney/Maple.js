@@ -45,6 +45,7 @@ ul li.none {
 ul li.done {
     background-color: rgba(68, 170, 85, .5) !important;
     color: white;
+    text-decoration: line-through;
 }
 
 ul li:after {

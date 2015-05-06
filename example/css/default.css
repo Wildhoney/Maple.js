@@ -16,6 +16,16 @@ html, body {
     width: 100%;
 }
 
+todo-collection, todo-form {
+    opacity: 0;
+    transition: opacity 3s;
+    display: block;
+}
+
+todo-collection[resolved], todo-form[resolved] {
+    opacity: 1;
+}
+
 section.container {
     margin-top: -50px;
 }
