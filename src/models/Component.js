@@ -78,6 +78,8 @@ export default class Component extends Abstract {
             return response.text();
         }).then((body) => {
 
+            body = body.replace('export default', '').trim();
+
             /* jslint evil: true */
             var transformed = eval(`"use strict"; ${JSXTransformer.transform(body).code}`);
 

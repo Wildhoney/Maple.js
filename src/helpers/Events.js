@@ -152,5 +152,4 @@ export default (function main($document) {
 
 
 // Remove reactid from default prop
-// Setup events
 // Replace "export default" when eval'ing

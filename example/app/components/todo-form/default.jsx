@@ -2,7 +2,7 @@
  * @module TodoForm
  * @extends React.Component
  */
-class TodoForm extends React.Component {
+export default class TodoForm extends React.Component {
 
     /**
      * @method addTodo

@@ -2,7 +2,7 @@
  * @module TodoCollection
  * @extends React.Component
  */
-class TodoCollection extends React.Component {
+export default class TodoCollection extends React.Component {
 
     /**
      * @method constructor

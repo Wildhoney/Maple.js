@@ -2,7 +2,7 @@
  * @module DateTime
  * @extends React.Component
  */
-class DateTime extends React.Component {
+export default class DateTime extends React.Component {
 
     /*
      * @method render
