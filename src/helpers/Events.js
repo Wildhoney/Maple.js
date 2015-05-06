@@ -115,26 +115,30 @@ export default (function main($document) {
                     return key.match(/^on/i);
                 }).map((name) => name.replace(/^on/i, ''));
 
-                return;
+                return eventNames;
 
             })();
 
-            $document.addEventListener('click', (event) => {
+            events.forEach((eventType) => {
 
-                let eventName = `on${event.type}`;
+                $document.addEventListener(eventType, (event) => {
 
-                event.path.forEach((item) => {
+                    let eventName = `on${event.type}`;
 
-                    if (!item.getAttribute || !item.hasAttribute(REACTID_ATTRIBUTE)) {
-                        return;
-                    }
+                    event.path.forEach((item) => {
 
-                    let model       = this.findById(item.getAttribute(REACTID_ATTRIBUTE));
-                    let transformed = this.transformKeys(model.properties);
+                        if (!item.getAttribute || !item.hasAttribute(REACTID_ATTRIBUTE)) {
+                            return;
+                        }
 
-                    if (eventName in transformed) {
-                        transformed[eventName].apply(model.component);
-                    }
+                        let model       = this.findById(item.getAttribute(REACTID_ATTRIBUTE));
+                        let transformed = this.transformKeys(model.properties);
+
+                        if (eventName in transformed) {
+                            transformed[eventName].apply(model.component);
+                        }
+
+                    });
 
                 });
 
