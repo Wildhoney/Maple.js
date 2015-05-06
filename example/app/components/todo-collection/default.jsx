@@ -56,7 +56,7 @@ class TodoCollection extends React.Component {
         let todoItems = this.state.items.map(function(model) {
 
             return (
-                <li className={ model.complete ? 'done' : '' } onClick={this.toggleState.bind(null, model)}>
+                <li className={ model.complete ? 'done' : '' } onClick={this.toggleState.bind(this, model)}>
                     <p>{model.text}</p>
                     <date-time data-unix={model.date}></date-time>
                 </li>

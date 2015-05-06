@@ -1,5 +1,6 @@
 import Module  from './models/Module.js';
 import utility from './helpers/Utility.js';
+import events  from './helpers/Events.js';
 
 (function main($window, $document) {
 
@@ -57,6 +58,9 @@ import utility from './helpers/Utility.js';
                 linkElement.addEventListener('load', () => new Module(linkElement));
 
             });
+
+            // Configure the event delegation mappings.
+            events.setupDelegation();
 
         }
 

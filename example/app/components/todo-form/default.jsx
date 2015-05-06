@@ -29,7 +29,7 @@ class TodoForm extends React.Component {
         return (
             <section>
                 <h1>Add Todo Item</h1>
-                <input type="text" ref="todoText" refs="todoText" />
+                <input type="text" ref="todoText" />
                 <input type="button" value="Add" onClick={this.addTodo} />
             </section>
         );

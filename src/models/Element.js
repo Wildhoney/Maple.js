@@ -137,7 +137,7 @@ export default class Element extends Abstract {
                     let component = React.render(renderedElement, contentElement);
 
                     // Configure the event delegation for the component.
-                    events.delegate(contentElement, component);
+                    events.registerComponent(component);
 
                     // Import external CSS documents.
                     Promise.all(loadStyles(shadowRoot)).then(() => {

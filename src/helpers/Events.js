@@ -1,4 +1,4 @@
-export default (function main() {
+export default (function main($document) {
 
     "use strict";
 
@@ -14,6 +14,12 @@ export default (function main() {
      */
     let components = [];
 
+    /**
+     * @property eventNames
+     * @type {Array|null}
+     */
+    let eventNames = null;
+
     return {
 
         /**
@@ -23,53 +29,99 @@ export default (function main() {
          */
         findById(id) {
 
-            let properties;
+            let model;
 
             /**
-             * @method findRecursively
+             * @method find
              * @param {Object} renderedComponent
+             * @param {Object} currentComponent
              * @return {void}
              */
-            function findRecursively(renderedComponent) {
+            function find(renderedComponent, currentComponent) {
 
                 if (renderedComponent._rootNodeID === id) {
 
-                    properties = renderedComponent._currentElement.props;
+                    /**
+                     * @method bindModel
+                     * @return {void}
+                     */
+                    (function bindModel() {
+
+                        model = {
+                            properties: this._currentElement.props,
+                            component: currentComponent
+                        };
+
+                    }.bind(renderedComponent))();
+
                     return;
 
                 }
 
                 let children = renderedComponent._renderedComponent._renderedChildren;
 
-                if (!children) {
-                    return;
+                if (children) {
+                    Object.keys(children).forEach((index) => {
+                        find(children[index], currentComponent);
+                    });
                 }
-
-                Object.keys(children).forEach((index) => {
-                    findRecursively(children[index]);
-                });
 
             }
 
             components.forEach((component) => {
-                findRecursively(component._reactInternalInstance._renderedComponent);
+                find(component._reactInternalInstance._renderedComponent, component);
             });
 
-            return properties;
+            return model;
 
         },
 
         /**
-         * @method delegate
-         * @param {HTMLElement} contentElement
-         * @param {ReactClass.createClass.Constructor} component
+         * @method transformKeys
+         * @param {Object} map
+         * @param {String} [transformer='toLowerCase']
+         * @return {Object}
+         */
+        transformKeys(map, transformer = 'toLowerCase') {
+
+            let transformedMap = {};
+
+            Object.keys(map).forEach(function forEach(key) {
+                transformedMap[key[transformer]()] = map[key];
+            });
+
+            return transformedMap;
+
+        },
+
+        /**
+         * @method registerComponent
+         * @param {Object} component
          * @return {void}
          */
-        delegate(contentElement, component) {
-
+        registerComponent(component) {
             components.push(component);
+        },
 
-            contentElement.addEventListener('click', (event) => {
+        /**
+         * @method setupDelegation
+         * @return {void}
+         */
+        setupDelegation() {
+
+            let events = eventNames || (() => {
+
+                return eventNames = Object.keys($document.createElement('a')).filter((key) => {
+                    return key.match(/^on/i);
+                }).map((name) => name.replace(/^on/i, ''));
+
+            })();
+
+            events = ['click'];
+
+            $document.addEventListener('click', (event) => {
+
+                let eventName = `on${event.type}`;
 
                 event.path.forEach((item) => {
 
@@ -77,10 +129,11 @@ export default (function main() {
                         return;
                     }
 
-                    let x = this.findById(item.getAttribute(REACTID_ATTRIBUTE));
+                    let model       = this.findById(item.getAttribute(REACTID_ATTRIBUTE));
+                    let transformed = this.transformKeys(model.properties);
 
-                    if ('onClick' in x) {
-                        x.onClick.apply(component);
+                    if (eventName in transformed) {
+                        transformed[eventName].apply(model.component);
                     }
 
                 });
@@ -91,8 +144,4 @@ export default (function main() {
 
     };
 
-})();
-
-// Remove reactid from default prop
-// Setup events
-// Replace "export default" when eval'ing
+})(window.document);
