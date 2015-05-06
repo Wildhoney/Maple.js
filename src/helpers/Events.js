@@ -1,4 +1,4 @@
-import utility from './utility.js';
+import utility from './Utility.js';
 
 export default (function main($document) {
 
