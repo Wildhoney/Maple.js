@@ -1,6 +1,7 @@
 import {Abstract, State} from './Abstract.js';
 import events            from './../helpers/Events.js';
 import utility           from './../helpers/Utility.js';
+import cacheFactory      from './../helpers/CacheFactory.js';
 import selectors         from './../helpers/Selectors.js';
 
 export default class Element extends Abstract {
@@ -59,7 +60,7 @@ export default class Element extends Abstract {
                 return;
             }
 
-            fetch(this.path.getPath(element.getAttribute('href'))).then((response) => response.text()).then((body) => {
+            cacheFactory.fetch(this.path.getPath(element.getAttribute('href'))).then((body) => {
                 createStyle(body, shadowBoundary);
                 resolve();
             });
