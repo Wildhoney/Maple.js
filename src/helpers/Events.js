@@ -20,7 +20,7 @@ export default (function main($document) {
 
         /**
          * @method findById
-         * @param id {Number}
+         * @param id {String}
          * @return {Object}
          */
         findById(id) {
@@ -127,7 +127,7 @@ export default (function main($document) {
                             return;
                         }
 
-                        let model       = this.findById(Number(item.getAttribute(utility.ATTRIBUTE_REACTID)));
+                        let model       = this.findById(item.getAttribute(utility.ATTRIBUTE_REACTID));
                         let transformed = this.transformKeys(model.properties);
 
                         if (eventName in transformed) {
