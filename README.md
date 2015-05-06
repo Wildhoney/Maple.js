@@ -85,17 +85,28 @@ Importing a HTML file may not require Maple at all, and therefore if the imports
 As mentioned earlier, each component can register **multiple** custom elements, and may often do so. For instance, a `DateTime` component could yield `date-time-gmt`, `date-time-bst`, etc... Each element can have its own associated CSS documents as well. There are two approaches for this:
 
  1. Create two HTML documents: `index-gmt.html` and `index-bst.html` and require them to be imported separately;
- 2. Create one HTML document: `index.html` and have that contain two `template` elements:
+ 2. Create one HTML import with one `template` node and import both JS documents with a shared CSS document;
+ 3. Create one HTML document: `index.html` and have that contain two `template` elements:
  
 ```html
 <template>
-    <script type="text/maple-component" src="datetime-gmt.js"></script>
+    <script type="text/javascript" src="datetime-gmt.js"></script>
     <link rel="stylesheet" type="text/css" href="shared.css" />
     <link rel="stylesheet" type="text/css" href="datetime-gmt.css" />
 </template>
 <template>
-    <script type="text/maple-component" src="datetime-bst.js"></script>
+    <script type="text/javascript" src="datetime-bst.js"></script>
     <link rel="stylesheet" type="text/css" href="shared.css" />
     <link rel="stylesheet" type="text/css" href="datetime-bst.css" />
 </template>
 ```
+
+### JSX Compilation
+
+In development environments it is often useful to compile JSX documents &mdash; Maple supports JSX compilation, but since it uses `eval` it's **highly** unrecommended for production. All you have to do is import JSX the usual JSX way using the `text/jsx` type:
+ 
+ ```html
+ <template>
+     <script type="text/jsx" src="my-jsx-document.jsx"></script>
+ </template>
+ ```
