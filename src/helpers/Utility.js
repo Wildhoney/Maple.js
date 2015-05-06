@@ -11,6 +11,12 @@ export default (function main() {
     return {
 
         /**
+         * @constant ATTRIBUTE_REACTID
+         * @type {String}
+         */
+        ATTRIBUTE_REACTID: 'data-reactid',
+
+        /**
          * @method pathResolver
          * @param {HTMLDocument} ownerDocument
          * @param {String} url

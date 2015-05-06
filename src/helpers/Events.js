@@ -1,12 +1,8 @@
+import utility from './utility.js';
+
 export default (function main($document) {
 
     "use strict";
-
-    /**
-     * @constant REACTID_ATTRIBUTE
-     * @type {String}
-     */
-    const REACTID_ATTRIBUTE = 'data-reactid';
 
     /**
      * @property components
@@ -127,11 +123,11 @@ export default (function main($document) {
 
                     event.path.forEach((item) => {
 
-                        if (!item.getAttribute || !item.hasAttribute(REACTID_ATTRIBUTE)) {
+                        if (!item.getAttribute || !item.hasAttribute(utility.ATTRIBUTE_REACTID)) {
                             return;
                         }
 
-                        let model       = this.findById(item.getAttribute(REACTID_ATTRIBUTE));
+                        let model       = this.findById(Number(item.getAttribute(utility.ATTRIBUTE_REACTID)));
                         let transformed = this.transformKeys(model.properties);
 
                         if (eventName in transformed) {
@@ -149,7 +145,3 @@ export default (function main($document) {
     };
 
 })(window.document);
-
-
-// Remove reactid from default prop
-// Replace "export default" when eval'ing

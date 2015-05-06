@@ -115,8 +115,14 @@ export default class Element extends Abstract {
                             let attribute = attributes.item(index);
 
                             if (attribute.value) {
+
+                                if (attribute.name === utility.ATTRIBUTE_REACTID) {
+                                    continue;
+                                }
+
                                 let name = attribute.name.replace(/^data-/i, '');
                                 script.defaultProps[name] = attribute.value;
+
                             }
 
                         }
