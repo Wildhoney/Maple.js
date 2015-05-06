@@ -34,7 +34,6 @@ input[type="button"] {
     overflow: hidden;
     background-color: rgba(0, 0, 0, .025);
     border: 0;
-    border-left: 1px solid #dedede;
     cursor: pointer;
     width: 60px;
     top: 28px;
@@ -46,6 +45,18 @@ input[type="button"] {
     text-transform: uppercase;
     font-weight: bold;
     outline: none;
+    pointer-events: none;
+    transition: all .35s;
+}
+
+input[type="button"].active {
+    background-color: lightseagreen;
+    color: white;
+    pointer-events: all;
+}
+
+input[type="button"].active:hover {
+    background-color: black;
 }
 
 input[type="button"]:active {

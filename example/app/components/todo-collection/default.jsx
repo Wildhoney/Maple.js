@@ -48,6 +48,18 @@ export default class TodoCollection extends React.Component {
     }
 
     /**
+     * @method completedItems
+     * @return {Array}
+     */
+    completedItems() {
+
+        return this.state.items.filter(function(d) {
+            return d.complete;
+        });
+
+    }
+
+    /**
      * @method render
      * @return {Object}
      */
@@ -69,7 +81,7 @@ export default class TodoCollection extends React.Component {
                 <h1>
                     <i className="fa fa-calendar"></i>
                     <span>Todo List</span>
-                    <span>{this.state.items.length}</span>
+                    <span>{this.completedItems().length}/ {this.state.items.length}</span>
                 </h1>
                 <ul>{todoItems.length ? todoItems : <li className="none">Currently no todo items.</li>}</ul>
             </section>

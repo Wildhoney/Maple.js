@@ -113,6 +113,7 @@ export default class Element extends Abstract {
                         for (let index = 0; index < attributes.length; index++) {
 
                             let attribute = attributes.item(index);
+                            let replacer  = /^data-/i;
 
                             if (attribute.value) {
 
@@ -120,7 +121,7 @@ export default class Element extends Abstract {
                                     continue;
                                 }
 
-                                let name = attribute.name.replace(/^data-/i, '');
+                                let name = attribute.name.replace(replacer, '');
                                 script.defaultProps[name] = attribute.value;
 
                             }

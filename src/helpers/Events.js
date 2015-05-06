@@ -54,12 +54,16 @@ export default (function main($document) {
 
                 }
 
-                let children = renderedComponent._renderedComponent._renderedChildren;
+                if (renderedComponent._renderedComponent) {
 
-                if (children) {
-                    Object.keys(children).forEach((index) => {
-                        find(children[index], currentComponent);
-                    });
+                    let children = renderedComponent._renderedComponent._renderedChildren;
+
+                    if (children) {
+                        Object.keys(children).forEach((index) => {
+                            find(children[index], currentComponent);
+                        });
+                    }
+
                 }
 
             }
