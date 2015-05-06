@@ -38,6 +38,36 @@ ul li {
     transition: all .25s;
 }
 
+ul li button.remove {
+    position: absolute;
+    top: 0;
+    border: 0;
+    height: 28px;
+    line-height: 28px;
+    background-color: white;
+    padding: 0 6px;
+    outline: none;
+    width: 85px;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 101;
+    right: -160px;
+    transition: all .25s;
+    color: rgba(0, 0, 0, .25);
+    font-size: 9px;
+}
+
+ul li.done button.remove:hover {
+    color: #dd4b39;
+}
+
+ul li.done:hover button.remove {
+    visibility: visible;
+    cursor: pointer;
+    pointer-events: all;
+    right: 0;
+}
+
 ul li.none {
     font-style: italic;
 }

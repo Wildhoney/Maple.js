@@ -60,6 +60,15 @@ export default class TodoCollection extends React.Component {
     }
 
     /**
+     * @method removeTodo
+     * @param {Object} model
+     * @return {void}
+     */
+    removeTodo(model) {
+        app.actions.todoActions.remove(model);
+    }
+
+    /**
      * @method render
      * @return {Object}
      */
@@ -71,6 +80,9 @@ export default class TodoCollection extends React.Component {
                 <li className={ model.complete ? 'done' : '' } onClick={this.toggleState.bind(this, model)}>
                     <p>{model.text}</p>
                     <date-time data-unix={model.date}></date-time>
+                    <button className="remove" onClick={this.removeTodo.bind(this, model)}>
+                        <i className="fa fa-times"></i> Remove Item
+                    </button>
                 </li>
             );
 

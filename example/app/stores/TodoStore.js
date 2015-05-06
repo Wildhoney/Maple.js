@@ -28,6 +28,16 @@
         };
 
         /**
+         * @method onRemove
+         * @param {Object} model
+         * @return {void}
+         */
+        this.onRemove = function onRemove(model) {
+            var indexOf = this.items.indexOf(model);
+            this.items.splice(indexOf, 1);
+        };
+
+        /**
          * @method onToggleState
          * @param {Object} model
          */

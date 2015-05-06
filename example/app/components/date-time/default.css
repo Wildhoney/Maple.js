@@ -8,7 +8,6 @@ time {
     position: absolute;
     color: rgba(0, 0, 0, .25);
     display: block;
-    z-index: 1001;
     right: 40px;
     font-size: 8px;
     top: 0;

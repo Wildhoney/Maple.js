@@ -131,11 +131,16 @@ export default (function main($document) {
                             return;
                         }
 
-                        let model       = this.findById(item.getAttribute(utility.ATTRIBUTE_REACTID));
-                        let transformed = this.transformKeys(model.properties);
+                        let model = this.findById(item.getAttribute(utility.ATTRIBUTE_REACTID));
 
-                        if (eventName in transformed) {
-                            transformed[eventName].apply(model.component);
+                        if (model.properties) {
+
+                            let transformed = this.transformKeys(model.properties);
+
+                            if (eventName in transformed) {
+                                transformed[eventName].apply(model.component);
+                            }
+
                         }
 
                     });

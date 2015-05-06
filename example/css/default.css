@@ -16,6 +16,22 @@ html, body {
     width: 100%;
 }
 
+a.gitHubLogo {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+a.gitHubLogo img {
+    width: 200px;
+    opacity: .25;
+    transition: all 1s;
+}
+
+a.gitHubLogo img:hover {
+    opacity: 1;
+}
+
 todo-collection, todo-form {
     opacity: 0;
     transition: opacity 3s;
