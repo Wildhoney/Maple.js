@@ -1,5 +1,3 @@
-<img alt="Maple.js" src="media/main-logo.png" width="400" />
-
 ![Travis](http://img.shields.io/travis/Wildhoney/Maple.js.svg?style=flat)
 &nbsp;
 ![npm](http://img.shields.io/npm/v/maple.js.svg?style=flat)
