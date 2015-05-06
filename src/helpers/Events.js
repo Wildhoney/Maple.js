@@ -111,13 +111,13 @@ export default (function main($document) {
 
             let events = eventNames || (() => {
 
-                return eventNames = Object.keys($document.createElement('a')).filter((key) => {
+                eventNames = Object.keys($document.createElement('a')).filter((key) => {
                     return key.match(/^on/i);
                 }).map((name) => name.replace(/^on/i, ''));
 
-            })();
+                return;
 
-            events = ['click'];
+            })();
 
             $document.addEventListener('click', (event) => {
 
