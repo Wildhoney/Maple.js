@@ -12,7 +12,7 @@
 
 Maple is a seamless module that allows you to organise your [React](https://facebook.github.io/react/) project in terms of [webcomponents](http://webcomponents.org/) &mdash; with HTML Imports, Shadow DOM, and Custom Elements &mdash; allowing you to implement any [F](https://github.com/addthis/fluxthis)[l](https://github.com/spoike/refluxjs)[u](https://github.com/martyjs/marty)[x](https://github.com/BinaryMuse/fluxxor) architecture you choose.
 
-![Screenshot](images/Screenshot#1.png)
+![Screenshot](media/Screenshot#1.png)
 
 ## Getting Started
 
