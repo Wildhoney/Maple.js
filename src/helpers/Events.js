@@ -141,7 +141,8 @@ export default (function main($document) {
 
                 $document.addEventListener(eventType, (event) => {
 
-                    let eventName = `on${event.type}`;
+                    let eventName = `on${event.type}`,
+                        eventList = [];
 
                     event.path.forEach((item) => {
 
@@ -160,12 +161,19 @@ export default (function main($document) {
                             let transformed = this.transformKeys(model.properties);
 
                             if (eventName in transformed) {
-                                transformed[eventName].call(model.component, event);
+
+                                // We defer the invocation of the event method, because otherwise React.js
+                                // will re-render, and the React IDs will then be "out of sync" for this event.
+                                eventList.push(transformed[eventName].bind(model.component, event));
+
                             }
 
                         }
 
                     });
+
+                    // Invoke each found event for the event type.
+                    eventList.forEach((eventInvocation) => eventInvocation());
 
                 });
 
