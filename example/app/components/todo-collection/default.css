@@ -44,7 +44,6 @@ ul li button.remove {
     border: 0;
     height: 28px;
     line-height: 28px;
-    background-color: white;
     padding: 0 6px;
     outline: none;
     width: 85px;
@@ -52,13 +51,15 @@ ul li button.remove {
     pointer-events: none;
     z-index: 101;
     right: -160px;
-    transition: all .25s;
-    color: rgba(0, 0, 0, .25);
+    transition: all .55s;
+    color: white;
     font-size: 9px;
+    background-color: lightgray;
+    border-left: 1px solid white;
 }
 
 ul li.done button.remove:hover {
-    color: #dd4b39;
+    background-color: darkgray;
 }
 
 ul li.done:hover button.remove {

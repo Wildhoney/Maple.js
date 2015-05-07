@@ -5,7 +5,7 @@ import utility from './Utility.js';
  * @param {String} expression
  * @return {Array}
  */
-let queryAll = (expression) => {
+let queryAll = function queryAll(expression) {
     "use strict";
     return utility.toArray(this.querySelectorAll(expression));
 };

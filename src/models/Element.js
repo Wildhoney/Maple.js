@@ -11,7 +11,7 @@ import {StateManager, State} from './StateManager.js';
  * @author Adam Timberlake
  * @link https://github.com/Wildhoney/Maple.js
  */
-export default class Element extends StateManager {
+export default class CustomElement extends StateManager {
 
     /**
      * @constructor

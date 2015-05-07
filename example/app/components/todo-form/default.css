@@ -50,13 +50,13 @@ input[type="button"] {
 }
 
 input[type="button"].active {
-    background-color: lightseagreen;
+    background-color: black;
     color: white;
     pointer-events: all;
 }
 
 input[type="button"].active:hover {
-    background-color: black;
+    background-color: #ACCCC6;
 }
 
 input[type="button"]:active {
