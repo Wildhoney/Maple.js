@@ -125,7 +125,7 @@ export default (function main($document) {
 
                     let eventName = `on${event.type}`;
 
-                    event.path.forEach((item) => {
+                    event.path.reverse().forEach((item) => {
 
                         if (!item.getAttribute || !item.hasAttribute(utility.ATTRIBUTE_REACTID)) {
                             return;
@@ -133,7 +133,7 @@ export default (function main($document) {
 
                         let model = this.findById(item.getAttribute(utility.ATTRIBUTE_REACTID));
 
-                        if (model.properties) {
+                        if (model && model.properties) {
 
                             let transformed = this.transformKeys(model.properties);
 
