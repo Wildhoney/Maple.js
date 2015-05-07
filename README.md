@@ -10,7 +10,7 @@
 
 ---
 
-Maple is a seamless module that allows you to organise your [React](https://facebook.github.io/react/) project in terms of [webcomponents](http://webcomponents.org/) &mdash; with HTML Imports, Shadow DOM, and Custom Elements &mdash; allowing you to implement any [F](https://github.com/addthis/fluxthis)[l](https://github.com/spoike/refluxjs)[u](https://github.com/martyjs/marty)[x](https://github.com/BinaryMuse/fluxxor) architecture you choose.
+Maple is a seamless module that allows you to organise your [React](https://facebook.github.io/react/) project in terms of [webcomponents](http://webcomponents.org/) &mdash; with HTML Imports, Shadow DOM, and Custom Elements &mdash; allowing you to implement any [F](https://github.com/addthis/fluxthis)[l](https://github.com/spoike/refluxjs)[u](https://github.com/martyjs/marty)[x](https://github.com/BinaryMuse/fluxxor) architecture you choose, and then compile with [`Mapleify`](#Mapleify) for production.
 
 ![Screenshot](media/Screenshot%231.png)
 
@@ -110,3 +110,11 @@ In development environments it is often useful to compile JSX documents &mdash; 
      <script type="text/jsx" src="my-jsx-document.jsx"></script>
  </template>
  ```
+ 
+## Mapleify
+
+For development purposes the HTML Imports are an acceptable design implementation &ndash; however when pushing to production &mdash; as you do with Polymer &mdash; you'll want to minify and concatenate your resources. In Polymer you would use [`vulcanize`](https://github.com/polymer/vulcanize) &ndash; `Maple` utilises `vulcanize` to create [`Mapleify`](https://github.com/Wildhoney/Mapleify) which compiles your HTML document.
+
+You can install `Mapleify` globally with [npm](https://www.npmjs.com/): `npm install mapleify -g` &ndash; it can then be used from your terminal:
+
+> `mapleify -i index.html` (default renders to `mapleify.html` &ndash; change with `-o rendered.html`)
