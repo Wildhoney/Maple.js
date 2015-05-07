@@ -44,6 +44,15 @@ export default (function main() {
         },
 
         /**
+         * @mmethod getTemplates
+         * @param {HTMLElement|HTMLDocument} element
+         * @return {Array}
+         */
+        getTemplates(element) {
+            return queryAll.call(element, 'template[ref]');
+        },
+
+        /**
          * @method getScripts
          * @param {HTMLElement|HTMLDocument} element
          * @return {Array}

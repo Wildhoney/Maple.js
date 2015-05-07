@@ -7,18 +7,18 @@ export default class Module extends StateManager {
 
     /**
      * @constructor
-     * @param {HTMLTemplateElement} templateElement
+     * @param {HTMLLinkElement} linkElement
      * @return {Component}
      */
-    constructor(templateElement) {
+    constructor(linkElement) {
 
         super();
-        this.path       = utility.pathResolver(templateElement.import, templateElement.getAttribute('href'));
+        this.path       = utility.pathResolver(linkElement.import, linkElement.getAttribute('href'));
         this.state      = State.UNRESOLVED;
-        this.elements   = { template: templateElement };
+        this.elements   = { link: linkElement };
         this.components = [];
 
-        this.loadModule(templateElement).then(() => {
+        this.loadModule(linkElement).then(() => {
 
             this.getTemplates().forEach((templateElement) => {
 
@@ -65,6 +65,10 @@ export default class Module extends StateManager {
 
         return new Promise((resolve) => {
 
+            if (templateElement.hasAttribute('ref')) {
+                return void resolve(templateElement);
+            }
+
             if (templateElement.import) {
                 return void resolve(templateElement);
             }
@@ -83,7 +87,7 @@ export default class Module extends StateManager {
      */
     getTemplates() {
 
-        let ownerDocument = this.elements.template.import;
+        let ownerDocument = this.elements.link.import;
         return utility.toArray(ownerDocument.querySelectorAll('template'));
 
     }

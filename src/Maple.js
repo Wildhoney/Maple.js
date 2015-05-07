@@ -51,9 +51,7 @@ import events    from './helpers/Events.js';
          */
         findComponents() {
 
-            var linkElements = selectors.getLinks($document);
-
-            linkElements.forEach((linkElement) => {
+            selectors.getLinks($document).forEach((linkElement) => {
 
                 if (linkElement.import) {
                     return void new Module(linkElement);
@@ -61,6 +59,10 @@ import events    from './helpers/Events.js';
 
                 linkElement.addEventListener('load', () => new Module(linkElement));
 
+            });
+
+            selectors.getTemplates($document).forEach((templateElement) => {
+                new Module(templateElement);
             });
 
             // Configure the event delegation mappings.
