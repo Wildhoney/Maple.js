@@ -11,6 +11,9 @@ export default (function main($window) {
     return {
 
         /**
+         * Responsible for delegating to the native `fetch` function (polyfill provided), but will cache the
+         * initial promise in order for other invocations to the same URL to yield the same promise.
+         *
          * @method fetch
          * @param url {String}
          * @return {Promise}

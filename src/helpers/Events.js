@@ -37,6 +37,9 @@ export default (function main($document) {
     return {
 
         /**
+         * Recursively discover a component via its React ID that is set as a data attribute
+         * on each React element.
+         *
          * @method findById
          * @param id {String}
          * @return {Object}
@@ -127,6 +130,13 @@ export default (function main($document) {
          */
         setupDelegation() {
 
+            /**
+             * Determines all of the event types supported by the current browser. Will cache the results
+             * of this discovery for performance benefits.
+             *
+             * @property events
+             * @type {Array}
+             */
             let events = eventNames || (() => {
 
                 eventNames = Object.keys($document.createElement('a')).filter((key) => {
@@ -147,17 +157,28 @@ export default (function main($document) {
                     event.path.forEach((item) => {
 
                         if (event.isPropagationStopped) {
+
+                            // Method `stopPropagation` was invoked on the current event, which prevents
+                            // us from propagating any further.
                             return;
+
                         }
 
                         if (!item.getAttribute || !item.hasAttribute(utility.ATTRIBUTE_REACTID)) {
+
+                            // Current element is not a valid React element because it doesn't have a
+                            // React ID data attribute.
                             return;
+
                         }
 
+                        // Attempt to field the component by the associated React ID.
                         let model = this.findById(item.getAttribute(utility.ATTRIBUTE_REACTID));
 
                         if (model && model.properties) {
 
+                            // Transform the current React events into lower case keys, so that we can pair them
+                            // up with the event types.
                             let transformed = this.transformKeys(model.properties);
 
                             if (eventName in transformed) {

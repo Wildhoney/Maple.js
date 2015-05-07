@@ -1,6 +1,16 @@
+/**
+ * @constant State
+ * @type {{UNRESOLVED: number, RESOLVING: number, RESOLVED: number}}
+ */
 export const State = { UNRESOLVED: 0, RESOLVING: 1, RESOLVED: 2 };
 
-export class Abstract {
+/**
+ * @module Maple
+ * @submodule StateManager
+ * @author Adam Timberlake
+ * @link https://github.com/Wildhoney/Maple.js
+ */
+export class StateManager {
 
     /**
      * @constructor

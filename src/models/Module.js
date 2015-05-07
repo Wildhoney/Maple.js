@@ -1,9 +1,9 @@
-import Component         from './Component.js';
-import {Abstract, State} from './Abstract.js';
-import utility           from './../helpers/Utility.js';
-import selectors         from './../helpers/Selectors.js';
+import Component from './Component.js';
+import utility   from './../helpers/Utility.js';
+import selectors from './../helpers/Selectors.js';
+import {StateManager, State} from './StateManager.js';
 
-export default class Module extends Abstract {
+export default class Module extends StateManager {
 
     /**
      * @constructor

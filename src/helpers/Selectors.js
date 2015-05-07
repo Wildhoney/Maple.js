@@ -1,5 +1,15 @@
 import utility from './Utility.js';
 
+/**
+ * @method queryAll
+ * @param {String} expression
+ * @return {Array}
+ */
+let queryAll = (expression) => {
+    "use strict";
+    return utility.toArray(this.querySelectorAll(expression));
+};
+
 export default (function main() {
 
     "use strict";
@@ -12,7 +22,7 @@ export default (function main() {
          * @return {Array}
          */
         getExternalStyles(element) {
-            return utility.toArray(element.querySelectorAll('link[type="text/css"]'));
+            return queryAll.call(element, 'link[type="text/css"]');
         },
 
         /**
@@ -21,7 +31,16 @@ export default (function main() {
          * @return {Array}
          */
         getInlineStyles(element) {
-            return utility.toArray(element.querySelectorAll('link[type="text/css"]'));
+            return queryAll.call(element, 'style[type="text/css"]');
+        },
+
+        /**
+         * @mmethod getLinks
+         * @param {HTMLElement|HTMLDocument} element
+         * @return {Array}
+         */
+        getLinks(element) {
+            return queryAll.call(element, 'link[rel="import"]');
         },
 
         /**
@@ -31,8 +50,8 @@ export default (function main() {
          */
         getScripts(element) {
 
-            let jsFiles  = element.querySelectorAll('script[type="text/javascript"]');
-            let jsxFiles = element.querySelectorAll('script[type="text/jsx"]');
+            let jsFiles  = queryAll.call(element, 'script[type="text/javascript"]');
+            let jsxFiles = queryAll.call(element, 'script[type="text/jsx"]');
 
             return [].concat(utility.toArray(jsFiles), utility.toArray(jsxFiles));
 

@@ -1,10 +1,17 @@
-import {Abstract, State} from './Abstract.js';
-import events            from './../helpers/Events.js';
-import utility           from './../helpers/Utility.js';
-import cacheFactory      from './../helpers/CacheFactory.js';
-import selectors         from './../helpers/Selectors.js';
+import events       from './../helpers/Events.js';
+import utility      from './../helpers/Utility.js';
+import cacheFactory from './../helpers/CacheFactory.js';
+import selectors    from './../helpers/Selectors.js';
+import {StateManager, State} from './StateManager.js';
 
-export default class Element extends Abstract {
+/**
+ * @module Maple
+ * @submodule CustomElement
+ * @extends StateManager
+ * @author Adam Timberlake
+ * @link https://github.com/Wildhoney/Maple.js
+ */
+export default class Element extends StateManager {
 
     /**
      * @constructor
@@ -28,6 +35,9 @@ export default class Element extends Abstract {
     }
 
     /**
+     * Responsible for loading associated styles into either the shadow DOM, if the path is determined to be local
+     * to the component, or globally if not.
+     *
      * @method loadStyles
      * @param {ShadowRoot} shadowBoundary
      * @return {Promise[]}
@@ -73,6 +83,10 @@ export default class Element extends Abstract {
     }
 
     /**
+     * Extract the element name from converting the Function to a String via the `toString` method. It's worth
+     * noting that this is probably the weakest part of the Maple system because it relies on a regular expression
+     * to determine the name of the resulting custom HTML element.
+     *
      * @method getElementName
      * @return {String}
      */
@@ -81,6 +95,10 @@ export default class Element extends Abstract {
     }
 
     /**
+     * Yields the prototype for the custom HTML element that will be registered for our custom React component.
+     * It listens for when the custom element has been inserted into the DOM, and then sets up the styles, applies
+     * default React properties, etc...
+     *
      * @method getElementPrototype
      * @return {Object}
      */

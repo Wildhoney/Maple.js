@@ -1,6 +1,6 @@
-import Module  from './models/Module.js';
-import utility from './helpers/Utility.js';
-import events  from './helpers/Events.js';
+import Module    from './models/Module.js';
+import selectors from './helpers/Selectors.js';
+import events    from './helpers/Events.js';
 
 (function main($window, $document) {
 
@@ -22,7 +22,8 @@ import events  from './helpers/Events.js';
      * @return {Boolean}
      */
     function isReady(state) {
-        return (!HAS_INITIATED && (state === 'interactive' || state === 'complete'));
+        let readyStates = ['interactive', 'complete'];
+        return (!HAS_INITIATED && ~readyStates.indexOf(state));
     }
 
     /**
@@ -42,12 +43,15 @@ import events  from './helpers/Events.js';
         }
 
         /**
+         * Responsible for finding all of the external link elements, as well as the inline template elements
+         * that can be handcrafted, or baked into the HTML document when compiling a project.
+         *
          * @method findComponents
          * @return {void}
          */
         findComponents() {
 
-            var linkElements = utility.toArray($document.querySelectorAll('link[rel="import"]'));
+            var linkElements = selectors.getLinks($document);
 
             linkElements.forEach((linkElement) => {
 

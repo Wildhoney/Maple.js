@@ -1,4 +1,4 @@
-export default (function main() {
+export default (function main($console) {
 
     "use strict";
 
@@ -10,7 +10,7 @@ export default (function main() {
          * @return {void}
          */
         warn(message) {
-            console.log(`Maple.js: %c${message}.`, 'color: #dd4b39');
+            $console.log(`Maple.js: %c${message}.`, 'color: #dd4b39');
         },
 
         /**
@@ -19,7 +19,7 @@ export default (function main() {
          * @return {void}
          */
         info(message) {
-            console.log(`Maple.js: %c${message}.`, 'color: blue');
+            $console.log(`Maple.js: %c${message}.`, 'color: blue');
         },
 
         /**
@@ -28,9 +28,9 @@ export default (function main() {
          * @return {void}
          */
         error(message) {
-            console.log(`Maple.js: %c${message}.`, 'color: orange');
+            $console.log(`Maple.js: %c${message}.`, 'color: orange');
         }
 
     };
 
-})();
+})(window.console);

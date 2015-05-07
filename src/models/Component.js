@@ -1,11 +1,21 @@
-import Element           from './Element.js';
-import {Abstract, State} from './Abstract.js';
-import utility           from './../helpers/Utility.js';
-import logger            from './../helpers/Logger.js';
+import CustomElement from './Element.js';
+import utility       from './../helpers/Utility.js';
+import logger        from './../helpers/Logger.js';
+import {StateManager, State} from './StateManager.js';
 
-export default class Component extends Abstract {
+/**
+ * @module Maple
+ * @submodule Component
+ * @extends StateManager
+ * @author Adam Timberlake
+ * @link https://github.com/Wildhoney/Maple.js
+ */
+export default class Component extends StateManager {
 
     /**
+     * Responsible for loading any prerequisites before the component is delegated to each `CustomElement`
+     * object for creating a custom element, and lastly rendering the React component to the designated HTML element.
+     *
      * @constructor
      * @param {String} path
      * @param {HTMLTemplateElement} templateElement
@@ -22,20 +32,28 @@ export default class Component extends Abstract {
         this.setState(State.RESOLVING);
 
         if (scriptElement.getAttribute('type') === 'text/jsx') {
+
+            // Experimental method for transpiling JSX to JS documents.
             return void this.loadJSX(src);
+
         }
 
+        // Configure the URL of the component for ES6 `System.import`, which is also polyfilled in case the
+        // current browser does not provide support for dynamic module loading.
         let url = `${this.path.getRelativePath()}/${utility.removeExtension(src)}`;
 
         System.import(url).then((imports) => {
 
             if (!imports.default) {
+
+                // Components that do not have a default export (i.e: export default class...) will be ignored.
                 return;
+
             }
 
             // Load all third-party scripts that are a prerequisite of resolving the custom element.
             Promise.all(this.loadThirdPartyScripts()).then(() => {
-                new Element(path, templateElement, scriptElement, imports.default);
+                new CustomElement(path, templateElement, scriptElement, imports.default);
                 this.setState(State.RESOLVED);
             });
 
@@ -44,6 +62,9 @@ export default class Component extends Abstract {
     }
 
     /**
+     * Discover all of the third party JavaScript dependencies that are required to have been loaded before
+     * attempting to render the custom element.
+     *
      * @method loadThirdPartyScripts
      * @return {Promise[]}
      */
@@ -66,6 +87,9 @@ export default class Component extends Abstract {
     }
 
     /**
+     * Experimental implementation to transpile JSX into JS documents for development purposes. In production this
+     * method should never be invoked.
+     *
      * @method loadJSX
      * @param {String} src
      * @return {void}
@@ -84,7 +108,7 @@ export default class Component extends Abstract {
             var transformed = eval(`"use strict"; ${JSXTransformer.transform(body).code}`);
 
             Promise.all(this.loadThirdPartyScripts()).then(() => {
-                new Element(this.path, this.elements.template, this.elements.script, transformed);
+                new CustomElement(this.path, this.elements.template, this.elements.script, transformed);
                 this.setState(State.RESOLVED);
             });
 
