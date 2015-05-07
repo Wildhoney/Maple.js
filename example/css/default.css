@@ -43,7 +43,7 @@ todo-collection[resolved], todo-form[resolved] {
 }
 
 section.container {
-    margin-top: -50px;
+    /*margin-top: -50px;*/
 }
 
 div.loading {
