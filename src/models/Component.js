@@ -98,7 +98,7 @@ export default class Component extends StateManager {
 
         logger.warn('Using JSXTransformer which is highly experimental and should not be used for production');
 
-        fetch(`${this.path.getRelativePath()}/${src}`).then((response) => {
+        fetch(`${this.path.getRelativePath()}/${this.path.getSrc(src)}`).then((response) => {
             return response.text();
         }).then((body) => {
 

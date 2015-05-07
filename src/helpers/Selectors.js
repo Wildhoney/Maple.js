@@ -53,17 +53,22 @@ export default (function main() {
         },
 
         /**
-         * @method getScripts
+         * @mmethod getScripts
          * @param {HTMLElement|HTMLDocument} element
          * @return {Array}
          */
         getScripts(element) {
+            return queryAll.call(element, 'script[type="text/javascript"]');
+        },
 
-            let jsFiles  = queryAll.call(element, 'script[type="text/javascript"]');
+        /**
+         * @method getAllScripts
+         * @param {HTMLElement|HTMLDocument} element
+         * @return {Array}
+         */
+        getAllScripts(element) {
             let jsxFiles = queryAll.call(element, 'script[type="text/jsx"]');
-
-            return [].concat(utility.toArray(jsFiles), utility.toArray(jsxFiles));
-
+            return [].concat(utility.toArray(this.getScripts(element)), utility.toArray(jsxFiles));
         }
 
     };

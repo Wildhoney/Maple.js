@@ -22,7 +22,7 @@ export default class Module extends StateManager {
 
             this.getTemplates().forEach((templateElement) => {
 
-                let scriptElements = selectors.getScripts(templateElement.content);
+                let scriptElements = selectors.getAllScripts(templateElement.content);
 
                 scriptElements.map((scriptElement) => {
 

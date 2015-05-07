@@ -1,4 +1,4 @@
-export default (function main() {
+export default (function main($document) {
 
     "use strict";
 
@@ -17,6 +17,81 @@ export default (function main() {
         ATTRIBUTE_REACTID: 'data-reactid',
 
         /**
+         * @method refResolver
+         * @param {String} url
+         * @return {Object}
+         */
+        refResolver(url) {
+
+            let getName = this.getName.bind(this);
+
+            /**
+             * @method resolvePath
+             * @param {String} path
+             * @return {String}
+             */
+            function resolvePath(path) {
+                let a  = $document.createElement('a');
+                a.href = path;
+                return a.href;
+            }
+
+            return {
+
+                /**
+                 * @method getPath
+                 * @param {String} path
+                 * @return {String}
+                 */
+                getPath(path) {
+
+                    if (this.isLocalPath(path)) {
+                        return `${this.getAbsolutePath()}/${getName(path)}`;
+                    }
+
+                    return resolvePath(path, $document);
+
+                },
+
+                /**
+                 * @method getSrc
+                 * @return {String}
+                 */
+                getSrc(src) {
+                    return getName(src);
+                },
+
+                /**
+                 * @method getAbsolutePath
+                 * @return {String}
+                 */
+                getAbsolutePath() {
+                    return resolvePath(url);
+                },
+
+                /**
+                 * @method getRelativePath
+                 * @return {String}
+                 */
+                getRelativePath() {
+                    console.log(url);
+                    return url;
+                },
+
+                /**
+                 * @method isLocalPath
+                 * @param {String} path
+                 * @return {Boolean}
+                 */
+                isLocalPath(path) {
+                    return !!~path.indexOf(url);
+                }
+
+            }
+
+        },
+
+        /**
          * @method pathResolver
          * @param {HTMLDocument} ownerDocument
          * @param {String} url
@@ -33,8 +108,8 @@ export default (function main() {
              * @param {HTMLDocument} overrideDocument
              * @return {String}
              */
-            function resolvePath(path, overrideDocument = document) {
-                var a  = overrideDocument.createElement('a');
+            function resolvePath(path, overrideDocument = $document) {
+                let a  = overrideDocument.createElement('a');
                 a.href = path;
                 return a.href;
             }
@@ -52,8 +127,16 @@ export default (function main() {
                         return `${this.getAbsolutePath()}/${path}`;
                     }
 
-                    return resolvePath(path, document);
+                    return resolvePath(path, $document);
 
+                },
+
+                /**
+                 * @method getSrc
+                 * @return {String}
+                 */
+                getSrc(src) {
+                    return src;
                 },
 
                 /**
@@ -142,7 +225,7 @@ export default (function main() {
          * @return {String}
          */
         getName(importPath) {
-            return importPath.split('/').slice(0, -1).pop();
+            return importPath.split('/').slice(-1);
         },
 
         /**
@@ -165,4 +248,4 @@ export default (function main() {
 
     };
 
-})();
+})(window.document);
