@@ -1,5 +1,11 @@
 import utility from './Utility.js';
 
+var overriddenStop = Event.prototype.stopPropagation;
+Event.prototype.stopPropagation = function(){
+    this.isPropagationStopped = true;
+    overriddenStop.apply(this, arguments);
+};
+
 export default (function main($document) {
 
     "use strict";
@@ -125,7 +131,11 @@ export default (function main($document) {
 
                     let eventName = `on${event.type}`;
 
-                    event.path.reverse().forEach((item) => {
+                    event.path.forEach((item) => {
+
+                        if (event.isPropagationStopped) {
+                            return;
+                        }
 
                         if (!item.getAttribute || !item.hasAttribute(utility.ATTRIBUTE_REACTID)) {
                             return;
@@ -138,7 +148,7 @@ export default (function main($document) {
                             let transformed = this.transformKeys(model.properties);
 
                             if (eventName in transformed) {
-                                transformed[eventName].apply(model.component);
+                                transformed[eventName].call(model.component, event);
                             }
 
                         }
