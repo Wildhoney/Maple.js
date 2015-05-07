@@ -1,10 +1,22 @@
 import utility from './Utility.js';
 
-var overriddenStop = Event.prototype.stopPropagation;
-Event.prototype.stopPropagation = function(){
-    this.isPropagationStopped = true;
-    overriddenStop.apply(this, arguments);
-};
+/**
+ * @method overrideStopPropagation
+ * @see: http://bit.ly/1dPpxHl
+ * @return {void}
+ */
+(function overrideStopPropagation() {
+
+    "use strict";
+
+    let overriddenStop = Event.prototype.stopPropagation;
+
+    Event.prototype.stopPropagation = function stopPropagation() {
+        this.isPropagationStopped = true;
+        overriddenStop.apply(this, arguments);
+    };
+
+})();
 
 export default (function main($document) {
 
