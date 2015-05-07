@@ -46,6 +46,19 @@ export default class TodoForm extends React.Component {
     }
 
     /**
+     * @method pressedEnter
+     * @return {void}
+     */
+    pressedEnter(event) {
+
+        const ENTER_KEY = 13;
+
+        if (event.keyCode === ENTER_KEY) {
+            this.addTodo();
+        }
+    }
+
+    /**
      * @method render
      * @return {Object}
      */
@@ -54,8 +67,9 @@ export default class TodoForm extends React.Component {
         return (
             <section>
                 <h1>Add Item:</h1>
-                <input type="text" ref="todoText" onKeyUp={this.enableButton} />
-                <input type="button" value="Add" className={this.state.addable ? 'active' : ''} onClick={this.addTodo} />
+                <input type="text" ref="todoText" onKeyUp={this.enableButton} onKeyUp={this.pressedEnter} />
+                <input type="button" value="Add" className={this.state.addable ? 'active' : ''}
+                       onClick={this.addTodo} />
             </section>
         );
 

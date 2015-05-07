@@ -13,8 +13,8 @@
          * @type {Array}
          */
         this.items = [
-            { text: 'Take out the dirty dishes.', date: Date.now(), complete: false },
-            { text: 'Bring in the clothes from the line.', date: Date.now(), complete: false },
+            { text: 'Hang out the dirty dishes.', date: Date.now(), complete: false },
+            { text: 'Plead neighbours for my sugar back.', date: Date.now(), complete: false },
             { text: 'Get curry powder from Waitrose.', date: Date.now(), complete: false }
         ];
 
