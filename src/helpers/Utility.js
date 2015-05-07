@@ -17,91 +17,16 @@ export default (function main($document) {
         ATTRIBUTE_REACTID: 'data-reactid',
 
         /**
-         * @method refResolver
+         * @method resolver
          * @param {String} url
+         * @param {HTMLDocument|null} ownerDocument
          * @return {Object}
          */
-        refResolver(url) {
-
-            let getName = this.getName.bind(this);
-
-            /**
-             * @method resolvePath
-             * @param {String} path
-             * @return {String}
-             */
-            function resolvePath(path) {
-                let a  = $document.createElement('a');
-                a.href = path;
-                return a.href;
-            }
-
-            return {
-
-                /**
-                 * @method getPath
-                 * @param {String} path
-                 * @return {String}
-                 */
-                getPath(path) {
-
-                    if (this.isLocalPath(path)) {
-                        return `${this.getAbsolutePath()}/${getName(path)}`;
-                    }
-
-                    return resolvePath(path, $document);
-
-                },
-
-                /**
-                 * @method getSrc
-                 * @return {String}
-                 */
-                getSrc(src) {
-                    return getName(src);
-                },
-
-                /**
-                 * @method getAbsolutePath
-                 * @return {String}
-                 */
-                getAbsolutePath() {
-                    return resolvePath(url);
-                },
-
-                /**
-                 * @method getRelativePath
-                 * @return {String}
-                 */
-                getRelativePath() {
-                    console.log(url);
-                    return url;
-                },
-
-                /**
-                 * @method isLocalPath
-                 * @param {String} path
-                 * @return {Boolean}
-                 */
-                isLocalPath(path) {
-                    return !!~path.indexOf(url);
-                }
-
-            }
-
-        },
-
-        /**
-         * @method pathResolver
-         * @param {HTMLDocument} ownerDocument
-         * @param {String} url
-         * @return {Object}
-         */
-        pathResolver(ownerDocument, url) {
+        resolver(url, ownerDocument) {
 
             let componentPath = this.getPath(url),
-                getPath       = this.getPath.bind(this);
-
+                getPath       = this.getPath.bind(this),
+                getName       = this.getName.bind(this);
             /**
              * @method resolvePath
              * @param {String} path
@@ -117,52 +42,116 @@ export default (function main($document) {
             return {
 
                 /**
-                 * @method getPath
-                 * @param {String} path
-                 * @return {String}
+                 * @property production
+                 * @type {Object}
                  */
-                getPath(path) {
+                production: {
 
-                    if (this.isLocalPath(path)) {
-                        return `${this.getAbsolutePath()}/${path}`;
+                    /**
+                     * @method getPath
+                     * @param {String} path
+                     * @return {String}
+                     */
+                    getPath(path) {
+
+                        if (this.isLocalPath(path)) {
+                            return `${this.getAbsolutePath()}/${getName(path)}`;
+                        }
+
+                        return resolvePath(path, $document);
+
+                    },
+
+                    /**
+                     * @method getSrc
+                     * @return {String}
+                     */
+                    getSrc(src) {
+                        return getName(src);
+                    },
+
+                    /**
+                     * @method getAbsolutePath
+                     * @return {String}
+                     */
+                    getAbsolutePath() {
+                        return resolvePath(url);
+                    },
+
+                    /**
+                     * @method getRelativePath
+                     * @return {String}
+                     */
+                    getRelativePath() {
+                        return url;
+                    },
+
+                    /**
+                     * @method isLocalPath
+                     * @param {String} path
+                     * @return {Boolean}
+                     */
+                    isLocalPath(path) {
+                        return !!~path.indexOf(url);
                     }
 
-                    return resolvePath(path, $document);
-
                 },
 
                 /**
-                 * @method getSrc
-                 * @return {String}
+                 * @property development
+                 * @type {Object}
                  */
-                getSrc(src) {
-                    return src;
-                },
+                development: {
 
-                /**
-                 * @method getAbsolutePath
-                 * @return {String}
-                 */
-                getAbsolutePath() {
-                    return resolvePath(componentPath);
-                },
+                    /**
+                     * @method getPath
+                     * @param {String} path
+                     * @return {String}
+                     */
+                    getPath(path) {
 
-                /**
-                 * @method getRelativePath
-                 * @return {String}
-                 */
-                getRelativePath() {
-                    return componentPath;
-                },
+                        if (this.isLocalPath(path)) {
+                            return `${this.getAbsolutePath()}/${path}`;
+                        }
 
-                /**
-                 * @method isLocalPath
-                 * @param path {String}
-                 * @return {Boolean}
-                 */
-                isLocalPath(path) {
-                    path = getPath(resolvePath(path, ownerDocument));
-                    return !!~resolvePath(componentPath).indexOf(path);
+                        return resolvePath(path, $document);
+
+                    },
+
+                    /**
+                     * @method getSrc
+                     * @return {String}
+                     */
+                    getSrc(src) {
+                        return src;
+                    },
+
+                    /**
+                     * @method getAbsolutePath
+                     * @return {String}
+                     */
+                    getAbsolutePath() {
+                        return resolvePath(componentPath);
+                    },
+
+                    /**
+                     * @method getRelativePath
+                     * @return {String}
+                     */
+                    getRelativePath() {
+                        return componentPath;
+                    },
+
+                    /**
+                     * @method isLocalPath
+                     * @param path {String}
+                     * @return {Boolean}
+                     */
+                    isLocalPath(path) {
+                        path = getPath(resolvePath(path, ownerDocument));
+                        return !!~resolvePath(componentPath).indexOf(path);
+                    }
+
                 }
 
             }

@@ -85,7 +85,7 @@ import events    from './helpers/Events.js';
 
                 let scriptElements = selectors.getAllScripts(templateElement.content);
                 let ref            = templateElement.getAttribute('ref');
-                let path           = utility.refResolver(ref);
+                let path           = utility.resolver(ref, null).production;
 
                 scriptElements.forEach((scriptElement) => {
 
