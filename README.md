@@ -111,6 +111,17 @@ In development environments it is often useful to compile JSX documents &mdash; 
  </template>
  ```
  
+### Cascading Shadow Boundaries
+
+As Maple uses Custom Elements to create the components, it's straightforward to have components within components &ndash; you only need to place your Custom Element node into your React component:
+
+
+```javascript
+render() {
+    return <li><date-time data-unix={model.date}></date-time></li>
+}
+```
+ 
 ## Mapleify
 
 For development purposes the HTML Imports are an acceptable design implementation &ndash; however when pushing to production &mdash; as you do with Polymer &mdash; you'll want to minify and concatenate your resources. In Polymer you would use [`vulcanize`](https://github.com/polymer/vulcanize) &ndash; `Maple` utilises `vulcanize` to create [`Mapleify`](https://github.com/Wildhoney/Mapleify) which compiles your HTML document.

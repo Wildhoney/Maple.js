@@ -9,3 +9,6 @@
 /example/vendor/*
 !/example/vendor/.gitkeep
 !/example/vendor/browser.js
+
+# Maple.js
+/example/mapleified.html
