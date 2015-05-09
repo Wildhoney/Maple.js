@@ -102,10 +102,9 @@ export default class Component extends StateManager {
             return response.text();
         }).then((body) => {
 
-            body = body.replace('export default', '').trim();
-
+            let component = babel.transform(body).code;
             /* jslint evil: true */
-            var transformed = eval(`"use strict"; ${JSXTransformer.transform(body).code}`);
+            let transformed = eval(`"use strict"; ${component}`);
 
             Promise.all(this.loadThirdPartyScripts()).then(() => {
                 new CustomElement(this.path, this.elements.template, this.elements.script, transformed);

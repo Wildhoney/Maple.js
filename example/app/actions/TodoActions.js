@@ -6,7 +6,7 @@
      * @property prototype
      * @type {Function}
      */
-    let TodoActions = function() {
+    var TodoActions = function() {
 
         // Generate all of our actions!
         this.generateActions('add', 'remove', 'toggleState');

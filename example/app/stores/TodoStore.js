@@ -6,7 +6,7 @@
      * @property TodoStore
      * @type {Object}
      */
-    let TodoStore = function() {
+    var TodoStore = function() {
 
         /**
          * @method items
