@@ -154,7 +154,7 @@ export default (function main($document) {
                     let eventName = `on${event.type}`,
                         eventList = [];
 
-                    event.path.forEach((item) => {
+                    utility.toArray(event.path).forEach((item) => {
 
                         if (event.isPropagationStopped) {
 
