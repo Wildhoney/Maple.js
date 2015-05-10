@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
 
 group(:test) do
-  gem 'launchy', '~> 2.1.2'
-  gem 'cucumber'
-  gem 'capybara'
-  gem 'rspec'
+  gem 'launchy', '2.4.3'
+  gem 'cucumber', '2.0.0'
+  gem 'capybara', '2.4.4'
+  gem 'rspec', '3.2.0'
 end
 
-gem 'capybara-webkit', '1.0.0'
-gem 'selenium-webdriver', '2.37.0'
+gem 'capybara-webkit', '1.5.1'
+gem 'selenium-webdriver', '2.45.0'
