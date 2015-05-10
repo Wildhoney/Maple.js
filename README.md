@@ -143,12 +143,14 @@ Maple.js also comes distributed with a **dist/maple-with-polyfills.js** file tha
 
 We have a typical [todo example on Heroku](http://maple-app.herokuapp.com/) which uses Maple along with the [Alt.js](https://github.com/goatslacker/alt) Flux library. Everything should look familiar to a seasoned React.js developer &ndash; with the customary stores and actions &ndash; where the codebase differs is in the **components** directory, where each of the three components are written in ES6 and exported using `export default`.
 
-## Cucumber Tests
+## Testing
 
-<img src="https://cucumber.io/images/cucumber-logo.svg" width="200" />
+<img src="https://cucumber.io/images/cucumber-logo.svg" width="300" />
 
 `Maple` comes bundled with a handful of [Cucumber](https://cucumber.io/) tests which are written in Ruby, and can be run with the following set of commands:
 
 * `cd tests/cucumber`
 * `bundle install`
 * `bundle exec cucumber`
+
+**Note:** By default Cucumber tests will be run on the Herokuapp instance unless you explicitly specify it by passing in the URL as a parameter: `bundle exec cucumber -u http://my-maple.localhost/`.
