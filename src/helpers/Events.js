@@ -139,9 +139,17 @@ export default (function main($document) {
              */
             let events = eventNames || (() => {
 
-                eventNames = Object.keys($document.createElement('a')).filter((key) => {
-                    return key.match(/^on/i);
-                }).map((name) => name.replace(/^on/i, ''));
+                let aElement   = $document.createElement('a'),
+                    matcher    = /^on/i,
+                    eventNames = [];
+
+                for(var key in aElement) {
+
+                    if (key.match(matcher)) {
+                        eventNames.push(key.replace(matcher, ''));
+                    }
+
+                }
 
                 return eventNames;
 

@@ -70,9 +70,11 @@ export default class TodoForm extends React.Component {
         return (
             <section>
                 <h1>Add Item:</h1>
-                <input type="text" ref="todoText" onKeyUp={this.handleKeyUp} placeholder="What are you going to forget?" />
-                <input type="button" value="Add" className={this.state.addable ? 'active' : ''}
-                       onClick={this.addTodo} />
+                <div className="fields">
+                    <input type="text" ref="todoText" onKeyUp={this.handleKeyUp} placeholder="What are you going to forget?" />
+                    <input type="button" value="Add" className={this.state.addable ? 'active' : ''}
+                           onClick={this.addTodo} />
+                </div>
             </section>
         );
 
