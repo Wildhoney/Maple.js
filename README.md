@@ -134,3 +134,7 @@ You can install `Mapleify` globally with [npm](https://www.npmjs.com/): `npm ins
 ![Safari](https://github.com/alrra/browser-logos/raw/master/safari/safari_64x64.png)
 
 Maple.js also comes distributed with a **dist/maple-with-polyfills.js** file that includes all necessary polyfills for the widest possible support in modern browsers.
+
+## Example Todo
+
+We have a typical [todo example on Heroku](http://maple-app.herokuapp.com/) which uses Maple along with the [Alt.js](https://github.com/goatslacker/alt) Flux library. Everything should look familiar to a seasoned React.js developer &ndash; with the customary stores and actions &ndash; where the codebase differs is in the **components** directory, where each of the three components are written in ES6 and exported using `export default`.
