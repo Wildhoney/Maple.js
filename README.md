@@ -16,7 +16,7 @@ Maple is a seamless module that allows you to organise your [React](https://face
 
 ## Getting Started
 
-Given the typical Flux architecture where components reside in their respective `components` directory, we continue that trend in Maple, where **one** component can register **one or many** custom elements.
+Given the typical Flux architecture where components reside in their respective `components` directory, we continue that trend in Maple, where **one** component can register **one or many** custom elements &ndash; but each HTML document can only have **one** `template` element.
 
 Within the directory `my-app/components` we create our component's index that will be imported &mdash; `date-time.html` &mdash; which will import its associated JavaScript and CSS documents:
 
