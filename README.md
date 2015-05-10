@@ -125,3 +125,12 @@ For development purposes the HTML Imports are an acceptable design implementatio
 You can install `Mapleify` globally with [npm](https://www.npmjs.com/): `npm install mapleify -g` &ndash; it can then be used from your terminal:
 
 > `mapleify -i index.html` (default renders to `mapleify.html` &ndash; change with `-o rendered.html`)
+
+## Browser Support
+
+![Chrome](https://github.com/alrra/browser-logos/raw/master/chrome/chrome_64x64.png)
+![Firefox](https://github.com/alrra/browser-logos/raw/master/firefox/firefox_64x64.png)
+![Firefox](https://github.com/alrra/browser-logos/raw/master/opera/opera_64x64.png)
+![Safari](https://github.com/alrra/browser-logos/raw/master/safari/safari_64x64.png)
+
+Maple.js also comes distributed with a **dist/maple-with-polyfills.js** file that includes all necessary polyfills for the widest possible support in modern browsers.
