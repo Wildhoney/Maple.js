@@ -40,7 +40,7 @@ export default (function main() {
          * @return {Array}
          */
         getLinks(element) {
-            return queryAll.call(element, 'link[rel="import"]');
+            return queryAll.call(element, 'link[rel="import"]:not([data-ignore])');
         },
 
         /**
