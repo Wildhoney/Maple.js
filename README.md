@@ -82,24 +82,20 @@ Importing a HTML file may not require Maple at all, and therefore if the imports
 
 ### Multiple Elements
 
-As mentioned earlier, each component can register **multiple** custom elements, and may often do so. For instance, a `DateTime` component could yield `date-time-gmt`, `date-time-bst`, etc... Each element can have its own associated CSS documents as well. There are two approaches for this:
+Each HTML document can have **exactly** one `template` element registering components. In cases where you want to register multiple components, you **must** split them into their individual HTML documents for developers to import separately. For instance, a `DateTime` component could yield `date-time-gmt`, `date-time-bst`, etc... Each element can have its own associated CSS documents as well. There are two approaches for this:
 
  1. Create two HTML documents: `index-gmt.html` and `index-bst.html` and require them to be imported separately;
- 2. Create one HTML import with one `template` node and import both JS documents with a shared CSS document;
- 3. Create one HTML document: `index.html` and have that contain two `template` elements:
+ 2. Create one HTML import with one `template` node and import both JS documents with a shared CSS document:
  
 ```html
 <template>
     <script type="text/javascript" src="datetime-gmt.js"></script>
-    <link rel="stylesheet" type="text/css" href="shared.css" />
-    <link rel="stylesheet" type="text/css" href="datetime-gmt.css" />
-</template>
-<template>
     <script type="text/javascript" src="datetime-bst.js"></script>
     <link rel="stylesheet" type="text/css" href="shared.css" />
-    <link rel="stylesheet" type="text/css" href="datetime-bst.css" />
 </template>
 ```
+
+Choosing between the two approaches should be evident &ndash; if you want to apply custom CSS documents to each component individually &mdash; **datetime-gmt.css** to one, and **datetime-bst.css** to the other &mdash; then you should have two HTML documents. Otherwise if the two are directly related, and share the same CSS and JS documents, then they can be kept together in one HTML document.
 
 ### JSX Compilation
 
