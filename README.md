@@ -145,10 +145,10 @@ We have a typical [todo example on Heroku](http://maple-app.herokuapp.com/) whic
 
 ## Cucumber Tests
 
-![Cucumber](https://cucumber.io/images/cucumber-logo.svg)
+<img src="https://cucumber.io/images/cucumber-logo.svg" width="200" />
 
 `Maple` comes bundled with a handful of [Cucumber](https://cucumber.io/) tests which are written in Ruby, and can be run with the following set of commands:
 
-* cd tests/cucumber
-* bundle install
-* bundle exec cucumber
+* `cd tests/cucumber`
+* `bundle install`
+* `bundle exec cucumber`
