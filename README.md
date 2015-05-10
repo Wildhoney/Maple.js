@@ -1,3 +1,5 @@
+# Maple.js
+
 ![Travis](http://img.shields.io/travis/Wildhoney/Maple.js.svg?style=flat)
 &nbsp;
 ![npm](http://img.shields.io/npm/v/maple.js.svg?style=flat)
@@ -10,7 +12,7 @@
 
 ---
 
-Maple is a seamless module that allows you to organise your [React](https://facebook.github.io/react/) project in terms of [webcomponents](http://webcomponents.org/) &mdash; with HTML Imports, Shadow DOM, and Custom Elements &mdash; allowing you to implement any [F](https://github.com/addthis/fluxthis)[l](https://github.com/spoike/refluxjs)[u](https://github.com/martyjs/marty)[x](https://github.com/BinaryMuse/fluxxor) architecture you choose, and then compile with [`Mapleify`](#mapleify) for production.
+Maple is a seamless module that allows you to organise your [React](https://facebook.github.io/react/) project in terms of [webcomponents](http://webcomponents.org/) &mdash; with HTML Imports, Shadow DOM, and Custom Elements &mdash; allowing you to implement any [F](https://github.com/addthis/fluxthis)[l](https://github.com/spoike/refluxjs)[u](https://github.com/martyjs/marty)[x](https://github.com/BinaryMuse/fluxxor) architecture you choose, and then compile with [`Mapleify`](#mapleify-vulcanization) for production.
 
 ![Screenshot](media/Screenshot%232.png)
 
@@ -107,7 +109,7 @@ In development environments it is often useful to compile JSX documents &mdash; 
  </template>
  ```
  
-**Note:** When using [`Mapleify`](#mapleify) to render your app &ndash; Mapleify merely changes the type of your `script` elements from `text/jsx` to `text/javascript` and changes the extensions from **.jsx** to **.js** &ndash; it's left entirely up to the developer to write their Gulp/Grunt scripts to convert their JSX &mdash; and SASS &mdash; documents.
+**Note:** When using [`Mapleify`](#mapleify-vulcanization) to render your app &ndash; Mapleify merely changes the type of your `script` elements from `text/jsx` to `text/javascript` and changes the extensions from **.jsx** to **.js** &ndash; it's left entirely up to the developer to write their Gulp/Grunt scripts to convert their JSX &mdash; and SASS &mdash; documents.
  
 ### Nested Shadow Boundaries
 
@@ -140,3 +142,13 @@ Maple.js also comes distributed with a **dist/maple-with-polyfills.js** file tha
 ## Example Todo
 
 We have a typical [todo example on Heroku](http://maple-app.herokuapp.com/) which uses Maple along with the [Alt.js](https://github.com/goatslacker/alt) Flux library. Everything should look familiar to a seasoned React.js developer &ndash; with the customary stores and actions &ndash; where the codebase differs is in the **components** directory, where each of the three components are written in ES6 and exported using `export default`.
+
+## Cucumber Tests
+
+![Cucumber](https://cucumber.io/images/cucumber-logo.svg)
+
+`Maple` comes bundled with a handful of [Cucumber](https://cucumber.io/) tests which are written in Ruby, and can be run with the following set of commands:
+
+* cd tests/cucumber
+* bundle install
+* bundle exec cucumber
