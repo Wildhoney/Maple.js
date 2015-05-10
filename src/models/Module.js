@@ -1,5 +1,6 @@
 import Component from './Component.js';
 import utility   from './../helpers/Utility.js';
+import logger    from './../helpers/Logger.js';
 import selectors from './../helpers/Selectors.js';
 import {StateManager, State} from './StateManager.js';
 
@@ -20,7 +21,18 @@ export default class Module extends StateManager {
 
         this.loadModule(linkElement).then(() => {
 
-            this.getTemplates().forEach((templateElement) => {
+            // Use only the first template, because otherwise Mapleify will have a difficult job attempting
+            // to resolve the paths when there's a mismatch between template elements and link elements.
+            // PREVIOUS: this.getTemplates().forEach((templateElement) => {
+
+            let templateElements = this.getTemplates();
+
+            if (templateElements.length > 1) {
+                logger.error(`Component "${linkElement.getAttribute('href')}" is attempting to register two components`);
+                return;
+            }
+
+            [this.getTemplates()[0]].forEach((templateElement) => {
 
                 let scriptElements = selectors.getAllScripts(templateElement.content);
 

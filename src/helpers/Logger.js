@@ -10,7 +10,7 @@ export default (function main($console) {
          * @return {void}
          */
         warn(message) {
-            $console.log(`Maple.js: %c${message}.`, 'color: #dd4b39');
+            $console.log(`Maple.js: %c${message}.`, 'color: #5F9EA0');
         },
 
         /**
@@ -28,7 +28,7 @@ export default (function main($console) {
          * @return {void}
          */
         error(message) {
-            $console.log(`Maple.js: %c${message}.`, 'color: orange');
+            $console.error(`%c Maple.js: %c${message}.`, 'color: black', 'color: #CD6090');
         }
 
     };
