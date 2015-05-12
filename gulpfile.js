@@ -1,24 +1,25 @@
 (function main() {
 
-    var gulp       = require('gulp'),
-        jshint     = require('gulp-jshint'),
-        uglify     = require('gulp-uglify'),
-        rimraf     = require('gulp-rimraf'),
-        karma      = require('gulp-karma'),
-        rename     = require('gulp-rename'),
-        concat     = require('gulp-concat'),
-        sass       = require('gulp-sass'),
-        babel      = require('gulp-babel'),
-        fs         = require('fs'),
-        yaml       = require('js-yaml'),
-        browserify = require('browserify'),
-        babelify   = require('babelify');
+    var gulp        = require('gulp'),
+        jshint      = require('gulp-jshint'),
+        uglify      = require('gulp-uglify'),
+        rimraf      = require('gulp-rimraf'),
+        karma       = require('gulp-karma'),
+        rename      = require('gulp-rename'),
+        concat      = require('gulp-concat'),
+        sass        = require('gulp-sass'),
+        babel       = require('gulp-babel'),
+        processhtml = require('gulp-processhtml'),
+        fs          = require('fs'),
+        yaml        = require('js-yaml'),
+        browserify  = require('browserify'),
+        babelify    = require('babelify');
 
-    var config    = yaml.safeLoad(fs.readFileSync('maple.yml', 'utf8')).gulp,
-        entryFile = config.entry,
-        allFiles  = config.all,
-        prodPath  = config.directories.dist + '/' + config.names.default.prod,
-        devPath   = config.directories.dist + '/' + config.names.default.dev;
+    var cfg       = yaml.safeLoad(fs.readFileSync('maple.yml', 'utf8')),
+        entryFile = cfg.gulp.entry,
+        allFiles  = cfg.gulp.all,
+        prodPath  = cfg.gulp.directories.dist + '/' + cfg.gulp.names.default.prod,
+        devPath   = cfg.gulp.directories.dist + '/' + cfg.gulp.names.default.dev;
 
     /**
      * @method compile
@@ -39,13 +40,13 @@
 
     gulp.task('bundler', ['compile'], function() {
 
-        return gulp.src([].concat(config.polyfills, [devPath]))
+        return gulp.src([].concat(cfg.gulp.polyfills, [devPath]))
                    .pipe(concat('all.js'))
-                   .pipe(rename(config.names.bundle.dev))
-                   .pipe(gulp.dest(config.directories.dist))
+                   .pipe(rename(cfg.gulp.names.bundle.dev))
+                   .pipe(gulp.dest(cfg.gulp.directories.dist))
                    .pipe(uglify())
-                   .pipe(rename(config.names.bundle.prod))
-                   .pipe(gulp.dest(config.directories.dist));
+                   .pipe(rename(cfg.gulp.names.bundle.prod))
+                   .pipe(gulp.dest(cfg.gulp.directories.dist));
 
     });
 
@@ -54,7 +55,7 @@
         return gulp.src(devPath)
                    .pipe(rename(prodPath))
                    .pipe(uglify())
-                   .pipe(gulp.dest(config.directories.dist));
+                   .pipe(gulp.dest(cfg.gulp.directories.dist));
 
     });
 
@@ -62,11 +63,11 @@
         return compile(devPath);
     });
 
-    gulp.task('sass', function () {
+    gulp.task('sass', function() {
 
-        return gulp.src(config.sass)
+        return gulp.src(cfg.gulp.sass)
                    .pipe(sass())
-                   .pipe(gulp.dest(config.directories.css));
+                   .pipe(gulp.dest(cfg.gulp.directories.css));
 
     });
 
@@ -74,17 +75,17 @@
 
         return gulp.src(devPath)
                    .pipe(uglify())
-                   .pipe(rename(config.names.default.prod))
-                   .pipe(rename(config.names.default.prod))
-                   .pipe(gulp.dest(config.directories.dist));
+                   .pipe(rename(cfg.gulp.names.default.prod))
+                   .pipe(rename(cfg.gulp.names.default.prod))
+                   .pipe(gulp.dest(cfg.gulp.directories.dist));
 
     });
 
     gulp.task('vendorify', ['compile'], function() {
 
         return gulp.src(devPath)
-                   .pipe(rename(config.names.default.dev))
-                   .pipe(gulp.dest(config.directories.vendor));
+                   .pipe(rename(cfg.gulp.names.default.dev))
+                   .pipe(gulp.dest(cfg.gulp.directories.vendor));
 
     });
 
@@ -98,11 +99,19 @@
 
     });
 
-    gulp.task('test', ['lint']);
+    gulp.task('karma', function() {
+
+        return gulp.src('tests/compiled/app.template', 'tests/features/*.feature')
+            .pipe(karma({ cfgFile: 'karma.conf.js', action: 'run', port: 8000 }))
+            .on('error', function(error) { throw error; });
+
+    });
+
+    gulp.task('test', ['lint', 'karma']);
     gulp.task('build', ['compile', 'vendorify', 'minify', 'bundler']);
     gulp.task('default', ['test', 'build']);
     gulp.task('watch', function watch() {
-        gulp.watch(config.all, ['compile', 'vendorify']);
+        gulp.watch(cfg.gulp.all, ['compile', 'vendorify']);
     });
 
 })();

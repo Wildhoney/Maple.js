@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+time {
+    position: absolute;
+    color: rgba(0, 0, 0, .25);
+    display: block;
+    right: 40px;
+    font-size: 8px;
+    top: 0;
+    transition: color .25s;
+}

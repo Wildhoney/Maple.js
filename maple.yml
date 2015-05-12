@@ -1,6 +1,8 @@
 gulp:
   entry: ./src/Maple.js
   sass: example/scss/*.scss
+  example: example/**
+  tests: tests/compiled
 
   directories:
     css: example/css
@@ -14,6 +16,7 @@ gulp:
     - example/vendor/es6-module-loader/dist/es6-module-loader.js
 
   names:
+    cucumber: app.template
     default:
       dev: maple.js
       prod: maple.min.js
@@ -30,3 +33,13 @@ gulp:
     - ./example/app/*.js
     - ./example/app/actions/*.js
     - ./example/app/stores/*.js
+
+karma:
+
+  polyfills:
+    - tests/compiled/vendor/webcomponentsjs/webcomponents.js
+    - tests/compiled/vendor/browser.js
+    - tests/compiled/vendor/fetch/fetch.js
+    - tests/compiled/vendor/react/react.js
+    - tests/compiled/vendor/maple/maple.js
+    - tests/compiled/vendor/es6-module-loader/dist/es6-module-loader.js
