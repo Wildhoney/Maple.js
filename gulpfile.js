@@ -21,8 +21,6 @@
         prodPath  = cfg.gulp.directories.dist + '/' + cfg.gulp.names.default.prod,
         devPath   = cfg.gulp.directories.dist + '/' + cfg.gulp.names.default.dev;
 
-    require('web-component-tester').gulp.init(gulp);
-
     /**
      * @method compile
      * @param {String} destPath
