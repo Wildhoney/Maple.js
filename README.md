@@ -155,3 +155,5 @@ We have a typical [todo example on Heroku](http://maple-app.herokuapp.com/) whic
 * `gulp test`
 
 Optionally you may also invoke the `wct` testing yourself by issuing the `wct` command in your terminal.
+
+![Screenshot](media/Screenshot%233.png)
