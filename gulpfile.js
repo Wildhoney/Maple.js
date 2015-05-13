@@ -101,7 +101,7 @@
 
     });
 
-    gulp.task('test', ['lint', 'test:local']);
+    gulp.task('test', ['lint']);
     gulp.task('build', ['compile', 'vendorify', 'minify', 'bundler']);
     gulp.task('default', ['test', 'build']);
     gulp.task('watch', function watch() {
