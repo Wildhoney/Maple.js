@@ -21,6 +21,8 @@
         prodPath  = cfg.gulp.directories.dist + '/' + cfg.gulp.names.default.prod,
         devPath   = cfg.gulp.directories.dist + '/' + cfg.gulp.names.default.dev;
 
+    require('web-component-tester').gulp.init(gulp);
+
     /**
      * @method compile
      * @param {String} destPath
@@ -99,15 +101,7 @@
 
     });
 
-    gulp.task('karma', function() {
-
-        return gulp.src('tests/compiled/app.template', 'tests/features/*.feature')
-            .pipe(karma({ cfgFile: 'karma.conf.js', action: 'run', port: 8000 }))
-            .on('error', function(error) { throw error; });
-
-    });
-
-    gulp.task('test', ['lint', 'karma']);
+    gulp.task('test', ['lint', 'test:local']);
     gulp.task('build', ['compile', 'vendorify', 'minify', 'bundler']);
     gulp.task('default', ['test', 'build']);
     gulp.task('watch', function watch() {

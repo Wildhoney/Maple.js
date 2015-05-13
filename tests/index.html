@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <script type="text/javascript" src="../example/vendor/webcomponentsjs/webcomponents.js"></script>
+    <script type="text/javascript" src="../example/vendor/es6-module-loader/dist/es6-module-loader.js"></script>
+    <script type="text/javascript" src="../example/vendor/browser.js"></script>
+    <script type="text/javascript" src="../example/vendor/fetch/fetch.js"></script>
+    <script type="text/javascript" src="../example/vendor/react/react.js"></script>
+    <script type="text/javascript" src="../example/vendor/maple/maple.js"></script>
+    <script type="text/javascript" src="../example/vendor/alt/dist/alt.js"></script>
+    <script type="text/javascript" src="../example/vendor/web-component-tester/browser.js"></script>
+
+    <link rel="import" href="mocks/date-time/index.html">
+
+</head>
+<body>
+
+    <date-time></date-time>
+
+    <script>
+
+        suite('<date-time>', function() {
+
+            test('Should be able to display the time in a <time> element;', function() {
+
+                var dateTimeElement = document.querySelector('date-time'),
+                    shadowBoundary  = dateTimeElement.shadowRoot,
+                    contentElement  = dateTimeElement.querySelector('* /deep/ content'),
+                    timeElement     = contentElement.querySelector('time');
+
+                expect(dateTimeElement.nodeName.toLowerCase()).to.equal('date-time');
+                expect(shadowBoundary instanceof ShadowRoot).to.be.true;
+                expect(contentElement.nodeName.toLowerCase()).to.equal('content');
+                expect(timeElement.nodeName.toLowerCase()).to.equal('time');
+                expect(timeElement.innerHTML).to.equal('Date/Time');
+                expect(dateTimeElement.hasAttribute('resolved')).to.be.ok;
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
