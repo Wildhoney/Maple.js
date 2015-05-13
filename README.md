@@ -150,6 +150,7 @@ We have a typical [todo example on Heroku](http://maple-app.herokuapp.com/) whic
 `Maple` uses Polymer's [`wct` testing tool](https://github.com/Polymer/web-component-tester) &ndash; which relies on the [Chai](http://chaijs.com/) assertion library.
 
 * `npm install`
+* `bower install`
 * `gulp test`
 
 Optionally you may also invoke the `wct` testing yourself by issuing the `wct` command in your terminal.
