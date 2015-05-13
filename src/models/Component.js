@@ -77,6 +77,11 @@ export default class Component extends StateManager {
 
         return thirdPartyScripts.map((scriptElement) => {
 
+            let src       = scriptElement.getAttribute('src');
+            scriptElement = document.createElement('script');
+            scriptElement.setAttribute('type', 'text/javascript');
+            scriptElement.setAttribute('src', src);
+
             return new Promise((resolve) => {
                 scriptElement.addEventListener('load', () => resolve());
                 document.head.appendChild(scriptElement);
