@@ -123,6 +123,28 @@ render() {
     return <li><date-time data-unix={model.date}></date-time></li>
 }
 ```
+
+### Resolved Components (FOUC)
+
+Maple uses the same mechanism as Polymer when it comes to preventing FOUC. Place the `unresolved` attribute on each element, and then once they're upgraded by Maple, the `unresolved` attribute will be replaced with the `resolved` attribute:
+
+```html
+<date-time unresolved></date-time>
+```
+
+With the following styles the `date-time` element will fade in gradually once upgraded:
+
+```css
+date-time {
+    opacity: 0;
+    display: block;
+    transition: opacity 3s;
+}
+
+date-time[resolved] {
+    opacity: 1;
+}
+```
  
 ## Mapleify (Vulcanization)
 
