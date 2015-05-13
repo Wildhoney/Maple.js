@@ -147,8 +147,6 @@ We have a typical [todo example on Heroku](http://maple-app.herokuapp.com/) whic
 
 ## Testing
 
-<img src="https://www.polymer-project.org/images/logos/p-logo.svg" width="300" />
-
 `Maple` uses Polymer's [`wct` testing tool](https://github.com/Polymer/web-component-tester) &ndash; which relies on the [Chai](http://chaijs.com/) assertion library.
 
 * `npm install`
