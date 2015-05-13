@@ -9,7 +9,7 @@ export default class DateTime extends React.Component {
      * @return {Object}
      */
     render() {
-        let unixTimestamp = Number(this.props.unix);
+        let unixTimestamp = Number(this.props.unix) || Date.now();
         let dateFormat    = this.props.format || 'MM-DD-YYYY';
         return <time>{moment(unixTimestamp).format(dateFormat)}</time>
     }
