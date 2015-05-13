@@ -147,12 +147,11 @@ We have a typical [todo example on Heroku](http://maple-app.herokuapp.com/) whic
 
 ## Testing
 
-<img src="https://cucumber.io/images/cucumber-logo.svg" width="300" />
+<img src="https://www.polymer-project.org/images/logos/p-logo.svg" width="300" />
 
-`Maple` comes bundled with a handful of [Cucumber](https://cucumber.io/) tests which are written in Ruby, and can be run with the following set of commands:
+`Maple` uses Polymer's [`wct` testing tool](https://github.com/Polymer/web-component-tester) &ndash; which relies on the [Chai](http://chaijs.com/) assertion library.
 
-* `cd tests/cucumber`
-* `bundle install`
-* `bundle exec cucumber`
+* `npm install`
+* `gulp test`
 
-**Note:** By default Cucumber tests will be run on the Herokuapp instance unless you explicitly specify it by passing in the URL as a parameter: `bundle exec cucumber -u http://my-maple.localhost/`.
+Optionally you may also invoke the `wct` testing yourself by issuing the `wct` command in your terminal.
