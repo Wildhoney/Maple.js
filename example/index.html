@@ -8,13 +8,13 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
     <!-- Dependencies! -->
+    <script type="text/javascript" src="vendor/es6-module-loader/dist/es6-module-loader.js"></script>
     <script type="text/javascript" src="vendor/webcomponentsjs/webcomponents.js"></script>
     <script type="text/javascript" src="vendor/browser.js"></script>
     <script type="text/javascript" src="vendor/fetch/fetch.js"></script>
     <script type="text/javascript" src="vendor/react/react.js"></script>
     <script type="text/javascript" src="vendor/maple/maple.js"></script>
     <script type="text/javascript" src="vendor/alt/dist/alt.js"></script>
-    <script type="text/javascript" src="vendor/es6-module-loader/dist/es6-module-loader.js"></script>
 
     <!-- Prettification! -->
     <link rel="stylesheet" type="text/css" href="css/default.css" />
@@ -26,12 +26,15 @@
     <script type="text/javascript" src="app/stores/TodoStore.js"></script>
 
     <!-- Components! -->
+    <link rel="import" type="text/html" href="app/components/x-test/index.html" />
     <link rel="import" type="text/html" href="app/components/date-time/index.html" />
     <link rel="import" type="text/html" href="app/components/todo-form/index.html" />
     <link rel="import" type="text/html" href="app/components/todo-collection/index.html" />
 
 </head>
 <body>
+
+    <!--<x-test></x-test>-->
 
     <section class="container">
 
