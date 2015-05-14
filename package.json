@@ -42,7 +42,9 @@
     "url": "https://github.com/Wildhoney/Maple.js/issues"
   },
   "homepage": "https://github.com/Wildhoney/Maple.js",
-  "dependencies": {},
+  "dependencies": {
+    "plugin-jsx": "^1.1.0"
+  },
   "jspm": {
     "directories": {
       "baseURL": "example",
