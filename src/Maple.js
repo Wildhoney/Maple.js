@@ -9,7 +9,8 @@ import events    from './helpers/Events.js';
     "use strict";
 
     if (typeof System !== 'undefined') {
-        System.transpiler = 'babel';
+        System.transpiler   = 'babel';
+        System.babelOptions = { blacklist: [] };
     }
 
     /**
