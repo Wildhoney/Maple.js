@@ -107,11 +107,13 @@ In development environments it is often useful to compile JSX documents &mdash; 
  
  ```html
  <template>
-     <script type="text/jsx" src="my-jsx-document.jsx"></script>
+     <script type="text/jsx" src="my-jsx-document.js"></script>
  </template>
  ```
  
-**Note:** When using [`Mapleify`](#mapleify-vulcanization) to render your app &ndash; Mapleify merely changes the type of your `script` elements from `text/jsx` to `text/javascript` and changes the extensions from **.jsx** to **.js** &ndash; it's left entirely up to the developer to write their Gulp/Grunt scripts to convert their JSX &mdash; and SASS &mdash; documents.
+**Note:** When using [`Mapleify`](#mapleify-vulcanization) to render your app &ndash; Mapleify merely changes the type of your `script` elements from `text/jsx` to `text/javascript` and changes the extensions from **.js** to **.js** &ndash; it's left entirely up to the developer to write their Gulp/Grunt scripts to convert their JSX &mdash; and SASS &mdash; documents.
+ 
+**Also Note:** Since the release of [`v1.2.0`](https://github.com/Wildhoney/Maple.js/tree/v1.2.0) JSX files **must** have a JS extension.
  
 ### Nested Shadow Boundaries
 
@@ -161,7 +163,7 @@ You can install `Mapleify` globally with [npm](https://www.npmjs.com/): `npm ins
 ![Firefox](https://github.com/alrra/browser-logos/raw/master/opera/opera_64x64.png)
 ![Safari](https://github.com/alrra/browser-logos/raw/master/safari/safari_64x64.png)
 
-Maple.js also comes distributed with a **dist/maple-with-polyfills.js** file that includes all necessary polyfills for the widest possible support in modern browsers.
+Maple also comes distributed with a **dist/maple-with-polyfills.js** file that includes all necessary polyfills for the widest possible support in modern browsers.
 
 ## Example Todo
 
