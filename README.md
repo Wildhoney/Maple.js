@@ -111,7 +111,7 @@ In development environments it is often useful to compile JSX documents &mdash; 
  </template>
  ```
  
-**Note:** When using [`Mapleify`](#mapleify-vulcanization) to render your app &ndash; Mapleify merely changes the type of your `script` elements from `text/jsx` to `text/javascript` and changes the extensions from **.js** to **.js** &ndash; it's left entirely up to the developer to write their Gulp/Grunt scripts to convert their JSX &mdash; and SASS &mdash; documents.
+**Note:** When using [`Mapleify`](#mapleify-vulcanization) to render your app &ndash; Mapleify merely changes the type of your `script` elements from `text/jsx` to `text/javascript` and changes the extensions from **.jsx** to **.js** (pre `v1.2.0` when JSX files were included with JSX extensions) &ndash; it's left entirely up to the developer to write their Gulp/Grunt scripts to convert their JSX &mdash; and SASS &mdash; documents.
  
 **Also Note:** Since the release of [`v1.2.0`](https://github.com/Wildhoney/Maple.js/tree/v1.2.0) JSX files **must** have a JS extension.
  
