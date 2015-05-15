@@ -31,18 +31,15 @@ export default class Component extends StateManager {
         let src = scriptElement.getAttribute('src');
         this.setState(State.RESOLVING);
 
-        if (scriptElement.getAttribute('type') === 'text/jsx') {
-
-            // Experimental method for transpiling JSX to JS documents.
-            return void this.loadJSX(src);
-
-        }
-
         // Configure the URL of the component for ES6 `System.import`, which is also polyfilled in case the
         // current browser does not provide support for dynamic module loading.
         let url = `${this.path.getRelativePath()}/${utility.removeExtension(src)}`;
 
-        System.import(url).then((imports) => {
+        if (src.split('.').pop().toLowerCase() === 'jsx') {
+            return void logger.error(`Use JS extension instead of JSX – JSX compilation will work as expected`);
+        }
+
+        System.import(`${url}`).then((imports) => {
 
             if (!imports.default) {
 
@@ -85,35 +82,6 @@ export default class Component extends StateManager {
             return new Promise((resolve) => {
                 scriptElement.addEventListener('load', () => resolve());
                 document.head.appendChild(scriptElement);
-            });
-
-        });
-
-    }
-
-    /**
-     * Experimental implementation to transpile JSX into JS documents for development purposes. In production this
-     * method should never be invoked.
-     *
-     * @method loadJSX
-     * @param {String} src
-     * @return {void}
-     */
-    loadJSX(src) {
-
-        logger.warn('Using JSXTransformer which is highly experimental and should not be used for production');
-
-        fetch(`${this.path.getRelativePath()}/${this.path.getSrc(src)}`).then((response) => {
-            return response.text();
-        }).then((body) => {
-
-            let component = babel.transform(body).code;
-            /* jslint evil: true */
-            let transformed = eval(`"use strict"; ${component}`);
-
-            Promise.all(this.loadThirdPartyScripts()).then(() => {
-                new CustomElement(this.path, this.elements.template, this.elements.script, transformed);
-                this.setState(State.RESOLVED);
             });
 
         });
