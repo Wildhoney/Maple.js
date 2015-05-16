@@ -26,7 +26,7 @@ Within the directory `my-app/components` we create our component's index that wi
 
 ```html
 <template>
-    <script type="text/javascript" src="date-time.js"></script>
+    <script type="text/jsx" src="date-time.js"></script>
     <script type="text/javascript" src="../../../vendor/moment/moment.js"></script>
     <link rel="stylesheet" type="text/css" href="date-time.css" />
 </template>
