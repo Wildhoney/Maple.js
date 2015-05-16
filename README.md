@@ -43,18 +43,20 @@ export default class MyDateTime extends React.Component {
 
     render() {
         let dateTime = moment().format(this.props.format || 'YYYY-MM-DD');
-        return React.createElement('datetime', null, dateTime);
+        return <time>{dateTime}</time>
     }
 
 }
 ```
+
+**Note:** You could use the `React.createElement('datetime', null, dateTime)` approach as well &ndash; the `System.import` we use recognises when it's a JSX file and will transpile it automatically for you.
 
 By looking at the above React component, we can immediately deduce that the *eventual* custom element will be called `my-date-time`. For those eagle-eyed individuals amongst us, you'll have noticed we use `this.props.format` to specify the date/time format &ndash; and this is something we'll pass into our component when adding the custom element to the DOM.
 
 Next all we need to do is add a little CSS to our `date-time.css` document:
 
 ```css
-datetime {
+time {
     color: rebeccapurple;
     font-family: Arial, Tahoma, Helvetica, sans-serif;
 }
@@ -68,7 +70,7 @@ And finally import the component into our main `index.html` document that includ
 
 **Note:** You may have noticed that the component's directory name is largely irrelevant &ndash; and it is, in most cases. However, there are certain circumstances where the component's directory matters &ndash; such as when registering a `WebWorker` &mdash; In this case Maple provides the component directory as `this.props.path`.
 
-Once the HTML document has been imported, Maple will register our custom element and it will be then usable in our application &ndash; although don't forget that we need to pass in the `format` attribute:
+Once the HTML document has been imported, Maple will register our custom element and it will be then usable in our application &ndash; although don't forget that we should pass in the *optional* `format` attribute to override `YYYY-MM-DD`:
 
 ```javascript
 <my-date-time data-format="YYYY-MM-DD HH:mm"></my-date-time>
@@ -103,7 +105,7 @@ Choosing between the two approaches should be evident &ndash; if you want to app
 
 ### JSX Compilation
 
-In development environments it is often useful to compile JSX documents &mdash; Maple supports JSX compilation, but since it uses `eval` it's **highly** unrecommended for production. All you have to do is import JSX the usual JSX way using the `text/jsx` type:
+In development environments it is often useful to compile JSX documents &mdash; Maple supports JSX compilation. All you have to do is import JSX the usual JSX way using the `text/jsx` type:
  
  ```html
  <template>
@@ -113,7 +115,7 @@ In development environments it is often useful to compile JSX documents &mdash; 
  
 **Note:** When using [`Mapleify`](#mapleify-vulcanization) to render your app &ndash; Mapleify merely changes the type of your `script` elements from `text/jsx` to `text/javascript` and changes the extensions from **.jsx** to **.js** (pre `v1.2.0` when JSX files were included with JSX extensions) &ndash; it's left entirely up to the developer to write their Gulp/Grunt scripts to convert their JSX &mdash; and SASS &mdash; documents.
  
-**Also Note:** Since the release of [`v1.2.0`](https://github.com/Wildhoney/Maple.js/tree/v1.2.0) JSX files **must** have a JS extension.
+**Also Note:** Since the release of [`v1.2.0`](https://github.com/Wildhoney/Maple.js/tree/v1.2.0) JSX files **must** have a JS extension &ndash; also JSX files will import just fine using a `text/javascript` type, too.
  
 ### Nested Shadow Boundaries
 
