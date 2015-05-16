@@ -95,7 +95,7 @@ export default class TodoCollection extends React.Component {
                     <span>Todo List</span>
                     <span>{this.completedItems().length}/ {this.state.items.length}</span>
                 </h1>
-                <ul>{todoItems.length ? todoItems : <li className="none">Currently no todo items.</li>}</ul>
+                <ul>{todoItems.length ? todoItems : <li className="none">You have an impeccable memory!</li>}</ul>
             </section>
         );
 
