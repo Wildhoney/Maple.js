@@ -8,7 +8,11 @@
 # Bower
 /example/vendor/*
 !/example/vendor/.gitkeep
+!/example/vendor/maple
+/example/vendor/maple/components/*
+!/example/vendor/maple/components/.gitkeep
 !/example/vendor/browser.js
+
 
 # Maple.js
 /example/mapleified.html

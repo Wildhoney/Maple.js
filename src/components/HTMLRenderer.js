@@ -5,7 +5,7 @@
  * @author Adam Timberlake
  * @link https://github.com/Wildhoney/Maple.js
  */
-export default class HTMLRenderer extends React.Component {
+export class HTMLRenderer extends React.Component {
 
     /**
      * @method render

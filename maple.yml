@@ -7,6 +7,7 @@ gulp:
   directories:
     css: example/css
     dist: dist
+    components: dist/components
     vendor: example/vendor/maple
 
   polyfills:
@@ -26,8 +27,11 @@ gulp:
 
   all:
     - ./src/*.js
-    - ./src/**/*.js
-    - ./src/**/**/*.js
+    - ./src/helpers/*.js
+    - ./src/models/**/*.js
+
+  components:
+    - ./src/components/HTMLRenderer.js
 
   app:
     - ./example/app/*.js

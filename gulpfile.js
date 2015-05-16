@@ -31,12 +31,26 @@
 
         return browserify({ debug: true })
                 .transform(babelify)
-                .require(entryPath || entryFile, { entry: true, require: 'x' })
+                .require(entryPath || entryFile, { entry: true })
                 .bundle()
                 .on('error', function (model) { console.error(['Error:', model.message].join(' ')); })
                 .pipe(fs.createWriteStream(destPath));
 
     };
+
+    gulp.task('componentify', function() {
+
+        return cfg.gulp.components.map(function map(component) {
+
+            var baseName = component.split('/').pop(),
+                output   = [cfg.gulp.directories.components, baseName].join('/'),
+                vendor   = [cfg.gulp.directories.vendor, 'components', baseName].join('/');
+
+            return [].concat(compile(output, component), compile(vendor, component));
+
+        });
+
+    });
 
     gulp.task('bundler', ['compile'], function() {
 
@@ -100,7 +114,7 @@
     });
 
     gulp.task('test', ['lint']);
-    gulp.task('build', ['compile', 'vendorify', 'minify', 'bundler']);
+    gulp.task('build', ['compile', 'componentify', 'vendorify', 'minify', 'bundler']);
     gulp.task('default', ['test', 'build']);
     gulp.task('watch', function watch() {
         gulp.watch(cfg.gulp.all, ['compile', 'vendorify']);
