@@ -130,6 +130,8 @@ render() {
 
 ### Resolved Components (FOUC)
 
+> :maple_leaf: Watch "Preventing FOUC": [https://vimeo.com/128176201](https://vimeo.com/128176201)
+
 Maple uses the same mechanism as Polymer when it comes to preventing FOUC. Place the `unresolved` attribute on each element, and then once they're upgraded by Maple, the `unresolved` attribute will be replaced with the `resolved` attribute:
 
 ```html
