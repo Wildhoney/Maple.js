@@ -21,8 +21,8 @@ gulp:
       dev: maple.js
       prod: maple.min.js
     bundle:
-      dev: maple-with-polyfills.js
-      prod: maple-with-polyfills.min.js
+      dev: maple-polyfill.js
+      prod: maple-polyfill.min.js
 
   all:
     - ./src/*.js
