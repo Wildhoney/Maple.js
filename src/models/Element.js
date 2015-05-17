@@ -28,8 +28,21 @@ export default class CustomElement extends StateManager {
         this.elements = { script: scriptElement, template: templateElement };
         this.script   = importScript;
 
-        document.registerElement(this.getElementName(), {
-            prototype: this.getElementPrototype()
+        let descriptor = this.getDescriptor();
+
+        if (!descriptor.extend) {
+
+            return void document.registerElement(descriptor.name, {
+                prototype: this.getElementPrototype()
+            });
+
+        }
+
+        let prototype = `HTML${descriptor.extend}Element`;
+
+        document.registerElement(descriptor.name, {
+            prototype: Object.create(window[prototype].prototype, this.getElementPrototype()),
+            extends: descriptor.extend.toLowerCase()
         });
 
     }
@@ -83,15 +96,29 @@ export default class CustomElement extends StateManager {
     }
 
     /**
-     * Extract the element name from converting the Function to a String via the `toString` method. It's worth
-     * noting that this is probably the weakest part of the Maple system because it relies on a regular expression
-     * to determine the name of the resulting custom HTML element.
+     * Extract the element name, and optionally the element extension, from converting the Function to a String via
+     * the `toString` method. It's worth noting that this is probably the weakest part of the Maple system because it
+     * relies on a regular expression to determine the name of the resulting custom HTML element.
      *
-     * @method getElementName
-     * @return {String}
+     * @method getDescriptor
+     * @return {Object}
      */
-    getElementName() {
-        return utility.toSnakeCase(this.script.toString().match(/(?:function|class)\s*([a-z]+)/i)[1]);
+    getDescriptor() {
+
+        let name   = this.script.toString().match(/(?:function|class)\s*([a-z_]+)/i)[1],
+            extend = null;
+
+        if (~name.indexOf('_')) {
+
+            // Does the element name reference an element to extend?
+            let split = name.split('_');
+            name      = split[0];
+            extend    = split[1];
+
+        }
+
+        return { name: utility.toSnakeCase(name), extend: extend };
+
     }
 
     /**
