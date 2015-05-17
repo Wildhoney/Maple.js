@@ -18,7 +18,7 @@ Maple is a seamless module that allows you to organise your [React](https://face
 
 ## Getting Started
 
-> Watch "Getting Started with Maple": [https://vimeo.com/127515471](https://vimeo.com/127515471)
+> :maple_leaf: Watch "Getting Started with Maple": [https://vimeo.com/127515471](https://vimeo.com/127515471)
 
 Given the typical Flux architecture where components reside in their respective `components` directory, we continue that trend in Maple, where **one** component can register **one or many** custom elements &ndash; but each HTML document can only have **one** `template` element.
 
