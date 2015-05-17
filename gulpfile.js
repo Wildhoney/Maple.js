@@ -27,7 +27,7 @@
 
         return browserify({ debug: true })
                 .transform(babelify)
-                .require(entryPath || entryFile, { entry: true, require: 'x' })
+                .require(entryPath || entryFile, { entry: true })
                 .bundle()
                 .on('error', function (model) { console.error(['Error:', model.message].join(' ')); })
                 .pipe(fs.createWriteStream(destPath));
