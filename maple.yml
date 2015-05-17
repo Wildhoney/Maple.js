@@ -17,7 +17,6 @@ gulp:
     - example/vendor/es6-module-loader/dist/es6-module-loader.js
 
   names:
-    cucumber: app.template
     default:
       dev: maple.js
       prod: maple.min.js

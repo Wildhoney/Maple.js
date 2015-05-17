@@ -13,6 +13,7 @@
     <script type="text/javascript" src="vendor/browser.js"></script>
     <script type="text/javascript" src="vendor/fetch/fetch.js"></script>
     <script type="text/javascript" src="vendor/react/react.js"></script>
+    <script type="text/javascript" src="vendor/react/JSXTransformer.js"></script>
     <script type="text/javascript" src="vendor/maple/maple.js"></script>
     <script type="text/javascript" src="vendor/alt/dist/alt.js"></script>
 
@@ -29,9 +30,14 @@
     <link rel="import" type="text/html" href="app/components/date-time/index.html" />
     <link rel="import" type="text/html" href="app/components/todo-form/index.html" />
     <link rel="import" type="text/html" href="app/components/todo-collection/index.html" />
+    <link rel="import" type="text/html" href="app/components/x-test/index.html" />
 
 </head>
 <body>
+
+    <x-test>
+        <h2 onClick={this.go} class="adam">Teeest.</h2>
+    </x-test>
 
     <section class="container">
 

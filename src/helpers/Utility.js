@@ -188,17 +188,6 @@ export default (function main($document) {
         },
 
         /**
-         * @method timeoutPromise
-         * @param {Function} reject
-         * @param {String} errorMessage
-         * @param {Number} [timeout=WAIT_TIMEOUT]
-         * @return {void}
-         */
-        timeoutPromise(reject, errorMessage = 'Timeout', timeout = WAIT_TIMEOUT) {
-            setTimeout(() => reject(new Error(errorMessage)), timeout);
-        },
-
-        /**
          * @method toSnakeCase
          * @param {String} camelCase
          * @param {String} [joiner='-']

@@ -3,13 +3,9 @@
     var gulp        = require('gulp'),
         jshint      = require('gulp-jshint'),
         uglify      = require('gulp-uglify'),
-        rimraf      = require('gulp-rimraf'),
-        karma       = require('gulp-karma'),
         rename      = require('gulp-rename'),
         concat      = require('gulp-concat'),
-        sass        = require('gulp-sass'),
         babel       = require('gulp-babel'),
-        processhtml = require('gulp-processhtml'),
         fs          = require('fs'),
         yaml        = require('js-yaml'),
         browserify  = require('browserify'),
@@ -38,17 +34,11 @@
 
     };
 
-    gulp.task('componentify', function() {
+    gulp.task('componentify', ['vendorify'], function() {
 
-        return cfg.gulp.components.map(function map(component) {
-
-            var baseName = component.split('/').pop(),
-                output   = [cfg.gulp.directories.components, baseName].join('/'),
-                vendor   = [cfg.gulp.directories.vendor, 'components', baseName].join('/');
-
-            return [].concat(compile(output, component), compile(vendor, component));
-
-        });
+        return gulp.src(cfg.gulp.components)
+                   .pipe(gulp.dest([cfg.gulp.directories.vendor, 'components'].join('/')))
+                   .pipe(gulp.dest(cfg.gulp.directories.components));
 
     });
 
@@ -75,14 +65,6 @@
 
     gulp.task('compile', function() {
         return compile(devPath);
-    });
-
-    gulp.task('sass', function() {
-
-        return gulp.src(cfg.gulp.sass)
-                   .pipe(sass())
-                   .pipe(gulp.dest(cfg.gulp.directories.css));
-
     });
 
     gulp.task('minify', ['compile'], function() {
@@ -117,7 +99,7 @@
     gulp.task('build', ['compile', 'componentify', 'vendorify', 'minify', 'bundler']);
     gulp.task('default', ['test', 'build']);
     gulp.task('watch', function watch() {
-        gulp.watch(cfg.gulp.all, ['compile', 'vendorify']);
+        gulp.watch([].concat(cfg.gulp.all, cfg.gulp.components), ['compile', 'componentify', 'vendorify']);
     });
 
 })();
