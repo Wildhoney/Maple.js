@@ -58,16 +58,15 @@ export default class CustomElement extends StateManager {
     loadStyles(shadowBoundary) {
 
         /**
-         * @method createStyle
+         * @method addCSS
          * @param {String} body
-         * @param {ShadowRoot|HTMLDocument} element
          * @return {void}
          */
-        function createStyle(body, element = shadowBoundary) {
+        function addCSS(body) {
             let styleElement = document.createElement('style');
             styleElement.setAttribute('type', 'text/css');
             styleElement.innerHTML = body;
-            element.appendChild(styleElement);
+            shadowBoundary.appendChild(styleElement);
         }
 
         this.setState(State.RESOLVING);
@@ -78,14 +77,26 @@ export default class CustomElement extends StateManager {
         let promises      = [].concat(linkElements, styleElements).map((element) => new Promise((resolve) => {
 
             if (element.nodeName.toLowerCase() === 'style') {
-                createStyle(element.innerHTML, shadowBoundary);
-                resolve();
+                addCSS(element.innerHTML);
+                resolve(element.innerHTML);
                 return;
             }
 
             cacheFactory.fetch(this.path.getPath(element.getAttribute('href'))).then((body) => {
-                createStyle(body, shadowBoundary);
-                resolve();
+
+                if (element.getAttribute('type') === 'text/scss') {
+
+                    // Compile SCSS document into CSS prior to appending it to the body.
+                    return void Sass.compile(body, (datum) => {
+                        addCSS(datum.text);
+                        resolve(datum.text);
+                    });
+
+                }
+
+                addCSS(body);
+                resolve(body);
+
             });
 
         }));

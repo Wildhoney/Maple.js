@@ -26,7 +26,7 @@ export default (function main($window) {
 
             cache[url] = new Promise((resolve) => {
 
-                cache[url] = $window.fetch(url).then((response) => response.text()).then((body) => {
+                $window.fetch(url).then((response) => response.text()).then((body) => {
                     resolve(body);
                 });
 

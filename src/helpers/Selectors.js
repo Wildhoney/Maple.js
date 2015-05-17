@@ -22,7 +22,7 @@ export default (function main() {
          * @return {Array}
          */
         getCSSLinks(element) {
-            return queryAll.call(element, 'link[type="text/css"]');
+            return queryAll.call(element, 'link[type="text/css"],link[type="text/scss"]');
         },
 
         /**
