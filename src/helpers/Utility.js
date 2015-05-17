@@ -2,12 +2,6 @@ export default (function main($document) {
 
     "use strict";
 
-    /**
-     * @constant WAIT_TIMEOUT
-     * @type {Number}
-     */
-    const WAIT_TIMEOUT = 30000;
-
     return {
 
         /**
