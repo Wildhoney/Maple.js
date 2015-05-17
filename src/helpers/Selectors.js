@@ -17,34 +17,34 @@ export default (function main() {
     return {
 
         /**
-         * @method getExternalStyles
+         * @method getCSSLinks
          * @param {HTMLElement|HTMLDocument} element
          * @return {Array}
          */
-        getExternalStyles(element) {
+        getCSSLinks(element) {
             return queryAll.call(element, 'link[type="text/css"]');
         },
 
         /**
-         * @method getInlineStyles
+         * @method getCSSInlines
          * @param {HTMLElement|HTMLDocument} element
          * @return {Array}
          */
-        getInlineStyles(element) {
+        getCSSInlines(element) {
             return queryAll.call(element, 'style[type="text/css"]');
         },
 
         /**
-         * @mmethod getLinks
+         * @method getImports
          * @param {HTMLElement|HTMLDocument} element
          * @return {Array}
          */
-        getLinks(element) {
+        getImports(element) {
             return queryAll.call(element, 'link[rel="import"]:not([data-ignore])');
         },
 
         /**
-         * @mmethod getTemplates
+         * @method getTemplates
          * @param {HTMLElement|HTMLDocument} element
          * @return {Array}
          */
@@ -53,7 +53,7 @@ export default (function main() {
         },
 
         /**
-         * @mmethod getScripts
+         * @method getScripts
          * @param {HTMLElement|HTMLDocument} element
          * @return {Array}
          */

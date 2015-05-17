@@ -49,7 +49,7 @@ import events    from './helpers/Events.js';
          */
         findLinks() {
 
-            selectors.getLinks($document).forEach((linkElement) => {
+            selectors.getImports($document).forEach((linkElement) => {
 
                 if (linkElement.import) {
                     return void new Module(linkElement);

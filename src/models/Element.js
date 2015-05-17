@@ -60,8 +60,8 @@ export default class CustomElement extends StateManager {
         this.setState(State.RESOLVING);
 
         let content       = this.elements.template.content;
-        let linkElements  = selectors.getExternalStyles(content);
-        let styleElements = selectors.getInlineStyles(content);
+        let linkElements  = selectors.getCSSLinks(content);
+        let styleElements = selectors.getCSSInlines(content);
         let promises      = [].concat(linkElements, styleElements).map((element) => new Promise((resolve) => {
 
             if (element.nodeName.toLowerCase() === 'style') {
