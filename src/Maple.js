@@ -20,16 +20,6 @@ import events    from './helpers/Events.js';
     let HAS_INITIATED = false;
 
     /**
-     * @method isReady
-     * @param {String} state
-     * @return {Boolean}
-     */
-    function isReady(state) {
-        let readyStates = ['interactive', 'complete'];
-        return (!HAS_INITIATED && ~readyStates.indexOf(state));
-    }
-
-    /**
      * @module Maple
      * @link https://github.com/Wildhoney/Maple.js
      * @author Adam Timberlake
@@ -41,9 +31,7 @@ import events    from './helpers/Events.js';
          * @return {void}
          */
         constructor() {
-            
-            HAS_INITIATED = true;
-            
+
             this.findLinks();
             this.findTemplates();
 
@@ -102,12 +90,28 @@ import events    from './helpers/Events.js';
 
     }
 
-    // Support for the "async" attribute on the Maple script element.
-    if (isReady($document.readyState)) {
-        new Maple();
+    /**
+     * @method initialise
+     * @return {Boolean}
+     */
+    function initialise() {
+
+        let state       = $document.readyState,
+            readyStates = ['interactive', 'complete'];
+
+        if (!HAS_INITIATED && ~readyStates.indexOf(state)) {
+
+            HAS_INITIATED = true;
+
+            // No documents, no person.
+            new Maple();
+
+        }
+
     }
 
-    // No documents, no person.
-    $document.addEventListener('DOMContentLoaded', () => new Maple());
+    // Support for async, defer, and normal inclusion.
+    initialise();
+    $document.addEventListener('DOMContentLoaded', initialise);
 
 })(window, document);
