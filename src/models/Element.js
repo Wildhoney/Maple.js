@@ -1,5 +1,6 @@
 import events       from './../helpers/Events.js';
 import utility      from './../helpers/Utility.js';
+import logger       from './../helpers/Logger.js';
 import cacheFactory from './../helpers/CacheFactory.js';
 import selectors    from './../helpers/Selectors.js';
 import {StateManager, State} from './StateManager.js';
@@ -25,6 +26,7 @@ export default class CustomElement extends StateManager {
 
         super();
         this.path     = path;
+        this.sass     = (typeof Sass === 'undefined') ? null : new Sass();
         this.elements = { script: scriptElement, template: templateElement };
         this.script   = importScript;
 
@@ -86,10 +88,17 @@ export default class CustomElement extends StateManager {
 
                 if (element.getAttribute('type') === 'text/scss') {
 
+                    if (!this.sass) {
+                        logger.error('You should include "sass.js" for development runtime SASS compilation');
+                        return void reject();
+                    }
+
+                    logger.warn('All of your SASS documents should be compiled to CSS for production via your build process');
+
                     // Compile SCSS document into CSS prior to appending it to the body.
-                    return void Sass.compile(body, (datum) => {
-                        addCSS(datum.text);
-                        resolve(datum.text);
+                    return void this.sass.compile(body, (response) => {
+                        addCSS(response.text);
+                        resolve(response.text);
                     });
 
                 }
