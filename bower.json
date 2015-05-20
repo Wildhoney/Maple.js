@@ -1,0 +1,28 @@
+{
+  "name": "maple-gh",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Wildhoney/Maple.js",
+  "authors": [
+    "Adam Timberlake <adam.timberlake@gmail.com>"
+  ],
+  "description": "Maple.js documentation on GitHub pages.",
+  "main": "index.html",
+  "keywords": [
+    "maple",
+    "framework",
+    "react",
+    "documentation",
+    "docs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "~4.3.0"
+  }
+}
