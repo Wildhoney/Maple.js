@@ -125,7 +125,7 @@ export default class CustomElement extends StateManager {
      */
     getDescriptor() {
 
-        let name   = this.script.toString().match(/(?:function|class)\s*([a-z_]+)/i)[1],
+        let name   = this.script.name || this.script.toString().match(/(?:function|class)\s*([a-z_]+)/i)[1],
             extend = null;
 
         if (~name.indexOf('_')) {
