@@ -1,4 +1,4 @@
-# Maple.js
+![Maple.js](media/Logo.png)
 
 ![Travis](http://img.shields.io/travis/Wildhoney/Maple.js.svg?style=flat)
 &nbsp;
