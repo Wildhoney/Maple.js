@@ -130,11 +130,11 @@ render() {
 
 ### SASS Transpiling
 
-> :maple_leaf: Watch "SASS to CSS": [https://vimeo.com/128343604](https://vimeo.com/128343604)
+> :maple_leaf: Watch "SASS to CSS": [https://vimeo.com/128343626](https://vimeo.com/128343626)
 
 ### Resolved Components (FOUC)
 
-> :maple_leaf: Watch "Preventing FOUC": [https://vimeo.com/128176201](https://vimeo.com/128176201)
+> :maple_leaf: Watch "Preventing FOUC": [https://vimeo.com/128343604](https://vimeo.com/128343604)
 
 Maple uses the same mechanism as Polymer when it comes to preventing FOUC. Place the `unresolved` attribute on each element, and then once they're upgraded by Maple, the `unresolved` attribute will be replaced with the `resolved` attribute:
 
