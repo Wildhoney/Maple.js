@@ -132,6 +132,18 @@ render() {
 
 > :maple_leaf: Watch "SASS to CSS": [https://vimeo.com/128343626](https://vimeo.com/128343626)
 
+In a development environment Maple supports transpiling SASS documents to CSS documents &ndash; for production you should use your build tool to transpile SASS to CSS documents.
+
+Maple uses [Sass.js](https://github.com/medialize/sass.js) and can be installed separately:
+
+> `bower install sass.js -D`
+
+Once you have included `sass.js` all documents that are included with the type `text/scss` will be automatically transpiled for you to CSS before being appended to the shadow boundary:
+
+```html
+<link type="text/scss" href="default.scss" />
+```
+
 ### Resolved Components (FOUC)
 
 > :maple_leaf: Watch "Preventing FOUC": [https://vimeo.com/128343604](https://vimeo.com/128343604)
