@@ -1,4 +1,4 @@
-<img src="media/Logo.png" width="200" alt="Maple.js" />
+<img src="media/Logo.png" width="250" alt="Maple.js" />
 
 ![Travis](http://img.shields.io/travis/Wildhoney/Maple.js.svg?style=flat)
 &nbsp;
