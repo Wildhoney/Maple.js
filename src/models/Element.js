@@ -125,6 +125,8 @@ export default class CustomElement extends StateManager {
      */
     getDescriptor() {
 
+        // With ES6 the `Function.prototype.name` property is beginning to be standardised, which means
+        // in many cases we won't have to resort to the feeble `toString` approach. Hoorah!
         let name   = this.script.name || this.script.toString().match(/(?:function|class)\s*([a-z_]+)/i)[1],
             extend = null;
 
