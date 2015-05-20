@@ -10,7 +10,7 @@ export default (function main($console) {
          * @return {void}
          */
         warn(message) {
-            $console.log(`Maple.js: %c${message}.`, 'color: #5F9EA0');
+            $console.log(`%cMaple.js: %c${message}.`, 'color: rgba(0, 0, 0, .5)', 'color: #5F9EA0');
         },
 
         /**
@@ -19,7 +19,7 @@ export default (function main($console) {
          * @return {void}
          */
         info(message) {
-            $console.log(`Maple.js: %c${message}.`, 'color: blue');
+            $console.log(`%cMaple.js: %c${message}.`, 'color: rgba(0, 0, 0, .5)', 'color: #008DDB');
         },
 
         /**
@@ -28,7 +28,7 @@ export default (function main($console) {
          * @return {void}
          */
         error(message) {
-            $console.error(`%c Maple.js: %c${message}.`, 'color: black', 'color: #CD6090');
+            $console.log(`%cMaple.js: %c${message}.`, 'color: rgba(0, 0, 0, .5)', 'color: #CD6090');
         }
 
     };
