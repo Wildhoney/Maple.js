@@ -37,6 +37,10 @@ import events    from './helpers/Events.js';
 
             // Configure the event delegation mappings.
             events.setupDelegation();
+
+            // Listen for any changes to the DOM where HTML imports can be dynamically imported
+            // into the document.
+            this.observeMutations();
             
         }
 
@@ -49,15 +53,7 @@ import events    from './helpers/Events.js';
          */
         findLinks() {
 
-            selectors.getImports($document).forEach((linkElement) => {
-
-                if (linkElement.import) {
-                    return void new Module(linkElement);
-                }
-
-                linkElement.addEventListener('load', () => new Module(linkElement));
-
-            });
+            selectors.getImports($document).forEach((linkElement) => this.waitForLinkElement(linkElement));
 
         }
 
@@ -85,6 +81,54 @@ import events    from './helpers/Events.js';
                 });
 
             });
+
+        }
+
+        /**
+         * @method waitForLinkElement
+         * @param {HTMLLinkElement} linkElement
+         * @return {void}
+         */
+        waitForLinkElement(linkElement) {
+
+            if (linkElement.import) {
+                new Module(linkElement);
+                return;
+            }
+
+            linkElement.addEventListener('load', () => new Module(linkElement));
+
+        }
+
+        /**
+         * Listens for changes to the `HTMLHeadElement` node and registers any new imports that are
+         * dynamically imported into the document.
+         *
+         * @method observeMutations
+         * @return {void}
+         */
+        observeMutations() {
+
+            let observer = new MutationObserver((mutations) => {
+
+                mutations.forEach((mutation) => {
+
+                    var addedNodes = utility.toArray(mutation.addedNodes);
+
+                    addedNodes.forEach((node) => {
+
+                        if (utility.isHTMLImport(node)) {
+                            this.waitForLinkElement(node);
+                        }
+
+                    });
+
+                });
+
+
+            });
+
+            observer.observe($document.head, { childList: true });
 
         }
 

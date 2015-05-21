@@ -216,6 +216,22 @@ export default (function main($document) {
          */
         removeExtension(filePath) {
             return filePath.split('.').slice(0, -1).join('.');
+        },
+
+        /**
+         * @method isHTMLImport
+         * @param {HTMLElement} htmlElement
+         * @return {Boolean}
+         */
+        isHTMLImport(htmlElement) {
+
+            var isInstance  = htmlElement instanceof HTMLLinkElement,
+                isImport    = String(htmlElement.getAttribute('rel')).toLowerCase() === 'import',
+                hasHrefAttr = htmlElement.hasAttribute('href'),
+                hasTypeHtml = String(htmlElement.getAttribute('type')).toLowerCase() === 'text/html';
+
+            return isInstance && isImport && hasHrefAttr && hasTypeHtml;
+
         }
 
     };
