@@ -74,10 +74,10 @@ export default class TodoCollection extends React.Component {
      */
     render() {
 
-        let todoItems = this.state.items.map(function(model) {
+        let todoItems = this.state.items.map(function(model, index) {
 
             return (
-                <li className={ model.complete ? 'done' : '' } onClick={this.toggleState.bind(this, model)}>
+                <li key={index} className={ model.complete ? 'done' : '' } onClick={this.toggleState.bind(this, model)}>
                     <p>{model.text}</p>
                     <date-time data-unix={model.date}></date-time>
                     <button className="remove" onClick={this.removeTodo.bind(this, model)}>
