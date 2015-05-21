@@ -187,11 +187,15 @@ The `utility.isHTMLImport` method checks for the following to determine whether 
 Once the element has passed the aforementioned check, Maple will load in the component and it will be ready to use. As an example, let's dynamically load our `DateTime` component from the first tutorial:
 
 ```javascript
-var linkElement = document.createElement('link');
-linkElement.setAttribute('href', 'app/components/todo-form/index.html');
-linkElement.setAttribute('type', 'text/html');
-linkElement.setAttribute('rel', 'import');
-document.head.appendChild(linkElement);
+function addImport(path) {
+    var linkElement = document.createElement('link');
+    linkElement.setAttribute('href', path);
+    linkElement.setAttribute('type', 'text/html');
+    linkElement.setAttribute('rel', 'import');
+    document.head.appendChild(linkElement);
+}
+
+addImport('app/components/todo-form/index.html');
 ```
 
 It's worth noting that the above code contains a fair amount of boilerplate code, which is why you'll likely want to have a wrapper function for this. After the `linkElement` has been appended to the `document.head` element, Maple will resolve the HTML import.

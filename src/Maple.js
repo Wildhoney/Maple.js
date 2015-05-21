@@ -43,7 +43,7 @@ import options   from './helpers/Options.js';
             // Listen for any changes to the DOM where HTML imports can be dynamically imported
             // into the document.
             this.observeMutations();
-            
+
         }
 
         /**
@@ -94,8 +94,7 @@ import options   from './helpers/Options.js';
         waitForLinkElement(linkElement) {
 
             if (linkElement.import) {
-                new Module(linkElement);
-                return;
+                return void new Module(linkElement);
             }
 
             new Promise((resolve, reject) => {
