@@ -43,7 +43,7 @@ export default class CustomElement extends StateManager {
         let prototype = `HTML${descriptor.extend}Element`;
 
         utility.tryRegisterElement(descriptor.name, {
-            prototype: Object.create(window[prototype].prototype, this.getElementPrototype()),
+            prototype: this.getElementPrototype(window[prototype].prototype),
             extends: descriptor.extend.toLowerCase()
         });
 
@@ -149,15 +149,16 @@ export default class CustomElement extends StateManager {
      * default React properties, etc...
      *
      * @method getElementPrototype
+     * @param {HTMLElement} elementPrototype
      * @return {Object}
      */
-    getElementPrototype() {
+    getElementPrototype(elementPrototype) {
 
         let loadStyles = this.loadStyles.bind(this),
             script    = this.script,
             path      = this.path;
 
-        return Object.create(HTMLElement.prototype, {
+        return Object.create(elementPrototype || HTMLElement.prototype, {
 
             /**
              * @property attachedCallback
@@ -170,6 +171,8 @@ export default class CustomElement extends StateManager {
                  * @return {void}
                  */
                 value: function value() {
+
+                    console.log(this);
 
                     /**
                      * @method applyDefaultProps
