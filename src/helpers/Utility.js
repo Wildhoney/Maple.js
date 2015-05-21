@@ -1,3 +1,5 @@
+import logger from './Logger.js';
+
 export default (function main($document) {
 
     "use strict";
@@ -231,6 +233,49 @@ export default (function main($document) {
                 hasTypeHtml = String(htmlElement.getAttribute('type')).toLowerCase() === 'text/html';
 
             return isInstance && isImport && hasHrefAttr && hasTypeHtml;
+
+        },
+
+        /**
+         * @method tryRegisterElement
+         * @param {String} name
+         * @param {Object} properties
+         * @return {void}
+         */
+        tryRegisterElement(name, properties) {
+
+            /**
+             * @constant ERROR_MAP
+             * @type {Object}
+             */
+            const ERROR_MAP = {
+                'A type with that name is already registered': `Custom element "${name}" has already been registered`
+            };
+
+            try {
+
+                $document.registerElement(name, properties);
+
+            } catch (e) {
+
+                let errorData = Object.keys(ERROR_MAP).map((error) => {
+
+                    let regExp = new RegExp(error, 'i');
+
+                    if (e.message.match(regExp)) {
+                        logger.error(ERROR_MAP[error]);
+                        return true;
+                    }
+
+                    return false;
+
+                });
+
+                if (!errorData.some((model) => model)) {
+                    throw(e);
+                }
+
+            }
 
         }
 

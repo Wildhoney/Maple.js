@@ -34,7 +34,7 @@ export default class CustomElement extends StateManager {
 
         if (!descriptor.extend) {
 
-            return void document.registerElement(descriptor.name, {
+            return void utility.tryRegisterElement(descriptor.name, {
                 prototype: this.getElementPrototype()
             });
 
@@ -42,7 +42,7 @@ export default class CustomElement extends StateManager {
 
         let prototype = `HTML${descriptor.extend}Element`;
 
-        document.registerElement(descriptor.name, {
+        utility.tryRegisterElement(descriptor.name, {
             prototype: Object.create(window[prototype].prototype, this.getElementPrototype()),
             extends: descriptor.extend.toLowerCase()
         });
