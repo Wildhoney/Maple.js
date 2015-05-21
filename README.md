@@ -208,7 +208,7 @@ You can install `Mapleify` globally with [npm](https://www.npmjs.com/): `npm ins
 
 ![Chrome](https://github.com/alrra/browser-logos/raw/master/chrome/chrome_64x64.png)
 ![Firefox](https://github.com/alrra/browser-logos/raw/master/firefox/firefox_64x64.png)
-![Firefox](https://github.com/alrra/browser-logos/raw/master/opera/opera_64x64.png)
+![Opera](https://github.com/alrra/browser-logos/raw/master/opera/opera_64x64.png)
 ![Safari](https://github.com/alrra/browser-logos/raw/master/safari/safari_64x64.png)
 
 Maple also comes distributed with a **dist/maple-polyfill.js** file that includes all necessary polyfills for the widest possible support in modern browsers.
