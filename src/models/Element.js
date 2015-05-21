@@ -149,7 +149,7 @@ export default class CustomElement extends StateManager {
      * default React properties, etc...
      *
      * @method getElementPrototype
-     * @param {HTMLElement} elementPrototype
+     * @param {Object} elementPrototype
      * @return {Object}
      */
     getElementPrototype(elementPrototype) {
@@ -171,8 +171,6 @@ export default class CustomElement extends StateManager {
                  * @return {void}
                  */
                 value: function value() {
-
-                    console.log(this);
 
                     /**
                      * @method applyDefaultProps
