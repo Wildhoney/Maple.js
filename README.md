@@ -196,6 +196,22 @@ document.head.appendChild(linkElement);
 
 It's worth noting that the above code contains a fair amount of boilerplate code, which is why you'll likely want to have a wrapper function for this. After the `linkElement` has been appended to the `document.head` element, Maple will resolve the HTML import via the `MutationObserver`.
 
+## Extending Native Elements
+
+By default all of your Maple components will be simple elements. For example, the `class DateTime` object will create an element called `date-time` &ndash; in cases where you'd like the element to be specialised &mdash; such as extending the `HTMLButtonElement` then you need to modify the object's name:
+
+```javascript
+export default class DateTime_Button {}
+```
+
+In the above case the element will still be registered as `date-time` &ndash; but now the `date-time` element will extend `HTMLButtonElement.prototype`:
+
+```html
+<button is="date-time">
+    DateTime Button!
+</button>
+```
+
 ## Mapleify (Vulcanization)
 
 For development purposes the HTML Imports are an acceptable design implementation &ndash; however when pushing to production &mdash; as you do with Polymer &mdash; you'll want to minify and concatenate your resources. In Polymer you would use [`vulcanize`](https://github.com/polymer/vulcanize) &ndash; `Maple` utilises `vulcanize` to create [`Mapleify`](https://github.com/Wildhoney/Mapleify) which compiles your HTML document.
