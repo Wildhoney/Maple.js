@@ -167,6 +167,36 @@ date-time[resolved] {
     opacity: 1;
 }
 ```
+
+## Mutation Observer
+
+Maple uses the [`MutationObserver`](https://developer.mozilla.org/en/docs/Web/API/MutationObserver) to listen for changes to the `document.head` element &ndash; if new elements are added to the node, then Maple will eagerly attempt to resolve the HTML imports and load them dynamically.
+
+For components to be processed by the mutation observer, `link` elements must:
+
+* Be a child of the `document.head` element;
+* Pass the `utility.isHTMLImport` method;
+
+The `utility.isHTMLImport` method checks for the following to determine whether the newly added element is a valid `link` import:
+
+* Is an instance of `HTMLLinkElement`;
+* `rel` attribute resolves to string `import`;
+* Has the `href` attribute defined;
+* `type` attribute resolves to string `text/html`;
+
+Once the element has passed the aforementioned check, Maple will load in the component and it will be ready to use. As an example, let's dynamically load our `DateTime` component from the first tutorial:
+
+```javascript
+var linkElement = document.createElement('link');
+linkElement.setAttribute('href', 'app/components/todo-form/index.html');
+linkElement.setAttribute('type', 'text/html');
+linkElement.setAttribute('rel', 'import');
+document.head.appendChild(linkElement);
+```
+
+It's worth noting that the above code contains a fair amount of boilerplate code, which is why you'll likely want to have a wrapper function for this. After the `linkElement` has been appended to the `document.head` element, Maple will resolve the HTML import.
+
+Boilerplate! ^^
  
 ## Mapleify (Vulcanization)
 
