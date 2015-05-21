@@ -1,6 +1,7 @@
 import Component from './Component.js';
 import utility   from './../helpers/Utility.js';
 import logger    from './../helpers/Logger.js';
+import options   from './../helpers/Options.js';
 import selectors from './../helpers/Selectors.js';
 import {StateManager, State} from './StateManager.js';
 
@@ -53,7 +54,7 @@ export default class Module extends StateManager {
 
             this.setState(State.RESOLVED);
 
-        });
+        }, (message) => logger.error(message));
 
     }
 
@@ -68,26 +69,28 @@ export default class Module extends StateManager {
 
     /**
      * @method loadModule
-     * @param {HTMLTemplateElement} templateElement
+     * @param {HTMLTemplateElement} linkElement
      * @return {Promise}
      */
-    loadModule(templateElement) {
+    loadModule(linkElement) {
 
         this.setState(State.RESOLVING);
 
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
 
-            if (templateElement.hasAttribute('ref')) {
-                return void resolve(templateElement);
+            if (linkElement.hasAttribute('ref')) {
+                return void resolve(linkElement);
             }
 
-            if (templateElement.import) {
-                return void resolve(templateElement);
+            if (linkElement.import) {
+                return void resolve(linkElement);
             }
 
-            templateElement.addEventListener('load', () => {
-                resolve(templateElement);
-            });
+            linkElement.addEventListener('load', () => resolve(linkElement));
+
+            let href         = linkElement.getAttribute('href'),
+                errorMessage = `Timeout of ${options.RESOLVE_TIMEOUT / 1000} seconds exceeded whilst waiting for HTML import: "${href}"`;
+            utility.resolveTimeout(errorMessage, reject);
 
         });
         

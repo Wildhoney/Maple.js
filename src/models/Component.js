@@ -1,6 +1,7 @@
 import CustomElement from './Element.js';
 import utility       from './../helpers/Utility.js';
 import logger        from './../helpers/Logger.js';
+import options       from './../helpers/Options.js';
 import {StateManager, State} from './StateManager.js';
 
 /**
@@ -52,7 +53,7 @@ export default class Component extends StateManager {
             Promise.all(this.loadThirdPartyScripts()).then(() => {
                 new CustomElement(path, templateElement, scriptElement, imports.default);
                 this.setState(State.RESOLVED);
-            });
+            }, (message) => logger.error(message));
 
         });
 
@@ -79,9 +80,15 @@ export default class Component extends StateManager {
             scriptElement.setAttribute('type', 'text/javascript');
             scriptElement.setAttribute('src', src);
 
-            return new Promise((resolve) => {
+            return new Promise((resolve, reject) => {
+
                 scriptElement.addEventListener('load', () => resolve());
                 document.head.appendChild(scriptElement);
+
+                let href         = scriptElement.getAttribute('src'),
+                    errorMessage = `Timeout of ${options.RESOLVE_TIMEOUT / 1000} seconds exceeded whilst waiting for third-party script: "${href}"`;
+                utility.resolveTimeout(errorMessage, reject);
+
             });
 
         });

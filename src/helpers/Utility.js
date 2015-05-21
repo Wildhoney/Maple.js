@@ -1,4 +1,5 @@
-import logger from './Logger.js';
+import logger  from './Logger.js';
+import options from './Options.js';
 
 export default (function main($document) {
 
@@ -234,6 +235,16 @@ export default (function main($document) {
 
             return isInstance && isImport && hasHrefAttr && hasTypeHtml;
 
+        },
+
+        /**
+         * @method resolveTimeout
+         * @param {String} errorMessage
+         * @param {Function} reject
+         * @return {void}
+         */
+        resolveTimeout(errorMessage, reject) {
+            setTimeout(() => reject(errorMessage), options.RESOLVE_TIMEOUT);
         },
 
         /**

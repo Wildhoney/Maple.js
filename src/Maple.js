@@ -2,7 +2,9 @@ import Module    from './models/Module.js';
 import Component from './models/Component.js';
 import selectors from './helpers/Selectors.js';
 import utility   from './helpers/Utility.js';
+import logger    from './helpers/Logger.js';
 import events    from './helpers/Events.js';
+import options   from './helpers/Options.js';
 
 (function main($window, $document) {
 
@@ -96,7 +98,15 @@ import events    from './helpers/Events.js';
                 return;
             }
 
-            linkElement.addEventListener('load', () => new Module(linkElement));
+            new Promise((resolve, reject) => {
+
+                linkElement.addEventListener('load', () => resolve(linkElement));
+
+                let href         = linkElement.getAttribute('href'),
+                    errorMessage = `Timeout of ${options.RESOLVE_TIMEOUT / 1000} seconds exceeded whilst waiting for HTML import: "${href}"`;
+                utility.resolveTimeout(errorMessage, reject);
+
+            }).then((linkElement) => new Module(linkElement), (message) => logger.error(message));
 
         }
 
