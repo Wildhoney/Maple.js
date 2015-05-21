@@ -249,7 +249,8 @@ export default (function main($document) {
              * @type {Object}
              */
             const ERROR_MAP = {
-                'A type with that name is already registered': `Custom element "${name}" has already been registered`
+                'A type with that name is already registered': `Custom element "${name}" has already been registered`,
+                'The type name is invalid': `Element name ${name} is invalid and must consist of at least one hyphen`
             };
 
             try {
