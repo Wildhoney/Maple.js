@@ -113,7 +113,7 @@ import events    from './helpers/Events.js';
 
                 mutations.forEach((mutation) => {
 
-                    var addedNodes = utility.toArray(mutation.addedNodes);
+                    let addedNodes = utility.toArray(mutation.addedNodes);
 
                     addedNodes.forEach((node) => {
 

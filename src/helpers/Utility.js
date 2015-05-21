@@ -227,7 +227,7 @@ export default (function main($document) {
          */
         isHTMLImport(htmlElement) {
 
-            var isInstance  = htmlElement instanceof HTMLLinkElement,
+            let isInstance  = htmlElement instanceof HTMLLinkElement,
                 isImport    = String(htmlElement.getAttribute('rel')).toLowerCase() === 'import',
                 hasHrefAttr = htmlElement.hasAttribute('href'),
                 hasTypeHtml = String(htmlElement.getAttribute('type')).toLowerCase() === 'text/html';
