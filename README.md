@@ -170,6 +170,8 @@ date-time[resolved] {
 
 ## Mutation Observer
 
+> :maple_leaf: Watch "Mutation Observer": [https://vimeo.com/128588608](https://vimeo.com/128588608)
+
 Maple uses the [`MutationObserver`](https://developer.mozilla.org/en/docs/Web/API/MutationObserver) to listen for changes to the `document.head` element &ndash; if new elements are added to the node, then Maple will eagerly attempt to resolve the HTML imports and load them dynamically.
 
 For components to be processed by the mutation observer, `link` elements must:
@@ -197,6 +199,8 @@ document.head.appendChild(linkElement);
 It's worth noting that the above code contains a fair amount of boilerplate code, which is why you'll likely want to have a wrapper function for this. After the `linkElement` has been appended to the `document.head` element, Maple will resolve the HTML import via the `MutationObserver`.
 
 ## Extending Native Elements
+
+> :maple_leaf: Watch "Extending Elements": [https://vimeo.com/128589729](https://vimeo.com/128589729)
 
 By default all of your Maple components will be simple elements. For example, the `class DateTime` object will create an element called `date-time` &ndash; in cases where you'd like the element to be specialised &mdash; such as extending the `HTMLButtonElement` then you need to modify the object's name:
 
