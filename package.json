@@ -3,6 +3,16 @@
   "version": "1.2.5",
   "description": "",
   "main": "dist/maple.js",
+  "keywords": [
+    "webcomponents",
+    "web-components",
+    "react",
+    "react.js",
+    "custom elements",
+    "shadow boundary",
+    "shadow dom",
+    "html imports"
+  ],
   "directories": {
     "example": "example",
     "test": "tests",

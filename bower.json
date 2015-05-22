@@ -7,9 +7,14 @@
   ],
   "main": "dist/maple.js",
   "keywords": [
-    "framework",
-    "js",
-    "webcomponents"
+    "webcomponents",
+    "web-components",
+    "react",
+    "react.js",
+    "custom elements",
+    "shadow boundary",
+    "shadow dom",
+    "html imports"
   ],
   "license": "MIT",
   "ignore": [
