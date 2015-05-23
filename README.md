@@ -34,7 +34,7 @@ Within the directory `my-app/components` we create our component's index that wi
 </template>
 ```
 
-**Note:** When we import the `date-time.js` file we use the local path, which Maple.js understands as being a part of the module &ndash; whereas our third-party module &mdash; `moment.js` &mdash; resides outside of the component's directory and is therefore imported into the `window` scope.
+> **Note:** When we import the `date-time.js` file we use the local path, which Maple.js understands as being a part of the module &ndash; whereas our third-party module &mdash; `moment.js` &mdash; resides outside of the component's directory and is therefore imported into the `window` scope.
 
 Within our CSS file, we can be as loose as we like, because the `date-time.js` component will be imported under its own shadow boundary, preventing the styles from bleeding over into other components &mdash; even components that are children of our component.
 
@@ -51,7 +51,7 @@ export default class MyDateTime extends React.Component {
 }
 ```
 
-**Note:** You could use the `React.createElement('datetime', null, dateTime)` approach as well &ndash; the `System.import` we use recognises when it's a JSX file and will transpile it automatically for you.
+> **Note:** You could use the `React.createElement('datetime', null, dateTime)` approach as well &ndash; the `System.import` we use recognises when it's a JSX file and will transpile it automatically for you.
 
 By looking at the above React component, we can immediately deduce that the *eventual* custom element will be called `my-date-time`. For those eagle-eyed individuals amongst us, you'll have noticed we use `this.props.format` to specify the date/time format &ndash; and this is something we'll pass into our component when adding the custom element to the DOM.
 
@@ -70,7 +70,7 @@ And finally import the component into our main `index.html` document that includ
 <link rel="import" type="text/html" href="my-app/components/time-date/index.html" />
 ```
 
-**Note:** You may have noticed that the component's directory name is largely irrelevant &ndash; and it is, in most cases. However, there are certain circumstances where the component's directory matters &ndash; such as when registering a `WebWorker` &mdash; In this case Maple provides the component directory as `this.props.path`.
+> **Note:** You may have noticed that the component's directory name is largely irrelevant &ndash; and it is, in most cases. However, there are certain circumstances where the component's directory matters &ndash; such as when registering a `WebWorker` &mdash; In this case Maple provides the component directory as `this.props.path`.
 
 Once the HTML document has been imported, Maple will register our custom element and it will be then usable in our application &ndash; although don't forget that we should pass in the *optional* `format` attribute to override `YYYY-MM-DD`:
 
@@ -78,7 +78,7 @@ Once the HTML document has been imported, Maple will register our custom element
 <my-date-time data-format="YYYY-MM-DD HH:mm"></my-date-time>
 ```
 
-**Note:** In the above example we use `data-format`, whereas our React component expects `format` &mdash; you'll be glad to know that in these cases, Maple strips the `data-` segment from the attribute, which allows you to write perfectly valid HTML5 syntax.
+> **Note:** In the above example we use `data-format`, whereas our React component expects `format` &mdash; you'll be glad to know that in these cases, Maple strips the `data-` segment from the attribute, which allows you to write perfectly valid HTML5 syntax.
 
 ### Ignore Import
 
@@ -115,7 +115,7 @@ In development environments it is often useful to compile JSX documents &mdash; 
  </template>
  ```
  
-**Note:** When using [`Mapleify`](#mapleify-vulcanization) to render your app &ndash; Mapleify merely changes the type of your `script` elements from `text/jsx` to `text/javascript` and changes the extensions from **.jsx** to **.js** (pre `v1.2.0` when JSX files were included with JSX extensions) &ndash; it's left entirely up to the developer to write their Gulp/Grunt scripts to convert their JSX &mdash; and SASS &mdash; documents prior to `Mapleify` compilation.
+> **Note:** When using [`Mapleify`](#mapleify-vulcanization) to render your app &ndash; Mapleify merely changes the type of your `script` elements from `text/jsx` to `text/javascript` and changes the extensions from **.jsx** to **.js** (pre `v1.2.0` when JSX files were included with JSX extensions) &ndash; it's left entirely up to the developer to write their Gulp/Grunt scripts to convert their JSX &mdash; and SASS &mdash; documents prior to `Mapleify` compilation.
  
 **Also Note:** Since the release of [`v1.2.0`](https://github.com/Wildhoney/Maple.js/tree/v1.2.0) JSX files **must** have a JS extension &ndash; also JSX files will import just fine using a `text/javascript` type, too.
  
@@ -234,7 +234,7 @@ You can install `Mapleify` globally with [npm](https://www.npmjs.com/): `npm ins
 ![Safari](https://github.com/alrra/browser-logos/raw/master/safari/safari_64x64.png)
 ![Safari](https://github.com/alrra/browser-logos/raw/master/edge/edge_64x64.png)
 
-**Note:** [Example](http://maple-app.herokuapp.com/) has also been tested in IE11 where it seems to be functioning well.
+> **Note:** [Example](http://maple-app.herokuapp.com/) has also been tested in IE11 where it seems to be functioning well.
 
 Maple also comes distributed with a **dist/maple-polyfill.js** file that includes all necessary polyfills for the widest possible support in modern browsers.
 
