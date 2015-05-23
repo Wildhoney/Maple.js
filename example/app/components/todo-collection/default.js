@@ -91,7 +91,7 @@ export default class TodoCollection extends React.Component {
         return (
             <section>
                 <h1>
-                    <i className="fa fa-calendar"></i>
+                    <i className="fa fa-th-list"></i>
                     <span>Todo List</span>
                     <span>{this.completedItems().length}/ {this.state.items.length}</span>
                 </h1>
