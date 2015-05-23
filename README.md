@@ -1,10 +1,12 @@
 <img src="media/Logo.png" width="300" alt="Maple.js" />
 
-![Travis](http://img.shields.io/travis/Wildhoney/Maple.js.svg?style=flat)
+![Travis](http://img.shields.io/travis/Wildhoney/Maple.js.svg?style=flat-square)
 &nbsp;
-![npm](http://img.shields.io/npm/v/maple.js.svg?style=flat)
+![Bower](https://img.shields.io/bower/v/maple.js.svg?style=flat-square)
 &nbsp;
-![License MIT](http://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)
+![npm](http://img.shields.io/npm/v/maple.js.svg?style=flat-square)
+&nbsp;
+![License MIT](http://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat-square)
 
 * **Heroku**: [http://maple-app.herokuapp.com/](http://maple-app.herokuapp.com/)
 * **npm:** `npm install maple.js`
