@@ -248,6 +248,32 @@ export default (function main($document) {
         },
 
         /**
+         * Casts primitive values into their respective types. Ignores complex types, including JSON objects.
+         * Currently supported are: booleans, integers, and floats.
+         *
+         * @method typecastProperty
+         * @param {String} value
+         * @return {*}
+         */
+        typecastProperty(value) {
+
+            if (String(value).match(/^\d+$/)) {
+                value = Number(value);
+            }
+
+            if (String(value).match(/^\d+\.\d+/i)) {
+                value = parseFloat(value);
+            }
+
+            if (~['true', 'false'].indexOf(value)) {
+                value = value === 'true';
+            }
+
+            return value;
+
+        },
+
+        /**
          * @method tryRegisterElement
          * @param {String} name
          * @param {Object} properties

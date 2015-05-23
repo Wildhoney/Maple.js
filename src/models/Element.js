@@ -173,35 +173,32 @@ export default class CustomElement extends StateManager {
                 value: function value() {
 
                     /**
-                     * @method applyDefaultProps
+                     * @method setDefaultProps
                      * @param {Object} attributes
                      * @return {void}
                      */
-                    function applyDefaultProps(attributes) {
+                    function setDefaultProps(attributes) {
 
-                        for (let index = 0; index < attributes.length; index++) {
+                        attributes   = Array.prototype.slice.apply(attributes);
+                        let replacer = /^data-/i;
 
-                            let attribute = attributes.item(index);
-                            let replacer  = /^data-/i;
+                        attributes.forEach((attribute) => {
 
-                            if (attribute.value) {
-
-                                if (attribute.name === utility.ATTRIBUTE_REACTID) {
-                                    continue;
-                                }
-
-                                let name = attribute.name.replace(replacer, '');
-                                script.defaultProps[name] = attribute.value;
-
+                            if (attribute.name === utility.ATTRIBUTE_REACTID) {
+                                return;
                             }
 
-                        }
+                            // Typecast the value depending on the type.
+                            let name  = attribute.name.replace(replacer, '');
+                            script.defaultProps[name] = utility.typecastProperty(attribute.value);
+
+                        });
 
                     }
 
                     // Apply properties to the custom element.
                     script.defaultProps = { path: path, element: this.cloneNode(true) };
-                    applyDefaultProps.call(this, this.attributes);
+                    setDefaultProps.call(this, this.attributes);
                     this.innerHTML      = '';
 
                     // Configure the React.js component, importing it under the shadow boundary.
