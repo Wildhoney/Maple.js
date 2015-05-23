@@ -232,6 +232,9 @@ You can install `Mapleify` globally with [npm](https://www.npmjs.com/): `npm ins
 ![Firefox](https://github.com/alrra/browser-logos/raw/master/firefox/firefox_64x64.png)
 ![Opera](https://github.com/alrra/browser-logos/raw/master/opera/opera_64x64.png)
 ![Safari](https://github.com/alrra/browser-logos/raw/master/safari/safari_64x64.png)
+![Safari](https://github.com/alrra/browser-logos/raw/master/edge/edge_64x64.png)
+
+**Note:** [Example](http://maple-app.herokuapp.com/) has also been tested in IE11 where it seems to be functioning well.
 
 Maple also comes distributed with a **dist/maple-polyfill.js** file that includes all necessary polyfills for the widest possible support in modern browsers.
 
