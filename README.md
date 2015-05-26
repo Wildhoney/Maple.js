@@ -253,3 +253,13 @@ We have a typical [todo example on Heroku](http://maple-app.herokuapp.com/) whic
 Optionally you may also invoke the `wct` testing yourself by issuing the `wct` command in your terminal.
 
 ![Screenshot](media/Screenshot%233.png)
+
+## Selectors
+
+It's crucial to know how Maple traverses the DOM to find your CSS/SASS and JS documents. Maple attempts to adhere to the HTML5 standard &ndash; and therefore if you notice something amiss, please [open an issue](https://github.com/Wildhoney/Maple.js/issues/new)!
+
+ * External CSS: **Must** have `rel="stylesheet"` &ndash; all other attributes optional;
+ * Inline CSS: **Optional** `type="text/css"` attribute;
+ * HTML Imports: **Must** have `rel="import"` &ndash; all other attributes optional;
+ * Inline Templates: **Must** have a `ref` attribute &ndash; automated by [`Mapleify`](https://github.com/Wildhoney/Mapleify);
+ * External JS: **Optional** `type="text/css"` attribute &ndash; matches JSX with `type="text/jsx"`;
