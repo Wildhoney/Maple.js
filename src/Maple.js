@@ -16,12 +16,6 @@ import options   from './helpers/Options.js';
     }
 
     /**
-     * @constant HAS_INITIATED
-     * @type {Boolean}
-     */
-    let HAS_INITIATED = false;
-
-    /**
      * @module Maple
      * @link https://github.com/Wildhoney/Maple.js
      * @author Adam Timberlake
@@ -145,23 +139,29 @@ import options   from './helpers/Options.js';
 
     /**
      * @method initialise
-     * @return {Boolean}
+     * @return {Function}
      */
-    function initialise() {
+    let initialise = (function initialise() {
+        
+        let hasInitiated = false;
+        
+        return function() {
 
-        let state       = $document.readyState,
-            readyStates = ['interactive', 'complete'];
+            let state       = $document.readyState,
+                readyStates = ['interactive', 'complete'];
 
-        if (!HAS_INITIATED && ~readyStates.indexOf(state)) {
+            if (!hasInitiated && ~readyStates.indexOf(state)) {
 
-            HAS_INITIATED = true;
+                hasInitiated = true;
 
-            // No documents, no person.
-            new Maple();
+                // No documents, no person.
+                new Maple();
 
+            }
+            
         }
 
-    }
+    })();
 
     // Support for async, defer, and normal inclusion.
     initialise();
