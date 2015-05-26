@@ -6,8 +6,12 @@ import utility from './Utility.js';
  * @return {Array}
  */
 let queryAll = function queryAll(expression) {
+
     "use strict";
+
+    expression = Array.isArray(expression) ? expression.join(',') : expression;
     return utility.toArray(this.querySelectorAll(expression));
+
 };
 
 export default (function main() {
@@ -22,7 +26,7 @@ export default (function main() {
          * @return {Array}
          */
         getCSSLinks(element) {
-            return queryAll.call(element, 'link[type="text/css"],link[type="text/scss"]');
+            return queryAll.call(element, 'link[rel="stylesheet"]');
         },
 
         /**
@@ -31,7 +35,7 @@ export default (function main() {
          * @return {Array}
          */
         getCSSInlines(element) {
-            return queryAll.call(element, 'style[type="text/css"]');
+            return queryAll.call(element, ['style[type="text/css"]', 'style:not([type])']);
         },
 
         /**
@@ -58,7 +62,12 @@ export default (function main() {
          * @return {Array}
          */
         getScripts(element) {
-            return queryAll.call(element, 'script[type="text/javascript"]');
+
+            var selectors = ['script[type="text/javascript"]', 'script[type="application/javascript"]',
+                             'script[type="text/ecmascript"]', 'script[type="application/ecmascript"]', 'script:not([type])'];
+
+            return queryAll.call(element, selectors);
+
         },
 
         /**
