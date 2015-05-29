@@ -264,7 +264,7 @@ In some cases it may be desirable to prepend a namespace to all custom elements 
 <link rel="import" href="app/components/date-time/index.html" data-namespace="x" />
 ```
 
-By specifying the `data-namespace` attribute, you effectively prepend `x` to all custom elements imported by that document. Therefore if `date-time` defined a `date-time` element, with the `data-namespace` attribute as `x` the element would now be `x-date-time`.
+By specifying the `data-namespace` attribute, you effectively prepend `x` to all custom elements imported by that document. Therefore if `date-time` defined a `date-time` element, with the `data-namespace` attribute as `x` the element would now be `x-date-time` which helps to prevent naming conflicts.
 
 ## Testing
 
