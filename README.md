@@ -202,6 +202,8 @@ It's worth noting that the above code contains a fair amount of boilerplate code
 
 ## Extending Native Elements
 
+> :warning: Not yet supported &ndash; [see React pull request](https://github.com/facebook/react/pull/3930).
+
 > :maple_leaf: Watch "Extending Elements": [https://vimeo.com/128589729](https://vimeo.com/128589729)
 
 By default all of your Maple components will be simple elements. For example, the `class DateTime` object will create an element called `date-time` &ndash; in cases where you'd like the element to be specialised &mdash; such as extending the `HTMLButtonElement` then you need to modify the object's name:
