@@ -12,7 +12,7 @@ gulp:
   polyfills:
 
     bower:
-      - example/vendor/babel/browser.js
+      - example/vendor/babel-core/browser.min.js
       - example/vendor/fetch/fetch.js
       - example/vendor/webcomponentsjs/webcomponents-lite.js
       - example/vendor/es6-module-loader/dist/es6-module-loader.js
