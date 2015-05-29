@@ -40,6 +40,8 @@ export default class CustomElement extends StateManager {
 
         }
 
+        logger.error('Extending native elements currently unsupported due to React – see pull request: https://github.com/facebook/react/pull/3930');
+
         let prototype = `HTML${descriptor.extend}Element`;
 
         utility.tryRegisterElement(descriptor.name, {
