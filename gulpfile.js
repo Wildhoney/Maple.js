@@ -36,7 +36,7 @@
 
     gulp.task('bundler', ['compile', 'babel'], function() {
 
-        return gulp.src([].concat(cfg.gulp.polyfills.bower, [devPath]))
+        return gulp.src([].concat(cfg.gulp.polyfills.bower, [prodPath]))
                    .pipe(concat('all.js'))
                    .pipe(rename(cfg.gulp.names.bundle.dev))
                    .pipe(gulp.dest(cfg.gulp.directories.dist))
