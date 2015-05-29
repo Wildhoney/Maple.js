@@ -7,13 +7,16 @@ gulp:
   directories:
     css: example/css
     dist: dist
-    vendor: example/vendor/maple
+    vendor: example/vendor
 
   polyfills:
-    - example/vendor/browser.js
-    - example/vendor/fetch/fetch.js
-    - example/vendor/webcomponentsjs/webcomponents.js
-    - example/vendor/es6-module-loader/dist/es6-module-loader.js
+    bower:
+      - example/vendor/babel/browser.js
+      - example/vendor/fetch/fetch.js
+      - example/vendor/webcomponentsjs/webcomponents-lite.js
+      - example/vendor/es6-module-loader/dist/es6-module-loader.js
+    npm:
+      - node_modules/babel-core
 
   names:
     cucumber: app.template
@@ -33,13 +36,3 @@ gulp:
     - ./example/app/*.js
     - ./example/app/actions/*.js
     - ./example/app/stores/*.js
-
-karma:
-
-  polyfills:
-    - tests/compiled/vendor/webcomponentsjs/webcomponents-lite.js
-    - tests/compiled/vendor/browser.js
-    - tests/compiled/vendor/fetch/fetch.js
-    - tests/compiled/vendor/react/react.js
-    - tests/compiled/vendor/maple/maple.js
-    - tests/compiled/vendor/es6-module-loader/dist/es6-module-loader.js

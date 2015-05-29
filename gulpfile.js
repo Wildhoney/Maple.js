@@ -34,9 +34,9 @@
 
     };
 
-    gulp.task('bundler', ['compile'], function() {
+    gulp.task('bundler', ['compile', 'babel'], function() {
 
-        return gulp.src([].concat(cfg.gulp.polyfills, [devPath]))
+        return gulp.src([].concat(cfg.gulp.polyfills.bower, [devPath]))
                    .pipe(concat('all.js'))
                    .pipe(rename(cfg.gulp.names.bundle.dev))
                    .pipe(gulp.dest(cfg.gulp.directories.dist))
@@ -73,7 +73,7 @@
 
         return gulp.src(devPath)
                    .pipe(rename(cfg.gulp.names.default.dev))
-                   .pipe(gulp.dest(cfg.gulp.directories.vendor));
+                   .pipe(gulp.dest(cfg.gulp.directories.vendor + '/maple'));
 
     });
 
@@ -87,8 +87,15 @@
 
     });
 
+    gulp.task('babel', function() {
+
+        return gulp.src(cfg.gulp.polyfills.npm + '/*.js', { base: './node_modules' })
+                   .pipe(gulp.dest(cfg.gulp.directories.vendor));
+
+    });
+
     gulp.task('test', ['lint']);
-    gulp.task('build', ['compile', 'vendorify', 'minify', 'bundler']);
+    gulp.task('build', ['compile', 'babel', 'vendorify', 'minify', 'bundler']);
     gulp.task('default', ['test', 'build']);
     gulp.task('watch', function watch() {
         gulp.watch(cfg.gulp.all, ['compile', 'vendorify']);

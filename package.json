@@ -21,6 +21,7 @@
     "packages": "vendor"
   },
   "devDependencies": {
+    "babel-core": "^5.4.7",
     "babelify": "^6.1.0",
     "bower": "^1.4.1",
     "browserify": "^10.1.3",
