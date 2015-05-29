@@ -246,18 +246,6 @@ Maple also comes distributed with a **dist/maple-polyfill.js** file that include
 
 We have a typical [todo example on Heroku](http://maple-app.herokuapp.com/) which uses Maple along with the [Alt.js](https://github.com/goatslacker/alt) Flux library. Everything should look familiar to a seasoned React.js developer &ndash; with the customary stores and actions &ndash; where the codebase differs is in the **components** directory, where each of the three components are written in ES6 and exported using `export default`.
 
-## Testing
-
-`Maple` uses Polymer's [`wct` testing tool](https://github.com/Polymer/web-component-tester) &ndash; which relies on the [Chai](http://chaijs.com/) assertion library.
-
-* `npm install`
-* `bower install`
-* `gulp test`
-
-Optionally you may also invoke the `wct` testing yourself by issuing the `wct` command in your terminal.
-
-![Screenshot](media/Screenshot%233.png)
-
 ## Selectors
 
 It's crucial to know how Maple traverses the DOM to find your CSS/SASS and JS documents. Maple attempts to adhere to the HTML5 standard &ndash; and therefore if you notice something amiss, please [open an issue](https://github.com/Wildhoney/Maple.js/issues/new)!
@@ -267,3 +255,23 @@ It's crucial to know how Maple traverses the DOM to find your CSS/SASS and JS do
  * HTML Imports: **Must** have `rel="import"` &ndash; all other attributes optional;
  * Inline Templates: **Must** have a `ref` attribute &ndash; automated by [`Mapleify`](https://github.com/Wildhoney/Mapleify);
  * External JS: **Optional** `type="text/css"` attribute &ndash; matches JSX with `type="text/jsx"`;
+
+## Namespaces
+
+In some cases it may be desirable to prepend a namespace to all custom elements &ndash; especially in the case where you're loaded a third-party import and are unable to touch their custom elements directly. In these instances `Maple` allows you to specify a namespace when importing the document:
+
+```html
+<link rel="import" href="app/components/date-time/index.html" data-namespace="x" />
+```
+
+By specifying the `data-namespace` attribute, you effectively prepend `x` to all custom elements imported by that document. Therefore if `date-time` defined a `date-time` element, with the `data-namespace` attribute as `x` the element would now be `x-date-time`.
+
+## Testing
+
+`Maple` uses Polymer's [`wct` testing tool](https://github.com/Polymer/web-component-tester) &ndash; which relies on the [Chai](http://chaijs.com/) assertion library.
+
+* `npm install`
+* `bower install`
+* `gulp test`
+
+Optionally you may also invoke the `wct` testing yourself by issuing the `wct` command in your terminal.
