@@ -27,7 +27,7 @@ export default class CustomElement extends StateManager {
 
         super();
         this.path     = path;
-        this.sass     = (typeof Sass === 'undefined') ? null : new Sass();
+        this.sass     = cacheFactory.getSass();
         this.elements = { script: scriptElement, template: templateElement };
         this.script   = importScript;
 
