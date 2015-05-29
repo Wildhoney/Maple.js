@@ -1,3 +1,4 @@
+import options      from './../helpers/Options.js';
 import events       from './../helpers/Events.js';
 import utility      from './../helpers/Utility.js';
 import logger       from './../helpers/Logger.js';
@@ -33,6 +34,13 @@ export default class CustomElement extends StateManager {
         let descriptor = this.getDescriptor();
 
         if (!descriptor.extend) {
+
+            if (path.getImport().hasAttribute('data-namespace')) {
+
+                let namespace   = path.getImport().getAttribute('data-namespace');
+                descriptor.name = `${namespace}${options.NAMESPACE_SEPARATOR}${descriptor.name}`;
+
+            }
 
             return void utility.tryRegisterElement(descriptor.name, {
                 prototype: this.getElementPrototype()

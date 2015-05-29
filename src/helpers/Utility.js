@@ -15,13 +15,14 @@ export default (function main($document) {
 
         /**
          * @method resolver
-         * @param {String} url
+         * @param {HTMLLinkElement} linkElement
          * @param {HTMLDocument|null} ownerDocument
          * @return {Object}
          */
-        resolver(url, ownerDocument) {
+        resolver(linkElement, ownerDocument) {
 
-            let componentPath = this.getPath(url),
+            let url           = linkElement.getAttribute('href'),
+                componentPath = this.getPath(url),
                 getPath       = this.getPath.bind(this),
                 getName       = this.getName.bind(this);
             /**
@@ -43,6 +44,14 @@ export default (function main($document) {
                  * @type {Object}
                  */
                 production: {
+
+                    /**
+                     * @method getImport
+                     * @return {HTMLLinkElement}
+                     */
+                    getImport() {
+                        return linkElement;
+                    },
 
                     /**
                      * @method getPath
@@ -99,6 +108,14 @@ export default (function main($document) {
                  * @type {Object}
                  */
                 development: {
+
+                    /**
+                     * @method getImport
+                     * @return {HTMLLinkElement}
+                     */
+                    getImport() {
+                        return linkElement;
+                    },
 
                     /**
                      * @method getPath
