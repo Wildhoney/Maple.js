@@ -10,19 +10,22 @@ gulp:
     vendor: example/vendor
 
   polyfills:
+
     bower:
       - example/vendor/babel/browser.js
       - example/vendor/fetch/fetch.js
       - example/vendor/webcomponentsjs/webcomponents-lite.js
       - example/vendor/es6-module-loader/dist/es6-module-loader.js
+
     npm:
       - node_modules/babel-core
 
   names:
-    cucumber: app.template
+
     default:
       dev: maple.js
       prod: maple.min.js
+
     bundle:
       dev: maple-polyfill.js
       prod: maple-polyfill.min.js
