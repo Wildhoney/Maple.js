@@ -25,6 +25,7 @@
     "babelify": "^6.1.0",
     "bower": "^1.4.1",
     "browserify": "^10.1.3",
+    "cli-color": "^1.0.0",
     "express": "^4.12.3",
     "gulp": "^3.8.11",
     "gulp-babel": "^5.1.0",
@@ -32,10 +33,12 @@
     "gulp-jshint": "^1.10.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.1.0",
-    "js-yaml": "^3.2.7"
+    "js-yaml": "^3.2.7",
+    "pad": "0.0.9"
   },
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "start": "npm install; bower install; gulp build; node example/server/default.js"
   },
   "repository": {
     "type": "git",
