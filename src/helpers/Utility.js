@@ -15,13 +15,14 @@ export default (function main($document) {
 
         /**
          * @method resolver
-         * @param {String} url
+         * @param {HTMLElement} importElement
          * @param {HTMLDocument|null} ownerDocument
          * @return {Object}
          */
-        resolver(url, ownerDocument) {
+        resolver(importElement, ownerDocument) {
 
-            let componentPath   = this.getPath(url),
+            let url             = importElement.getAttribute('href') || importElement.getAttribute('ref'),
+                componentPath   = this.getPath(url),
                 getPath         = this.getPath.bind(this),
                 getName         = this.getName.bind(this),
                 removeExtension = this.removeExtension.bind(this);
@@ -50,7 +51,7 @@ export default (function main($document) {
                      * @return {HTMLLinkElement}
                      */
                     getImport() {
-                        return document.createElement('link');
+                        return importElement;
                     },
 
                     /**
@@ -123,7 +124,7 @@ export default (function main($document) {
                      * @return {HTMLLinkElement}
                      */
                     getImport() {
-                        return document.createElement('link');
+                        return importElement;
                     },
 
                     /**

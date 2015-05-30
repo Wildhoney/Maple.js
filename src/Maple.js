@@ -48,9 +48,7 @@ import options   from './helpers/Options.js';
          * @return {void}
          */
         findLinks() {
-
             selectors.getImports($document).forEach((linkElement) => this.waitForLinkElement(linkElement));
-
         }
 
         /**
@@ -65,8 +63,7 @@ import options   from './helpers/Options.js';
             selectors.getTemplates($document).forEach((templateElement) => {
 
                 let scriptElements = selectors.getAllScripts(templateElement.content);
-                let ref            = templateElement.getAttribute('ref');
-                let path           = utility.resolver(ref, null).production;
+                let path           = utility.resolver(templateElement, null).production;
 
                 scriptElements.forEach((scriptElement) => {
 
