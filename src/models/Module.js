@@ -35,7 +35,8 @@ export default class Module extends StateManager {
 
             [this.getTemplates()[0]].forEach((templateElement) => {
 
-                let scriptElements = selectors.getAllScripts(templateElement.content);
+                let scriptElements = selectors.getAllScripts(templateElement.content),
+                    linkElements   = selectors.getImports(templateElement.content);
 
                 scriptElements.map((scriptElement) => {
 
@@ -49,6 +50,13 @@ export default class Module extends StateManager {
                     this.components.push(component);
 
                 });
+
+                if (linkElements.length) {
+
+                    logger.warn('Components importing other components is an experimental feature which Mapleify does not yet support');
+                    this.importDependencyLinks(linkElements, templateElement.ownerDocument);
+
+                }
 
             });
 
@@ -65,6 +73,27 @@ export default class Module extends StateManager {
      */
     setState(state) {
         this.state = state;
+    }
+
+    /**
+     * @method importDependencyLinks
+     * @param {HTMLLinkElement[]} linkElements
+     * @param {Document} ownerDocument
+     * @return {void}
+     */
+    importDependencyLinks(linkElements, ownerDocument) {
+
+        linkElements.forEach((linkElement) => {
+
+            let a    = ownerDocument.createElement('a');
+            a.href   = linkElement.getAttribute('href');
+            let path = a.pathname.substr(1);
+
+            linkElement.setAttribute('href', path);
+            document.head.appendChild(linkElement);
+
+        });
+        
     }
 
     /**
