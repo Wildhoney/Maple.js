@@ -72,7 +72,7 @@ And finally import the component into our main `index.html` document that includ
 <link rel="import" type="text/html" href="my-app/components/time-date/index.html" />
 ```
 
-**Note:** You may have noticed that the component's directory name is largely irrelevant &ndash; and it is, in most cases. However, there are certain circumstances where the component's directory matters &ndash; such as when registering a `WebWorker` &mdash; In this case Maple provides the component directory as `this.props.path`.
+**Note:** You may have noticed that the component's directory name is largely irrelevant &ndash; and it is, in most cases. However, there are certain circumstances where the component's directory matters &ndash; such as when [registering a `Worker`](#component-path) &mdash; In this case Maple provides the component directory as `this.props.path`.
 
 Once the HTML document has been imported, Maple will register our custom element and it will be then usable in our application &ndash; although don't forget that we should pass in the *optional* `format` attribute to override `YYYY-MM-DD`:
 
@@ -81,6 +81,16 @@ Once the HTML document has been imported, Maple will register our custom element
 ```
 
 **Note:** In the above example we use `data-format`, whereas our React component expects `format` &mdash; you'll be glad to know that in these cases, Maple strips the `data-` segment from the attribute, which allows you to write perfectly valid HTML5 syntax.
+
+### Component Path
+
+From within your React component, use the `this.props.path.getRelativePath()` to get the path of the current component &ndash; with this information, you can easily register `Worker`s and other relatively stored documents:
+
+```javascript
+let name   = 'MyWebWorker.js',
+    path   = `${this.props.path.getRelativePath()}/${name}`,
+    worker = new Worker(path);
+```
 
 ### Ignore Import
 
