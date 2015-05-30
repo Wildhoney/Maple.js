@@ -15,7 +15,7 @@ export default class Module extends StateManager {
     constructor(linkElement) {
 
         super();
-        this.path       = utility.resolver(linkElement, linkElement.import).development;
+        this.path       = utility.resolver(linkElement.getAttribute('href'), linkElement.import).development;
         this.state      = State.UNRESOLVED;
         this.elements   = { link: linkElement };
         this.components = [];

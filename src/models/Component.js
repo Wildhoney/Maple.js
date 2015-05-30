@@ -34,7 +34,7 @@ export default class Component extends StateManager {
 
         // Configure the URL of the component for ES6 `System.import`, which is also polyfilled in case the
         // current browser does not provide support for dynamic module loading.
-        let url = `${this.path.getRelativePath()}/${utility.removeExtension(src)}`;
+        let url = this.path.resolveComponent(src);
 
         if (src.split('.').pop().toLowerCase() === 'jsx') {
             return void logger.error(`Use JS extension instead of JSX – JSX compilation will work as expected`);

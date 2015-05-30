@@ -15,16 +15,16 @@ export default (function main($document) {
 
         /**
          * @method resolver
-         * @param {HTMLLinkElement} linkElement
+         * @param {String} url
          * @param {HTMLDocument|null} ownerDocument
          * @return {Object}
          */
-        resolver(linkElement, ownerDocument) {
+        resolver(url, ownerDocument) {
 
-            let url           = linkElement.getAttribute('href'),
-                componentPath = this.getPath(url),
-                getPath       = this.getPath.bind(this),
-                getName       = this.getName.bind(this);
+            let componentPath   = this.getPath(url),
+                getPath         = this.getPath.bind(this),
+                getName         = this.getName.bind(this),
+                removeExtension = this.removeExtension.bind(this);
             /**
              * @method resolvePath
              * @param {String} path
@@ -50,7 +50,7 @@ export default (function main($document) {
                      * @return {HTMLLinkElement}
                      */
                     getImport() {
-                        return linkElement;
+                        return document.createElement('link');
                     },
 
                     /**
@@ -66,6 +66,15 @@ export default (function main($document) {
 
                         return resolvePath(path, $document);
 
+                    },
+
+                    /**
+                     * @method resolveComponent
+                     * @param {String} path
+                     * @return {String}
+                     */
+                    resolveComponent(path) {
+                        return removeExtension(path);
                     },
 
                     /**
@@ -114,7 +123,7 @@ export default (function main($document) {
                      * @return {HTMLLinkElement}
                      */
                     getImport() {
-                        return linkElement;
+                        return document.createElement('link');
                     },
 
                     /**
@@ -130,6 +139,15 @@ export default (function main($document) {
 
                         return resolvePath(path, $document);
 
+                    },
+
+                    /**
+                     * @method resolveComponent
+                     * @param {String} path
+                     * @return {String}
+                     */
+                    resolveComponent(path) {
+                        return `${this.getRelativePath()}/${removeExtension(path)}`;
                     },
 
                     /**
