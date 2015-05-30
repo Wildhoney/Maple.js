@@ -2,6 +2,7 @@ import CustomElement from './Element.js';
 import utility       from './../helpers/Utility.js';
 import logger        from './../helpers/Logger.js';
 import options       from './../helpers/Options.js';
+import selectors     from './../helpers/Selectors.js';
 import {StateManager, State} from './StateManager.js';
 
 /**
@@ -32,15 +33,11 @@ export default class Component extends StateManager {
         let src = scriptElement.getAttribute('src');
         this.setState(State.RESOLVING);
 
-        // Configure the URL of the component for ES6 `System.import`, which is also polyfilled in case the
-        // current browser does not provide support for dynamic module loading.
-        let url = this.path.resolveComponent(src);
-
         if (src.split('.').pop().toLowerCase() === 'jsx') {
             return void logger.error(`Use JS extension instead of JSX – JSX compilation will work as expected`);
         }
 
-        System.import(`${url}`).then((imports) => {
+        System.import(this.path.resolveComponent(src)).then((imports) => {
 
             if (!imports.default) {
 
@@ -68,7 +65,7 @@ export default class Component extends StateManager {
      */
     loadThirdPartyScripts() {
 
-        let scriptElements    = utility.toArray(this.elements.template.content.querySelectorAll('script[type="text/javascript"]')),
+        let scriptElements    = selectors.getScripts(this.elements.template.content),
             thirdPartyScripts = scriptElements.filter((scriptElement) => {
                 return !this.path.isLocalPath(scriptElement.getAttribute('src'));
             });
