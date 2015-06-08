@@ -214,7 +214,7 @@ It's worth noting that the above code contains a fair amount of boilerplate code
 
 ## Extending Native Elements
 
-> :warning: Not yet supported &ndash; [see React pull request](https://github.com/facebook/react/pull/3930).
+> :warning: Not yet supported &ndash; [merged and pending release](https://github.com/facebook/react/blob/master/src/renderers/dom/shared/HTMLDOMPropertyConfig.js#L106).
 
 > :maple_leaf: Watch "Extending Elements": [https://vimeo.com/128589729](https://vimeo.com/128589729)
 
